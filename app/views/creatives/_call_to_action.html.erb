@@ -1,0 +1,16 @@
+<aside class="bg-dark">
+    <div class="container text-center">
+        <div class="call-to-action">
+        	<% if user_signed_in? %>
+						<h2>Welcome <%= current_user.email %></h2>
+						<br>
+						<br>
+						<div data-no-turbolink><%= link_to 'Go to my calendar', events_path, :class => "btn btn-custom4 btn-lg", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading calendar..."} %></div>
+					<% else %>
+            <h2>Sales Stuff BLAH BLAH BLAH!</h2>
+            <%= link_to "Sign Up Now!", new_user_registration_path, class: "btn btn-custom4 btn-lg wow tada", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading..."} %>
+          <% end %>  
+        </div>
+    </div>
+</aside>
+

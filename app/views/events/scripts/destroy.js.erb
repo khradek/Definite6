@@ -1,0 +1,6 @@
+$("#script_<%= @script.id %>").fadeOut(500, function(){
+	$(this).remove();
+});
+
+//Set page to reload so the play count updates
+location.reload();

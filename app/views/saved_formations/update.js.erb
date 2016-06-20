@@ -1,0 +1,3 @@
+$("#myupdatesaved_formation_<%= @saved_formation.id %>").modal('hide');
+
+$("#saved_formation_<%= @saved_formation.id %>").replaceWith('<%= j render @saved_formation %>');

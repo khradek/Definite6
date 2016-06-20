@@ -1,0 +1,39 @@
+<tbody id="saved_formation_<%= saved_formation.id %>">
+  <tr>
+    <td><%= saved_formation.title %></td>
+    <td><button type="button" id="update-saved_formation_<%= saved_formation.id %>" class="btn btn-custom4 btn-sm pull-right" data-toggle="modal" data-target="#myupdatesaved_formation_<%= saved_formation.id %>">
+    	Update or Delete Formation
+    </button></td>
+  </tr>
+</tbody>
+
+<div id="saved_formation_update<%= saved_formation.id %>">
+	<!-- Modal - update saved_formations -->
+	  <%= form_for(saved_formation, :method => :put, remote: true) do |f| %>
+	  <div class="modal fade" id="myupdatesaved_formation_<%= saved_formation.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Update Formation</h4>
+	      </div>
+	      <div class="modal-body">
+
+	      <div class="field">
+	        <%= f.label :title %><br>
+	        <%= f.text_area :title, class: "form-control" %>
+	      </div>
+
+	      <div class="modal-footer">
+	      	<span class="pull-left" data-dismiss="modal" data-backdrop="false"> 
+	      		<%= link_to 'Delete Play', saved_formation, method: :delete, class: "btn btn-custom2", remote: true, data: { confirm: 'Are you sure?' } %>  
+	    		</span> 
+	        <button type="button" id="myupdatebutton_<%= saved_formation.id %>" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <%= submit_tag "Update", class: "btn btn-custom1" %>
+	      </div>
+	    </div>
+	  </div>
+	  </div>
+	  <% end %>
+	<!-- Modal -->
+</div>

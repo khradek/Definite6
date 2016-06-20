@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <div id="sdata" class="hidden"><%= @script.sdata %></div>
+</p>
+
+<p>
+  <div id="event-id" class="hidden"><%= @script.event_id %></div>
+</p>
+
+<p>
+  <div id="script-id" class="hidden"><%= @script.id %></div>
+</p>
+
+<p>
+  <div id="script-plays" class="hidden">
+    [<% @plays.each do |play| %> 
+      <%= '" ", ' if play == @event.plays.first %>"<%= play.fullname %>"<%= "," unless play == @event.plays.last %>
+    <% end %>]
+  </div>
+</p>
+
+<h2><%= @script.title %></h2>
+
+<p>
+<div class="fake-h4">Date:&nbsp </div><div class="inline"><%= @script.end_time.strftime("%m-%d-%Y") %></div>
+</p>
+
+<div id="scriptGrid"></div>
+<button id="save-button" class="btn btn-custom1">Save Updates to Script</button>
+<br>
+<br>
+<div data-no-turbolink><%= link_to "Return to Install Page", @event, :class => "btn btn-custom3", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading Install Page..."} %></div>
+<br>
+<br>
+<br>

@@ -1,0 +1,17 @@
+<section class="bg-primary" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h2 class="section-heading">We've got what you need!</h2>
+                <hr class="light">
+                <p class="text-faded">Need to make this text larger</p>
+                <% if user_signed_in? %>
+                    <br>
+                <% else %>
+                    <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-custom3 btn-lg", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading..."} %>
+                <% end %>    
+            </div>
+        </div>
+    </div>
+</section>
+

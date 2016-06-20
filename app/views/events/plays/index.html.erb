@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Plays</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Piece1</th>
+      <th>Event</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @plays.each do |play| %>
+      <tr>
+        <td><%= play.piece1 %></td>
+        <td><%= play.event_id %></td>
+        <td><%= play.user_id %></td>
+        <td><%= link_to 'Show', play %></td>
+        <td><%= link_to 'Edit', edit_play_path(play) %></td>
+        <td><%= link_to 'Destroy', play, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Play', new_play_path %>

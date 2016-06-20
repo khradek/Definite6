@@ -1,0 +1,241 @@
+         
+<tbody id="play_<%= play.id %>" class="play-table" data-id="<%= play.id %>">
+  <tr>
+    <td class="play-box"><%= play.fullname %></td>
+    <td class="table-center period-box"><%= check_box_tag "period1", "#{play.period1}", play.period1?, disabled: true %></td>
+    <td class="table-center period-box"><%= check_box_tag "period2", "#{play.period2}", play.period2?, disabled: true %></td>
+    <td class="table-center period-box"><%= check_box_tag "period3", "#{play.period3}", play.period3?, disabled: true %></td>
+    <td class="table-center period-box"><%= check_box_tag "period4", "#{play.period4}", play.period4?, disabled: true %></td>
+    <td><button type="button" id="update-play_<%= play.id %>" class="btn btn-custom4 btn-sm update-play-button" data-toggle="modal" data-target="#myupdateplay_<%= play.id %>">
+    	Update or Remove
+    </button></td>
+  </tr>
+</tbody>
+
+
+<div id="play<%= play.id %>">
+  <!-- Modal - update plays -->
+  <%= form_for [@event, play], :method => :put, remote: true do |f| %>
+  <div class="modal fade" id="myupdateplay_<%= play.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel"><strong><%= play.fullname %></strong></h4>
+	      </div>
+	      <div class="modal-body">
+
+	        <div class="row">
+	          <div class="field col-md-6 padding-sm">
+	            <%= f.label :piece1, "Formation" %><br>
+	            <%= f.text_field :piece1, class: "form-control", id: "formation-text-#{play.id}" %>
+	          </div>
+	          <div class="field col-md-6 padding-sm">
+	            <%= f.label :piece2, "Play" %><br>
+	            <%= f.text_field :piece2, class: "form-control", id: "play-text-#{play.id}" %>
+	          </div>
+	        </div>
+
+	        <div class="saved-formations-and-plays-update" id="formations-and-plays-<%= play.id %>">
+	          <div class="row">
+	            <div class="field col-md-6 padding-sm">
+	              <div class="form-group">
+	                <%= select_tag "saved_formations", options_for_select(SavedFormation.where(:user_id => current_user.id).map{ |sm| [sm.title, data: {body: sm.title}] }), prompt: "Saved formations", class: "form-control input-sm formation-drop", id: "saved-formations-update-#{play.id}" %>
+	              </div>
+	            </div>
+	            <div class="field col-md-6 padding-sm">
+	              <div class="form-group">
+	                <%= select_tag "saved_plays", options_for_select(SavedPlay.where(:user_id => current_user.id).map{ |sm| [sm.title, data: {body: sm.title}] }), prompt: "Saved plays", class: "form-control input-sm play-drop", id: "saved-plays-update-#{play.id}" %>
+	              </div>
+	            </div>
+	          </div>
+	        </div> 	        
+
+					<button type="button" class="btn btn-custom3 btn-sm show-saved-plays-update", id="show-saved-update-<%= play.id %>">Saved Formations & Plays</button>
+
+					<br>
+					<br>
+				  <br>
+
+				  <div><strong>Number of Times Practiced:&nbsp</strong><span><%= play.play_count %></span></div>
+
+				  <hr>
+				  
+				  <div class="row">
+					  <div class="col-md-8"></div>
+					  <div class="col-md-1"><strong>1</strong></div>
+					  <div class="col-md-1"><strong>2</strong></div>
+					  <div class="col-md-1"><strong>3</strong></div>
+					  <div class="col-md-1"><strong>4</strong></div>
+					</div>
+				  <div class="row">
+					  <div class="col-md-8"><strong>Practice in Period:</strong></div>
+					  <div class="col-md-1">                    
+					  	<div class="field form-group">
+                <div class="checkbox-inline">
+                  <%= f.check_box :period1 %>
+                </div>
+              </div>
+            </div>
+					  <div class="col-md-1">
+	            <div class="field form-group">
+	              <div class="checkbox-inline">
+	                <%= f.check_box :period2 %>
+	              </div>
+	            </div>  
+					  </div>
+					  <div class="col-md-1">
+	            <div class="field form-group">
+	              <div class="checkbox-inline">
+	                <%= f.check_box :period3 %>
+	              </div>
+	            </div>   
+					  </div>
+					  <div class="col-md-1">
+	            <div class="field form-group">
+	              <div class="checkbox-inline">
+	                <%= f.check_box :period4 %>
+	              </div>
+	            </div>  
+					  </div>
+					</div>
+
+					<hr>
+
+        	<button type="button" class="btn btn-custom1 btn-sm update-situation-button", id="<%= play.id %>">Assign or Update Situation Info</button>
+        	<br>
+        	<br>
+
+					<div class="update-situations" id="update-situations-<%= play.id %>">
+	          <div class="form-group">
+	            <%= f.label :play_type, "Run/Pass" %> 
+	            <div>
+	              <%= f.select(:play_type, options_for_select([[' ', ' '], ['Run', 'Run'], ['Pass', 'Pass']], :selected => f.object.play_type), {}, {class: "form-control"}) %>
+	            </div>  
+	          </div>
+
+	          <div class="form-group hash">
+	            <%= f.label :hash_mark, "Hash" %> 
+	            <div>
+	              <%= f.select(:hash_mark, options_for_select([[' ', ' '], ['Left', 'Left'], ['Right', 'Right']], :selected => f.object.hash_mark), {}, {class: "form-control"}) %>
+	            </div>  
+	          </div>
+
+	          <div id="situation-title"><strong>Situation(s)</strong></div>
+
+	          <hr>
+
+	          <div class="row top-situation">
+		          <div class="form-group col-md-8">
+		            <%= f.select(:situation1, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out']], :selected => f.object.situation1), {}, {class: "form-control"}) %>
+		          </div> 
+
+		          <div class="col-md-4"><button type="button" class="btn btn-custom3 btn-sm pull-right update-play-sit-button <%= 'uhidden' unless play.situation2.blank?%>", id="update-situation-button01-<%= play.id %>">Add Another Situation</button></div>
+		        </div>  
+
+						<div class="row <%= 'uhidden' if play.situation2.blank? %>" id="update-situation02-<%= play.id %>">
+		          <div class="form-group col-md-8">
+		            <%= f.select(:situation2, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out']], :selected => f.object.situation2), {}, {class: "form-control"}) %>
+		          </div> 
+
+		          <div class="col-md-4"><button type="button" class="btn btn-custom3 btn-sm pull-right update-play-sit-button <%= 'uhidden' unless play.situation3.blank?%>", id="update-situation-button02-<%= play.id %>">Add Another Situation</button></div>
+		      	</div>
+
+	        	<div class="row <%= 'uhidden' if play.situation3.blank? %>" id="update-situation03-<%= play.id %>">
+		          <div class="form-group col-md-8">
+		            <div>
+		            <%= f.select(:situation3, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out']], :selected => f.object.situation3), {}, {class: "form-control"}) %>
+		            </div>
+		          </div> 
+
+		          <div class="col-md-4"><button type="button" class="btn btn-custom3 btn-sm pull-right update-play-sit-button <%= 'uhidden' unless play.situation4.blank?%>", id="update-situation-button03-<%= play.id %>">Add Another Situation</button></div>
+		      	</div>
+
+	          <div class="row <%= 'uhidden' if play.situation4.blank? %>" id="update-situation04-<%= play.id %>">
+		          <div class="form-group col-md-8">
+		            <div>
+		            <%= f.select(:situation4, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out']], :selected => f.object.situation4), {}, {class: "form-control"}) %>
+		            </div>
+		          </div> 
+
+		          <div class="col-md-4"><button type="button" class="btn btn-custom3 btn-sm pull-right update-play-sit-button <%= 'uhidden' unless play.situation5.blank?%>", id="update-situation-button04-<%= play.id %>">Add Another Situation</button></div>
+		      	</div>
+
+	          <div class="row <%= 'uhidden' if play.situation5.blank? %>" id="update-situation05-<%= play.id %>">
+		          <div class="form-group col-md-8">
+		            <div>
+		            <%= f.select(:situation5, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out']], :selected => f.object.situation5), {}, {class: "form-control"}) %>
+		            </div>
+		          </div> 
+
+		          <div class="col-md-4"><button type="button" class="btn btn-custom3 btn-sm pull-right update-play-sit-button <%= 'uhidden' unless play.situation6.blank?%>", id="update-situation-button05-<%= play.id %>">Add Another Situation</button></div>
+		      	</div>
+
+	          <div class="row <%= 'uhidden' if play.situation6.blank? %>" id="update-situation06-<%= play.id %>">
+		          <div class="form-group col-md-8">
+		            <div>
+		            <%= f.select(:situation6, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out']], :selected => f.object.situation6), {}, {class: "form-control"}) %>
+		            </div>
+		          </div> 
+
+		          <div class="col-md-4"><button type="button" class="btn btn-custom3 btn-sm pull-right update-play-sit-button <%= 'uhidden' unless play.situation7.blank?%>", id="update-situation-button06-<%= play.id %>">Add Another Situation</button></div>
+		      	</div>
+
+	          <div class="row <%= 'uhidden' if play.situation7.blank? %>" id="update-situation07-<%= play.id %>">	
+		          <div class="form-group col-md-8">
+		            <div>
+		            <%= f.select(:situation7, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out']], :selected => f.object.situation7), {}, {class: "form-control"}) %>
+		            </div>
+		          </div> 
+
+		          <div class="col-md-4"><button type="button" class="btn btn-custom3 btn-sm pull-right update-play-sit-button <%= 'uhidden' unless play.situation8.blank?%>", id="update-situation-button07-<%= play.id %>">Add Another Situation</button></div>
+		      	</div>
+
+	        	<div class="row <%= 'uhidden' if play.situation8.blank? %>" id="update-situation08-<%= play.id %>">
+		          <div class="form-group col-md-8">
+		            <div>
+		            <%= f.select(:situation8, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out']], :selected => f.object.situation8), {}, {class: "form-control"}) %>
+		            </div>
+		          </div> 
+
+		          <div class="col-md-4"><button type="button" class="btn btn-custom3 btn-sm pull-right update-play-sit-button <%= 'uhidden' unless play.situation9.blank?%>", id="update-situation-button08-<%= play.id %>">Add Another Situation</button></div>
+	         	</div>
+
+	          <div class="row <%= 'uhidden' if play.situation9.blank? %>" id="update-situation09-<%= play.id %>">
+		          <div class="form-group col-md-8">
+		            <div>
+		            <%= f.select(:situation9, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out']], :selected => f.object.situation9), {}, {class: "form-control"}) %>
+		            </div>
+		          </div> 
+
+		          <div class="col-md-4"><button type="button" class="btn btn-custom3 btn-sm pull-right update-play-sit-button <%= 'uhidden' unless play.situation10.blank?%>", id="update-situation-button09-<%= play.id %>">Add Another Situation</button></div>
+		      	</div>
+
+	          <div class="row <%= 'uhidden' if play.situation10.blank? %>" id="update-situation10-<%= play.id %>">
+		          <div class="form-group col-md-8">
+		            <div>
+		            <%= f.select(:situation10, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out']], :selected => f.object.situation10), {}, {class: "form-control"}) %>
+		            </div>
+		          </div> 
+
+		          <div class="col-md-4"><button type="button" disabled class="btn btn-custom2 btn-sm pull-right update-play-sit-button", id="update-situation-button10-<%= play.id %>">All Spaces Have Been Used</button></div>                
+		        </div>
+		      </div>
+		      
+
+	      </div>  
+
+
+	      <div class="modal-footer">
+	      	<span class="pull-left" data-dismiss="modal" data-backdrop="false"> 
+	          <%= link_to 'Remove from Install', [@event, play], method: :delete, class: "btn btn-custom2", remote: true, data: { confirm: 'Are you sure?' } %>  
+	        </span> 
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <%= submit_tag "Update Play", class: "btn btn-custom1 update-play", id: "update" %>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+  <% end %>
+  <!-- Modal -->
+</div>

@@ -1,0 +1,3 @@
+$("#myupdatesaved_play_<%= @saved_play.id %>").modal('hide');
+
+$("#saved_play_<%= @saved_play.id %>").replaceWith('<%= j render @saved_play %>');

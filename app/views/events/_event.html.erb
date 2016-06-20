@@ -1,0 +1,79 @@
+<div id="event_<%= event.id %>">
+
+  <!-- Modal - update events -->
+  <%= form_for(event, :method => :put, remote: true) do |f| %>
+  <div class="modal fade" id="myupdateevent_<%= event.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><strong><%= event.title %></strong></h4>
+      </div>
+      <div class="modal-body">
+
+        <div class="form-group">
+          <div class="event-type">
+            <% if event.event_type == "game_call_sheet" %> 
+              <strong>Type: </strong> Game Call Sheet
+            <% else %>
+              <strong>Type: </strong><%= event.event_type %>  
+            <% end %>
+            <% if event.event_type == "Install" %>
+              <div class="event-type"><%= link_to "Open", event, target: "_blank", :class => "btn btn-custom1 btn-sm" %>
+              </div>
+            <% end %>  
+            <% if event.event_type == "Script" %>
+              <button type="button" class="btn btn-custom1 btn-sm script-button">Open</button>
+              <div class="linked-event"><%= event.linked_event %></div>
+            <% end %> 
+            <% if event.event_type == "game_call_sheet" %>
+              <div class="event-type"><button type="button" class="btn btn-custom4 btn-sm btn-block">View or Update Game Call Sheet</button></div>
+            <% end %> 
+          </div>  
+        </div>
+        <hr>
+        <div class="field">
+          <%= f.label :title %><br>
+          <%= f.text_area :title, class: "form-control event_title" %>
+        </div>
+        <div class="field">
+          <%= f.label :description %><br>
+          <%= f.text_area :description, class: "form-control event_description" %>
+        </div>
+
+        <% if event.event_type == "Game" || event.event_type == "Practice" || event.event_type == "Other" %>
+          <div class="field">
+            <%= f.label :start_time, "Start Time" %><br>
+            <%= f.datetime_select_time :start_time, class: "form-control event_start_time" %>
+          </div>
+          <div class="field">
+            <%= f.label :end_time, "End Time" %><br>
+            <%= f.datetime_select_time :end_time, class: "form-control event_end_time" %>
+          </div>
+        <% end %>    
+
+        <% if event.event_type == "Install" || event.event_type == "Script" || event.event_type == "game_call_sheet" %>
+          <div class="field">
+            <%= f.label :start_time, "Start Date" %><br>
+            <%= f.datetime_select_no_time :start_time, class: "form-control event_start_time" %>
+          </div>
+          <div class="field">
+            <%= f.label :end_time, "End Date" %><br>
+            <%= f.datetime_select_no_time :end_time, class: "form-control event_end_time", id: "end-date" %>  
+          </div>  
+        <% end %>  
+
+      </div>
+      <div class="modal-footer">
+        <span data-dismiss="modal" data-backdrop="false" class="pull-left"> 
+          <%= link_to 'Delete', event, method: :delete, class: "btn btn-custom2", remote: true, data: { confirm: 'Are you sure?' } %>  
+        </span>  
+        <button type="button" id="myupdatebutton_<%= event.id %>" class="btn btn-default" data-dismiss="modal">Close</button>
+        <%= submit_tag "Update Calendar", class: "btn btn-custom1" %>
+      </div>
+    </div>
+  </div>
+  </div>
+  <% end %>
+  <!-- Modal -->
+</div>

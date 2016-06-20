@@ -1,0 +1,17 @@
+<header>
+  <div class="header-content">
+    <div class="header-content-inner">
+    <h1>Definite6</h1>
+    <h3>Every offensive posession ends in a touchdown</h3>
+    <hr class="blue">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris consectetur metus congue est blandit fringilla.</p>
+    <% if user_signed_in? %>
+     <h2>Welcome <%= current_user.email %></h2>
+    <% else %>	
+      <%= link_to "Sign In", new_user_session_path, class: "btn btn-custom1 btn-lg", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading..."} %>
+    <% end %>	
+    </div>
+  </div>
+</header>
+
+

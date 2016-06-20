@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="install-header"><%= @event.title %></h1>
+
+<p>
+<div class="fake-h4">Dates:&nbsp </div><div class="inline"><%= @event.start_time.strftime("%m-%d-%Y") %> - <%= @event.end_time.strftime("%m-%d-%Y") %></div>
+</p>
+
+<p>
+<% if @event.description? %>
+  <div class="inline"><%= @event.description %></div>
+<% end %>
+</p>
+<hr>
+
+<div class="media">
+  <div class="media-body">
+    <table class="table table-hover sortable" id="plays_table">
+      <thead id="plays-thead">
+        <tr>
+          <th>Play Name</th>
+          <th class="table-center">Period 1</th>
+          <th class="table-center">Period 2</th>
+          <th class="table-center">Period 3</th>
+          <th class="table-center">Period 4</th>
+        </tr>   
+      </thead>
+      <tfoot id="plays-tfoot">
+        <tr>
+          <td class="table-footer">Total Plays per Period</td>
+          <td class="table-footer table-center" id="period1-count"><%= @period1_count %></td>
+          <td class="table-footer table-center" id="period2-count"><%= @period2_count %></td>
+          <td class="table-footer table-center" id="period3-count"><%= @period3_count %></td>
+          <td class="table-footer table-center" id="period4-count"><%= @period4_count %></td>
+        </tr>  
+      </tfoot>
+      <div id="container_plays">
+        <%= render partial: "events/plays/play", collection: @plays %>
+      </div>
+    </table>
+  </div>
+</div>    
+
+<% if @period1_count > 25 || @period2_count > 25 || @period3_count > 25 || @period4_count > 25  %>
+  <div id="count-alert" class="red">Only the first 25 plays in each period will be included in the script initially created.</div>  
+<% end %>
+<br>
+
+<div>
+  <%= render partial: "events/plays/newplay" %>
+</div>
+
+<div class="media">
+  <div class="media-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Scripts for <%= @event.title %></th>
+          <th class="table-center">Date</th>
+        </tr>   
+      </thead>
+      <tbody>
+      <div id="container_scripts">
+        <%= render partial: "events/scripts/script", collection: @scripts %>
+      </div>
+      </tbody>
+    </table>
+  </div>
+</div> 
+
+<div>
+  <%= render partial: "events/scripts/newscript" %>
+</div>
+ 
+<br>
+<br>
+<br>
+
+

@@ -1,0 +1,51 @@
+<tbody id="script_<%= script.id %>">
+  <tr>
+    <td class="script-col1"><%= script.title %></td>
+    <td class="script-col2 table-center"><%= script.start_time.strftime("%m-%d-%Y") if script.start_time? %></td>
+    <td class="script-col3"><%= link_to 'Open Script', [@event, script], class: "btn btn-custom3 btn-sm pull-right" %></td>
+    <td class="script-col3"><button type="button" id="update-script_<%= script.id %>" class="btn btn-custom4 btn-sm pull-right" data-toggle="modal" data-target="#myupdatescript_<%= script.id %>">
+    	Update or Delete Script
+    </button></td>
+  </tr>
+</tbody>
+
+
+<div id="script<%= script.id %>">
+  <!-- Modal - update scripts -->
+  <%= form_for [@event, script], :method => :put, remote: true do |f| %>
+  <div class="modal fade" id="myupdatescript_<%= script.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel"><strong><%= script.title %></strong></h4>
+	      </div>
+
+	      <div class="modal-body">
+		      <div class="field">
+		        <%= f.label :title %><br>
+		        <%= f.text_field :title, class: "form-control play_piece1" %>
+		      </div>
+		      <div class="field">
+		        <%= f.label :start_time, "Start Date" %><br>
+		        <%= f.datetime_select_no_time :start_time, class: "form-control event_start_time" %>
+		      </div>
+		      <div class="field">
+		        <%= f.label :end_time, "End Date" %><br>
+		        <%= f.datetime_select_no_time :end_time, class: "form-control event_end_time", id: "end-date" %>  
+		      </div> 	      	
+	      </div>
+
+	      <div class="modal-footer">
+	      	<span class="pull-left" data-dismiss="modal" data-backdrop="false"> 
+	          <%= link_to 'Delete Script', [@event, script], method: :delete, class: "btn btn-custom2", remote: true, data: { confirm: 'Are you sure?' } %>  
+	        </span> 
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <%= submit_tag "Update Script", class: "btn btn-custom1", id: "update" %>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+  <% end %>
+  <!-- Modal -->
+</div>

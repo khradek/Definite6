@@ -1,0 +1,3 @@
+$("#myupdatescript_<%= @script.id %>").modal('hide');
+
+$("#script_<%= @script.id %>").replaceWith('<%= j render @script %>');
