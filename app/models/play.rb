@@ -13,8 +13,12 @@ class Play < ActiveRecord::Base
 
 	def set_priority
 		last_play = Play.where(event_id: self.event_id).last
-		my_priority = last_play.priority + 1
-		self.update_attribute(:priority, my_priority) 
+		if last_play.priority.nil?
+			self.update_attribute(:priority, 1)
+		else
+			my_priority = last_play.priority + 1
+			self.update_attribute(:priority, my_priority) 
+		end
 	end
 
 	#Counts the number of times play is shown in the install's scripts
