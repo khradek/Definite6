@@ -5,9 +5,17 @@ class Play < ActiveRecord::Base
 
 	default_scope { order("priority ASC") }	
 
+	after_create :set_priority
+
 	def fullname
   	fullname = "#{piece1} #{piece2}"
   end
+
+	def set_priority
+		last_play = Play.where(event_id: self.event_id).last
+		my_priority = last_play.priority + 1
+		self.update_attribute(:priority, my_priority) 
+	end
 
 	#Counts the number of times play is shown in the install's scripts
 	def play_count
