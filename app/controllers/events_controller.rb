@@ -15,7 +15,7 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @scripts = @event.scripts.order(:end_time => :asc)  
-    @plays = @event.plays
+    @plays = @event.plays.order(:priority => :asc)
     @new_play = @event.plays.build
     @new_script = @event.scripts.build
     @period1_count = @event.plays.where(:period1 => true).count

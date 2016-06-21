@@ -5,7 +5,7 @@ class Play < ActiveRecord::Base
 
 	default_scope { order("priority ASC") }	
 
-	#after_create :set_priority
+	after_create :set_priority
 
 	def fullname
   	fullname = "#{piece1} #{piece2}"
@@ -14,15 +14,9 @@ class Play < ActiveRecord::Base
   #Supposed to set priority after created - doesn't work in production
   #first, try adding priority to strong params
   #try update_column(:priority, 1)
-	#def set_priority
-	#	last_play = Play.where(event_id: self.event_id).last
-	#	if last_play.priority.nil?
-	#		self.update_attribute(:priority, 1)
-	#	else
-	#		my_priority = last_play.priority + 1
-	#		self.update_attribute(:priority, my_priority) 
-	#	end
-	#end
+	def set_priority
+		self.update_attribute(:priority, 1000)
+	end
 
 	#Counts the number of times play is shown in the install's scripts
 	def play_count
