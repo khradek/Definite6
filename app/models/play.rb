@@ -11,6 +11,9 @@ class Play < ActiveRecord::Base
   	fullname = "#{piece1} #{piece2}"
   end
 
+  #Supposed to set priority after created - doesn't work in production
+  #first, try adding priority to strong params
+  #try update_column(:priority, 1)
 	def set_priority
 		last_play = Play.where(event_id: self.event_id).last
 		if last_play.priority.nil?

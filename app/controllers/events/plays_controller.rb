@@ -89,6 +89,6 @@ class Events::PlaysController < ApplicationController
     end
 
     def play_params
-      params.require(:play).permit(:piece1, :piece2, :event_id, :user_id, :period1, :period2, :period3, :period4, :situation1, :situation2, :situation3, :situation4, :situation5, :situation6, :situation7, :situation8, :situation9, :situation10, :play_type, :hash_mark)
+      params.require(:play).permit(:piece1, :piece2, :priority, :event_id, :user_id, :period1, :period2, :period3, :period4, :situation1, :situation2, :situation3, :situation4, :situation5, :situation6, :situation7, :situation8, :situation9, :situation10, :play_type, :hash_mark)
     end
 end
