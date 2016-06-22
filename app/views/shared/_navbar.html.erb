@@ -20,13 +20,20 @@
         <% if user_signed_in? %>
           <li data-no-turbolink><%= link_to 'Calendar', events_path %></li>
           <li class="dropdown">
+            <a data-target="#" href="page.html" data-toggle="dropdown" class="dropdown-toggle">Installs <b class="caret"></b></a>
+            <ul class="dropdown-menu" id="nav-install-dropdown">
+              <% @ievents.each do |ievent| %>
+                <li data-no-turbolink><%= link_to ievent.title, event_path(ievent) %></li>
+              <% end %>
+            </ul>
+          </li>          
+          <li class="dropdown">
             <a data-target="#" href="page.html" data-toggle="dropdown" class="dropdown-toggle">Play Database <b class="caret"></b></a>
             <ul class="dropdown-menu"">
               <li><%= link_to 'Saved Formations', saved_formations_path %></li>
               <li><%= link_to 'Saved Plays', saved_plays_path %></li>
             </ul>
           </li>
-
           <li><%= link_to "Account Settings", edit_user_registration_path %></li>
           <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
         <% else %>
@@ -36,3 +43,4 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
