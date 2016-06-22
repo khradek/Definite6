@@ -6,7 +6,7 @@ class SavedFormationsController < ApplicationController
   respond_to :html
 
   def index
-    @saved_formations = SavedFormation.where(:user_id => current_user.id) 
+    @saved_formations = SavedFormation.where(:user_id => current_user.id).order(:priority => :asc, :created_at => :asc) 
     @saved_formation = current_user.saved_formations.build
     respond_with(@saved_formations)
   end
@@ -72,13 +72,20 @@ class SavedFormationsController < ApplicationController
     end 
   end
 
+  def sort
+    params[:order].each do |key,value|
+      SavedFormation.find(value[:id]).update_attribute(:priority,value[:position])
+    end
+    render :nothing => true
+  end
+
   private
     def set_saved_formation
       @saved_formation = SavedFormation.find(params[:id])
     end
 
     def saved_formation_params
-      params.require(:saved_formation).permit(:title, :user_id)
+      params.require(:saved_formation).permit(:title, :user_id, :priority)
     end
 
     def correct_user

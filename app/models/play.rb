@@ -11,9 +11,7 @@ class Play < ActiveRecord::Base
   	fullname = "#{piece1} #{piece2}"
   end
 
-  #Supposed to set priority after created - doesn't work in production
-  #first, try adding priority to strong params
-  #try update_column(:priority, 1)
+  #Sets the priority to 1,000 after create (needed to avoid nil for production/to have most recently created at bottom of list)
 	def set_priority
 		self.update_attribute(:priority, 1000)
 	end
