@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :saved_plays
+  resources :saved_plays do
+    put :sort, on: :collection
+  end
 
   resources :saved_formations do
     put :sort, on: :collection

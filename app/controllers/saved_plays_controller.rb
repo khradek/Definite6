@@ -6,7 +6,7 @@ class SavedPlaysController < ApplicationController
   respond_to :html
 
   def index
-    @saved_plays = SavedPlay.where(:user_id => current_user.id)
+    @saved_plays = SavedPlay.where(:user_id => current_user.id).order(:priority => :asc, :created_at => :asc)
     @saved_play = current_user.saved_plays.build
     respond_with(@saved_plays)
   end
@@ -71,13 +71,20 @@ class SavedPlaysController < ApplicationController
     end 
   end
 
+  def sort
+    params[:order].each do |key,value|
+      SavedPlay.find(value[:id]).update_attribute(:priority,value[:position])
+    end
+    render :nothing => true
+  end
+
   private
     def set_saved_play
       @saved_play = SavedPlay.find(params[:id])
     end
 
     def saved_play_params
-      params.require(:saved_play).permit(:title, :user_id)
+      params.require(:saved_play).permit(:title, :user_id, :priority)
     end
 
     def correct_user
