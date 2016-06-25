@@ -1,0 +1,17 @@
+<p>
+  <div id="sdata" class="hidden"><%= @script.sdata %></div>
+</p>
+<p>
+  <div id="script-plays" class="hidden">
+    [<% @plays.each do |play| %> 
+      <%= '" ", ' if play == @event.plays.first %>"<%= play.fullname %>"<%= "," unless play == @event.plays.last %>
+    <% end %>]
+  </div>
+</p>
+
+<%= link_to 'Return to Script', [@event, @script], class: "btn btn-custom3 btn-sm print-button" %>
+<%= link_to 'Print', '#', class: "btn btn-custom1 btn-sm print-button", :onclick => 'window.print();return false;'%>
+
+<p></p>
+
+<div id="scriptPrint"></div>

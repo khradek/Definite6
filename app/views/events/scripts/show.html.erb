@@ -20,14 +20,22 @@
   </div>
 </p>
 
+
 <h2><%= @script.title %></h2>
 
 <p>
-<div class="fake-h4">Date:&nbsp </div><div class="inline"><%= @script.end_time.strftime("%m-%d-%Y") %></div>
+<div class="fake-h4">Date:&nbsp </div><div class="inline script-time"><%= @script.end_time.strftime("%m-%d-%Y") %></div>
 </p>
 
+
 <div id="scriptGrid"></div>
+
+
+<br>
 <button id="save-button" class="btn btn-custom1">Save Updates to Script</button>
+<br>
+<br>
+<%= link_to 'Printer Friendly Script', event_script_print_path(@event, @script), class: "btn btn-custom4" %>
 <br>
 <br>
 <div data-no-turbolink><%= link_to "Return to Install Page", @event, :class => "btn btn-custom3", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading Install Page..."} %></div>

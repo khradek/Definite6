@@ -3,6 +3,12 @@ class Events::ScriptsController < ApplicationController
 
   respond_to :html
 
+  def print
+    @script = Script.find(params[:script_id]) 
+    @event = Event.find(params[:event_id]) 
+    @plays = @event.plays
+  end
+
   def index
     @event = Event.find(params[:event_id])    
     @scripts = Script.all
@@ -78,7 +84,6 @@ class Events::ScriptsController < ApplicationController
         format.js
       end
     end  
-
   end
 
   private

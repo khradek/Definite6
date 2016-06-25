@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   end
 
   resources :events do
-  	resources :scripts, controller: 'events/scripts'
+  	resources :scripts, controller: 'events/scripts' do
+      get :print
+    end
   	resources :plays, controller: 'events/plays' do
   		put :sort, on: :collection
   	end

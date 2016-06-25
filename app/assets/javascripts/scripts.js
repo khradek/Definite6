@@ -16,10 +16,11 @@ $(".scripts.show").ready(function() {
     startCols: 12,
     minSpareCols: 0,
     minSpareRows: 0,
+    renderAllRows: true,
     rowHeaders: false,
     colHeaders: false,
     contextMenu: true,
-    colWidths: [30, 40, 40, 180, 180, 80, 30, 40, 40, 180, 180, 80],
+    colWidths: [30, 40, 40, 170, 160, 90, 30, 40, 40, 170, 160, 90],
     manualColumnResize: false,
     manualRowResize: false,
     className: "htCenter",
@@ -476,8 +477,7 @@ $(".scripts.show").ready(function() {
       {row: 56, col: 0, className: "htLeft"},
       {row: 57, col: 0, className: "htLeft"},
       {row: 58, col: 0, className: "htLeft"},
-      {row: 59, col: 0, className: "htLeft"},
-      {row: 60, col: 0, className: "htLeft"},      
+      {row: 59, col: 0, className: "htLeft"},      
     ]    
   });
   
