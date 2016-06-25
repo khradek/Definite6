@@ -415,9 +415,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 TextRenderer readOnly cell
 */
 
-.handsontable .htDimmed {
+/*.handsontable .htDimmed {
   color: #777;
-}
+}*/
 
 .handsontable .htSubmenu {
   position: relative;

@@ -19,7 +19,7 @@ $(".scripts.show").ready(function() {
     renderAllRows: true,
     rowHeaders: false,
     colHeaders: false,
-    contextMenu: true,
+    contextMenu: ['undo', 'redo'],
     colWidths: [30, 40, 40, 170, 160, 90, 30, 40, 40, 170, 160, 90],
     manualColumnResize: false,
     manualRowResize: false,
