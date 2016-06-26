@@ -50,7 +50,7 @@ ready = function(){
           $(element).height(200);
         };
       };
-      if (event.event_type == "game_call_sheet") {
+      if (event.event_type == "Gamecall") {
         $(element).css("backgroundColor", "#4C96E8");
         $(element).css("borderColor", "#4C96E8");
         element.find('.fc-time').hide();

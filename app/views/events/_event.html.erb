@@ -26,7 +26,7 @@
               <button type="button" class="btn btn-custom1 btn-sm script-button">Open</button>
               <div class="linked-event"><%= event.linked_event %></div>
             <% end %> 
-            <% if event.event_type == "game_call_sheet" %>
+            <% if event.event_type == "Gamecall" %>
               <div class="event-type"><button type="button" class="btn btn-custom4 btn-sm btn-block">View or Update Game Call Sheet</button></div>
             <% end %> 
           </div>  
@@ -52,7 +52,7 @@
           </div>
         <% end %>    
 
-        <% if event.event_type == "Install" || event.event_type == "Script" || event.event_type == "game_call_sheet" %>
+        <% if event.event_type == "Install" || event.event_type == "Script" || event.event_type == "Gamecall" %>
           <div class="field">
             <%= f.label :start_time, "Start Date" %><br>
             <%= f.datetime_select_no_time :start_time, class: "form-control event_start_time" %>
