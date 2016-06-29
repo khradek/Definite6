@@ -3,7 +3,7 @@ class Play < ActiveRecord::Base
 	belongs_to :event
 	belongs_to :user
 
-	default_scope { order("priority ASC") }	
+	default_scope { order(priority: :asc, created_at: :asc) }	
 
 	after_create :set_priority
 
