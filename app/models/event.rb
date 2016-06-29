@@ -3,12 +3,15 @@ class Event < ActiveRecord::Base
 	validates	:end_time, :presence => true
 
 	has_many :scripts, dependent: :destroy
+  has_many :gamecalls, dependent: :destroy
 	has_many :plays, dependent: :destroy
 	belongs_to :user
 
-	after_update :update_script
-	after_destroy :delete_script
+	after_update :update_script, :update_gamecall
+	after_destroy :delete_script, :delete_gamecall
 
+
+  #------Script------
 	#Updates actual script when calendar event is updated
 	def update_script
 		if self.event_type == "Script"
@@ -30,13 +33,39 @@ class Event < ActiveRecord::Base
 		linked_script = Script.find_by(id: self.script_tag)
 		linked_event = linked_script.event_id
 	end
+  #------End script------
+
+
+  #------Game Call Sheet------
+  #Updates actual game call sheet when calendar event is updated
+  def update_gamecall
+    if self.event_type == "Gamecall"
+      update_gamecall = Gamecall.find_by(id: self.gamecall_tag)
+      if update_gamecall.title != self.title || update_gamecall.start_time != self.start_time || update_gamecall.end_time != self.end_time  
+        update_gamecall.update :title => self.title, :start_time => self.start_time, :end_time => self.end_time
+      end 
+    end
+  end
+
+  #Deletes the actual game call sheet when the calendar event is deleted
+  def delete_gamecall
+    update_gamecall = Gamecall.find_by(id: self.gamecall_tag)
+    update_gamecall.destroy if update_gamecall
+  end
+
+  #Provides the actual game call sheet's event ID - used for the link in the game call sheet update modal
+  def linked_gcevent
+    linked_gamecall = Gamecall.find_by(id: self.gamecall_tag)
+    linked_event = linked_gamecall.event_id
+  end
+  #------End Game Call Sheet------
 
 
 	#Adds 10 seconds to the end time of Install, Script, and Game Call Sheet so the event stretches to the end date in the calendar
 	before_save :add_time
 	private
 	def add_time
-		if self.event_type == "Install" || self.event_type == "Script" || self.event_type == "Game Call Sheet"
+		if self.event_type == "Install" || self.event_type == "Script" || self.event_type == "Gamecall"
 			self.end_time = self.end_time + 10.seconds
 		end
 	end

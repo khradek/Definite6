@@ -1,5 +1,7 @@
 class Script < ActiveRecord::Base
-	
+
+  validates :title, :start_time, :end_time, :presence => true	
+  
 	belongs_to :event
 	belongs_to :user
 

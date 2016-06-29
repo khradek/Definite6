@@ -1391,19 +1391,3 @@ http://nicolasgallagher.com/micro-clearfix-hack/
     cursor: help;
 }
 
-
-.handsontable .shade{
-  background-color: #A9A9A9;
-}
-
-.handsontable .bold{
-  font-weight: bold;
-}
-
-.handsontable .underline{
-  text-decoration: underline;
-}
-
-.handsontable .fontlarge{
-  font-size: 150%;
-}

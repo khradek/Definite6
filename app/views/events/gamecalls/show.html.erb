@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h2 class="hidden"><%= @gamecall.title %></h2>
+
+<p>
+<div class="fake-h4 hidden">Date:&nbsp </div><div class="inline script-time hidden"><%= @gamecall.end_time.strftime("%m-%d-%Y") %></div>
+</p>
+
+<p>
+  <div id="gamecall-plays" class="hidden">
+    [<% @plays.each do |play| %> 
+      <%= '" ", ' if play == @event.plays.first %>"<%= play.fullname %>"<%= "," unless play == @event.plays.last %>
+    <% end %>]
+  </div>
+</p>
+
+<div id="gamecallGrid1"></div>
+
+<footer></footer>
+
+<br>
+<br>
+
+<div id="gamecallGrid2"></div>
+
+<br>
+<button id="save-button" class="btn btn-custom1">Save Updates to Sheet</button>
+<br>
+
+
+<br>
+<div data-no-turbolink><%= link_to "Return to Install Page", @event, :class => "btn btn-custom3", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading Install Page..."} %></div>
+<br>
+<br>

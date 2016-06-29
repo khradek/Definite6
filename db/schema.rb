@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160622213511) do
+ActiveRecord::Schema.define(version: 20160626145617) do
 
   create_table "events", force: true do |t|
     t.integer  "user_id"
@@ -21,11 +21,23 @@ ActiveRecord::Schema.define(version: 20160622213511) do
     t.datetime "end_time"
     t.string   "event_type"
     t.integer  "script_tag"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "gamecall_tag"
   end
 
   add_index "events", ["user_id"], name: "index_events_on_user_id"
+
+  create_table "gamecalls", force: true do |t|
+    t.string   "title"
+    t.text     "gdata"
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "plays", force: true do |t|
     t.string   "piece1"

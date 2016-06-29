@@ -14,10 +14,12 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @gamecalls = @event.gamecalls.order(:end_time => :asc)    
     @scripts = @event.scripts.order(:end_time => :asc)  
     @plays = @event.plays.order(:priority => :asc, :created_at => :asc)
     @new_play = @event.plays.build
     @new_script = @event.scripts.build
+    @new_gamecall = @event.gamecalls.build
     @period1_count = @event.plays.where(:period1 => true).count
     gon.watch.period1_count = @period1_count
     @period2_count = @event.plays.where(:period2 => true).count
@@ -60,7 +62,7 @@ class EventsController < ApplicationController
     end
 
     def event_params
-      params.require(:event).permit(:user_id, :title, :description, :start_time, :end_time, :event_type, :script_tag)
+      params.require(:event).permit(:user_id, :title, :description, :start_time, :end_time, :event_type, :script_tag, :gamecall_tag)
     end
 
     def correct_user

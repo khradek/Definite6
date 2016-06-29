@@ -143,7 +143,7 @@ $(".scripts.show").ready(function() {
       {row: 60, col: 0, rowspan: 1, colspan: 12},             
     ], 
     cell: [
-      {row: 0, col: 0, className: "shade bold fontlarge htMiddle htCenter"},
+      {row: 0, col: 0, className: "ulshade bold fontlarge tallrow htMiddle htCenter"},
       {row: 1, col: 0, className: "shade bold htCenter"},
       {row: 1, col: 6, className: "shade bold htCenter"},
       {row: 2, col: 0, className: "bold htCenter"},

@@ -48,6 +48,9 @@ $(".events.show").ready(function() {
   //Makes the create script modal draggable 
   $("#mynewscript").draggable({ handle: ".modal-content" });
 
+  //Makes the create script modal draggable 
+  $("#mynewgamecall").draggable({ handle: ".modal-content" });
+
 
 	//Updates the Period Play Count divs asynchronously (every second)
 	var renewPeriod1Count;

@@ -6,22 +6,20 @@ ready = function(){
 	var timeShowing = $(".time-showing");
 	$("#event-select").change(function(){
 		var choice = $("#event-select option:selected").text();	
-		if (choice == "Script") {
+		if (choice == "Script" || choice == "Game Call Sheet") {
 				$("#non-script-body").append(noTime);
 				(noTime).show();
 				(timeShowing).detach();
-				$("#select-install-select").toggle();
-				$("#script-footer").toggle();
+				$("#select-install-select").show();
+				$("#script-footer").show();
 				$("#create-lower-body").hide();
-				console.log("Script");
-		}else if (choice == "Install" || choice == "Game Call Sheet") {
+		}else if (choice == "Install") {
 				$("#non-script-body").append(noTime);
 				(noTime).show();
 				(timeShowing).detach();
 				$("#select-install-select").hide();
 				$("#script-footer").hide();
 				$("#create-lower-body").show();
-				console.log("Install or GC Sheet");	
 		}else {
 				$("#non-script-body").append(timeShowing);
 				(timeShowing).show();
@@ -29,7 +27,6 @@ ready = function(){
 				$("#select-install-select").hide();
 				$("#script-footer").hide();
 				$("#create-lower-body").show();
-				console.log("Practice, Game, or Other");
 		};		
 	});
 
@@ -46,7 +43,7 @@ ready = function(){
 		window.open(url);
 	});
 
-	//Opens corresponding install page when script button is clicked in script update modal
+	//Opens corresponding install page when script/gamecall button is clicked in script update modal
 	$(".script-button").click(function(){
 		var url = "events/" + $(this).next().text();
 		window.open(url);
@@ -55,6 +52,11 @@ ready = function(){
 	//Makes the create event modal draggable 
   $("#mynewevent").draggable({ handle: ".modal-content" });
 
+  //Opens corresponding install page when game call sheet button is clicked in game call sheet update modal
+  $(".gamecall-button").click(function(){
+    var url = "events/" + $(this).next().text();
+    window.open(url);
+  });
 };
 
 $(document).ready(ready);
