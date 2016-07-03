@@ -7,6 +7,22 @@
 </p>
 
 <p>
+  <div id="gdata" class="hidden"><%= @gamecall.gdata %></div>
+</p>
+
+<p>
+  <div id="gdata2" class="hidden"><%= @gamecall.gdata2 %></div>
+</p>
+
+<p>
+  <div id="event-id" class="hidden"><%= @gamecall.event_id %></div>
+</p>
+
+<p>
+  <div id="gamecall-id" class="hidden"><%= @gamecall.id %></div>
+</p>
+
+<p>
   <div id="gamecall-plays" class="hidden">
     [<% @plays.each do |play| %> 
       <%= '" ", ' if play == @event.plays.first %>"<%= play.fullname %>"<%= "," unless play == @event.plays.last %>
@@ -26,9 +42,14 @@
 <br>
 <button id="save-button" class="btn btn-custom1">Save Updates to Sheet</button>
 <br>
-
-
 <br>
 <div data-no-turbolink><%= link_to "Return to Install Page", @event, :class => "btn btn-custom3", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading Install Page..."} %></div>
+<hr>
+<%= link_to 'Printer Friendly Game Call Sheet', event_gamecall_print_path(@event, @gamecall), class: "btn btn-custom4" %> Printing works best on Safari and Google Chrome web browswers >> <%= link_to 'Click Here to Download Google Chrome', 'https://www.google.com/chrome/browser/desktop/index.html', target: "_blank" %>
 <br>
 <br>
+<br>
+
+
+
+

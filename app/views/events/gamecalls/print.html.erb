@@ -1,0 +1,20 @@
+<p>
+  <div id="gdata" class="hidden"><%= @gamecall.gdata %></div>
+</p>
+<p>
+  <div id="gdata2" class="hidden"><%= @gamecall.gdata2 %></div>
+</p>
+
+<%= link_to 'Return to Game Call Sheet', [@event, @gamecall], class: "btn btn-custom3 btn-sm print-button" %>
+<%= link_to 'Print <i class="fa fa-print"></i>'.html_safe, '#', class: "btn btn-custom1 btn-sm print-button", :onclick => 'window.print();return false;'%>
+
+<p></p>
+
+<div id="gamecallPrint1"></div>
+
+<footer></footer>
+
+<br>
+<br>
+
+<div id="gamecallPrint2"></div>

@@ -36,8 +36,8 @@ class Script < ActiveRecord::Base
     date = self.end_time.strftime("%m-%d-%Y")
 
     #Period 1 plays
-    period1plays = event.plays.where('period1 = ?', true)
-    period1 = period1plays.order(:created_at)
+    period1 = event.plays.where('period1 = ?', true)
+    #period1 = period1plays.order(:created_at)
     unless period1[0].nil?  
       play10 = period1[0].fullname 
     end

@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   	resources :plays, controller: 'events/plays' do
   		put :sort, on: :collection
   	end
-    resources :gamecalls, controller:'events/gamecalls'
+    resources :gamecalls, controller:'events/gamecalls' do
+      get :print
+    end
   end
 
   devise_for :users

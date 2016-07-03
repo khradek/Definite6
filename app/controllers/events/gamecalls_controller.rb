@@ -92,6 +92,6 @@ class Events::GamecallsController < ApplicationController
     end
 
     def gamecall_params
-      params.require(:gamecall).permit(:title, :gdata, :event_id, :user_id, :start_time, :end_time)
+      params.require(:gamecall).permit(:title, :gdata, :gdata2, :event_id, :user_id, :start_time, :end_time)
     end
 end

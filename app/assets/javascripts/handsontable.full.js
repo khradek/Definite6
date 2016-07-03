@@ -16083,6 +16083,7 @@ var $ManualRowResize = ManualRowResize;
     }
     return height;
   }
+
 }, {}, BasePlugin);
 ;
 registerPlugin('manualRowResize', ManualRowResize);
