@@ -45,6 +45,37 @@
   <div id="count-alert" class="red">Only the first 25 plays in each period will be included in the script initially created.</div>  
 <% end %>
 
+<!-- Button trigger import plays modal -->
+<button type="button" class="btn btn-custom3 btn-sm" data-toggle="modal" data-target="#importPlaysModal">Import Plays from Existing Install</button>
+
+<%= form_tag url_for(:controller => "events", :action => "import_plays"), :method => "get" do %>
+  <!-- Import plays modal -->
+  <div class="modal fade" id="importPlaysModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Import Plays from Existing Install</h4>
+        </div>
+        <div class="modal-body">
+          
+          <div class="form-group">
+            <%= label_tag :chose_install, 'Chose Install' %>
+            <%= select_tag 'ievent', options_from_collection_for_select(@ievents, 'id', 'title'), class: "form-control", id: "install-dropdown"%>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%= submit_tag "Import Plays", class: "btn btn-custom1" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<br>
+<br>
 <div>
   <%= render partial: "events/plays/newplay" %>
 </div>

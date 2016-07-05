@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :events do
+    get :import_plays, on: :member
   	resources :scripts, controller: 'events/scripts' do
       get :print
     end

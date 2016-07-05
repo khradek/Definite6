@@ -56,6 +56,22 @@ class EventsController < ApplicationController
     respond_with(@event)
   end
 
+  #Copies plays from selected install and adds to current install
+  def import_plays
+    @event = Event.find(params[:id])
+    @selected_install = Event.find(params[:ievent])
+    @new_plays = @selected_install.plays.collect do |play|
+      play.dup
+    end
+    @new_plays.each do |play|
+      play.update(event_id: @event.id)
+    end
+    Play.transaction do
+      @new_plays.each(&:save!)
+    end  
+    redirect_to @event
+  end
+
   private
     def set_event
       @event = Event.find(params[:id])
