@@ -34,6 +34,7 @@
               <li data-no-turbolink><%= link_to 'Saved Plays', saved_plays_path %></li>
             </ul>
           </li>
+          <li><%= link_to "User Guide", user_guide_page_path %></li>
           <li><%= link_to "Account Settings", edit_user_registration_path %></li>
           <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
         <% else %>

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  
   resources :saved_plays do
     put :sort, on: :collection
   end
@@ -24,5 +26,8 @@ Rails.application.routes.draw do
   devise_for :users
   
   root 'creatives#index'
+
+  get 'pages/user_guide', :as => "user_guide_page"
+
 
 end

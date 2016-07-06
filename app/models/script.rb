@@ -115,8 +115,8 @@ class Script < ActiveRecord::Base
     end      
 
     #Period 2 plays 
-    period2plays = event.plays.where('period2 = ?', true)
-    period2 = period2plays.order(:created_at)
+    period2 = event.plays.where('period2 = ?', true)
+    #period2 = period2plays.order(:created_at)
     unless period2[0].nil?  
       play20 = period2[0].fullname 
     end
@@ -194,8 +194,8 @@ class Script < ActiveRecord::Base
     end      
 
     #Period 3 plays 
-    period3plays = event.plays.where('period3 = ?', true)
-    period3 = period3plays.order(:created_at)
+    period3 = event.plays.where('period3 = ?', true)
+    #period3 = period3plays.order(:created_at)
     unless period3[0].nil?  
       play30 = period3[0].fullname 
     end
@@ -273,8 +273,8 @@ class Script < ActiveRecord::Base
     end  
 
     #Period 4 plays 
-    period4plays = event.plays.where('period4 = ?', true)
-    period4 = period4plays.order(:created_at)
+    period4 = event.plays.where('period4 = ?', true)
+    #period4 = period4plays.order(:created_at)
     unless period4[0].nil?  
       play40 = period4[0].fullname 
     end

@@ -19,6 +19,7 @@ gem 'jquery-turbolinks', '~> 0.2.1'
 gem 'gon', '~> 6.0', '>= 6.0.1'
 gem 'font-awesome-rails'
 gem 'frontend-generators'
+gem 'rails_admin'
 
 group :production do
 	gem 'pg'

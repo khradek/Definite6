@@ -1,0 +1,18 @@
+<% if user_signed_in? %>
+	<h2>Definite6 User Guide</h2>
+
+  <h4>The Calendar</h4>
+
+  <h4>Installs</h4>
+
+  <h4>Plays</h4>
+
+  <h4>Scripts</h4>
+
+  <h4>Game Call Sheets</h4>
+
+<% else %>
+	<h2><%= link_to "Sign Up", new_user_registration_path %></h2>
+	<h2><%= link_to "Log in", new_user_session_path %></h2>
+<% end %>		
+

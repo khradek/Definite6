@@ -6,8 +6,6 @@ $(".scripts.print").ready(function() {
 
   $("#scriptPrint").handsontable({
     data: sdata,
-    startRows: 61,
-    startCols: 12,
     minSpareCols: 0,
     minSpareRows: 0,
     renderAllRows: true,
@@ -17,6 +15,7 @@ $(".scripts.print").ready(function() {
     colWidths: [30, 40, 40, 170, 160, 90, 30, 40, 40, 170, 160, 90],
     manualColumnResize: false,
     manualRowResize: false,
+    fillHandle: false,
     className: "htCenter",
     readOnly: true,
     mergeCells: [

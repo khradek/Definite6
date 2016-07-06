@@ -12,8 +12,6 @@ $(".scripts.show").ready(function() {
 
   $("#scriptGrid").handsontable({
     data: sdata,
-    startRows: 61,
-    startCols: 12,
     minSpareCols: 0,
     minSpareRows: 0,
     renderAllRows: true,
@@ -23,6 +21,7 @@ $(".scripts.show").ready(function() {
     colWidths: [30, 40, 40, 170, 160, 90, 30, 40, 40, 170, 160, 90],
     manualColumnResize: false,
     manualRowResize: false,
+    fillHandle: false,
     className: "htCenter",
     mergeCells: [
       {row: 0, col: 0, rowspan: 1, colspan: 12},
