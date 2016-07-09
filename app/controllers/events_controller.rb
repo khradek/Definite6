@@ -5,6 +5,16 @@ class EventsController < ApplicationController
 
   respond_to :html, :js, :json
 
+  def print
+    @event = Event.find(params[:event_id]) 
+    @plays = @event.plays
+  end
+
+  def sortable
+    @event = Event.find(params[:event_id]) 
+    @plays = @event.plays
+  end
+
   def index
     @events = Event.where(:user_id => current_user.id)    
     @ievents = Event.where(:event_type => "Install").where(:user_id => current_user.id).order(:start_time => :desc)

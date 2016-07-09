@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   resources :events do
     get :import_plays, on: :member
+    get :print
+    get :sortable
   	resources :scripts, controller: 'events/scripts' do
       get :print
     end

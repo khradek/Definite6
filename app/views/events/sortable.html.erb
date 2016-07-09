@@ -1,0 +1,103 @@
+
+<div id="sortData" class="hidden">
+  [<% @plays.each do |play| %> 
+    ["<%= play.fullname %>",
+    <% if play.hash_mark %> 
+      "<%= play.hash_mark %>", 
+    <% else %>  
+      " ",
+    <% end %>  
+    <% if play.play_type %>
+      "<%= play.play_type %>", 
+    <% else %>  
+      " ",
+    <% end %> 
+    <% if play.situation1 == "Opener" || play.situation2 == "Opener" || play.situation3 == "Opener" || play.situation4 == "Opener" || play.situation5 == "Opener" || play.situation6 == "Opener" || play.situation7 == "Opener" || play.situation8 == "Opener" || play.situation9 == "Opener" || play.situation10 == "Opener" %>
+      "X",
+    <% else %>
+      " ",
+    <% end %>
+    <% if play.situation1 == "1st/2nd & 10" || play.situation2 == "1st/2nd & 10" || play.situation3 == "1st/2nd & 10" || play.situation4 == "1st/2nd & 10" || play.situation5 == "1st/2nd & 10" || play.situation6 == "1st/2nd & 10" || play.situation7 == "1st/2nd & 10" || play.situation8 == "1st/2nd & 10" || play.situation9 == "1st/2nd & 10" || play.situation10 == "1st/2nd & 10" %>
+      "X",
+    <% else %>
+      " ",
+    <% end %>
+    <% if play.situation1 == "2nd & Long" || play.situation2 == "2nd & Long" || play.situation3 == "2nd & Long" || play.situation4 == "2nd & Long" || play.situation5 == "2nd & Long" || play.situation6 == "2nd & Long" || play.situation7 == "2nd & Long" || play.situation8 == "2nd & Long" || play.situation9 == "2nd & Long" || play.situation10 == "2nd & Long" %>
+      "X",
+    <% else %>
+      " ",
+    <% end %>
+    <% if play.situation1 == "2nd & Medium" || play.situation2 == "2nd & Medium" || play.situation3 == "2nd & Medium" || play.situation4 == "2nd & Medium" || play.situation5 == "2nd & Medium" || play.situation6 == "2nd & Medium" || play.situation7 == "2nd & Medium" || play.situation8 == "2nd & Medium" || play.situation9 == "2nd & Medium" || play.situation10 == "2nd & Medium" %>
+      "X",
+    <% else %>
+      " ",
+    <% end %>
+    <% if play.situation1 == "2nd & Short" || play.situation2 == "2nd & Short" || play.situation3 == "2nd & Short" || play.situation4 == "2nd & Short" || play.situation5 == "2nd & Short" || play.situation6 == "2nd & Short" || play.situation7 == "2nd & Short" || play.situation8 == "2nd & Short" || play.situation9 == "2nd & Short" || play.situation10 == "2nd & Short" %>
+      "X",
+    <% else %>
+      " ",
+    <% end %>
+    <% if play.situation1 == "3rd & Long" || play.situation2 == "3rd & Long" || play.situation3 == "3rd & Long" || play.situation4 == "3rd & Long" || play.situation5 == "3rd & Long" || play.situation6 == "3rd & Long" || play.situation7 == "3rd & Long" || play.situation8 == "3rd & Long" || play.situation9 == "3rd & Long" || play.situation10 == "3rd & Long" %>
+      "X",
+    <% else %>
+      " ",
+    <% end %>
+    <% if play.situation1 == "3rd & Medium" || play.situation2 == "3rd & Medium" || play.situation3 == "3rd & Medium" || play.situation4 == "3rd & Medium" || play.situation5 == "3rd & Medium" || play.situation6 == "3rd & Medium" || play.situation7 == "3rd & Medium" || play.situation8 == "3rd & Medium" || play.situation9 == "3rd & Medium" || play.situation10 == "3rd & Medium" %>
+      "X",
+    <% else %>
+      " ",
+    <% end %>
+    <% if play.situation1 == "3rd & Short" || play.situation2 == "3rd & Short" || play.situation3 == "3rd & Short" || play.situation4 == "3rd & Short" || play.situation5 == "3rd & Short" || play.situation6 == "3rd & Short" || play.situation7 == "3rd & Short" || play.situation8 == "3rd & Short" || play.situation9 == "3rd & Short" || play.situation10 == "3rd & Short" %>
+      "X",
+    <% else %>
+      " ",
+    <% end %>
+    <% if play.situation1 == "Redzone" || play.situation2 == "Redzone" || play.situation3 == "Redzone" || play.situation4 == "Redzone" || play.situation5 == "Redzone" || play.situation6 == "Redzone" || play.situation7 == "Redzone" || play.situation8 == "Redzone" || play.situation9 == "Redzone" || play.situation10 == "Redzone" %>
+      "X",
+    <% else %>
+      " ",
+    <% end %>
+    <% if play.situation1 == "Goaline" || play.situation2 == "Goaline" || play.situation3 == "Goaline" || play.situation4 == "Goaline" || play.situation5 == "Goaline" || play.situation6 == "Goaline" || play.situation7 == "Goaline" || play.situation8 == "Goaline" || play.situation9 == "Goaline" || play.situation10 == "Goaline" %>
+      "X",
+    <% else %>
+      " ",
+    <% end %>
+    <% if play.situation1 == "Coming Out" || play.situation2 == "Coming Out" || play.situation3 == "Coming Out" || play.situation4 == "Coming Out" || play.situation5 == "Coming Out" || play.situation6 == "Coming Out" || play.situation7 == "Coming Out" || play.situation8 == "Coming Out" || play.situation9 == "Coming Out" || play.situation10 == "Coming Out" %>
+      "X",
+    <% else %>
+      " ",
+    <% end %>  
+        <% if play.situation1 == "Custom 1" || play.situation2 == "Custom 1" || play.situation3 == "Custom 1" || play.situation4 == "Custom 1" || play.situation5 == "Custom 1" || play.situation6 == "Custom 1" || play.situation7 == "Custom 1" || play.situation8 == "Custom 1" || play.situation9 == "Custom 1" || play.situation10 == "Custom 1" %>
+      "X",
+    <% else %>
+      " ",
+    <% end %> 
+    <% if play.situation1 == "Custom 2" || play.situation2 == "Custom 2" || play.situation3 == "Custom 2" || play.situation4 == "Custom 2" || play.situation5 == "Custom 2" || play.situation6 == "Custom 2" || play.situation7 == "Custom 2" || play.situation8 == "Custom 2" || play.situation9 == "Custom 2" || play.situation10 == "Custom 2" %>
+      "X",
+    <% else %>
+      " ",
+    <% end %>   
+    <% if play.situation1 == "Custom 3" || play.situation2 == "Custom 3" || play.situation3 == "Custom 3" || play.situation4 == "Custom 3" || play.situation5 == "Custom 3" || play.situation6 == "Custom 3" || play.situation7 == "Custom 3" || play.situation8 == "Custom 3" || play.situation9 == "Custom 3" || play.situation10 == "Custom 3" %>
+      "X"]
+    <% else %>
+      " "]
+    <% end %> 
+    <%= "," unless play == @event.plays.last %>
+  <% end %>]
+</div>
+
+<h1 class="install-header"><%= @event.title %></h1>
+
+<p>
+<div class="fake-h4">Dates:&nbsp </div><div class="inline"><%= @event.start_time.strftime("%m-%d-%Y") %> - <%= @event.end_time.strftime("%m-%d-%Y") %></div>
+</p>
+
+<div data-no-turbolink><%= link_to 'Return to Install', @event, class: "btn btn-custom3 btn-sm print-button", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading Install Page..."} %></div>
+
+<br>
+Click column header to sort
+<br>
+
+<div id="installSortable"></div>
+<br>
+<br>

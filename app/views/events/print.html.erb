@@ -1,0 +1,82 @@
+
+<div id="idata1" class="hidden">
+  [["<%= @event.title%>", "", ""],
+  ["Hash", "Formation", "Play"],
+  <% @plays[0..38].each do |play| %> 
+    <% if play.hash_mark %> 
+      ["<%= play.hash_mark %>", 
+    <% else %>  
+      [" "
+    <% end %>
+    "<%= play.piece1 %>",  
+    <% if play.piece2 %>
+      "<%= play.piece2 %>"] 
+    <% else %>  
+      " "]
+    <% end %> 
+    <%= "," unless play == @event.plays.last || play == @event.plays[38] %>
+  <% end %>]
+</div>
+
+<div id="idata2" class="hidden">
+  <% if @event.plays.count > 39 %>
+    [["Hash", "Formation", "Play"],
+    <% @plays[39..78].each do |play| %> 
+      <% if play.hash_mark %> 
+        ["<%= play.hash_mark %>", 
+      <% else %>  
+        [" "
+      <% end %>
+      "<%= play.piece1 %>",  
+      <% if play.piece2 %>
+        "<%= play.piece2 %>"] 
+      <% else %>  
+        " "]
+      <% end %> 
+      <%= "," unless play == @event.plays.last || play == @event.plays[78] %>
+    <% end %>]
+  <% end %>  
+</div>
+
+<div id="idata3" class="hidden">
+  <% if @event.plays.count > 78 %>
+    [["Hash", "Formation", "Play"],
+    <% @plays[79..118].each do |play| %> 
+      <% if play.hash_mark %> 
+        ["<%= play.hash_mark %>", 
+      <% else %>  
+        [" "
+      <% end %>
+      "<%= play.piece1 %>",  
+      <% if play.piece2 %>
+        "<%= play.piece2 %>"] 
+      <% else %>  
+        " "]
+      <% end %> 
+      <%= "," unless play == @event.plays.last || play == @event.plays[118] %>
+    <% end %>]
+  <% end %>  
+</div>
+
+<span data-no-turbolink><%= link_to 'Return to Install', @event, class: "btn btn-custom3 btn-sm print-button", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading Install Page..."} %></span>
+<span><%= link_to 'Print <i class="fa fa-print"></i>'.html_safe, '#', class: "btn btn-custom1 btn-sm print-button", :onclick => 'window.print();return false;'%></span>
+
+<p></p>
+
+<div id="installPrint1"></div>
+
+<footer></footer>
+
+<% if @event.plays.count > 40 %>
+  <div id="installPrint2"></div>
+<% end %>   
+
+<footer></footer>
+
+<% if @event.plays.count > 80 %>
+  <div id="installPrint3"></div>
+  <br>
+  <br>
+<% end %> 
+
+
