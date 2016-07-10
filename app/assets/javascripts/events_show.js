@@ -48,9 +48,17 @@ $(".events.show").ready(function() {
   //Makes the create script modal draggable 
   $("#mynewscript").draggable({ handle: ".modal-content" });
 
-  //Makes the create script modal draggable 
+  //Makes the create game call modal draggable 
   $("#mynewgamecall").draggable({ handle: ".modal-content" });
 
+  //Makes the import plays modal draggable 
+  $("#importPlaysModal").draggable({ handle: ".modal-content" });
+
+  //Makes the remove multiple plays modal draggable 
+  $("#removePlaysModal").draggable({ handle: ".modal-content" }); 
+
+  //Makes the update multiple plays modal draggable 
+  $("#updatePlaysModal").draggable({ handle: ".modal-content" });
 
 	//Updates the Period Play Count divs asynchronously (every second)
 	var renewPeriod1Count;

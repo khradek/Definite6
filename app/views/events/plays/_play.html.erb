@@ -16,7 +16,7 @@
 <div id="play<%= play.id %>">
   <!-- Modal - update plays -->
   <%= form_for [@event, play], :method => :put, remote: true do |f| %>
-  <div class="modal fade" id="myupdateplay_<%= play.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal fade list-modal" id="myupdateplay_<%= play.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	      <div class="modal-header">

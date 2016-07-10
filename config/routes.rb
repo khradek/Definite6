@@ -18,6 +18,10 @@ Rails.application.routes.draw do
       get :print
     end
   	resources :plays, controller: 'events/plays' do
+      collection do
+        delete :destroy_multiple
+        put :update_multiple
+      end
   		put :sort, on: :collection
   	end
     resources :gamecalls, controller:'events/gamecalls' do

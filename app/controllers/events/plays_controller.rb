@@ -3,6 +3,46 @@ class Events::PlaysController < ApplicationController
 
   respond_to :html
 
+  def destroy_multiple 
+    @event = Event.find(params[:event_id])   
+
+    Play.destroy(params[:play_ids])
+
+    respond_to do |format|
+      format.html { redirect_to @event }
+    end
+  end
+
+  def update_multiple
+    @event = Event.find(params[:event_id])
+    @plays = Play.find(params[:play_ids])
+
+    if params[:periods] == '1'
+      @plays.each do |play|
+        play.update_attribute('period1', params[:play][:period1]) 
+        play.update_attribute('period2', params[:play][:period2])
+        play.update_attribute('period3', params[:play][:period3])
+        play.update_attribute('period4', params[:play][:period4])
+      end
+    end
+
+    if params[:types] == '1'
+      @plays.each do |play|
+        play.update_attribute('play_type', params[:play][:play_type])
+      end
+    end
+
+    if params[:hashes] == '1'
+      @plays.each do |play|
+        play.update_attribute('hash_mark', params[:play][:hash_mark])
+      end
+    end
+
+    respond_to do |format|
+      format.html { redirect_to @event }
+    end
+  end
+
   def index
     @event = Event.find(params[:event_id]) 
     @plays = Play.all

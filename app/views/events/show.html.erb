@@ -46,12 +46,59 @@
   <br> 
 <% end %>
 
-<span><%= link_to 'Printer Friendly Play List', event_print_path(@event), class: "btn btn-custom3 btn-sm" %></span>
+<span><%= link_to 'Printer Friendly Play List', event_print_path(@event), class: "btn btn-custom3 btn-sm", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading Printable List..."} %></span>
 
-<span><%= link_to 'Sortable Play List Summary', event_sortable_path(@event), class: "btn btn-custom3 btn-sm" %></span>
+<span><%= link_to 'Sortable Play List Summary', event_sortable_path(@event), class: "btn btn-custom3 btn-sm", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading Summary..."} %></span>
+
+
+<!-- Button trigger remove plays modal -->
+<span class="pull-right margin-left"><button type="button" class="btn btn-custom2 btn-sm" data-toggle="modal" data-target="#removePlaysModal">Remove Multiple</button></span>
+
+
+<!-- Remove plays modal -->
+<div class="modal fade list-modal" id="removePlaysModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Remove Multiple Plays from Install</h4>
+      </div>
+      <%= form_tag destroy_multiple_event_plays_path(@event), method: :delete do %>
+        <div class="modal-body">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Select Plays to Remove</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @plays.each do |play| %>
+                <tr>
+                  <td><%= check_box_tag "play_ids[]", play.id %></td>
+                  <td><%= play.fullname %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%= button_tag "Remove Selected", class: "btn btn-custom2", data: {disable_with: '<i class="fa fa-spinner fa-spin"></i> Removing Plays...'} %>
+        </div>
+      <% end %>  
+    </div>
+  </div>
+</div>
+
+
+<!-- Button trigger update plays modal -->
+<span class="pull-right margin-left"><button type="button" class="btn btn-custom4 btn-sm" data-toggle="modal" data-target="#updatePlaysModal">Update Multiple</button></span>
+
+<%= render partial: "events/multiple", collection: @plays %>
 
 <!-- Button trigger import plays modal -->
-<button type="button" class="btn btn-custom3 btn-sm pull-right" data-toggle="modal" data-target="#importPlaysModal">Import Plays from Existing Install</button>
+<span class="pull-right"><button type="button" class="btn btn-custom3 btn-sm" data-toggle="modal" data-target="#importPlaysModal">Import Plays from Existing Install</button></span>
 
 <%= form_tag url_for(:controller => "events", :action => "import_plays"), :method => "get" do %>
   <!-- Import plays modal -->

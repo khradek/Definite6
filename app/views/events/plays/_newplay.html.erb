@@ -4,7 +4,7 @@
 
 <!-- Modal - new plays -->
 <%= form_for [@event, @new_play], html: {data: {behavior: "has-saved-plays"}}, remote: true do |f| %>
-<div class="modal fade" id="mynewplay" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade list-modal" id="mynewplay" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">

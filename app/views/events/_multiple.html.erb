@@ -1,0 +1,105 @@
+  
+
+
+<!-- Update plays modal -->
+<div class="modal fade list-modal" id="updatePlaysModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Update Multiple Plays</h4>
+      </div>
+      <%= form_tag update_multiple_event_plays_path(@event), method: :put do  %>
+        <div class="modal-body">  
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Select Plays to Update</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @plays.each do |play| %>
+                <tr>
+                  <td><%= check_box_tag "play_ids[]", play.id %></td>
+                  <td><%= play.fullname %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <%= fields_for :play do |f| %>
+            <hr>
+            <%= check_box_tag :periods %> Update Periods Plays are Practiced in
+            <div class="period-select">
+              <div class="row">
+                <div class="col-md-8"></div>
+                <div class="col-md-1"><strong>1</strong></div>
+                <div class="col-md-1"><strong>2</strong></div>
+                <div class="col-md-1"><strong>3</strong></div>
+                <div class="col-md-1"><strong>4</strong></div>
+              </div>
+              <div class="row">
+                <div class="col-md-8"><strong>Practice in Period:</strong></div>
+                <div class="col-md-1">                    
+                  <div class="field form-group">
+                    <div class="checkbox-inline">
+                      <%= f.check_box :period1, :checked => 'checked' %>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-1">
+                  <div class="field form-group">
+                    <div class="checkbox-inline">
+                      <%= f.check_box :period2, :checked => 'checked' %>
+                    </div>
+                  </div>  
+                </div>
+                <div class="col-md-1">
+                  <div class="field form-group">
+                    <div class="checkbox-inline">
+                      <%= f.check_box :period3, :checked => 'checked' %>
+                    </div>
+                  </div>   
+                </div>
+                <div class="col-md-1">
+                  <div class="field form-group">
+                    <div class="checkbox-inline">
+                      <%= f.check_box :period4, :checked => 'checked' %>
+                    </div>
+                  </div>  
+                </div>
+              </div>
+            </div>
+            <hr>
+            <%= check_box_tag :types %> Update Run/Pass
+            <br>
+            <div class="form-group multi-type">
+            <br>
+            <%= f.label :play_type, "Run/Pass" %> 
+              <div>
+                <%= f.select(:play_type, options_for_select([[' ', ' '], ['Run', 'Run'], ['Pass', 'Pass']]), {}, {class: "form-control"}) %>
+              </div>  
+            </div>
+            <hr>
+            <%= check_box_tag :hashes %> Update Hash
+            <br>
+            <div class="form-group multi-hash">
+              <br>
+              <%= f.label :hash_mark, "Hash" %> 
+              <div>
+                <%= f.select(:hash_mark, options_for_select([[' ', ' '], ['Left', 'Left'], ['Right', 'Right']]), {}, {class: "form-control"}) %>
+              </div>  
+            </div>
+
+
+
+          <% end %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%= button_tag "Update Plays", class: "btn btn-custom1", data: {disable_with: '<i class="fa fa-spinner fa-spin"></i> Updating Plays...'} %>
+        </div> 
+      <% end %>   
+    </div>
+  </div>
+</div>

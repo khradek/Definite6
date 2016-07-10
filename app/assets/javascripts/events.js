@@ -57,9 +57,7 @@ ready = function(){
     var url = "events/" + $(this).next().text();
     window.open(url);
   });
-
-  //Makes the import plays modal draggable 
-  $("#importPlaysModal").draggable({ handle: ".modal-content" });  
+ 
 };
 
 $(document).ready(ready);

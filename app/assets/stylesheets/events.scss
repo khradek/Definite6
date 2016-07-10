@@ -119,7 +119,14 @@
   padding: 10px;
 }
 
+.margin-left{
+  margin-left: 5px;
+}
 
+.list-modal .modal-body {
+    max-height: 575px;
+    overflow-y: auto;
+}
 
 /*Blue*/
 .btn-custom1 {

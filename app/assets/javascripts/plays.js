@@ -124,5 +124,20 @@ $(".events.show").ready(function() {
 		};
 	});	
 
+  //Shows/hides Practice Period edit section in Update Multiple modal
+  $("#periods").change(function(){
+    $(".period-select").toggle();
+  });
+
+  //Shows/hides Play Type edit section in Update Multiple modal
+  $("#types").change(function(){
+    $(".multi-type").toggle();
+  });
+
+  //Shows/hides Hash Mark edit section in Update Multiple modal
+  $("#hashes").change(function(){
+    $(".multi-hash").toggle();
+  });  
+
 });
 
