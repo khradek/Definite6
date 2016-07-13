@@ -71,7 +71,19 @@ $(".events.show").ready(function() {
 	  $('#situation10').toggle();
 	  $(this).hide();
 	});
-		
+
+  //Check all functionality on update multiple modal
+  $('#check-all').click(function () { 
+    var checkBoxes = $(".play-checkbox");
+    checkBoxes.prop("checked", !checkBoxes.prop("checked"));
+  })
+
+  //Check all functionality on delete multiple modal
+  $('#delete-check-all').click(function () { 
+    var checkBoxes = $(".delete-checkbox");
+    checkBoxes.prop("checked", !checkBoxes.prop("checked"));
+  })
+
 	//Shows/hides the saved formation & play dropdowns in the create play modal	
 	$('.show-saved-plays').click(function() {
 	  $('.saved-formations-and-plays').toggle();
@@ -137,7 +149,49 @@ $(".events.show").ready(function() {
   //Shows/hides Hash Mark edit section in Update Multiple modal
   $("#hashes").change(function(){
     $(".multi-hash").toggle();
+  }); 
+
+  //Shows/hides Situation 1-10 edit section in Update Multiple modal
+  $("#situation_1").change(function(){
+    $(".multi-situation1").toggle();
+  }); 
+
+  $("#situation_2").change(function(){
+    $(".multi-situation2").toggle();
+  });
+
+  $("#situation_3").change(function(){
+    $(".multi-situation3").toggle();
+  });
+
+  $("#situation_4").change(function(){
+    $(".multi-situation4").toggle();
+  });
+
+  $("#situation_5").change(function(){
+    $(".multi-situation5").toggle();
+  });
+
+  $("#situation_6").change(function(){
+    $(".multi-situation6").toggle();
+  });
+
+  $("#situation_7").change(function(){
+    $(".multi-situation7").toggle();
+  });
+
+  $("#situation_8").change(function(){
+    $(".multi-situation8").toggle();
+  });
+
+  $("#situation_9").change(function(){
+    $(".multi-situation9").toggle();
+  });
+
+  $("#situation_10").change(function(){
+    $(".multi-situation10").toggle();
   });  
+
 
 });
 

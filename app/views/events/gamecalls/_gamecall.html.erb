@@ -35,7 +35,7 @@
             <%= f.datetime_select_no_time :end_time, class: "form-control event_end_time", id: "end-date" %>  
           </div>          
         </div>
-
+        
         <div class="modal-footer">
           <span class="pull-left" data-dismiss="modal" data-backdrop="false"> 
             <%= link_to 'Delete Game Call Sheet', [@event, gamecall], method: :delete, class: "btn btn-custom2", remote: true, data: { confirm: 'Are you sure?' } %>  

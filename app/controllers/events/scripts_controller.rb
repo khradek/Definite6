@@ -1,5 +1,7 @@
 class Events::ScriptsController < ApplicationController
   before_action :set_script, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :correct_user, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
 
@@ -94,4 +96,8 @@ class Events::ScriptsController < ApplicationController
     def script_params
       params.require(:script).permit(:title, :sdata, :event_id, :user_id, :start_time, :end_time)
     end
+
+    def correct_user
+      redirect_to root_path, notice: "Not authorized" if @script.user != current_user   
+    end 
 end

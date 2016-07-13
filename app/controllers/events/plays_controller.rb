@@ -1,5 +1,7 @@
 class Events::PlaysController < ApplicationController
   before_action :set_play, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :correct_user, only: [:show, :edit, :update, :destroy] 
 
   respond_to :html
 
@@ -37,6 +39,66 @@ class Events::PlaysController < ApplicationController
         play.update_attribute('hash_mark', params[:play][:hash_mark])
       end
     end
+
+    if params[:situation_1] == '1'
+      @plays.each do |play|
+        play.update_attribute('situation1', params[:play][:situation1])
+      end
+    end
+
+    if params[:situation_2] == '1'
+      @plays.each do |play|
+        play.update_attribute('situation2', params[:play][:situation2])
+      end
+    end   
+
+    if params[:situation_3] == '1'
+      @plays.each do |play|
+        play.update_attribute('situation3', params[:play][:situation3])
+      end
+    end
+
+    if params[:situation_4] == '1'
+      @plays.each do |play|
+        play.update_attribute('situation4', params[:play][:situation4])
+      end
+    end
+
+    if params[:situation_5] == '1'
+      @plays.each do |play|
+        play.update_attribute('situation5', params[:play][:situation5])
+      end
+    end 
+
+     if params[:situation_6] == '1'
+      @plays.each do |play|
+        play.update_attribute('situation6', params[:play][:situation6])
+      end
+    end
+
+    if params[:situation_7] == '1'
+      @plays.each do |play|
+        play.update_attribute('situation7', params[:play][:situation7])
+      end
+    end   
+
+    if params[:situation_8] == '1'
+      @plays.each do |play|
+        play.update_attribute('situation8', params[:play][:situation8])
+      end
+    end
+
+    if params[:situation_9] == '1'
+      @plays.each do |play|
+        play.update_attribute('situation9', params[:play][:situation9])
+      end
+    end
+
+    if params[:situation_10] == '1'
+      @plays.each do |play|
+        play.update_attribute('situation10', params[:play][:situation10])
+      end
+    end                
 
     respond_to do |format|
       format.html { redirect_to @event }
@@ -131,4 +193,8 @@ class Events::PlaysController < ApplicationController
     def play_params
       params.require(:play).permit(:piece1, :piece2, :priority, :event_id, :user_id, :period1, :period2, :period3, :period4, :situation1, :situation2, :situation3, :situation4, :situation5, :situation6, :situation7, :situation8, :situation9, :situation10, :play_type, :hash_mark)
     end
+
+    def correct_user
+      redirect_to root_path, notice: "Not authorized" if @play.user != current_user   
+    end  
 end

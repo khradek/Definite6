@@ -1,5 +1,7 @@
 class Play < ActiveRecord::Base
 
+  validate :piece1_or_piece2
+
 	belongs_to :event
 	belongs_to :user
 
@@ -32,4 +34,10 @@ class Play < ActiveRecord::Base
 		play_count = count_em(s_string, self.fullname)
 	end	
   
+  private
+    def piece1_or_piece2
+      if piece1.blank? && piece2.blank?
+        errors[:base] << "You must enter at least a formation or play name."
+      end
+    end
 end

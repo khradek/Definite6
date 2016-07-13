@@ -1,7 +1,5 @@
   
-
-
-<!-- Update plays modal -->
+<!-- Update multiple plays modal -->
 <div class="modal fade list-modal" id="updatePlaysModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -14,20 +12,21 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th></th>
+                <th><%= check_box_tag "check-all" %></th>
                 <th>Select Plays to Update</th>
               </tr>
             </thead>
             <tbody>
               <% @plays.each do |play| %>
                 <tr>
-                  <td><%= check_box_tag "play_ids[]", play.id %></td>
+                  <td><%= check_box_tag "play_ids[]", play.id, false, {:class => "play-checkbox"} %></td>
                   <td><%= play.fullname %></td>
                 </tr>
               <% end %>
             </tbody>
           </table>
           <%= fields_for :play do |f| %>
+            <hr>
             <hr>
             <%= check_box_tag :periods %> Update Periods Plays are Practiced in
             <div class="period-select">
@@ -90,8 +89,107 @@
                 <%= f.select(:hash_mark, options_for_select([[' ', ' '], ['Left', 'Left'], ['Right', 'Right']]), {}, {class: "form-control"}) %>
               </div>  
             </div>
-
-
+            <hr>
+            <hr>
+            <%= check_box_tag :situation_1 %> Update First Assigned Situation
+            <br>
+            <div class="form-group multi-situation1">
+              <br>
+              <%= f.label :situation1, "First Assigned Situation" %> 
+              <div>
+                <%= f.select(:situation1, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Long', '3rd & Long'],['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out'], ['Custom 1', 'Custom 1'], ['Custom 2', 'Custom 2'], ['Custom 3', 'Custom 3']]), {}, {class: "form-control"}) %>
+              </div>  
+            </div>
+            <hr>
+            <%= check_box_tag :situation_2 %> Update Second Assigned Situation
+            <br>
+            <div class="form-group multi-situation2">
+              <br>
+              <%= f.label :situation2, "Second Assigned Situation" %> 
+              <div>
+                <%= f.select(:situation2, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Long', '3rd & Long'],['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out'], ['Custom 1', 'Custom 1'], ['Custom 2', 'Custom 2'], ['Custom 3', 'Custom 3']]), {}, {class: "form-control"}) %>
+              </div>  
+            </div>
+            <hr>
+            <%= check_box_tag :situation_3 %> Update Third Assigned Situation
+            <br>
+            <div class="form-group multi-situation3">
+              <br>
+              <%= f.label :situation3, "Third Assigned Situation" %> 
+              <div>
+                <%= f.select(:situation3, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Long', '3rd & Long'],['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out'], ['Custom 1', 'Custom 1'], ['Custom 2', 'Custom 2'], ['Custom 3', 'Custom 3']]), {}, {class: "form-control"}) %>
+              </div>  
+            </div>
+            <hr>
+            <%= check_box_tag :situation_4 %> Update Fourth Assigned Situation
+            <br>
+            <div class="form-group multi-situation4">
+              <br>
+              <%= f.label :situation4, "Fourth Assigned Situation" %> 
+              <div>
+                <%= f.select(:situation4, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Long', '3rd & Long'],['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out'], ['Custom 1', 'Custom 1'], ['Custom 2', 'Custom 2'], ['Custom 3', 'Custom 3']]), {}, {class: "form-control"}) %>
+              </div>  
+            </div>
+            <hr>
+            <%= check_box_tag :situation_5 %> Update Fifth Assigned Situation
+            <br>
+            <div class="form-group multi-situation5">
+              <br>
+              <%= f.label :situation5, "Fifth Assigned Situation" %> 
+              <div>
+                <%= f.select(:situation5, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Long', '3rd & Long'],['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out'], ['Custom 1', 'Custom 1'], ['Custom 2', 'Custom 2'], ['Custom 3', 'Custom 3']]), {}, {class: "form-control"}) %>
+              </div>  
+            </div> 
+            <hr>
+            <%= check_box_tag :situation_6 %> Update Sixth Assigned Situation
+            <br>
+            <div class="form-group multi-situation6">
+              <br>
+              <%= f.label :situation6, "Sixth Assigned Situation" %> 
+              <div>
+                <%= f.select(:situation6, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Long', '3rd & Long'],['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out'], ['Custom 1', 'Custom 1'], ['Custom 2', 'Custom 2'], ['Custom 3', 'Custom 3']]), {}, {class: "form-control"}) %>
+              </div>  
+            </div>                                                
+            <hr>
+            <%= check_box_tag :situation_7 %> Update Seventh Assigned Situation
+            <br>
+            <div class="form-group multi-situation7">
+              <br>
+              <%= f.label :situation7, "Seventh Assigned Situation" %> 
+              <div>
+                <%= f.select(:situation7, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Long', '3rd & Long'],['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out'], ['Custom 1', 'Custom 1'], ['Custom 2', 'Custom 2'], ['Custom 3', 'Custom 3']]), {}, {class: "form-control"}) %>
+              </div>  
+            </div> 
+            <hr>
+            <%= check_box_tag :situation_8 %> Update Eighth Assigned Situation
+            <br>
+            <div class="form-group multi-situation8">
+              <br>
+              <%= f.label :situation8, "Eighth Assigned Situation" %> 
+              <div>
+                <%= f.select(:situation8, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Long', '3rd & Long'],['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out'], ['Custom 1', 'Custom 1'], ['Custom 2', 'Custom 2'], ['Custom 3', 'Custom 3']]), {}, {class: "form-control"}) %>
+              </div>  
+            </div> 
+            <hr>
+            <%= check_box_tag :situation_9 %> Update Ninth Assigned Situation
+            <br>
+            <div class="form-group multi-situation9">
+              <br>
+              <%= f.label :situation9, "Ninth Assigned Situation" %> 
+              <div>
+                <%= f.select(:situation9, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Long', '3rd & Long'],['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out'], ['Custom 1', 'Custom 1'], ['Custom 2', 'Custom 2'], ['Custom 3', 'Custom 3']]), {}, {class: "form-control"}) %>
+              </div>  
+            </div> 
+            <hr>
+            <%= check_box_tag :situation_10 %> Update Tenth Assigned Situation
+            <br>
+            <div class="form-group multi-situation10">
+              <br>
+              <%= f.label :situation10, "Tenth Assigned Situation" %> 
+              <div>
+                <%= f.select(:situation10, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Long', '3rd & Long'],['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out'], ['Custom 1', 'Custom 1'], ['Custom 2', 'Custom 2'], ['Custom 3', 'Custom 3']]), {}, {class: "form-control"}) %>
+              </div>  
+            </div>             
 
           <% end %>
         </div>

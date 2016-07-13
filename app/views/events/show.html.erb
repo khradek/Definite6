@@ -51,11 +51,11 @@
 <span><%= link_to 'Sortable Play List Summary', event_sortable_path(@event), class: "btn btn-custom3 btn-sm", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading Summary..."} %></span>
 
 
-<!-- Button trigger remove plays modal -->
+<!-- Button trigger remove multiple plays modal -->
 <span class="pull-right margin-left"><button type="button" class="btn btn-custom2 btn-sm" data-toggle="modal" data-target="#removePlaysModal">Remove Multiple</button></span>
 
 
-<!-- Remove plays modal -->
+<!-- Remove multiple plays modal -->
 <div class="modal fade list-modal" id="removePlaysModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -68,14 +68,14 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th></th>
+                <th><%= check_box_tag "delete-check-all" %></th>
                 <th>Select Plays to Remove</th>
               </tr>
             </thead>
             <tbody>
               <% @plays.each do |play| %>
                 <tr>
-                  <td><%= check_box_tag "play_ids[]", play.id %></td>
+                  <td><%= check_box_tag "play_ids[]", play.id, false, {:class => "delete-checkbox"} %></td>
                   <td><%= play.fullname %></td>
                 </tr>
               <% end %>
