@@ -1,9 +1,10 @@
 class Play < ActiveRecord::Base
 
-  validate :piece1_or_piece2
+  belongs_to :event
+  belongs_to :user
 
-	belongs_to :event
-	belongs_to :user
+  validate :piece1_or_piece2
+  #validates_uniqueness_of :event_id, :scope => [:piece1, :piece2]
 
 	default_scope { order(priority: :asc, created_at: :asc) }	
 
@@ -34,6 +35,13 @@ class Play < ActiveRecord::Base
 		play_count = count_em(s_string, self.fullname)
 	end	
   
+  #Determines if plays are duplicated in install
+  def duplicate_play
+    plays = Play.where(event_id: self.event_id)
+    m_plays = plays.where('piece1 = ? and piece2 = ?', self.piece1, self.piece2)
+    m_plays.length
+  end
+
   private
     def piece1_or_piece2
       if piece1.blank? && piece2.blank?
