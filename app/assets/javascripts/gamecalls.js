@@ -15,6 +15,9 @@ $(".gamecalls.show").ready(function() {
   var collection = splays.substring(0, splays.length-1);
   var jCollection = JSON.parse(collection);
 
+  //Validates no special characters
+  var char_validator = /^[a-zA-Z\d\s-_@&$/]*$/;
+
   //Save button functionality
   $("#save-button").click(function() {
     var JSONData = JSON.stringify(gdata);
@@ -50,6 +53,9 @@ $(".gamecalls.show").ready(function() {
     manualRowResize: false,
     fillHandle: false,
     className: "htCenter",
+    allowInvalid: false,
+    allowEmpty: true,
+    validator: char_validator,
     mergeCells: [
       {row: 0, col: 0, rowspan: 1, colspan: 4},
       {row: 1, col: 0, rowspan: 1, colspan: 2},
@@ -311,6 +317,9 @@ $(".gamecalls.show").ready(function() {
     manualColumnResize: false,
     manualRowResize: false,
     fillHandle: false,
+    allowInvalid: false,
+    allowEmpty: true,
+    validator: char_validator,
     className: "htCenter",
     mergeCells: [
       {row: 0, col: 0, rowspan: 1, colspan: 4},

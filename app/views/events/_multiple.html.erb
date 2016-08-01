@@ -14,6 +14,8 @@
               <tr>
                 <th><%= check_box_tag "check-all" %></th>
                 <th>Select Plays to Update</th>
+                <th class="table-center">Run/Pass</th>
+                <th class="table-center">Hash</th>
               </tr>
             </thead>
             <tbody>
@@ -21,6 +23,8 @@
                 <tr>
                   <td><%= check_box_tag "play_ids[]", play.id, false, {:class => "play-checkbox"} %></td>
                   <td><%= play.fullname %></td>
+                  <td class="table-center"><%= play.play_type %></td>
+                  <td class="table-center"><%= play.hash_mark %></td>
                 </tr>
               <% end %>
             </tbody>

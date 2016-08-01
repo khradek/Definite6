@@ -1,13 +1,11 @@
-<tbody id="script_<%= script.id %>">
-  <tr>
-    <td class="script-col1"><%= script.title %></td>
-    <td class="script-col2 table-center"><%= script.start_time.strftime("%m-%d-%Y") if script.start_time? %></td>
-    <td class="script-col3"><%= link_to 'Open Script', [@event, script], class: "btn btn-custom3 btn-sm pull-right" %></td>
-    <td class="script-col3"><button type="button" id="update-script_<%= script.id %>" class="btn btn-custom4 btn-sm pull-right" data-toggle="modal" data-target="#myupdatescript_<%= script.id %>">
-    	Update or Delete Script
-    </button></td>
-  </tr>
-</tbody>
+<tr id="script_<%= script.id %>">
+  <td class="script-col1"><%= script.title %></td>
+  <td class="script-col2 table-center"><%= script.start_time.strftime("%m-%d-%Y") if script.start_time? %></td>
+  <td class="script-col3"><%= link_to 'Open Script', [@event, script], class: "btn btn-custom3 btn-sm pull-right" %></td>
+  <td class="script-col3"><button type="button" id="update-script_<%= script.id %>" class="btn btn-custom4 btn-sm pull-right" data-toggle="modal" data-target="#myupdatescript_<%= script.id %>">
+  	Update or Delete Script
+  </button></td>
+</tr>
 
 
 <div id="script<%= script.id %>">

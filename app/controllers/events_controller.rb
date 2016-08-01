@@ -2,6 +2,7 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :correct_user, only: [:show, :edit, :update, :destroy]
+  before_action :subscribed_user
 
   respond_to :html, :js, :json
 
@@ -94,4 +95,9 @@ class EventsController < ApplicationController
     def correct_user
       redirect_to root_path, notice: "Not authorized" if @event.user != current_user   
     end 
+
+    def subscribed_user
+      redirect_to root_path, notice: "Please provide payment" unless current_user_subscribed?
+    end    
+
 end

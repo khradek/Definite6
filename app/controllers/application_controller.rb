@@ -8,8 +8,14 @@ class ApplicationController < ActionController::Base
   	@ievents = Event.where(:event_type => "Install").where(:user_id => current_user.id).order(:start_time => :desc) if user_signed_in?
   end
 
+  def current_user_subscribed?
+    user_signed_in? && current_user.subscribed?
+  end
+
+  helper_method :current_user_subscribed?
+  
   def after_sign_in_path_for(resource)
   	events_path
-	end
+  end
 
 end

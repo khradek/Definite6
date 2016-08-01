@@ -1,6 +1,10 @@
 class SavedPlay < ActiveRecord::Base
 	
-	belongs_to :user
+  title_regex = /\A[a-zA-Z\d\s-_@&\/\$]*\z/
+
+  validates :title, presence: true, format: { with: title_regex }
+	
+  belongs_to :user
 
 	default_scope { order("priority ASC") }
 

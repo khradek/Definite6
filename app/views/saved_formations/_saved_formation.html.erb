@@ -26,7 +26,7 @@
 
 	      <div class="modal-footer">
 	      	<span class="pull-left" data-dismiss="modal" data-backdrop="false"> 
-	      		<%= link_to 'Delete Play', saved_formation, method: :delete, class: "btn btn-custom2", remote: true, data: { confirm: 'Are you sure?' } %>  
+	      		<%= link_to 'Delete Formation', saved_formation, method: :delete, class: "btn btn-custom2", remote: true, data: { confirm: 'Are you sure?' } %>  
 	    		</span> 
 	        <button type="button" id="myupdatebutton_<%= saved_formation.id %>" class="btn btn-default" data-dismiss="modal">Close</button>
 	        <%= submit_tag "Update", class: "btn btn-custom1" %>

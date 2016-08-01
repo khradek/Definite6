@@ -3,8 +3,11 @@ class Play < ActiveRecord::Base
   belongs_to :event
   belongs_to :user
 
-  validate :piece1_or_piece2
-  #validates_uniqueness_of :event_id, :scope => [:piece1, :piece2]
+  validate :piece1_or_piece2 
+
+  title_regex = /\A[a-zA-Z\d\s\-_@&\/\$]*\z/
+  validates :piece1, format: { with: title_regex }
+  validates :piece2, format: { with: title_regex }
 
 	default_scope { order(priority: :asc, created_at: :asc) }	
 

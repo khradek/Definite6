@@ -10,6 +10,9 @@ $(".scripts.show").ready(function() {
   var collection = splays.substring(0, splays.length-1);
   var jCollection = JSON.parse(collection);
 
+  //Validates no special characters
+  var char_validator = /^[a-zA-Z\d\s-_@&$/]*$/;
+
   $("#scriptGrid").handsontable({
     data: sdata,
     minSpareCols: 0,
@@ -23,6 +26,9 @@ $(".scripts.show").ready(function() {
     manualRowResize: false,
     fillHandle: false,
     className: "htCenter",
+    allowInvalid: false,
+    allowEmpty: true,
+    validator: char_validator,
     mergeCells: [
       {row: 0, col: 0, rowspan: 1, colspan: 12},
       {row: 1, col: 0, rowspan: 1, colspan: 6},

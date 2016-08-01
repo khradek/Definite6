@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
+  mount StripeEvent::Engine, at: '/stripe/webhook'
   
   resources :saved_plays do
     put :sort, on: :collection
@@ -29,11 +31,25 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: "registrations" }
+
+  resources :charges
+
+  resource :subscription
+
+  resource :card
   
   root 'creatives#index'
 
   get 'pages/user_guide', :as => "user_guide_page"
+
+  get 'pages/terms', :as => "terms_page"
+
+  get 'pages/privacy', :as => "privacy_page"
+
+  get 'pages/example_script', :as => "example_script_page"
+
+  get 'pages/example_gamecall', :as => "example_gamecall_page"
 
 
 end

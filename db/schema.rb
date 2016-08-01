@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160705225846) do
+ActiveRecord::Schema.define(version: 20160731174815) do
+
+  create_table "charges", force: true do |t|
+    t.integer  "user_id"
+    t.string   "stripe_id"
+    t.integer  "amount"
+    t.string   "card_last4"
+    t.string   "card_brand"
+    t.string   "card_exp_month"
+    t.string   "card_exp_year"
+    t.datetime "charge_date"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "charges", ["stripe_id"], name: "index_charges_on_stripe_id", unique: true
 
   create_table "events", force: true do |t|
     t.integer  "user_id"
@@ -113,6 +128,14 @@ ActiveRecord::Schema.define(version: 20160705225846) do
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.boolean  "admin",                  default: false, null: false
+    t.string   "stripe_id"
+    t.string   "stripe_subscription_id"
+    t.string   "card_last4"
+    t.integer  "card_exp_month"
+    t.integer  "card_exp_year"
+    t.string   "card_brand"
+    t.datetime "subscription_end"
+    t.boolean  "cancelled",              default: false, null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

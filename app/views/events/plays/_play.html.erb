@@ -2,6 +2,8 @@
 <tbody id="play_<%= play.id %>" class="play-table <%= 'tablered' unless play.duplicate_play < 2 %> %>" data-id="<%= play.id %>">
   <tr>
     <td class="play-box"><%= play.fullname %></td>
+    <td class="table-center"><%= play.play_type %></td>
+    <td class="table-center"><%= play.hash_mark %></td>
     <td class="table-center period-box"><%= check_box_tag "period1", "#{play.period1}", play.period1?, disabled: true %></td>
     <td class="table-center period-box"><%= check_box_tag "period2", "#{play.period2}", play.period2?, disabled: true %></td>
     <td class="table-center period-box"><%= check_box_tag "period3", "#{play.period3}", play.period3?, disabled: true %></td>

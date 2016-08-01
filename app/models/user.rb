@@ -10,5 +10,10 @@ class User < ActiveRecord::Base
   has_many :plays  
   has_many :saved_formations
   has_many :saved_plays
+  has_many :charges
+
+  def subscribed?
+    stripe_subscription_id?
+  end
 
 end

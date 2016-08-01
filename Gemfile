@@ -21,6 +21,9 @@ gem 'font-awesome-rails'
 gem 'frontend-generators'
 gem 'rails_admin'
 gem 'puma', '~> 3.4'
+gem 'stripe', '~> 1.48'
+gem 'stripe_event', '~> 1.5'
+gem 'receipts', '~> 0.1.3'
 
 group :production do
 	gem 'pg'

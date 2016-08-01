@@ -1,17 +1,47 @@
-<header>
+<header id="page-top">
   <div class="header-content">
     <div class="header-content-inner">
-    <h1>Definite6</h1>
-    <h3>Every offensive posession ends in a touchdown</h3>
-    <hr class="blue">
-    <p>Practice and game planning software to help football coaches win</p>
-    <% if user_signed_in? %>
-     <h2>Welcome <%= current_user.email %></h2>
-     <div data-no-turbolink><%= link_to 'Go to my calendar', events_path, :class => "btn btn-custom4 btn-lg", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading calendar..."} %></div>
-    <% else %>	
-      <%= link_to "Sign In", new_user_session_path, class: "btn btn-custom1 btn-lg", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading..."} %>
-    <% end %>	
+    <div>
+      <% flash.each do |name, msg| %>
+         <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
+      <% end %>      
     </div>
+
+    <% unless current_user_subscribed? || current_user.nil? %>
+
+      <div class="row">
+        <div class="col-xs-5">
+          <hr>
+          <h2 class="black-text">Welcome <%= current_user.email %>, you have already created an account, but it is not active because you have yet to provide payment </h2>
+          <h2><%= link_to "Activate Account", new_subscription_path, :class => "btn btn-custom4 btn-lg", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading payment form..."} %></h2>
+          <hr>          
+        </div>
+      </div>
+    <% end %>
+ 
+    <% if !current_user_subscribed? && !current_user.nil?%>
+      <br>
+    <% else %>
+      <h1 class="black-text">Definite6</h1>
+      <h3 class="skinny black-text">Every offensive posession ends in a touchdown</h3>
+      <div class="row">
+        <div class="col-xs-5"><hr class="blue"></div>
+      </div>
+      <h4 class="black-text">Practice and game planning software to help coaches DOMINATE</h4>
+
+      <% if user_signed_in? && current_user_subscribed? %>
+       <h2>Welcome <%= current_user.email %></h2>
+       <div data-no-turbolink><%= link_to 'Go to my calendar', events_path, :class => "btn btn-custom4 btn-lg", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading calendar..."} %></div>
+      <% else %>	
+        <div><%= link_to "Sign Up & DOMINATE Now!", new_user_registration_path, class: "btn btn-custom1 btn-lg", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading..."} %></div>
+        <br>
+        <div class="white sign-in">or</div>
+        <br>
+        <div class="white sign-in"><%= link_to "Sign In", new_user_session_path,:class =>"white sign-in" %></div>
+      <% end %>	
+      </div>
+    <% end %>  
+
   </div>
 </header>
 

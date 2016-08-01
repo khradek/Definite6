@@ -19,15 +19,20 @@
       <thead id="plays-thead">
         <tr>
           <th>Play Name</th>
+          <th>Run/Pass</th>
+          <th>Hash</th>
           <th class="table-center">Period 1</th>
           <th class="table-center">Period 2</th>
           <th class="table-center">Period 3</th>
           <th class="table-center">Period 4</th>
         </tr>   
       </thead>
+      <tbody>
+      </tbody>
       <tfoot id="plays-tfoot">
         <tr>
           <td class="table-footer">Total Plays per Period</td>
+          <td colspan=2></td>
           <td class="table-footer table-center" id="period1-count"><%= @period1_count %></td>
           <td class="table-footer table-center" id="period2-count"><%= @period2_count %></td>
           <td class="table-footer table-center" id="period3-count"><%= @period3_count %></td>
