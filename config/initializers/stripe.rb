@@ -4,7 +4,7 @@ if Rails.env.development?
 end
 
 if Rails.env.production?
-  Stripe.api_key = STRIPE_SECRET_PROD
+  Stripe.api_key = ENV[STRIPE_SECRET_PROD]
 end
 
 class RecordCharges
