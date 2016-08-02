@@ -1,11 +1,4 @@
-
-if Rails.env.development?
-  Stripe.api_key = STRIPE_SECRET
-end
-
-if Rails.env.production?
-  Stripe.api_key = ENV[STRIPE_SECRET_PROD]
-end
+Stripe.api_key = STRIPE_SECRET
 
 class RecordCharges
   def call(event)
