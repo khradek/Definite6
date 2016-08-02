@@ -79,3 +79,5 @@ Rails.application.configure do
   #Required for Devise - need to set to actual host
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 end
+
+STRIPE_PUBLIC = "pk_live_qI8TrnMt6vH6ESMGt75cRBUb"
