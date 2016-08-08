@@ -127,12 +127,12 @@
       
       <div class="pull-right"><img src="https://www.merchantequip.com/image/?logos=v|m|a|d&height=64" alt="Credit Card Logos" /></div>
       <div class="row">
-        <div class="col-xs-5">
+        <div class="col-xs-4">
           <div class="field">
             <label>
               <span>Card Number</span>
             </label>
-            <input class="form-control" value="4242 4242 4242 4242" type="text" size="20" data-stripe="number">
+            <input class="form-control" placeholder="1234 5678 9012 3456" type="text" size="20" data-stripe="number">
           </div>
         </div>  
       </div>
@@ -143,30 +143,29 @@
             <label>
               <span>Expiration</span>
             </label>
-            <input class="form-control" value="12" type="text" size="10" data-stripe="exp_month">        
+            <input class="form-control" placeholder="MM" type="text" size="10" data-stripe="exp_month">        
           </div>
         </div>
 
         <div class="col-sm-1">
           <div class="field">
             <label>&nbsp</label>
-            <input class="form-control" value="2020" type="text" size="10" data-stripe="exp_year">
+            <input class="form-control" placeholder="YYYY" type="text" size="10" data-stripe="exp_year">
           </div>  
         </div>
 
         <div class="col-sm-1"></div>
 
-        <div class="col-sm-2">
+        <div class="col-sm-1">
           <div class="field">
             <label>
               <span>CVC</span>
             </label>  
-            <input class="form-control" value="123" type="text" size="4" data-stripe="cvc">
+            <input class="form-control" placeholder="123" type="text" size="4" data-stripe="cvc">
           </div>
         </div>
-      </div>  
-      <input type="submit" class="submit btn btn-custom3" value="Update Card">    
-    <% end %>
+      </div>     
+    <% end %> 
   </div>
     
   <hr>
