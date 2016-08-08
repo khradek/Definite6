@@ -112,7 +112,7 @@ $(".pages.example_gamecall").ready(function() {
   gPlays = ["", "Trips RT Slant", "Trips LT Slant", "Twins Pro RT Fade", "Twins Pro LT Fade", "Spread RT Zip Curl", "Spread LT Zip Curl", "Flex RT Fake LT Post", "Flex LT Fake RT Post", "Doubles RT Mesh", "Doubles LT Mesh", "Trips RT Sprint RT Flood", "Trips LT Sprint LT Flood", "Pro RT Fake RT Dig", "Pro LT Fake LT Dig", "Pro RT Iso RT", "Pro LT Iso LT", "Twins RT Off Tackle LT", "Twins LT Off Tackle RT", "Flex RT Counter LT", "Flex LT Counter RT", "Spread RT Zoom Trap LT", "Spread LT Zoom Trap RT", "Wing Over RT Toss RT", "Wing Over LT Toss LT", "Doubles RT Zip Jet Sweep RT", "Doubles LT Zip Jet Sweep LT", "Trips RT Zone LT", "Trips LT Zone RT"];
 
   //Validates no special characters
-  var char_validator = /^[a-zA-Z\d\s-_@&$/]*$/;
+  var char_validator = /^[a-zA-Z\d\s-_@&#$/]*$/;
 
   $("#exGameCall1").handsontable({
     data: exGameCallData1,

@@ -1,15 +1,17 @@
 class Event < ActiveRecord::Base
 	validates :start_time, presence: { message: "Cannot be blank" }
 	validates	:end_time, :presence => true
+  validates :title, :presence => true
 
 	has_many :scripts, dependent: :destroy
   has_many :gamecalls, dependent: :destroy
 	has_many :plays, dependent: :destroy
 	belongs_to :user
 
+  before_validation :strip_whitespace
 	after_update :update_script, :update_gamecall
 	after_destroy :delete_script, :delete_gamecall
-
+  before_save :add_time
 
   #------Script------
 	#Updates actual script when calendar event is updated
@@ -60,13 +62,17 @@ class Event < ActiveRecord::Base
   end
   #------End Game Call Sheet------
 
-
-	#Adds 10 seconds to the end time of Install, Script, and Game Call Sheet so the event stretches to the end date in the calendar
-	before_save :add_time
-	private
+  private
+  
+  #Adds 10 seconds to the end time of Install, Script, and Game Call Sheet so the event stretches to the end date in the calendar
 	def add_time
 		if self.event_type == "Install" || self.event_type == "Script" || self.event_type == "Gamecall"
 			self.end_time = self.end_time + 10.seconds
 		end
 	end
+
+  #Removes whitespace from event title
+  def strip_whitespace
+    self.title = self.title.strip
+  end
 end

@@ -16,7 +16,7 @@ $(".gamecalls.show").ready(function() {
   var jCollection = JSON.parse(collection);
 
   //Validates no special characters
-  var char_validator = /^[a-zA-Z\d\s-_@&$/]*$/;
+  var char_validator = /^[a-zA-Z\d\s-_@&#$/]*$/;
 
   //Save button functionality
   $("#save-button").click(function() {

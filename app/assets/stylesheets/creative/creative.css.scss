@@ -25,6 +25,13 @@ hr.light {
     border-color: #fff;
 }
 
+hr.thick {
+    max-width: 80%;
+    border-color: #1C85D4;
+    border-width: 3px;
+    text-align: center;
+}
+
 a {
     color: #1C85D4;
     -webkit-transition: all .35s;
@@ -394,3 +401,12 @@ body {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+.video-center{
+  display: block;
+  margin-left: auto;
+  margin-right: auto  
+}
+
+
+

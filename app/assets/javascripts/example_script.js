@@ -66,7 +66,7 @@ $(".pages.example_script").ready(function() {
   ePlays = ["", "Trips RT Slant", "Trips LT Slant", "Twins Pro RT Fade", "Twins Pro LT Fade", "Spread LT Zip Curl", "Spread RT Zip Curl", "Flex RT Fake LT Post", "Flex LT Fake RT Post", "Doubles RT Mesh", "Doubles LT Mesh", "Trips RT Sprint RT Flood", "Trips LT Sprint LT Flood", "Pro RT Fake RT Dig", "Pro LT Fake LT Dig", "Pro RT Iso RT", "Pro LT Iso LT", "Spread RT Zoom Trap LT", "Spread LT Zoom Trap RT", "Wing Over RT Toss RT", "Wing Over LT Toss LT", "Trips RT Zone LT", "Trips LT Zone RT", "Flex RT Counter RT", "Flex LT Counter LT", "Doubles RT Zip Jet Sweep RT", "Doubles LT Zip Jet Sweep LT"]
 
   //Validates no special characters
-  var char_validator = /^[a-zA-Z\d\s-_@&$/]*$/;
+  var char_validator = /^[a-zA-Z\d\s-_@&#$/]*$/;
 
   $("#exampleScript").handsontable({
     data: exScriptData,
