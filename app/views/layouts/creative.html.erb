@@ -3,8 +3,8 @@
 <head>
   <title>Definite6</title>
   <%= stylesheet_link_tag 'application', media: 'all' %>
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag 'creative/manifest.js' %>
   <%= csrf_meta_tags %>
   <meta name="description" content="Practice and game planning software to help football coaches DOMINATE. Save time and stay organized with our easily generated practice scripts and game call sheets. Sign up now for a free 30-day trial.">
@@ -15,7 +15,18 @@
 <%= yield %>
 
 <div class="container">
-  <%= render partial: "shared/footer" %>
+  <br>
+  <br>
+  <br>
+  <div class="navbar navbar-static-bottom top-footer">
+    <div style="font-weight:bold">
+      <span class="dark-red"><i class="fa fa-copyright" aria-hidden="true"></i> 2016 Definite6 All Rights Reserved </span>|
+      <span><%= link_to "Terms", terms_page_path %> | </span>
+      <span><%= link_to "Privacy", privacy_page_path %> | </span>
+      <span><%= link_to "User Guide", user_guide_page_path %> </span>
+    </div>
+  </div>
+  <br>
 </div>
 
 </body>
