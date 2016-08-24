@@ -16,7 +16,7 @@ class Charge < ActiveRecord::Base
         ["Date",           created_at.strftime("%m/%d/%Y").to_s],
         ["Account Billed", "#{user.email}"],
         ["Product",        "Definite6"],
-        ["Amount",         "$#{amount / 100}.00"],
+        ["Amount",         "$#{amount / 120}.00"],
         ["Charged to",     "#{card_brand} (**** **** **** #{card_last4})"],
       ],
     )

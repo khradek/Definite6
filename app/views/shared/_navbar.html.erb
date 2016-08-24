@@ -15,20 +15,20 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <li data-no-turbolink><%= link_to 'Calendar', events_path %></li>
+          <li data-no-turbolink><%= link_to 'Calendar', events_path %></li>          
+          <li class="dropdown">
+            <a data-target="#" href="page.html" data-toggle="dropdown" class="dropdown-toggle">Play Database <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li data-no-turbolink><%= link_to 'Saved Formations', saved_formations_path %></li>
+              <li data-no-turbolink><%= link_to 'Saved Plays', saved_plays_path %></li>
+            </ul>
+          </li>
           <li class="dropdown">
             <a data-target="#" href="page.html" data-toggle="dropdown" class="dropdown-toggle">Installs <b class="caret"></b></a>
             <ul class="dropdown-menu" id="nav-install-dropdown">
               <% @ievents.each do |ievent| %>
                 <li data-no-turbolink><%= link_to ievent.title, event_path(ievent) %></li>
               <% end %>
-            </ul>
-          </li>          
-          <li class="dropdown">
-            <a data-target="#" href="page.html" data-toggle="dropdown" class="dropdown-toggle">Play Database <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li data-no-turbolink><%= link_to 'Saved Formations', saved_formations_path %></li>
-              <li data-no-turbolink><%= link_to 'Saved Plays', saved_plays_path %></li>
             </ul>
           </li>
           <li><%= link_to "User Guide", user_guide_page_path %></li>

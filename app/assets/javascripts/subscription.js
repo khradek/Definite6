@@ -14,11 +14,7 @@ $(".subscriptions.new, .registrations.edit").ready(function() {
     return false;
   });
 
-  $("#update-email-link").click(function(){
-    $(this).find(".right-arrow, .down-arrow").toggle();
-    $("#update-email-section").toggle("blind");
-  })
-
+  //Arrow functionality on Account Settings page
   $("#charges-link").click(function(){
     $(this).find(".right-arrow, .down-arrow").toggle();
     $("#charges-section").toggle("blind");

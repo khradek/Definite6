@@ -184,10 +184,6 @@
   height: 25px;
 }
 
-#update-email-link{
-  cursor: pointer;
-}
-
 #charges-link{
   cursor: pointer;
 }
@@ -200,10 +196,6 @@
   cursor: pointer;
 }
 
-#update-email-section{
-  display: none;
-}
-
 #charges-section{
   display: none;
 }
@@ -213,6 +205,10 @@
 }
 
 #deactivate-account-section{
+  display: none;
+}
+
+#pwordNeeded{
   display: none;
 }
 

@@ -1,6 +1,6 @@
 class SavedFormation < ActiveRecord::Base
 
-  title_regex = /\A[a-zA-Z\d\s\-_@&\/\$]*\z/
+  title_regex = /\A[a-zA-Z\d\s\-_@#&\/\$]*\z/
 
   validates :title, presence: true, format: { with: title_regex }
   

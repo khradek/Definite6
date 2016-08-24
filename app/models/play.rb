@@ -5,7 +5,7 @@ class Play < ActiveRecord::Base
 
   validate :piece1_or_piece2 
 
-  title_regex = /\A[a-zA-Z\d\s\-_@&\/\$]*\z/
+  title_regex = /\A[a-zA-Z\d\s\-_@#&\/\$]*\z/
   validates :piece1, format: { with: title_regex }
   validates :piece2, format: { with: title_regex }
 

@@ -1,6 +1,6 @@
 class Script < ActiveRecord::Base
 
-  title_regex = /\A[a-zA-Z\d\s-_@&\/\$]*\z/
+  title_regex = /\A[a-zA-Z\d\s-_@#&\/\$]*\z/
 
   validates :title, presence: true, format: { with: title_regex }
   validates :start_time, :end_time, :presence => true	
@@ -356,7 +356,7 @@ class Script < ActiveRecord::Base
 
 		self.update :sdata => "[
       ['#{title}', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-      ['Period 1', ' ', ' ', ' ', ' ', ' ', 'Period 3', ' ', ' ', ' ', ' ', ' '],  
+      ['Segment 1', ' ', ' ', ' ', ' ', ' ', 'Segment 3', ' ', ' ', ' ', ' ', ' '],  
       ['#', 'H', 'D-D', 'Formation & Play Call', ' ', 'Defense', '#', 'H', 'D-D', 'Formation & Play Call', ' ', 'Defense'],
       ['1', ' ', ' ', '#{play10}', ' ', ' ', '1', ' ', ' ', '#{play30}', ' ', ' '],
       ['2', ' ', ' ', '#{play11}', ' ', ' ', '2', ' ', ' ', '#{play31}', ' ', ' '],
@@ -383,7 +383,7 @@ class Script < ActiveRecord::Base
       ['23', ' ', ' ', '#{play122}', ' ', ' ', '23', ' ', ' ', '#{play322}', ' ', ' '],
       ['24', ' ', ' ', '#{play123}', ' ', ' ', '24', ' ', ' ', '#{play323}', ' ', ' '],
       ['25', ' ', ' ', '#{play124}', ' ', ' ', '25', ' ', ' ', '#{play324}', ' ', ' '],
-                  ['Period 2', ' ', ' ', ' ', ' ', ' ', 'Period 4', ' ', ' ', ' ', ' ', ' '],  
+                  ['Segment 2', ' ', ' ', ' ', ' ', ' ', 'Segment 4', ' ', ' ', ' ', ' ', ' '],  
       ['#', 'H', 'D-D', 'Formation & Play Call', ' ', 'Defense', '#', 'H', 'D-D', 'Formation & Play Call', ' ', 'Defense'], 
       ['1', ' ', ' ', '#{play20}', ' ', ' ', '1', ' ', ' ', '#{play40}', ' ', ' '],
       ['2', ' ', ' ', '#{play21}', ' ', ' ', '2', ' ', ' ', '#{play41}', ' ', ' '],

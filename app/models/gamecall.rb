@@ -1,6 +1,6 @@
 class Gamecall < ActiveRecord::Base
 
-  title_regex = /\A[a-zA-Z\d\s-_@&\/\$]*\z/
+  title_regex = /\A[a-zA-Z\d\s-_@#&\/\$]*\z/
 
   validates :title, presence: true, format: { with: title_regex }
   validates :start_time, :end_time, :presence => true

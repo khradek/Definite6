@@ -15,5 +15,5 @@ class User < ActiveRecord::Base
   def subscribed?
     stripe_subscription_id?
   end
-
+  
 end
