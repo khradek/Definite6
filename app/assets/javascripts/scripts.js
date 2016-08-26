@@ -18,7 +18,6 @@ $(".scripts.show").ready(function() {
     minSpareCols: 0,
     minSpareRows: 0,
     maxRows: 60,
-    maxCols: 10,
     renderAllRows: true,
     rowHeaders: false,
     colHeaders: false,
@@ -28,7 +27,7 @@ $(".scripts.show").ready(function() {
     manualRowResize: false,
     fillHandle: true,
     className: "htCenter",
-    allowInvalid: false,
+    allowInvalid: true,
     allowEmpty: true,
     validator: char_validator,
     mergeCells: [
