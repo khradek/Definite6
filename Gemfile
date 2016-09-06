@@ -24,6 +24,7 @@ gem 'puma', '~> 3.4'
 gem 'stripe', '~> 1.48'
 gem 'stripe_event', '~> 1.5'
 gem 'receipts', '~> 0.1.3'
+gem 'browser', '~> 2.2'
 
 group :production do
 	gem 'pg'
