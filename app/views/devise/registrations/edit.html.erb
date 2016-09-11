@@ -203,7 +203,10 @@
             <input class="form-control" placeholder="123" type="text" size="4" data-stripe="cvc">
           </div>
         </div>
-      </div>     
+      </div> 
+      <div class="actions">
+        <%= submit_tag "Update Card", class: "btn btn-custom3", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Updating..."} %>
+      </div>
     <% end %> 
   </div>
     
