@@ -162,7 +162,7 @@
     <h4>Please enter new card information below</h4>
 
     <%= form_tag card_path, method: :put, id: "payment-form" do %>
-      <span class="payment-errors"></span>
+      <span class="payment-errors red"></span>
       
       <div class="pull-right"><img src="https://www.merchantequip.com/image/?logos=v|m|a|d&height=64" alt="Credit Card Logos" /></div>
       <div class="row">
@@ -205,7 +205,7 @@
         </div>
       </div> 
       <div class="actions">
-        <%= submit_tag "Update Card", class: "btn btn-custom3", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Updating..."} %>
+        <%= button_tag "Update Card", class: "submit btn btn-custom3" %>
       </div>
     <% end %> 
   </div>
