@@ -8,7 +8,7 @@
     <td class="table-center period-box"><%= check_box_tag "period2", "#{play.period2}", play.period2?, disabled: true %></td>
     <td class="table-center period-box"><%= check_box_tag "period3", "#{play.period3}", play.period3?, disabled: true %></td>
     <td class="table-center period-box"><%= check_box_tag "period4", "#{play.period4}", play.period4?, disabled: true %></td>
-    <td><button type="button" id="update-play_<%= play.id %>" class="btn btn-custom4 btn-sm update-play-button" data-toggle="modal" data-target="#myupdateplay_<%= play.id %>">
+    <td><button type="button" id="update-play_<%= play.id %>" class="btn btn-custom4 btn-xs update-play-button" data-toggle="modal" data-target="#myupdateplay_<%= play.id %>">
     	Update or Remove
     </button></td>
   </tr>
