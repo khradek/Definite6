@@ -77,7 +77,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   #Required for Devise - need to set to actual host
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'definite6.com' }
 end
 
 STRIPE_SECRET = ENV['STRIPE_SECRET_PROD']
