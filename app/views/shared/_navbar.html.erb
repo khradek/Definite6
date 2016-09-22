@@ -1,36 +1,33 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
+<nav class="navbar navbar-default navbar-static-top" role="banner">
+  <div class="container-fluid nav-container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
       <%= link_to "Definite6", root_path, :class => "navbar-brand" %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="collapse navbar-collapse" id="definite6-navbar">
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <li data-no-turbolink><%= link_to 'Calendar', events_path %></li>          
+          <li data-no-turbolink><%= link_to 'Calendar', events_path %></li>  
+          
           <li class="dropdown">
-            <a data-target="#" href="page.html" data-toggle="dropdown" class="dropdown-toggle">Play Database <b class="caret"></b></a>
-            <ul class="dropdown-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Play Database <b class="caret"></b></a>
+            <ul class="dropdown-menu keep-open-on-click">
               <li data-no-turbolink><%= link_to 'Saved Formations', saved_formations_path %></li>
               <li data-no-turbolink><%= link_to 'Saved Plays', saved_plays_path %></li>
             </ul>
           </li>
+
           <li class="dropdown">
-            <a data-target="#" href="page.html" data-toggle="dropdown" class="dropdown-toggle">Installs <b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle keep-open-on-click" data-toggle="dropdown">Installs <b class="caret"></b></a>
             <ul class="dropdown-menu" id="nav-install-dropdown">
               <% @ievents.each do |ievent| %>
                 <li data-no-turbolink><%= link_to ievent.title, event_path(ievent) %></li>
               <% end %>
             </ul>
           </li>
+
           <li><%= link_to "User Guide", user_guide_page_path %></li>
           <li><%= link_to "Account Settings", edit_user_registration_path %></li>
           <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>

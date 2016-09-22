@@ -1,7 +1,7 @@
 <tbody id="saved_play_<%= saved_play.id %>" class="saved-play-table" data-id="<%= saved_play.id %>">
   <tr>
     <td><%= saved_play.title %></td>
-    <td><button type="button" id="update-saved_play_<%= saved_play.id %>" class="btn btn-custom4 btn-sm pull-right" data-toggle="modal" data-target="#myupdatesaved_play_<%= saved_play.id %>">
+    <td><button type="button" id="update-saved_play_<%= saved_play.id %>" class="btn btn-custom4 btn-xs pull-right" data-toggle="modal" data-target="#myupdatesaved_play_<%= saved_play.id %>">
     	Update or Delete Play
     </button></td>
   </tr>
@@ -20,7 +20,7 @@
 	      <div class="modal-body">
 
 	      <div class="field">
-	        <%= f.label :title %><br>
+	        <%= f.label :title, "Play Name" %><br>
 	        <%= f.text_field :title, class: "form-control" %>
 	      </div>
 

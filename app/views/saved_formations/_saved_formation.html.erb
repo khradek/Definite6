@@ -1,7 +1,7 @@
 <tbody id="saved_formation_<%= saved_formation.id %>" class="formation-table" data-id="<%= saved_formation.id %>">
   <tr>
     <td><%= saved_formation.title %></td>
-    <td><button type="button" id="update-saved_formation_<%= saved_formation.id %>" class="btn btn-custom4 btn-sm pull-right" data-toggle="modal" data-target="#myupdatesaved_formation_<%= saved_formation.id %>">
+    <td><button type="button" id="update-saved_formation_<%= saved_formation.id %>" class="btn btn-custom4 btn-xs pull-right" data-toggle="modal" data-target="#myupdatesaved_formation_<%= saved_formation.id %>">
     	Update or Delete Formation
     </button></td>
   </tr>
@@ -20,7 +20,7 @@
 	      <div class="modal-body">
 
 	      <div class="field">
-	        <%= f.label :title %><br>
+	        <%= f.label :title, "Formation Name" %><br>
 	        <%= f.text_field :title, class: "form-control" %>
 	      </div>
 

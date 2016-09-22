@@ -14,8 +14,8 @@ class Charge < ActiveRecord::Base
       },
       line_items: [
         ["Date",           created_at.strftime("%m/%d/%Y").to_s],
-        ["Account Billed", "#{user.email}"],
-        ["Product",        "Definite6"],
+        ["Account Billed", "#{user.first_name} #{user.last_name} (#{user.email})"],
+        ["Product",        "Definite6.com Annual Subscription"],
         ["Amount",         "$#{amount / 100}.00"],
         ["Charged to",     "#{card_brand} (**** **** **** #{card_last4})"],
       ],
