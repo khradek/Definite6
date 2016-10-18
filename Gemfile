@@ -25,6 +25,7 @@ gem 'stripe', '~> 1.48'
 gem 'stripe_event', '~> 1.5'
 gem 'receipts', '~> 0.1.3'
 gem 'browser', '~> 2.2'
+gem 'sidekiq'
 
 group :production do
 	gem 'pg'

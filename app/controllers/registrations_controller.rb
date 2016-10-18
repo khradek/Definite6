@@ -1,5 +1,12 @@
 class RegistrationsController < Devise::RegistrationsController
   
+  def create
+    super
+    if @user.persisted?
+      NewUserNotificationMailer.new_user(@user).deliver_later
+    end
+  end
+
   def after_sign_up_path_for(resource)
     new_subscription_path
   end

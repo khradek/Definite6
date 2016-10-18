@@ -8,3 +8,20 @@
 }
 
 
+ul.nav li.dropdown:hover > ul.dropdown-menu {
+    display: block;    
+}
+
+
+.navbar-collapse.collapse {
+  display: block!important;
+}
+
+.navbar-nav>li, .navbar-nav {
+  float: left !important;
+}
+
+.navbar-right {
+  float: right!important;
+}
+
