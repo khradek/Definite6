@@ -2,8 +2,9 @@ class RegistrationsController < Devise::RegistrationsController
   
   def create
     super
+    #Sends email to me when new user is created - change to deliver_later when worker dyno is active
     if @user.persisted?
-      NewUserNotificationMailer.new_user(@user).deliver_later
+      NewUserNotificationMailer.new_user(@user).deliver_now
     end
   end
 
