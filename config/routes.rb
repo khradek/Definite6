@@ -41,15 +41,25 @@ Rails.application.routes.draw do
   
   root 'creatives#index'
 
-  get 'pages/user_guide', :as => "user_guide_page"
+  #Articles
+  get 'articles/index'
+  get 'articles/practice_organization'
+  get 'articles/naming_formations'
+  get 'articles/our_most_productive_rpo'
+  get 'articles/goals_and_objectives'
+  get 'articles/the_quick_game_hitch'
+  get 'articles/the_quick_game_fade'
 
-  get 'pages/terms', :as => "terms_page"
 
-  get 'pages/privacy', :as => "privacy_page"
+  get '/user_guide' => "pages#user_guide"
 
-  get 'pages/example_script', :as => "example_script_page"
+  get '/terms' => "pages#terms"
 
-  get 'pages/example_gamecall', :as => "example_gamecall_page"
+  get '/privacy' => "pages#privacy"
+
+  get '/example_script' => "pages#example_script"
+
+  get '/example_gamecall' => "pages#example_gamecall"
 
 
 end

@@ -32,18 +32,6 @@ hr.thick {
     text-align: center;
 }
 
-a {
-    color: #1C85D4;
-    -webkit-transition: all .35s;
-    -moz-transition: all .35s;
-    transition: all .35s;
-}
-
-a:hover,
-a:focus {
-    color: #eb3812;
-}
-
 h1,
 h2,
 h3,
@@ -66,7 +54,6 @@ p {
     background: -webkit-linear-gradient(top,  rgba(37,50,57,1) 0%,rgba(86,95,102,1) 56%,rgba(104,118,140,1) 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to bottom,  rgba(37,50,57,1) 0%,rgba(86,95,102,1) 56%,rgba(104,118,140,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#253239', endColorstr='#68768c',GradientType=0 ); /* IE6-9 */
-
 }
 
 .black-text{
@@ -114,34 +101,6 @@ aside {
     color: #1C85D4;
 }
 
-.navbar-default-landing.navbar-header .navbar-brand:hover,
-.navbar-default-landing.navbar-header .navbar-brand:focus {
-    color: #1C85D4;
-}
-
-.navbar-default-landing.nav > li>a,
-.navbar-default-landing.nav>li>a:focus {
-    text-transform: uppercase;
-    font-size: 13px;
-    font-weight: 700;
-    color: #222;
-}
-
-.navbar-default-landing.nav > li>a:hover,
-.navbar-default-landing.nav>li>a:focus:hover {
-    color: #1C85D4;
-}
-
-.navbar-default-landing.nav > li.active>a,
-.navbar-default-landing.nav>li.active>a:focus {
-    color: #1C85D4!important;
-    background-color: transparent;
-}
-
-.navbar-default-landing.nav > li.active>a:hover,
-.navbar-default-landing.nav>li.active>a:focus:hover {
-    background-color: transparent;
-}
 
 @media(min-width:768px) {
     .navbar-default-landing{
@@ -151,21 +110,6 @@ aside {
 
     .navbar-default-landing.navbar-header .navbar-brand {
         color: rgba(255,255,255,.7);
-    }
-
-    .navbar-default-landing.navbar-header .navbar-brand:hover,
-    .navbar-default-landing.navbar-header .navbar-brand:focus {
-        color: #fff;
-    }
-
-    .navbar-default-landing.nav > li>a,
-    .navbar-default-landing.nav>li>a:focus {
-        color: rgba(255,255,255,.7);
-    }
-
-    .navbar-default-landing.nav > li>a:hover,
-    .navbar-default-landing.nav>li>a:focus:hover {
-        color: #fff;
     }
 
     .navbar-default-landing.affix {
@@ -178,20 +122,6 @@ aside {
         color: #1C85D4;
     }
 
-    .navbar-default-landing.affix .navbar-header .navbar-brand:hover,
-    .navbar-default-landing.affix .navbar-header .navbar-brand:focus {
-        color: #1C85D4;
-    }
-
-    .navbar-default-landing.affix .nav > li>a,
-    .navbar-default-landing.affix .nav>li>a:focus {
-        color: #222;
-    }
-
-    .navbar-default-landing.affix .nav > li>a:hover,
-    .navbar-default-landing.affix .nav>li>a:focus:hover {
-        color: #1C85D4;
-    }
 }
 
 header {
