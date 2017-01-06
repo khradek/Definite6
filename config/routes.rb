@@ -49,6 +49,7 @@ Rails.application.routes.draw do
   get 'articles/goals_and_objectives'
   get 'articles/the_quick_game_hitch'
   get 'articles/the_quick_game_fade'
+  get 'articles/the_quick_game_out'
 
 
   get '/user_guide' => "pages#user_guide"
