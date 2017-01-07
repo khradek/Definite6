@@ -338,6 +338,9 @@ body {
   margin-right: auto  
 }
 
-
+.navbar-default-landing .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    background-color: transparent;
+    color: #000000;
+}
 
 
