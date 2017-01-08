@@ -32,7 +32,7 @@
       <ul class="nav navbar-nav navbar-right">
 
 
-        <li><%= link_to "Articles", articles_index_path %></li>
+        <li><%= link_to "Free Coaching Articles", articles_index_path %></li>
         <% if user_signed_in? %>
           <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
         <% else %>

@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Definite6</title>
-  <%= include_gon %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'https://js.stripe.com/v2/', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  <%= tag :meta, name: "stripe-key", content: STRIPE_PUBLIC %>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-
-</head>
-
-<body class="<%= controller_name %> <%= action_name %>" 
-
-<% if content_for?(:body_attributes) %>
-  <%= yield(:body_attributes) %> 
-<% end %>>
-
-	<%= render partial: "shared/navbar" %>
-
-	<div class="container">
-		<% flash.each do |name, msg| %>
-	     <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
-		<% end %>
-
-		<%= yield %>
-
-    <%= render partial: "shared/footer" %>
+  <head>
+    <title>Definite6</title>
+    <%= include_gon %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'https://js.stripe.com/v2/', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <%= tag :meta, name: "stripe-key", content: STRIPE_PUBLIC %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-	</div>
-	
-</body>
+
+  </head>
+
+  <body class="<%= controller_name %> <%= action_name %>" 
+
+    <% if content_for?(:body_attributes) %>
+      <%= yield(:body_attributes) %> 
+    <% end %>>
+
+    	<%= render partial: "shared/navbar" %>
+
+    	<div class="container">
+    		<% flash.each do |name, msg| %>
+    	     <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
+    		<% end %>
+
+    		<%= yield %>
+
+        <%= render partial: "shared/footer" %>
+        
+    	</div>
+    	
+  </body>
 </html>
