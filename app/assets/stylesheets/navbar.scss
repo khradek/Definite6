@@ -3,15 +3,18 @@
   overflow: auto;
 }
 
+.nav-long-dropdown{
+  max-height: 230px;
+  overflow: auto;
+}
+
 .dropdown-backdrop {
   position: static;
 }
 
-
 ul.nav li.dropdown:hover > ul.dropdown-menu {
     display: block;    
 }
-
 
 .navbar-collapse.collapse {
   display: block!important;

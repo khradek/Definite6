@@ -50,6 +50,7 @@ Rails.application.routes.draw do
   get 'articles/the_quick_game_hitch'
   get 'articles/the_quick_game_fade'
   get 'articles/the_quick_game_out'
+  get 'articles/the_quick_game_slant'
 
 
   get '/user_guide' => "pages#user_guide"
