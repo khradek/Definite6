@@ -86,12 +86,13 @@ aside {
 }
 
 .navbar-default-landing {
-    border-color: rgba(34,34,34,.05);
-    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
-    background-color: #fff;
-    -webkit-transition: all .35s;
-    -moz-transition: all .35s;
-    transition: all .35s;
+  font-weight: bold;
+  border-color: rgba(34,34,34,.05);
+  font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+  background-color: #fff;
+  -webkit-transition: all .35s;
+  -moz-transition: all .35s;
+  transition: all .35s;
 }
 
 .navbar-default-landing.navbar-header .navbar-brand {
@@ -340,7 +341,7 @@ body {
 
 .navbar-default-landing .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
     background-color: transparent;
-    color: #000000;
+    color: #036ccb;
 }
 
 

@@ -1,3 +1,4 @@
+
 .nav-limit-dropdown{
   max-height: 140px;
   overflow: auto;
@@ -27,4 +28,13 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
 .navbar-right {
   float: right!important;
 }
+
+.navbar-default{
+  font-weight: bold;
+}
+
+.active a{
+  background-color: #fff !important;
+}
+
 
