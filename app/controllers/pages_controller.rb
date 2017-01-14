@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  
   def user_guide
   end
 
@@ -14,4 +15,7 @@ class PagesController < ApplicationController
   def example_gamecall
   end
   
+  def sitemap
+  end
+
 end

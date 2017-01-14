@@ -63,5 +63,7 @@ Rails.application.routes.draw do
 
   get '/example_gamecall' => "pages#example_gamecall"
 
+  get '/sitemap' => "pages#sitemap"
+
 
 end
