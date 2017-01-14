@@ -1,73 +1,91 @@
-<h2>Sign up</h2>
+  
+<div class="sign-in-container">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+  <h1 class="text-center">Welcome to Definite6</h1>
 
-  <div class="row">
-    <div class="col-xs-5">
-      <div class="field">
-        <%= f.label :first_name %><br />
-        <%= f.text_field :first_name, autofocus: true, class: "form-control" %>
+  <hr>
+
+  <p>Please complete the form below to create your account.</p>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="field">
+          <%= f.label :first_name %><br />
+          <%= f.text_field :first_name, autofocus: true, class: "form-control" %>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col-xs-5">
-      <div class="field">
-        <%= f.label :last_name %><br />
-        <%= f.text_field :last_name, class: "form-control" %>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="field">
+          <%= f.label :last_name %><br />
+          <%= f.text_field :last_name, class: "form-control" %>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col-xs-5">
-      <div class="field">
-        <%= f.label :team, "School or Team" %><br />
-        <%= f.text_field :team, class: "form-control" %>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="field">
+          <%= f.label :team, "School or Team" %><br />
+          <%= f.text_field :team, class: "form-control" %>
+        </div>
       </div>
     </div>
-  </div>
-    
-  <div class="row">
-    <div class="col-xs-5">
-      <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+      
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, class: "form-control" %>
+        </div>
       </div>
-    </div>
-  </div>  
+    </div>  
 
-  <div class="row">
-    <div class="col-xs-5">
-      <div class="field">
-        <%= f.label :password %>
-        <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="field">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+        </div>
       </div>
-    </div>
-  </div>  
+    </div>  
 
-  <div class="row">
-    <div class="col-xs-5">
-      <div class="field">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="field">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+        </div>
       </div>
-    </div>
-  </div>    
+    </div>    
 
-  <div class="row">
-    <div class="col-xs-5">
-      <div class="actions">
-        <%= f.button "Sign Up", class: "btn btn-custom3", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Registering account..."} %>
+    <br>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="actions">
+          <%= f.button "Sign Up", class: "btn btn-custom3 btn-block", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Registering account..."} %>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
-<br>
-<%= render "devise/shared/links" %>
+  <% end %>
+
+  <br>
+
+  <p>or</p>
+
+  <p>Already have an account?</p>
+
+  <%= render "devise/shared/links" %>
+
+  <hr>
+</div>
 

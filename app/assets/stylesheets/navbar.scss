@@ -35,6 +35,10 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
 
 .active a{
   background-color: #fff !important;
+  color: #036ccb !important;
+  pointer-events: none;
+  cursor: default;
 }
+
 
 
