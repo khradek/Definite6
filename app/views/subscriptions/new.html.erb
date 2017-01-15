@@ -1,62 +1,67 @@
-<h1>Payment Form</h1>
 
-<p>To complete the registration process, please enter your card information into the form below.</p>
+<div class="sign-in-container">
 
-<%= form_tag subscription_path, id: "payment-form" do %>
-  <span class="payment-errors"></span>
+  <h1>Payment Info</h1>
 
-  <hr>
-  
-  <div class="pull-right"><img src="https://www.merchantequip.com/image/?logos=v|m|a|d&height=64" alt="Credit Card Logos" /></div>
-  <div class="row">
-    <div class="col-xs-4">
-      <div class="field">
-        <label>
-          <span>Card Number</span>
-        </label>
-        <input class="form-control" placeholder="1234 5678 9012 3456" type="text" size="20" data-stripe="number">
-      </div>
-    </div>  
-  </div>
+  <p>To complete the registration process, please enter your card information into the form below.</p>
+
+  <%= form_tag subscription_path, id: "payment-form" do %>
+    <span class="payment-errors"></span>
+
+    <hr>
     
-  <div class="row">
-    <div class="col-sm-1">
-      <div class="field">
-        <label>
-          <span>Expiration</span>
-        </label>
-        <input class="form-control" placeholder="MM" type="text" size="10" data-stripe="exp_month">        
-      </div>
-    </div>
-
-    <div class="col-sm-1">
-      <div class="field">
-        <label>&nbsp</label>
-        <input class="form-control" placeholder="YYYY" type="text" size="10" data-stripe="exp_year">
+    <div class="center"><img src="https://www.merchantequip.com/image/?logos=v|m|a|d&height=64" alt="Credit Card Logos" /></div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="field">
+          <label>
+            <span>Card Number</span>
+          </label>
+          <input class="form-control" placeholder="1234 5678 9012 3456" type="text" size="20" data-stripe="number">
+        </div>
       </div>  
     </div>
-
-    <div class="col-sm-1"></div>
-
-    <div class="col-sm-1">
-      <div class="field">
-        <label>
-          <span>CVC</span>
-        </label>  
-        <input class="form-control" placeholder="123" type="text" size="4" data-stripe="cvc">
+      
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="field">
+          <label>
+            <span>Expiration</span>
+          </label>
+          <input class="form-control" placeholder="MM" type="text" size="10" data-stripe="exp_month">        
+        </div>
       </div>
-    </div>
-  </div>  
 
-  <hr> 
-  <% if current_user.stripe_id? %>
-    <h4>Today's charges: $120 for a one year subscription. This will give you unlimited access to Definite6 thru <%= subscription_end.strftime("%m/%d/%Y") %>.</h4>
-  <% else %>
-    <h4>Today's charges: $0 for a 30 day free trial</h4>
-    <h4><%= trial_end.strftime("%m/%d/%Y") %> charges: $120 for a one year subscription.</h4>
+      <div class="col-lg-3">
+        <div class="field">
+          <label>&nbsp</label>
+          <input class="form-control" placeholder="YYYY" type="text" size="10" data-stripe="exp_year">
+        </div>  
+      </div>
+
+      <div class="col-lg-3"></div>
+
+      <div class="col-lg-3">
+        <div class="field">
+          <label>
+            <span>CVC</span>
+          </label>  
+          <input class="form-control" placeholder="123" type="text" size="4" data-stripe="cvc">
+        </div>
+      </div>
+    </div>  
+
+    <hr> 
+    <% if current_user.stripe_id? %>
+      <h4>Today's charges: $120 for a one year subscription. This will give you unlimited access to Definite6 thru <%= subscription_end.strftime("%m/%d/%Y") %>.</h4>
+    <% else %>
+      <h4>Today's charges: $0 for a 30-day free trial</h4>
+      <p>You may cancel at any time prior to <%= trial_end.strftime("%m/%d/%Y") %> with the simple click of a button and your card will not be charged. Please email us at <a href="mailto:admin@definite6.com">admin@definite6.com</a> if you have any questions.</p>
+      <h4><%= trial_end.strftime("%m/%d/%Y") %> charges: $120 for a one-year subscription.</h4>
+    <% end %>
+    <hr>
+    <input type="submit" class="submit btn btn-custom3 btn-block" value="Submit Form & DOMINATE Now!">
+    
   <% end %>
-  <hr>
-  <input type="submit" class="submit btn btn-custom3" value="Submit Payment">
-  
-<% end %>
 
+</div>

@@ -6,6 +6,7 @@
 
 .nav-long-dropdown{
   max-height: 230px;
+  width: 215px;
   overflow: auto;
 }
 
@@ -14,7 +15,7 @@
 }
 
 ul.nav li.dropdown:hover > ul.dropdown-menu {
-    display: block;    
+  display: block;    
 }
 
 .navbar-collapse.collapse {
@@ -40,5 +41,23 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
   cursor: default;
 }
 
+.nav-underline{
+  border-bottom-style: solid;
+  border-color: #b6b6b6;
+  border-width: 1px;
+  padding-bottom: 5px;
+}
 
+.nav-top-padding{
+  padding-top: 5px;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  background-color: transparent;
+  color: #000000;
+}
+
+.navbar-default{
+  background-color: transparent;
+}
 

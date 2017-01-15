@@ -7,7 +7,8 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="definite6-navbar">
-      <ul class="nav navbar-nav navbar-right">
+
+      <ul class="nav navbar-nav navbar-left">
         <% if user_signed_in? %>
           <li data-no-turbolink class="<%= is_active?('/events') %>"><%= link_to 'Calendar', events_path %></li>  
           
@@ -27,9 +28,23 @@
               <% end %>
             </ul>
           </li>
-
-          <li class="<%= is_active?('/users/edit') %>"><%= link_to "Account Settings", edit_user_registration_path %></li>
           <li class="<%= is_active?('/user_guide') %>"><%= link_to "User Guide", user_guide_path %></li>
+        <% end %>   
+                
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+
+        <% if user_signed_in? %>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-lg" aria-hidden="true"></i> <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li class="<%= is_active?('/users/edit') %> nav-underline"><%= link_to "Account Settings", edit_user_registration_path %></li>
+              <li class=nav-top-padding><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li></li>
+            </ul>
+          </li>
+
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Free Coaching Articles <b class="caret"></b></a>
             <ul class="dropdown-menu nav-long-dropdown">
@@ -44,8 +59,9 @@
               <li class="<%= is_active?('/articles/naming_formations') %>"><%= link_to "Naming Formations", articles_naming_formations_path %></li>
             </ul>
           </li>  
-          <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+
         <% else %>
+
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Free Coaching Articles <b class="caret"></b></a>
             <ul class="dropdown-menu nav-long-dropdown">
@@ -59,11 +75,13 @@
               <li class="<%= is_active?('/articles/goals_and_objectives') %>"><%= link_to "Goals and Objectives", articles_goals_and_objectives_path %></li>
               <li class="<%= is_active?('/articles/naming_formations') %>"><%= link_to "Naming Formations", articles_naming_formations_path %></li>
             </ul>
-          </li> 
-          <li class="<%= is_active?('/user_guide') %>"><%= link_to "User Guide", user_guide_path %></li>
+          </li>  
+
           <li class="<%= is_active?('/users/sign_up') %>"><%= link_to "Sign Up", new_user_registration_path %></li>
           <li class="<%= is_active?('/users/sign_in') %>"><%= link_to "Sign In", new_user_session_path %></li>
+
         <% end %>
+        
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

@@ -1,233 +1,236 @@
-<h1 align="center">My Account</h1>
-
-<% if current_user.subscribed? && !current_user.cancelled? %>
-
-  <h5>Your current billing period ends: <%= current_user.subscription_end.strftime("%m/%d/%Y") %></h5>
-
-  <hr>
-<% end %>
-
-<h3>Update Personal Info</h3>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
- 
-  <div class="row">
-    <div class="col-xs-5">
-      <div class="field">
-        <%= f.label :first_name %><br />
-        <%= f.text_field :first_name, autofocus: true, class: "form-control" %>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-5">
-      <div class="field">
-        <%= f.label :last_name %><br />
-        <%= f.text_field :last_name, class: "form-control" %>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-5">
-      <div class="field">
-        <%= f.label :team, "School or Team" %><br />
-        <%= f.text_field :team, class: "form-control" %>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-5">
-      <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, class: "form-control" %>
-      </div>
-    </div>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.button "Update Personal Info", class: "btn btn-custom3", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Updating..."} %>
-  </div>
-<% end %>
-
-<hr>
-
-<h3>Change Password</h3>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-
-
-  <div class="row">
-    <div class="col-xs-5">
-      <div class="field">
-        <%= f.label :current_password, "Current password" %> <br />
-        <%= f.password_field :current_password, autocomplete: "off", class: "form-control", id: "currentPword" %>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-5">
-      <div class="field">
-        <%= f.label :password, "New password" %> <i>(must be at least 6 characters in length)</i><br />
-        <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "newPword" %>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-5">
-      <div class="field">
-        <%= f.label :password_confirmation, "Confirm new password" %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", id: "newPwordConfirm" %>
-      </div>
-    </div>
-  </div>
-
-  <div class="actions">
-    <%= f.button "Change Password", class: "btn btn-custom3", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Updating..."} %>
-  </div>
-
-<% end %>
-
-
-<hr>
-
-<h3 id="charges-link">Prior Charges/Receipts <i class="fa fa-arrow-circle-right right-arrow ht blue" aria-hidden="true"></i><i class="fa fa-arrow-circle-down down-arrow blue" aria-hidden="true"></i></h3>
-
-<div id="charges-section">
-  <% if current_user.charges.exists? %>
-    <div class="media">
-      <div class="media-body">
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Amount</th>
-              <th>Card</th>
-              <th class="text-center">Receipt</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <% current_user.charges. each do |charge| %>
-              <tr>
-                <td><%= charge.charge_date.strftime("%m/%d/%Y") %></td>
-                <td><%= number_to_currency(charge.amount * 0.01) %></td>
-                <% if charge.card_brand != "American Express" %>
-                  <td><%= charge.card_brand %> **** **** **** <%= charge.card_last4%></td>
-                <% else %>
-                  <td><%= charge.card_brand %> **** ****** *<%= charge.card_last4%></td>
-                <% end %>  
-                <td class="text-center">
-                  <%= link_to charge_path(charge, format: :pdf), target: "_blank" do %>
-                    <i class="fa fa-file-pdf-o fa-lg red" aria-hidden="true"></i>
-                  <% end %>
-                </td>
-              </tr>
-            <% end%>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  <% else %>
-    <p>You do not have any charges.</p>
-  <% end %>
-</div>
-
-<hr>
-
-<% if current_user.subscribed? && !current_user.cancelled? %>
-
-  <h3 id="update-card-link">Update Card <i class="fa fa-arrow-circle-right right-arrow ht blue" aria-hidden="true"></i><i class="fa fa-arrow-circle-down down-arrow blue" aria-hidden="true"></i></h3>
   
-  <div id="update-card-section">
-    <p>Your current card on file is:</p>
-    <% if current_user.card_brand != "American Express" %>
-      <div><b><%= current_user.card_brand%></b> **** **** **** <%= current_user.card_last4 %></div>
-    <% else %>
-      <div><b><%= current_user.card_brand%></b> **** ****** *<%= current_user.card_last4%></div>
-    <% end %>  
-    <div><b>Expires: </b><%= current_user.card_exp_month %> / <%= current_user.card_exp_year %></div>
+<div class="sign-in-container">
+  <h1 align="center">My Account</h1>
+
+  <% if current_user.subscribed? && !current_user.cancelled? %>
+
+    <h5>Your current billing period ends: <%= current_user.subscription_end.strftime("%m/%d/%Y") %></h5>
 
     <hr>
+  <% end %>
 
-    <h4>Please enter new card information below</h4>
+  <h3>Update Personal Info</h3>
 
-    <%= form_tag card_path, method: :put, id: "payment-form" do %>
-      <span class="payment-errors red"></span>
-      
-      <div class="pull-right"><img src="https://www.merchantequip.com/image/?logos=v|m|a|d&height=64" alt="Credit Card Logos" /></div>
-      <div class="row">
-        <div class="col-xs-4">
-          <div class="field">
-            <label>
-              <span>Card Number</span>
-            </label>
-            <input class="form-control" placeholder="1234 5678 9012 3456" type="text" size="20" data-stripe="number">
-          </div>
-        </div>  
-      </div>
-        
-      <div class="row">
-        <div class="col-sm-1">
-          <div class="field">
-            <label>
-              <span>Expiration</span>
-            </label>
-            <input class="form-control" placeholder="MM" type="text" size="10" data-stripe="exp_month">        
-          </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+   
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="field">
+          <%= f.label :first_name %><br />
+          <%= f.text_field :first_name, autofocus: true, class: "form-control" %>
         </div>
+      </div>
+    </div>
 
-        <div class="col-sm-1">
-          <div class="field">
-            <label>&nbsp</label>
-            <input class="form-control" placeholder="YYYY" type="text" size="10" data-stripe="exp_year">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="field">
+          <%= f.label :last_name %><br />
+          <%= f.text_field :last_name, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="field">
+          <%= f.label :team, "School or Team" %><br />
+          <%= f.text_field :team, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+    <div class="actions">
+      <%= f.button "Update Personal Info", class: "btn btn-custom3 btn-block", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Updating..."} %>
+    </div>
+  <% end %>
+
+  <hr>
+
+  <h3>Change Password</h3>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= devise_error_messages! %>
+
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="field">
+          <%= f.label :current_password, "Current password" %> <br />
+          <%= f.password_field :current_password, autocomplete: "off", class: "form-control", id: "currentPword" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="field">
+          <%= f.label :password, "New password" %> <i>(must be at least 6 characters in length)</i><br />
+          <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "newPword" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="field">
+          <%= f.label :password_confirmation, "Confirm new password" %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", id: "newPwordConfirm" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= f.button "Change Password", class: "btn btn-custom3 btn-block", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Updating..."} %>
+    </div>
+
+  <% end %>
+
+  <hr>
+
+  <h3 id="charges-link">Prior Charges/Receipts <i class="fa fa-arrow-circle-right right-arrow ht blue" aria-hidden="true"></i><i class="fa fa-arrow-circle-down down-arrow blue" aria-hidden="true"></i></h3>
+
+  <div id="charges-section">
+    <% if current_user.charges.exists? %>
+      <div class="media">
+        <div class="media-body">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Card</th>
+                <th class="text-center">Receipt</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% current_user.charges. each do |charge| %>
+                <tr>
+                  <td><%= charge.charge_date.strftime("%m/%d/%Y") %></td>
+                  <td><%= number_to_currency(charge.amount * 0.01) %></td>
+                  <% if charge.card_brand != "American Express" %>
+                    <td><%= charge.card_brand %> **** **** **** <%= charge.card_last4%></td>
+                  <% else %>
+                    <td><%= charge.card_brand %> **** ****** *<%= charge.card_last4%></td>
+                  <% end %>  
+                  <td class="text-center">
+                    <%= link_to charge_path(charge, format: :pdf), target: "_blank" do %>
+                      <i class="fa fa-file-pdf-o fa-lg red" aria-hidden="true"></i>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end%>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    <% else %>
+      <p>You do not have any charges.</p>
+    <% end %>
+  </div>
+
+  <hr>
+
+  <% if current_user.subscribed? && !current_user.cancelled? %>
+
+    <h3 id="update-card-link">Update Card <i class="fa fa-arrow-circle-right right-arrow ht blue" aria-hidden="true"></i><i class="fa fa-arrow-circle-down down-arrow blue" aria-hidden="true"></i></h3>
+    
+    <div id="update-card-section">
+      <p>Your current card on file is:</p>
+      <% if current_user.card_brand != "American Express" %>
+        <div><b><%= current_user.card_brand%></b> **** **** **** <%= current_user.card_last4 %></div>
+      <% else %>
+        <div><b><%= current_user.card_brand%></b> **** ****** *<%= current_user.card_last4%></div>
+      <% end %>  
+      <div><b>Expires: </b><%= current_user.card_exp_month %> / <%= current_user.card_exp_year %></div>
+
+      <hr>
+
+      <h4>Please enter new card information below</h4>
+
+      <%= form_tag card_path, method: :put, id: "payment-form" do %>
+        <span class="payment-errors red"></span>
+        
+        <div class="center"><img src="https://www.merchantequip.com/image/?logos=v|m|a|d&height=64" alt="Credit Card Logos" /></div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="field">
+              <label>
+                <span>Card Number</span>
+              </label>
+              <input class="form-control" placeholder="1234 5678 9012 3456" type="text" size="20" data-stripe="number">
+            </div>
           </div>  
         </div>
-
-        <div class="col-sm-1"></div>
-
-        <div class="col-sm-1">
-          <div class="field">
-            <label>
-              <span>CVC</span>
-            </label>  
-            <input class="form-control" placeholder="123" type="text" size="4" data-stripe="cvc">
+          
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="field">
+              <label>
+                <span>Expiration</span>
+              </label>
+              <input class="form-control" placeholder="MM" type="text" size="10" data-stripe="exp_month">        
+            </div>
           </div>
+
+          <div class="col-lg-3">
+            <div class="field">
+              <label>&nbsp</label>
+              <input class="form-control" placeholder="YYYY" type="text" size="10" data-stripe="exp_year">
+            </div>  
+          </div>
+
+          <div class="col-lg-3"></div>
+
+          <div class="col-lg-3">
+            <div class="field">
+              <label>
+                <span>CVC</span>
+              </label>  
+              <input class="form-control" placeholder="123" type="text" size="4" data-stripe="cvc">
+            </div>
+          </div>
+        </div> 
+        <div class="actions">
+          <%= button_tag "Update Card", class: "submit btn btn-custom3 btn-block" %>
         </div>
-      </div> 
-      <div class="actions">
-        <%= button_tag "Update Card", class: "submit btn btn-custom3" %>
-      </div>
-    <% end %> 
-  </div>
+      <% end %> 
+    </div>
+      
+    <hr>
+
+    <h3 id="deactivate-account-link">Deactivate my Account <i class="fa fa-arrow-circle-right right-arrow ht blue" aria-hidden="true"></i><i class="fa fa-arrow-circle-down down-arrow blue" aria-hidden="true"></i></h3>  
+
+    <div id="deactivate-account-section">
+      <p>Click below to deactivate your account - this will stop any future charges, but you will no longer have access to Definite6 after <%= current_user.subscription_end.strftime("%m/%d/%Y") %>. All saved data may be deleted after this date.</p> 
+      <%= button_to "Deactivate my Account", subscription_path, data: { confirm: "Are you sure? After #{current_user.subscription_end.strftime('%m/%d/%Y')} you will no longer have access." }, method: :delete, class: "btn btn-custom2 btn-block" %>
+    </div>
+    <hr>
+
+  <% elsif current_user.subscribed? && current_user.cancelled?%>
     
-  <hr>
+    <p>You have chosen to deactivate your account. Your account will remain active until <%= current_user.subscription_end.strftime("%m/%d/%Y") %> and will not be charged. Please contact us at <a href="mailto:admin@definite6.com">admin@definite6.com</a> if you have any questions.</p>
 
-  <h3 id="deactivate-account-link">Deactivate my Account <i class="fa fa-arrow-circle-right right-arrow ht blue" aria-hidden="true"></i><i class="fa fa-arrow-circle-down down-arrow blue" aria-hidden="true"></i></h3>  
+  <% else %>
+    <p>Your account is not currently active. Click the button below to provide payment and activate your account.</p>
+    <%= link_to "Activate Account", new_subscription_path, :class => "btn btn-custom4 btn-block", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading payment form..."} %>  
+  <% end %>
 
-  <div id="deactivate-account-section">
-    <p>Click below to deactivate your account - this will stop any future charges, but you will no longer have access to Definite6 after <%= current_user.subscription_end.strftime("%m/%d/%Y") %>. All saved data may be deleted after this date.</p> 
-    <%= button_to "Deactivate my Account", subscription_path, data: { confirm: "Are you sure? After #{current_user.subscription_end.strftime('%m/%d/%Y')} you will no longer have access." }, method: :delete, class: "btn btn-custom2" %>
-  </div>
-  <hr>
-
-<% elsif current_user.subscribed? && current_user.cancelled?%>
-  
-  <p>You have chosen to deactivate your account. Your account will remain active until <%= current_user.subscription_end.strftime("%m/%d/%Y") %> and will not be charged. Please contact us at <a href="mailto:admin@definite6.com">admin@definite6.com</a> if you have any questions.</p>
-
-<% else %>
-  <p>Your account is not currently active. Click the button below to provide payment and activate your account.</p>
-  <%= link_to "Activate Account", new_subscription_path, :class => "btn btn-custom4 btn", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading payment form..."} %>  
-<% end %>
+</div>
 
 <br>
 <br>
