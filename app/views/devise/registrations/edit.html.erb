@@ -1,12 +1,14 @@
+<% @title= "My Account - Definite6.com" %>
   
 <div class="sign-in-container">
   <h1 align="center">My Account</h1>
+
+  <hr class="light-red">
 
   <% if current_user.subscribed? && !current_user.cancelled? %>
 
     <h5>Your current billing period ends: <%= current_user.subscription_end.strftime("%m/%d/%Y") %></h5>
 
-    <hr>
   <% end %>
 
   <h3>Update Personal Info</h3>
@@ -58,7 +60,8 @@
     </div>
   <% end %>
 
-  <hr>
+  <br>
+  <hr class="light-blue">
 
   <h3>Change Password</h3>
 
@@ -99,7 +102,8 @@
 
   <% end %>
 
-  <hr>
+  <br>
+  <hr class="light-blue">
 
   <h3 id="charges-link">Prior Charges/Receipts <i class="fa fa-arrow-circle-right right-arrow ht blue" aria-hidden="true"></i><i class="fa fa-arrow-circle-down down-arrow blue" aria-hidden="true"></i></h3>
 
@@ -141,9 +145,10 @@
     <% else %>
       <p>You do not have any charges.</p>
     <% end %>
+    <br>
   </div>
 
-  <hr>
+  <hr class="light-blue">
 
   <% if current_user.subscribed? && !current_user.cancelled? %>
 
@@ -209,25 +214,35 @@
           <%= button_tag "Update Card", class: "submit btn btn-custom3 btn-block" %>
         </div>
       <% end %> 
+    <br>  
     </div>
-      
-    <hr>
+
+    <hr class="light-blue">
 
     <h3 id="deactivate-account-link">Deactivate my Account <i class="fa fa-arrow-circle-right right-arrow ht blue" aria-hidden="true"></i><i class="fa fa-arrow-circle-down down-arrow blue" aria-hidden="true"></i></h3>  
 
     <div id="deactivate-account-section">
       <p>Click below to deactivate your account - this will stop any future charges, but you will no longer have access to Definite6 after <%= current_user.subscription_end.strftime("%m/%d/%Y") %>. All saved data may be deleted after this date.</p> 
       <%= button_to "Deactivate my Account", subscription_path, data: { confirm: "Are you sure? After #{current_user.subscription_end.strftime('%m/%d/%Y')} you will no longer have access." }, method: :delete, class: "btn btn-custom2 btn-block" %>
+      <br>
     </div>
-    <hr>
+
+    <hr class="light-red">
 
   <% elsif current_user.subscribed? && current_user.cancelled?%>
     
     <p>You have chosen to deactivate your account. Your account will remain active until <%= current_user.subscription_end.strftime("%m/%d/%Y") %> and will not be charged. Please contact us at <a href="mailto:admin@definite6.com">admin@definite6.com</a> if you have any questions.</p>
+    
+    <br>
+    <hr class="light-red">
 
   <% else %>
     <p>Your account is not currently active. Click the button below to provide payment and activate your account.</p>
     <%= link_to "Activate Account", new_subscription_path, :class => "btn btn-custom4 btn-block", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading payment form..."} %>  
+
+    <br>
+    <hr class="light-red">
+
   <% end %>
 
 </div>

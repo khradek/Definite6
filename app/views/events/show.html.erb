@@ -1,55 +1,67 @@
+<% @title = @event.title + " - Definite6.com"%>
+
 <p id="notice"><%= notice %></p>
+
 
 <h1 class="install-header"><%= @event.title %></h1>
 
+
 <p>
-<div class="fake-h4">Dates:&nbsp </div><div class="inline"><%= @event.start_time.strftime("%m-%d-%Y") %> - <%= @event.end_time.strftime("%m-%d-%Y") %></div>
+<div class="fake-h4 inline">Dates:&nbsp </div><div class="inline"><%= @event.start_time.strftime("%m-%d-%Y") %> - <%= @event.end_time.strftime("%m-%d-%Y") %></div>
 </p>
+
+<% unless browser.chrome? || browser.safari?%>
+  <p class="center red"><strong>***Definite6 works best on the Google Chrome web browswer >> <%= link_to 'Click Here to Download Google Chrome', 'https://www.google.com/chrome/browser/desktop/index.html', target: "_blank" %>***</strong></p>
+<% end %>
 
 <p>
 <% if @event.description? %>
   <div class="inline"><%= @event.description %></div>
 <% end %>
 </p>
-<hr>
 
-<div class="media">
-  <div class="media-body">
-    <table class="table table-hover sortable" id="plays_table">
-      <thead id="plays-thead">
-        <tr>
-          <th>Play Name</th>
-          <th>Run/Pass</th>
-          <th>Hash</th>
-          <th class="table-center small-font">Segment 1</th>
-          <th class="table-center small-font">Segment 2</th>
-          <th class="table-center small-font">Segment 3</th>
-          <th class="table-center small-font">Segment 4</th>
-        </tr>   
-      </thead>
-      <tbody>
-      </tbody>
-      <tfoot id="plays-tfoot">
-        <tr>
-          <td class="table-footer">Total Plays per Segment</td>
-          <td colspan=2></td>
-          <td class="table-footer table-center" id="period1-count"><%= @period1_count %></td>
-          <td class="table-footer table-center" id="period2-count"><%= @period2_count %></td>
-          <td class="table-footer table-center" id="period3-count"><%= @period3_count %></td>
-          <td class="table-footer table-center" id="period4-count"><%= @period4_count %></td>
-        </tr>  
-      </tfoot>
-      <div id="container_plays">
-        <%= render partial: "events/plays/play", collection: @plays %>
-      </div>
-    </table>
-  </div>
-</div>    
+<div class="install-box">
+  <div class="media">
+    <div class="media-body">
+      <table class="table table-hover sortable" id="plays_table">
+        <thead id="plays-thead">
+          <tr>
+            <th class="fake-h4">Play Name</th>
+            <th>Run/Pass</th>
+            <th>Hash</th>
+            <th class="table-center small-font">Segment 1</th>
+            <th class="table-center small-font">Segment 2</th>
+            <th class="table-center small-font">Segment 3</th>
+            <th class="table-center small-font">Segment 4</th>
+            <th></th>
+          </tr>   
+        </thead>
+        <tbody>
+        </tbody>
+        <tfoot id="plays-tfoot">
+          <tr>
+            <td class="table-footer">Total Plays per Segment</td>
+            <td colspan=2></td>
+            <td class="table-footer table-center" id="period1-count"><%= @period1_count %></td>
+            <td class="table-footer table-center" id="period2-count"><%= @period2_count %></td>
+            <td class="table-footer table-center" id="period3-count"><%= @period3_count %></td>
+            <td class="table-footer table-center" id="period4-count"><%= @period4_count %></td>
+          </tr>  
+        </tfoot>
+        <div id="container_plays">
+          <%= render partial: "events/plays/play", collection: @plays %>
+        </div>
+      </table>
+    </div>
+  </div>    
 
-<% if @period1_count > 25 || @period2_count > 25 || @period3_count > 25 || @period4_count > 25  %>
-  <div id="count-alert" class="red">Only the first 25 plays in each period will be included in the script initially created.</div> 
-  <br> 
-<% end %>
+  <% if @period1_count > 25 || @period2_count > 25 || @period3_count > 25 || @period4_count > 25  %>
+    <div id="count-alert" class="red">Only the first 25 plays in each period will be included in the script initially created.</div> 
+    <br> 
+  <% end %>
+</div>
+
+<br>
 
 <span><%= link_to 'Printer Friendly Play List', event_print_path(@event), class: "btn btn-custom3 btn-sm", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading Printable List..."} %></span>
 
@@ -137,19 +149,23 @@
 
 <br>
 <br>
+
 <div>
   <%= render partial: "events/plays/newplay" %>
 </div>
 
 <br>
-<hr>
+
+<hr class="light-red">
+
+<p class="center fake-h4">Scripts</p>
 
 <div class="media">
   <div class="media-body">
     <table class="table table-hover">
       <thead>
         <tr>
-          <th>Scripts for <%= @event.title %></th>
+          <th>Practice Scripts for <%= @event.title %></th>
           <th class="table-center">Date</th>
         </tr>   
       </thead>
@@ -167,7 +183,15 @@
 </div>
 
 <br>
-<hr>
+
+<hr class="light-red">
+
+<% if @gamecall_count > 1 %>
+ <p class="center fake-h4">Call Sheets</p>
+<% else %>
+  <p class="center fake-h4">Call Sheet</p>
+<% end %>
+
 
 <div class="media">
   <div class="media-body">
@@ -191,7 +215,10 @@
   <%= render partial: "events/gamecalls/newgamecall" %>
 </div>
 
-<hr> 
+<br>
+
+<hr class="light-red">
+
 <br>
 <br>
 <br>

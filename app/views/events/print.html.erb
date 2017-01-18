@@ -1,3 +1,4 @@
+<% @title = "Printer Friendly Playlist - Definite6.com"%>
 
 <div id="idata1" class="hidden">
   [["<%= @event.title%>", "", ""],
@@ -63,20 +64,23 @@
 
 <p></p>
 
-<div id="installPrint1"></div>
+<div class="sign-in-container">
+  <div id="installPrint1"></div>
 
-<footer></footer>
+  <footer></footer>
 
-<% if @event.plays.count > 40 %>
-  <div id="installPrint2"></div>
-<% end %>   
+  <% if @event.plays.count > 40 %>
+    <div id="installPrint2"></div>
+  <% end %>   
 
-<footer></footer>
+  <footer></footer>
 
-<% if @event.plays.count > 80 %>
-  <div id="installPrint3"></div>
-  <br>
-  <br>
-<% end %> 
-
-
+  <% if @event.plays.count > 80 %>
+    <div id="installPrint3"></div>
+    <br>
+    <br>
+  <% end %> 
+</div>
+<br>
+<br>
+<br>

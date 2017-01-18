@@ -1,25 +1,29 @@
+<% @title= "Saved Formations - Definite6.com" %>
+
 <div class="container">
   <p id="notice"><%= notice %></p>
 
   <h1 align="center">Saved Formations</h1>
 
-  <div class="media">
-    <div class="media-body">
-      <table class="table table-hover sortable">
-        <thead id="formations-thead">
-          <tr>
-            <th>Formation Name</th>
-            <th></th>
-          </tr>   
-        </thead>
-        <tbody>
-        <div id="container_saved_formations">
-          <%= render @saved_formations %>
-        </div>
-        </tbody>
-      </table>
-    </div>
-  </div>         
+  <div class="install-box">
+    <div class="media">
+      <div class="media-body">
+        <table class="table table-hover sortable">
+          <thead id="formations-thead">
+            <tr>
+              <th>Formation Name</th>
+              <th></th>
+            </tr>   
+          </thead>
+          <tbody>
+          <div id="container_saved_formations">
+            <%= render @saved_formations %>
+          </div>
+          </tbody>
+        </table>
+      </div>
+    </div>     
+  </div>    
 
   <br>
 

@@ -1,5 +1,11 @@
+<% @title= "Calendar - Definite6.com" %>
+
 <div class="container">
   
+  <% unless browser.chrome? %>
+    <p class="center red"><strong>***Definite6 works best on the Google Chrome web browswer >> <%= link_to 'Click Here to Download Google Chrome', 'https://www.google.com/chrome/browser/desktop/index.html', target: "_blank" %>***</strong></p>
+  <% end %>
+
   <h1>What's Happening</h1>
   <hr>
   <!-- Have to render _events because update modal is located there -->

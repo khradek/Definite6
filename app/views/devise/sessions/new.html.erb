@@ -1,8 +1,10 @@
+<% @title= "Sign In - Definite6.com" %>
+
 <div class="sign-in-container">
 
   <h1 class="text-center">Welcome Back!</h1>
 
-  <hr>
+  <hr class="light-blue">
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     
@@ -51,7 +53,9 @@
 
   <%= render "devise/shared/links" %>
 
-  <hr>
+  <br>
+  <br>
+  <hr class="light-blue">
 
 </div>
 

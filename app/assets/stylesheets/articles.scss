@@ -12,11 +12,6 @@
   font-size: 1.2em;
 }
 
-.thin-container{
-  margin: auto;
-  max-width: 70%;
-}
-
 .center{
   text-align: center;
 }
@@ -29,14 +24,16 @@
 .formation-image{
   display: block;
   margin: auto;
-  width: 70%;
+  width: 95%;
 }
 
 .title{
   font-size: 1.9em;
+  font-weight: 700;
   margin-top: 5px;
   margin-bottom: 10px;
 }
+
 
 .box{
   border-bottom-style: double;
@@ -48,3 +45,24 @@
 .preview-text{
   color: #8b8787;
 }
+
+.thin-container{
+  margin: auto;
+  max-width: 75%;
+}
+
+@media (min-width: 500px){
+  .article-box{
+    border-style: ridge;
+    border-width: 25px;
+    padding: 20px 40px 40px 40px;
+    background-color: #fff;
+    border-color: #E8E8E8;
+  }
+}
+
+
+
+
+
+

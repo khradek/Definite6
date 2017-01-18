@@ -286,5 +286,41 @@
   max-width: 45%;
 }
 
+.sign-in-container{
+  margin: auto;
+  max-width: 45%;
+}
 
+.install-box{
+  border-style: ridge;
+  border-width: 10px;
+  padding-top: 20px;
+  padding-bottom: 0px;
+  background-color: #fff;
+  border-color: #b6b6b6;
+}
+
+body { background: #F5F5F5 !important;}
+
+hr.light-red {
+  height: 30px;
+  border: 0;
+  box-shadow: inset 0 30px 30px -30px rgba(173, 0, 0, 0.84);
+}
+
+hr.light-blue {
+  height: 30px;
+  border: 0;
+  box-shadow: inset 0 30px 30px -30px rgba(0, 76, 163, 0.84);
+}
+
+.print-playlist-container{
+  margin: auto;
+  max-width: 80%;
+}
+
+.thank-you-container{
+  margin: auto;
+  max-width: 60%;
+}
 

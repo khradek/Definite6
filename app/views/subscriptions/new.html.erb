@@ -1,14 +1,14 @@
 
 <div class="sign-in-container">
 
-  <h1>Payment Info</h1>
+  <h1 class="center">Payment Info</h1>
 
   <p>To complete the registration process, please enter your card information into the form below.</p>
 
   <%= form_tag subscription_path, id: "payment-form" do %>
     <span class="payment-errors"></span>
 
-    <hr>
+    <hr class="light-blue">
     
     <div class="center"><img src="https://www.merchantequip.com/image/?logos=v|m|a|d&height=64" alt="Credit Card Logos" /></div>
     <div class="row">
@@ -51,15 +51,17 @@
       </div>
     </div>  
 
-    <hr> 
+    <hr>
+
     <% if current_user.stripe_id? %>
       <h4>Today's charges: $120 for a one year subscription. This will give you unlimited access to Definite6 thru <%= subscription_end.strftime("%m/%d/%Y") %>.</h4>
     <% else %>
       <h4>Today's charges: $0 for a 30-day free trial</h4>
       <p>You may cancel at any time prior to <%= trial_end.strftime("%m/%d/%Y") %> with the simple click of a button and your card will not be charged. Please email us at <a href="mailto:admin@definite6.com">admin@definite6.com</a> if you have any questions.</p>
       <h4><%= trial_end.strftime("%m/%d/%Y") %> charges: $120 for a one-year subscription.</h4>
+      <p>To help facilitate the reimbursement process with your athletic department (if applicable), a PDF receipt for the charge will appear in your Account Settings page on <%= trial_end.strftime("%m/%d/%Y") %>.</p>
     <% end %>
-    <hr>
+    <hr class="light-blue">
     <input type="submit" class="submit btn btn-custom3 btn-block" value="Submit Form & DOMINATE Now!">
     
   <% end %>

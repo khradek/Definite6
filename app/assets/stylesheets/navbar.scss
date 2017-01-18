@@ -32,6 +32,10 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
 
 .navbar-default{
   font-weight: bold;
+  background-color: #fff;
+  border-bottom-color: rgba(220, 221, 223, 0.84);
+  border-bottom-width: 6px;
+  border-bottom-style: ridge;
 }
 
 .active a{
@@ -57,7 +61,10 @@ ul.nav li.dropdown:hover > ul.dropdown-menu {
   color: #000000;
 }
 
-.navbar-default{
-  background-color: transparent;
+.navbar-brand {
+  text-transform: uppercase !important;
+  font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif !important;
+  font-weight: 700 !important;
+  color: #036ccb !important;
 }
 

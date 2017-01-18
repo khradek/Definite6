@@ -65,5 +65,6 @@ Rails.application.routes.draw do
 
   get '/sitemap' => "pages#sitemap"
 
+  get '/thank_you' => "pages#thank_you"
 
 end
