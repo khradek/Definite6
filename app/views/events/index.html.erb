@@ -6,8 +6,12 @@
     <p class="center red"><strong>***Definite6 works best on the Google Chrome web browswer >> <%= link_to 'Click Here to Download Google Chrome', 'https://www.google.com/chrome/browser/desktop/index.html', target: "_blank" %>***</strong></p>
   <% end %>
 
-  <h1>What's Happening</h1>
-  <hr>
+  <br>
+
+  <p class="large-text center"><%= current_user.team %></p>
+
+  <br>
+
   <!-- Have to render _events because update modal is located there -->
   <div class="row" id="container-events">
     <%= render @events %>
@@ -91,7 +95,8 @@
   <!-- Modal -->
 </div>
 
-<div id='calendar'></div>
-
+<div class="article-box">
+  <div id='calendar'></div>
+</div>
 
 

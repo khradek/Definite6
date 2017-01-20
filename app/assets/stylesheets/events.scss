@@ -95,10 +95,6 @@
 	color:red;
 }
 
-.install-header {
-	text-align: center;
-}
-
 .script-col1 {
 	width: 60%
 }
@@ -128,7 +124,19 @@
   font-size: .85em;
 }
 
+@media (min-width: 768px){
+  .large-text{
+    font-size: 3.75em;
+    font-weight: 700;
+  }
+}
 
+@media (max-width: 768px){
+  .large-text{
+    font-size: 1.5em;
+    font-weight: 700;
+  }
+}
 
 /*Blue*/
 .btn-custom1 {

@@ -1,226 +1,268 @@
-<% @title = @event.title + " - Definite6.com"%>
+<% if @event.event_type == "Install" %>
 
-<p id="notice"><%= notice %></p>
+  <% @title = @event.title + " - Definite6.com" %>
 
+  <p id="notice"><%= notice %></p>
 
-<h1 class="install-header"><%= @event.title %></h1>
+  <br>
 
+  <p class="large-text center"><%= @event.title %></h1>
 
-<p>
-<div class="fake-h4 inline">Dates:&nbsp </div><div class="inline"><%= @event.start_time.strftime("%m-%d-%Y") %> - <%= @event.end_time.strftime("%m-%d-%Y") %></div>
-</p>
+  <br>
 
-<% unless browser.chrome? || browser.safari?%>
-  <p class="center red"><strong>***Definite6 works best on the Google Chrome web browswer >> <%= link_to 'Click Here to Download Google Chrome', 'https://www.google.com/chrome/browser/desktop/index.html', target: "_blank" %>***</strong></p>
-<% end %>
+  <p>
+  <div class="fake-h4 inline">Dates:&nbsp </div><div class="inline"><%= @event.start_time.strftime("%m-%d-%Y") %> - <%= @event.end_time.strftime("%m-%d-%Y") %></div>
+  </p>
 
-<p>
-<% if @event.description? %>
-  <div class="inline"><%= @event.description %></div>
-<% end %>
-</p>
-
-<div class="install-box">
-  <div class="media">
-    <div class="media-body">
-      <table class="table table-hover sortable" id="plays_table">
-        <thead id="plays-thead">
-          <tr>
-            <th class="fake-h4">Play Name</th>
-            <th>Run/Pass</th>
-            <th>Hash</th>
-            <th class="table-center small-font">Segment 1</th>
-            <th class="table-center small-font">Segment 2</th>
-            <th class="table-center small-font">Segment 3</th>
-            <th class="table-center small-font">Segment 4</th>
-            <th></th>
-          </tr>   
-        </thead>
-        <tbody>
-        </tbody>
-        <tfoot id="plays-tfoot">
-          <tr>
-            <td class="table-footer">Total Plays per Segment</td>
-            <td colspan=2></td>
-            <td class="table-footer table-center" id="period1-count"><%= @period1_count %></td>
-            <td class="table-footer table-center" id="period2-count"><%= @period2_count %></td>
-            <td class="table-footer table-center" id="period3-count"><%= @period3_count %></td>
-            <td class="table-footer table-center" id="period4-count"><%= @period4_count %></td>
-          </tr>  
-        </tfoot>
-        <div id="container_plays">
-          <%= render partial: "events/plays/play", collection: @plays %>
-        </div>
-      </table>
-    </div>
-  </div>    
-
-  <% if @period1_count > 25 || @period2_count > 25 || @period3_count > 25 || @period4_count > 25  %>
-    <div id="count-alert" class="red">Only the first 25 plays in each period will be included in the script initially created.</div> 
-    <br> 
+  <% unless browser.chrome? || browser.safari?%>
+    <p class="center red"><strong>***Definite6 works best on the Google Chrome web browswer >> <%= link_to 'Click Here to Download Google Chrome', 'https://www.google.com/chrome/browser/desktop/index.html', target: "_blank" %>***</strong></p>
   <% end %>
-</div>
 
-<br>
+  <p>
+  <% if @event.description? %>
+    <div class="inline"><%= @event.description %></div>
+  <% end %>
+  </p>
 
-<span><%= link_to 'Printer Friendly Play List', event_print_path(@event), class: "btn btn-custom3 btn-sm", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading Printable List..."} %></span>
-
-<span><%= link_to 'Sortable Play List Summaries', event_sortable_path(@event), class: "btn btn-custom3 btn-sm", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading Summaries..."} %></span>
-
-
-<!-- Button trigger remove multiple plays modal -->
-<span class="pull-right margin-left"><button type="button" class="btn btn-custom2 btn-sm" data-toggle="modal" data-target="#removePlaysModal">Remove Multiple</button></span>
-
-
-<!-- Remove multiple plays modal -->
-<div class="modal fade list-modal" id="removePlaysModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Remove Multiple Plays from Install</h4>
+  <div class="install-box">
+    <div class="media">
+      <div class="media-body">
+        <table class="table table-hover sortable" id="plays_table">
+          <thead id="plays-thead">
+            <tr>
+              <th class="fake-h4">Play Name</th>
+              <th>Run/Pass</th>
+              <th>Hash</th>
+              <th class="table-center small-font">Segment 1</th>
+              <th class="table-center small-font">Segment 2</th>
+              <th class="table-center small-font">Segment 3</th>
+              <th class="table-center small-font">Segment 4</th>
+              <th></th>
+            </tr>   
+          </thead>
+          <tbody>
+          </tbody>
+          <tfoot id="plays-tfoot">
+            <tr>
+              <td class="table-footer">Total Plays per Segment</td>
+              <td colspan=2></td>
+              <td class="table-footer table-center" id="period1-count"><%= @period1_count %></td>
+              <td class="table-footer table-center" id="period2-count"><%= @period2_count %></td>
+              <td class="table-footer table-center" id="period3-count"><%= @period3_count %></td>
+              <td class="table-footer table-center" id="period4-count"><%= @period4_count %></td>
+            </tr>  
+          </tfoot>
+          <div id="container_plays">
+            <%= render partial: "events/plays/play", collection: @plays %>
+          </div>
+        </table>
       </div>
-      <%= form_tag destroy_multiple_event_plays_path(@event), method: :delete do %>
-        <div class="modal-body">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th><%= check_box_tag "delete-check-all" %></th>
-                <th>Select Plays to Remove</th>
-                <th class="table-center">Run/Pass</th>
-                <th class="table-center">Hash</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @plays.each do |play| %>
-                <tr>
-                  <td><%= check_box_tag "play_ids[]", play.id, false, {:class => "delete-checkbox"} %></td>
-                  <td><%= play.fullname %></td>
-                  <td class="table-center"><%= play.play_type %></td>
-                  <td class="table-center"><%= play.hash_mark %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>  
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <%= button_tag "Remove Selected", class: "btn btn-custom2", data: {disable_with: '<i class="fa fa-spinner fa-spin"></i> Removing Plays...'} %>
-        </div>
-      <% end %>  
-    </div>
+    </div>    
+
+    <% if @period1_count > 25 || @period2_count > 25 || @period3_count > 25 || @period4_count > 25  %>
+      <div id="count-alert" class="red">Only the first 25 plays in each period will be included in the script initially created.</div> 
+      <br> 
+    <% end %>
   </div>
-</div>
+
+  <br>
+
+  <span><%= link_to 'Printer Friendly Play List', event_print_path(@event), class: "btn btn-custom3 btn-sm", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading Printable List..."} %></span>
+
+  <span><%= link_to 'Sortable Play List Summaries', event_sortable_path(@event), class: "btn btn-custom3 btn-sm", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading Summaries..."} %></span>
 
 
-<!-- Button trigger update plays modal -->
-<span class="pull-right margin-left"><button type="button" class="btn btn-custom4 btn-sm" data-toggle="modal" data-target="#updatePlaysModal">Update Multiple</button></span>
+  <!-- Button trigger remove multiple plays modal -->
+  <span class="pull-right margin-left"><button type="button" class="btn btn-custom2 btn-sm" data-toggle="modal" data-target="#removePlaysModal">Remove Multiple</button></span>
 
-<%= render partial: "events/multiple", collection: @plays %>
 
-<!-- Button trigger import plays modal -->
-<span class="pull-right"><button type="button" class="btn btn-custom3 btn-sm" data-toggle="modal" data-target="#importPlaysModal">Import Plays from Existing Install</button></span>
-
-<%= form_tag url_for(:controller => "events", :action => "import_plays"), :method => "get" do %>
-  <!-- Import plays modal -->
-  <div class="modal fade" id="importPlaysModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <!-- Remove multiple plays modal -->
+  <div class="modal fade list-modal" id="removePlaysModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Import Plays from Existing Install</h4>
+          <h4 class="modal-title" id="myModalLabel">Remove Multiple Plays from Install</h4>
         </div>
-        <div class="modal-body">
-          
-          <div class="form-group">
-            <%= label_tag :chose_install, 'Chose Install' %>
-            <%= select_tag 'ievent', options_from_collection_for_select(@ievents, 'id', 'title'), class: "form-control", id: "install-dropdown"%>
+        <%= form_tag destroy_multiple_event_plays_path(@event), method: :delete do %>
+          <div class="modal-body">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th><%= check_box_tag "delete-check-all" %></th>
+                  <th>Select Plays to Remove</th>
+                  <th class="table-center">Run/Pass</th>
+                  <th class="table-center">Hash</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @plays.each do |play| %>
+                  <tr>
+                    <td><%= check_box_tag "play_ids[]", play.id, false, {:class => "delete-checkbox"} %></td>
+                    <td><%= play.fullname %></td>
+                    <td class="table-center"><%= play.play_type %></td>
+                    <td class="table-center"><%= play.hash_mark %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>  
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <%= button_tag "Remove Selected", class: "btn btn-custom2", data: {disable_with: '<i class="fa fa-spinner fa-spin"></i> Removing Plays...'} %>
           </div>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <%= submit_tag "Import Plays", class: "btn btn-custom1" %>
-        </div>
+        <% end %>  
       </div>
     </div>
   </div>
-<% end %>
 
-<br>
-<br>
 
-<div>
-  <%= render partial: "events/plays/newplay" %>
-</div>
+  <!-- Button trigger update plays modal -->
+  <span class="pull-right margin-left"><button type="button" class="btn btn-custom4 btn-sm" data-toggle="modal" data-target="#updatePlaysModal">Update Multiple</button></span>
 
-<br>
+  <%= render partial: "events/multiple", collection: @plays %>
 
-<hr class="light-red">
+  <!-- Button trigger import plays modal -->
+  <span class="pull-right"><button type="button" class="btn btn-custom3 btn-sm" data-toggle="modal" data-target="#importPlaysModal">Import Plays from Existing Install</button></span>
 
-<p class="center fake-h4">Scripts</p>
+  <%= form_tag url_for(:controller => "events", :action => "import_plays"), :method => "get" do %>
+    <!-- Import plays modal -->
+    <div class="modal fade" id="importPlaysModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Import Plays from Existing Install</h4>
+          </div>
+          <div class="modal-body">
+            
+            <div class="form-group">
+              <%= label_tag :chose_install, 'Chose Install' %>
+              <%= select_tag 'ievent', options_from_collection_for_select(@ievents, 'id', 'title'), class: "form-control", id: "install-dropdown"%>
+            </div>
 
-<div class="media">
-  <div class="media-body">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>Practice Scripts for <%= @event.title %></th>
-          <th class="table-center">Date</th>
-        </tr>   
-      </thead>
-      <tbody>
-      <div id="container_scripts">
-        <%= render partial: "events/scripts/script", collection: @scripts %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <%= submit_tag "Import Plays", class: "btn btn-custom1" %>
+          </div>
+        </div>
       </div>
-      </tbody>
-    </table>
+    </div>
+  <% end %>
+
+  <br>
+  <br>
+
+  <div>
+    <%= render partial: "events/plays/newplay" %>
   </div>
-</div> 
 
-<div>
-  <%= render partial: "events/scripts/newscript" %>
-</div>
+  <br>
 
-<br>
+  <hr class="light-smoke">
 
-<hr class="light-red">
+  <p class="center fake-h4">Scripts</p>
 
-<% if @gamecall_count > 1 %>
- <p class="center fake-h4">Call Sheets</p>
+  <div class="media">
+    <div class="media-body">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Practice Scripts for <%= @event.title %></th>
+            <th class="table-center">Date</th>
+          </tr>   
+        </thead>
+        <tbody>
+        <div id="container_scripts">
+          <%= render partial: "events/scripts/script", collection: @scripts %>
+        </div>
+        </tbody>
+      </table>
+    </div>
+  </div> 
+
+  <div>
+    <%= render partial: "events/scripts/newscript" %>
+  </div>
+
+  <br>
+
+  <hr class="light-smoke">
+
+  <% if @gamecall_count > 1 %>
+   <p class="center fake-h4">Call Sheets</p>
+  <% else %>
+    <p class="center fake-h4">Call Sheet</p>
+  <% end %>
+
+
+  <div class="media">
+    <div class="media-body">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Game Call Sheet for <%= @event.title %></th>
+            <th class="table-center">Date</th>
+          </tr>   
+        </thead>
+        <tbody>
+        <div id="container_gamecalls">
+          <%= render partial: "events/gamecalls/gamecall", collection: @gamecalls %>
+        </div>
+        </tbody>
+      </table>
+    </div>
+  </div> 
+
+  <div>
+    <%= render partial: "events/gamecalls/newgamecall" %>
+  </div>
+
+  <br>
+
+  <hr class="light-smoke">
+
+  <br>
+  <br>
+  <br>
+
 <% else %>
-  <p class="center fake-h4">Call Sheet</p>
-<% end %>
 
+  <% @title= "This is Not a Valid Page - Definite6.com" %>
 
-<div class="media">
-  <div class="media-body">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>Game Call Sheet for <%= @event.title %></th>
-          <th class="table-center">Date</th>
-        </tr>   
-      </thead>
-      <tbody>
-      <div id="container_gamecalls">
-        <%= render partial: "events/gamecalls/gamecall", collection: @gamecalls %>
+  <div class="thank-you-container">
+
+  <br>
+  <br>
+
+    <div class="article-box">
+      <br>
+      <br>
+
+      <hr class="light-blue">
+      <h2 class="text-center">This is not a valid page.</h2>
+
+      <h5 class="text-center">You have reached this page in error.</h5>
+
+      <p class="text-center">Send us an email if you're having technical problems.</p>
+
+      <div class="text-center">
+        <i class="fa fa-envelope-o fa-lg"></i>
+        <p><a href="mailto:admin@definite6.com">admin@definite6.com</a></p>
       </div>
-      </tbody>
-    </table>
+      <hr class="light-blue">
+
+    </div>
+
   </div>
-</div> 
-
-<div>
-  <%= render partial: "events/gamecalls/newgamecall" %>
-</div>
-
-<br>
-
-<hr class="light-red">
 
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
 
+<% end %>
 

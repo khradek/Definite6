@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   has_many :saved_plays
   has_many :charges
 
+  validates :first_name, :last_name, :team, :presence => true
+
   def subscribed?
     stripe_subscription_id?
   end

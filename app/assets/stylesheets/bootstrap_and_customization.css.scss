@@ -314,6 +314,12 @@ hr.light-blue {
   box-shadow: inset 0 30px 30px -30px rgba(0, 76, 163, 0.84);
 }
 
+hr.light-smoke {
+  height: 30px;
+  border: 0;
+  box-shadow: inset 0 30px 30px -30px rgba(40, 40, 40, 0.9);
+}
+
 .print-playlist-container{
   margin: auto;
   max-width: 80%;
@@ -323,4 +329,5 @@ hr.light-blue {
   margin: auto;
   max-width: 60%;
 }
+
 
