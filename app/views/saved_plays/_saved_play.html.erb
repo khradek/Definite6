@@ -1,9 +1,8 @@
 <tbody id="saved_play_<%= saved_play.id %>" class="saved-play-table" data-id="<%= saved_play.id %>">
   <tr>
     <td><%= saved_play.title %></td>
-    <td><button type="button" id="update-saved_play_<%= saved_play.id %>" class="btn btn-custom4 btn-xs pull-right" data-toggle="modal" data-target="#myupdatesaved_play_<%= saved_play.id %>">
-    	Update or Delete Play
-    </button></td>
+    <td class="table-right"><button type="button" id="update-saved_play_<%= saved_play.id %>" class="btn btn-custom4 btn-xs" data-toggle="modal" data-target="#myupdatesaved_play_<%= saved_play.id %>">
+    	Update or Delete</button></td>
   </tr>
 </tbody>
 
@@ -26,10 +25,10 @@
 
 	      <div class="modal-footer">
 	      	<span class="pull-left" data-dismiss="modal" data-backdrop="false"> 
-	      		<%= link_to 'Delete Play', saved_play, method: :delete, class: "btn btn-custom2", remote: true, data: { confirm: 'Are you sure?' } %>  
+	      		<%= link_to 'Delete Play', saved_play, method: :delete, class: "btn btn-custom2 small-block", remote: true, data: { confirm: 'Are you sure?' } %>  
 	    		</span> 
-	        <button type="button" id="myupdatebutton_<%= saved_play.id %>" class="btn btn-default" data-dismiss="modal">Close</button>
-	        <%= submit_tag "Update", class: "btn btn-custom1" %>
+	        <button type="button" id="myupdatebutton_<%= saved_play.id %>" class="btn btn-default close-button-hide" data-dismiss="modal">Close</button>
+	        <%= submit_tag "Update", class: "btn btn-custom1 small-block" %>
 	      </div>
 	    </div>
 	  </div>

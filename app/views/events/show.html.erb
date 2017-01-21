@@ -31,30 +31,30 @@
           <thead id="plays-thead">
             <tr>
               <th class="fake-h4">Play Name</th>
-              <th>Run/Pass</th>
-              <th>Hash</th>
-              <th class="table-center small-font">Segment 1</th>
-              <th class="table-center small-font">Segment 2</th>
-              <th class="table-center small-font">Segment 3</th>
-              <th class="table-center small-font">Segment 4</th>
+              <th class="small-screen-hide">Run/Pass</th>
+              <th class="small-screen-hide">Hash</th>
+              <th class="table-center small-screen-hide small-font">Segment 1</th>
+              <th class="table-center small-screen-hide small-font">Segment 2</th>
+              <th class="table-center small-screen-hide small-font">Segment 3</th>
+              <th class="table-center small-screen-hide small-font">Segment 4</th>
               <th></th>
             </tr>   
           </thead>
           <tbody>
+            <div id="container_plays">
+              <%= render partial: "events/plays/play", collection: @plays %>
+            </div>
           </tbody>
           <tfoot id="plays-tfoot">
             <tr>
               <td class="table-footer">Total Plays per Segment</td>
               <td colspan=2></td>
-              <td class="table-footer table-center" id="period1-count"><%= @period1_count %></td>
-              <td class="table-footer table-center" id="period2-count"><%= @period2_count %></td>
-              <td class="table-footer table-center" id="period3-count"><%= @period3_count %></td>
-              <td class="table-footer table-center" id="period4-count"><%= @period4_count %></td>
+              <td class="table-footer table-center small-screen-hide" id="period1-count"><%= @period1_count %></td>
+              <td class="table-footer table-center small-screen-hide" id="period2-count"><%= @period2_count %></td>
+              <td class="table-footer table-center small-screen-hide" id="period3-count"><%= @period3_count %></td>
+              <td class="table-footer table-center small-screen-hide" id="period4-count"><%= @period4_count %></td>
             </tr>  
           </tfoot>
-          <div id="container_plays">
-            <%= render partial: "events/plays/play", collection: @plays %>
-          </div>
         </table>
       </div>
     </div>    
@@ -67,14 +67,30 @@
 
   <br>
 
-  <span><%= link_to 'Printer Friendly Play List', event_print_path(@event), class: "btn btn-custom3 btn-sm", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading Printable List..."} %></span>
+  <div>
+    <%= render partial: "events/plays/newplay" %>
+  </div>
 
-  <span><%= link_to 'Sortable Play List Summaries', event_sortable_path(@event), class: "btn btn-custom3 btn-sm", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading Summaries..."} %></span>
+  <br>
+
+  <div>
+    <%= link_to 'Printer Friendly Play List', event_print_path(@event), class: "btn btn-custom3 btn-sm small-block", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading Printable List..."} %>
+
+    <%= link_to 'Sortable Play List Summaries', event_sortable_path(@event), class: "btn btn-custom3 btn-sm small-block", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading Summaries..."} %>
 
 
-  <!-- Button trigger remove multiple plays modal -->
-  <span class="pull-right margin-left"><button type="button" class="btn btn-custom2 btn-sm" data-toggle="modal" data-target="#removePlaysModal">Remove Multiple</button></span>
+    <!-- Button trigger remove multiple plays modal -->
+    <button type="button" class="btn btn-custom2 btn-sm small-block pull-right margin-left" data-toggle="modal" data-target="#removePlaysModal">Remove Multiple</button>
 
+    <!-- Button trigger update plays modal -->
+    <button type="button" class="btn btn-custom4 btn-sm small-block pull-right margin-left" data-toggle="modal" data-target="#updatePlaysModal">Update Multiple</button>
+
+    <!-- Button trigger import plays modal -->
+    <button type="button" class="btn btn-custom3 btn-sm small-block pull-right" data-toggle="modal" data-target="#importPlaysModal">Import Plays from Existing Install</button>
+  </div>
+
+  <!-- Collection for update multiple plays -->
+  <%= render partial: "events/multiple", collection: @plays %>
 
   <!-- Remove multiple plays modal -->
   <div class="modal fade list-modal" id="removePlaysModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -117,13 +133,7 @@
   </div>
 
 
-  <!-- Button trigger update plays modal -->
-  <span class="pull-right margin-left"><button type="button" class="btn btn-custom4 btn-sm" data-toggle="modal" data-target="#updatePlaysModal">Update Multiple</button></span>
 
-  <%= render partial: "events/multiple", collection: @plays %>
-
-  <!-- Button trigger import plays modal -->
-  <span class="pull-right"><button type="button" class="btn btn-custom3 btn-sm" data-toggle="modal" data-target="#importPlaysModal">Import Plays from Existing Install</button></span>
 
   <%= form_tag url_for(:controller => "events", :action => "import_plays"), :method => "get" do %>
     <!-- Import plays modal -->
@@ -154,32 +164,24 @@
   <br>
   <br>
 
-  <div>
-    <%= render partial: "events/plays/newplay" %>
-  </div>
-
-  <br>
-
   <hr class="light-smoke">
 
   <p class="center fake-h4">Scripts</p>
 
-  <div class="media">
-    <div class="media-body">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>Practice Scripts for <%= @event.title %></th>
-            <th class="table-center">Date</th>
-          </tr>   
-        </thead>
-        <tbody>
-        <div id="container_scripts">
-          <%= render partial: "events/scripts/script", collection: @scripts %>
-        </div>
-        </tbody>
-      </table>
-    </div>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Practice Scripts for <%= @event.title %></th>
+          <th class="table-center">Date</th>
+        </tr>   
+      </thead>
+      <tbody>
+      <div id="container_scripts">
+        <%= render partial: "events/scripts/script", collection: @scripts %>
+      </div>
+      </tbody>
+    </table>
   </div> 
 
   <div>
@@ -197,22 +199,20 @@
   <% end %>
 
 
-  <div class="media">
-    <div class="media-body">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>Game Call Sheet for <%= @event.title %></th>
-            <th class="table-center">Date</th>
-          </tr>   
-        </thead>
-        <tbody>
-        <div id="container_gamecalls">
-          <%= render partial: "events/gamecalls/gamecall", collection: @gamecalls %>
-        </div>
-        </tbody>
-      </table>
-    </div>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Game Call Sheet for <%= @event.title %></th>
+          <th class="table-center">Date</th>
+        </tr>   
+      </thead>
+      <tbody>
+      <div id="container_gamecalls">
+        <%= render partial: "events/gamecalls/gamecall", collection: @gamecalls %>
+      </div>
+      </tbody>
+    </table>
   </div> 
 
   <div>

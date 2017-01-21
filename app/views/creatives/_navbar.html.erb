@@ -2,36 +2,60 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#homepage-navbar-collapse" aria-expanded="false">
+        <i class="fa fa-bars fa-2x blue" aria-hidden="true"></i>
       </button>
-      <ul class="nav navbar-nav navbar-left">
-        <li>
-          <a class="navbar-brand page-scroll" href="#page-top">DEFINITE6</a>
-        </li>
-        <li>
-          <a class="page-scroll" href="#advantages">Advantages</a>
-        </li>
-        <li>
-          <a class="page-scroll" href="#video">Video</a>
-        </li>
-        <li>
-          <a class="page-scroll" href="#pricing">Pricing</a>
-        </li>
-        <li>
-          <a class="page-scroll" href="#contact">Contact</a>
-        </li>
-      </ul>
+
+      <a class="navbar-brand page-scroll dead" href="#page-top">DEFINITE6</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="collapse navbar-collapse" id="homepage-navbar-collapse">
+
+      <ul class="nav navbar-nav navbar-left">
+
+        <% if user_signed_in? %>
+          <li data-no-turbolink class="<%= is_active?('/events') %>"><%= link_to 'Calendar', events_path %></li>  
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle <%= 'blue-nav' if controller_name == 'saved_formations' || controller_name == 'saved_plays'%>" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Play Database <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li data-no-turbolink class="<%= is_active?('/saved_formations') %>"><%= link_to 'Saved Formations', saved_formations_path %></li>
+              <li data-no-turbolink class="<%= is_active?('/saved_plays') %>"><%= link_to 'Saved Plays', saved_plays_path %></li>
+            </ul>
+          </li>
+
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle <%= 'blue-nav' if controller_name == 'events' && action_name == 'show'%>" data-toggle="dropdown">Installs <b class="caret"></b></a>
+            <ul class="dropdown-menu nav-limit-dropdown">
+              <% @ievents.each do |ievent| %>
+                <li data-no-turbolink class='<%= is_active?("/events/#{ievent.id}") %>'><%= link_to ievent.title, event_path(ievent) %></li>
+              <% end %>
+            </ul>
+          </li>
+          <li class="<%= is_active?('/user_guide') %>"><%= link_to "User Guide", user_guide_path %></li>
+
+        <% else %> 
+
+          <li>
+            <a class="page-scroll" href="#advantages">Advantages</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="#video">Video</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="#pricing">Pricing</a>
+          </li>
+          <li>
+            <a class="page-scroll" href="#contact">Contact</a>
+          </li>
+
+        <% end %>
+
+      </ul>
+
       <ul class="nav navbar-nav navbar-right">
-
-
         <li><%= link_to "Free Coaching Articles", articles_index_path %></li>
         <% if user_signed_in? %>
           <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
@@ -40,6 +64,7 @@
           <li><%= link_to "Sign In", new_user_session_path %></li>  
         <% end %>
       </ul>
+
     </div>
     <!-- /.navbar-collapse -->
   </div>

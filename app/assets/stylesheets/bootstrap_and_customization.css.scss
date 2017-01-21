@@ -1,7 +1,12 @@
+
+$grid-float-breakpoint: 915px;
+
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 @import 'bootstrap-datetimepicker';
 @import 'font-awesome';
+
+
 
 @media print{ 
 
@@ -291,6 +296,13 @@
   max-width: 45%;
 }
 
+@media (min-width: 990px){
+  .database-container{
+    margin: auto;
+    max-width: 70%;
+  }
+}
+
 .install-box{
   border-style: ridge;
   border-width: 10px;
@@ -330,4 +342,5 @@ hr.light-smoke {
   max-width: 60%;
 }
 
+body.modal-open { position: fixed; }
 

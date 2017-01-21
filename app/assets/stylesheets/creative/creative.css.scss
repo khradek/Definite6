@@ -102,28 +102,28 @@ aside {
     color: #1C85D4;
 }
 
-
 @media(min-width:768px) {
-    .navbar-default-landing{
-        border-color: rgba(255,255,255,.3);
-        background-color: transparent;
-    }
+  .navbar-default-landing{
+    border-color: rgba(255,255,255,.3);
+    background-color: transparent;
+  }
 
-    .navbar-default-landing.navbar-header .navbar-brand {
-        color: rgba(255,255,255,.7);
-    }
+  .navbar-default-landing.navbar-header .navbar-brand {
+    color: rgba(255,255,255,.7);
+  }
 
-    .navbar-default-landing.affix {
-        border-color: rgba(34,34,34,.05);
-        background-color: #fff;
-    }
+  .navbar-default-landing.affix {
+    border-color: rgba(34,34,34,.05);
+    background-color: #fff;
+  }
 
-    .navbar-default-landing.affix .navbar-header .navbar-brand {
-        font-size: 14px;
-        color: #1C85D4;
-    }
+  .navbar-default-landing.affix .navbar-header .navbar-brand {
+    font-size: 14px;
+    color: #1C85D4;
+  }
 
 }
+
 
 header {
     position: relative;
@@ -342,6 +342,10 @@ body {
 .navbar-default-landing .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
     background-color: transparent;
     color: #036ccb;
+}
+
+.dead{
+  pointer-events: none;
 }
 
 

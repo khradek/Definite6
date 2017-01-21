@@ -67,10 +67,10 @@
       </div>
       <div class="modal-footer">
         <span data-dismiss="modal" data-backdrop="false" class="pull-left"> 
-          <%= link_to 'Delete', event, method: :delete, class: "btn btn-custom2", remote: true, data: { confirm: 'Are you sure?' } %>  
+          <%= link_to 'Delete', event, method: :delete, class: "btn btn-custom2 small-block", remote: true, data: { confirm: 'Are you sure?' } %>  
         </span>  
-        <button type="button" id="myupdatebutton_<%= event.id %>" class="btn btn-default" data-dismiss="modal">Close</button>
-        <%= submit_tag "Update Calendar", class: "btn btn-custom1" %>
+        <button type="button" id="myupdatebutton_<%= event.id %>" class="btn btn-default close-button-hide" data-dismiss="modal">Close</button>
+        <%= submit_tag "Update Calendar", class: "btn btn-custom1 small-block" %>
       </div>
     </div>
   </div>

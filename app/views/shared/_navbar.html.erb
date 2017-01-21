@@ -2,6 +2,14 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
+
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#definite6-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
       <%= link_to "Definite6", root_path, :class => "navbar-brand" %>
     </div>
 
@@ -13,7 +21,7 @@
           <li data-no-turbolink class="<%= is_active?('/events') %>"><%= link_to 'Calendar', events_path %></li>  
           
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle <%= 'blue-nav' if controller_name == 'saved_formations' || controller_name == 'saved_plays'%>" data-toggle="dropdown">Play Database <b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle <%= 'blue-nav' if controller_name == 'saved_formations' || controller_name == 'saved_plays'%>" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Play Database <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li data-no-turbolink class="<%= is_active?('/saved_formations') %>"><%= link_to 'Saved Formations', saved_formations_path %></li>
               <li data-no-turbolink class="<%= is_active?('/saved_plays') %>"><%= link_to 'Saved Plays', saved_plays_path %></li>
