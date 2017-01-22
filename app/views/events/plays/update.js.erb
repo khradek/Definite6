@@ -2,4 +2,9 @@ $("#myupdateplay_<%= @play.id %>").modal('hide');
 
 $("#play_<%= @play.id %>").replaceWith('<%= j render @play %>');
 
+$("#period1-count").html('<%= @period1_count %>');
+$("#period2-count").html('<%= @period2_count %>');
+$("#period3-count").html('<%= @period3_count %>');
+$("#period4-count").html('<%= @period4_count %>');
+
 

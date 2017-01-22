@@ -149,6 +149,10 @@ class Events::PlaysController < ApplicationController
   def update
     @event = Event.find(params[:event_id])
     @play.update(play_params)
+    @period1_count = @event.plays.where(:period1 => true).count
+    @period2_count = @event.plays.where(:period2 => true).count
+    @period3_count = @event.plays.where(:period3 => true).count
+    @period4_count = @event.plays.where(:period4 => true).count
     
     respond_to do |format|
       if @play.update(play_params)

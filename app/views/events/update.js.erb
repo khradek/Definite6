@@ -1,8 +1,13 @@
 $("#myupdateevent_<%= @event.id %>").modal('hide');
 
-$("#event_<%= @event.id %>").fadeOut(500, function(){
+/*
+  $("#event_<%= @event.id %>").fadeOut(500, function(){
 	$(this).remove();
 	$("#container-events").prepend('<%= j render @event %>');
 	$('#calendar').fullCalendar("refetchEvents");
 	location.reload();
 });
+*/
+
+ location.reload();
+$(".overlay").show();

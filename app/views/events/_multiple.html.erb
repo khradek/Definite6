@@ -1,7 +1,7 @@
   
 <!-- Update multiple plays modal -->
 <div class="modal fade list-modal" id="updatePlaysModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog custom-class" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -14,8 +14,9 @@
               <tr>
                 <th><%= check_box_tag "check-all" %></th>
                 <th>Select Plays to Update</th>
-                <th class="table-center">Run/Pass</th>
-                <th class="table-center">Hash</th>
+                <th class="table-center">Availability</th>
+                <th class="table-center xs-screen-hide">Run/Pass</th>
+                <th class="table-center xs-screen-hide">Hash</th>
               </tr>
             </thead>
             <tbody>
@@ -23,8 +24,40 @@
                 <tr>
                   <td><%= check_box_tag "play_ids[]", play.id, false, {:class => "play-checkbox"} %></td>
                   <td><%= play.fullname %></td>
-                  <td class="table-center"><%= play.play_type %></td>
-                  <td class="table-center"><%= play.hash_mark %></td>
+                  <td class="table-center">
+                    <% if play.situation1.blank? %>
+                      <span>1</span>
+                    <% end %>
+                    <% if play.situation2.blank? %>
+                      <span>2</span>
+                    <% end %>
+                    <% if play.situation3.blank? %>
+                      <span>3</span>
+                    <% end %>
+                    <% if play.situation4.blank? %>
+                      <span>4</span>
+                    <% end %>
+                    <% if play.situation5.blank? %>
+                      <span>5</span>
+                    <% end %>
+                    <% if play.situation6.blank? %>
+                      <span>6</span>
+                    <% end %>
+                    <% if play.situation7.blank? %>
+                      <span>7</span>
+                    <% end %>
+                    <% if play.situation8.blank? %>
+                      <span>8</span>
+                    <% end %>
+                    <% if play.situation9.blank? %>
+                      <span>9</span>
+                    <% end %>
+                    <% if play.situation10.blank? %>
+                      <span>10</span>
+                    <% end %>                                                                                                           
+                  </td>
+                  <td class="table-center xs-screen-hide"><%= play.play_type %></td>
+                  <td class="table-center xs-screen-hide"><%= play.hash_mark %></td>
                 </tr>
               <% end %>
             </tbody>
@@ -35,36 +68,36 @@
             <%= check_box_tag :periods %> Update Segments Plays are Practiced in
             <div class="period-select">
               <div class="row">
-                <div class="col-md-8"></div>
-                <div class="col-md-1"><strong>1</strong></div>
-                <div class="col-md-1"><strong>2</strong></div>
-                <div class="col-md-1"><strong>3</strong></div>
-                <div class="col-md-1"><strong>4</strong></div>
+                <div class="col-xs-6 col-md-8"></div>
+                <div class="col-xs-1"><strong>1</strong></div>
+                <div class="col-xs-1"><strong>2</strong></div>
+                <div class="col-xs-1"><strong>3</strong></div>
+                <div class="col-xs-1"><strong>4</strong></div>
               </div>
               <div class="row">
-                <div class="col-md-8"><strong>Practice in Segment:</strong></div>
-                <div class="col-md-1">                    
+                <div class="col-xs-6 col-md-8"><strong>Practice in Segment:</strong></div>
+                <div class="col-xs-1">                    
                   <div class="field form-group">
                     <div class="checkbox-inline">
                       <%= f.check_box :period1, :checked => 'checked' %>
                     </div>
                   </div>
                 </div>
-                <div class="col-md-1">
+                <div class="col-xs-1">
                   <div class="field form-group">
                     <div class="checkbox-inline">
                       <%= f.check_box :period2, :checked => 'checked' %>
                     </div>
                   </div>  
                 </div>
-                <div class="col-md-1">
+                <div class="col-xs-1">
                   <div class="field form-group">
                     <div class="checkbox-inline">
                       <%= f.check_box :period3, :checked => 'checked' %>
                     </div>
                   </div>   
                 </div>
-                <div class="col-md-1">
+                <div class="col-xs-1">
                   <div class="field form-group">
                     <div class="checkbox-inline">
                       <%= f.check_box :period4, :checked => 'checked' %>

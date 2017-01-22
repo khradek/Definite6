@@ -2,7 +2,7 @@
   <td class="script-col1"><%= gamecall.title %></td>
   <td class="script-col2 table-center"><%= gamecall.start_time.strftime("%m-%d-%Y") if gamecall.start_time? %></td>
   <td class="script-col3"><%= link_to 'Open Sheet', [@event, gamecall], class: "btn btn-custom3 btn-sm pull-right" %></td>
-  <td class="script-col3"><button type="button" id="update-gamecall_<%= gamecall.id %>" class="btn btn-custom4 btn-sm pull-right" data-toggle="modal" data-target="#myupdategamecall_<%= gamecall.id %>">
+  <td class="script-col3"><button type="button" id="update-gamecall_<%= gamecall.id %>" class="btn btn-custom4 btn-sm pull-right  update-gamecall-button" data-toggle="modal" data-target="#myupdategamecall_<%= gamecall.id %>">
     Update or Delete Sheet
   </button></td>
 </tr>

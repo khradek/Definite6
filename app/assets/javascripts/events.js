@@ -1,6 +1,18 @@
 var ready;
 ready = function(){
 
+
+
+
+/*  $('.update-gamecall-button').click(function () {
+    var id = $(this).attr("id").slice(16);
+    console.log(id);
+    // After the click, you force the modal to be shown
+    $('#myupdategamecall_' + id).modal('show');
+  });
+*/
+
+
 	//Displays/hides time from datetimepicker based on event_type
 	var noTime = $(".no-time");
 	var timeShowing = $(".time-showing");
@@ -57,6 +69,7 @@ ready = function(){
     var url = "events/" + $(this).next().text();
     window.open(url);
   });
+
  
 };
 

@@ -1,6 +1,8 @@
-$("#mynewgamecall").modal('hide');
-$(".gamecall-title").val('');
-$(".gamecall-start-time").val('');
-$(".gamecall-end-time").val('');
+$("#mynewgamecall").modal('toggle');
+//$(".gamecall-title").val('');
+
+//$("#gamecall-table").append('<%= j render @gamecall %>');
+
 
 location.reload();
+$(".overlay").show();

@@ -33,13 +33,9 @@ class EventsController < ApplicationController
     @new_script = @event.scripts.build
     @new_gamecall = @event.gamecalls.build
     @period1_count = @event.plays.where(:period1 => true).count
-    gon.watch.period1_count = @period1_count
     @period2_count = @event.plays.where(:period2 => true).count
-    gon.watch.period2_count = @period2_count
     @period3_count = @event.plays.where(:period3 => true).count
-    gon.watch.period3_count = @period3_count
     @period4_count = @event.plays.where(:period4 => true).count
-    gon.watch.period4_count = @period4_count
     #respond_with(@event)
   end
 

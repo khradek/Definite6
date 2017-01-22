@@ -60,37 +60,5 @@ $(".events.show").ready(function() {
   //Makes the update multiple plays modal draggable 
   $("#updatePlaysModal").draggable({ handle: ".modal-content" });
 
-	//Updates the Period Play Count divs asynchronously (every second)
-	var renewPeriod1Count;
-	renewPeriod1Count = function(count) {
-	  return $('#period1-count').text(count);
-	};
-	gon.watch('period1_count', {
-	  interval: 1000
-	}, renewPeriod1Count);
-
-	var renewPeriod2Count;
-	renewPeriod2Count = function(count) {
-	  return $('#period2-count').text(count);
-	};
-	gon.watch('period2_count', {
-	  interval: 1000
-	}, renewPeriod2Count);
-
-	var renewPeriod3Count;
-	renewPeriod3Count = function(count) {
-	  return $('#period3-count').text(count);
-	};
-	gon.watch('period3_count', {
-	  interval: 1000
-	}, renewPeriod3Count);
-
-	var renewPeriod4Count;
-	renewPeriod4Count = function(count) {
-	  return $('#period4-count').text(count);
-	};
-	gon.watch('period4_count', {
-	  interval: 1000
-	}, renewPeriod4Count);	
 	
-});
+}); 

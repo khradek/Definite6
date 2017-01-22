@@ -1,3 +1,7 @@
+<div class="overlay">
+  <div class="loader center"><i class='fa fa-spinner fa-spin fa-5x'></i></div>
+</div>
+
 <% if @event.event_type == "Install" %>
 
   <% @title = @event.title + " - Definite6.com" %>
@@ -200,7 +204,7 @@
 
 
   <div class="table-responsive">
-    <table class="table table-hover">
+    <table class="table table-hover" id="gamecall-table">
       <thead>
         <tr>
           <th>Game Call Sheet for <%= @event.title %></th>
