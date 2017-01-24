@@ -74,6 +74,8 @@ GEM
     ffi (1.9.14-x86-mingw32)
     font-awesome-rails (4.6.3.0)
       railties (>= 3.2, < 5.1)
+    font_assets (0.1.14)
+      rack
     frontend-generators (0.1.1)
       rainbow (= 2.0.0)
       turf (= 0.0.5)
@@ -265,6 +267,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise (~> 4.0, >= 4.0.1)
   font-awesome-rails
+  font_assets
   frontend-generators
   jbuilder (~> 2.0)
   jquery-rails
