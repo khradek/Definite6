@@ -28,5 +28,8 @@ module Definite6
     config.assets.initialize_on_precompile = false
 
     config.active_job.queue_adapter = :sidekiq
+
+    #Needed for font-awesome on cloudfront
+    config.font_assets.origin = '*'
   end
 end
