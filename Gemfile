@@ -25,7 +25,7 @@ gem 'stripe_event', '~> 1.5'
 gem 'receipts', '~> 0.1.3'
 gem 'browser', '~> 2.2'
 gem 'sidekiq'
-gem 'rack-cors', :require => 'rack/cors'
+gem 'font_assets'
 
 group :production do
 	gem 'pg'
