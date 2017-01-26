@@ -13,6 +13,7 @@ class Event < ActiveRecord::Base
 	after_destroy :delete_script, :delete_gamecall
   before_save :add_time
 
+
   #------Script------
 	#Updates actual script when calendar event is updated
 	def update_script

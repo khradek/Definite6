@@ -2,11 +2,11 @@
 <html>
   <head>
     <title><%= @title%></title>
+    <script src="https://use.fontawesome.com/31bc04f542.js"></script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'https://js.stripe.com/v2/', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag 'favicon.png' %>
-    <script src="https://use.fontawesome.com/31bc04f542.js"></script>
     <%= tag :meta, name: "stripe-key", content: STRIPE_PUBLIC %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
