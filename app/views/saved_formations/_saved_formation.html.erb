@@ -1,38 +1,7 @@
-<tbody id="saved_formation_<%= saved_formation.id %>" class="formation-table" data-id="<%= saved_formation.id %>">
-  <tr>
-    <td><%= saved_formation.title %></td>
-    <td class="table-right"><button type="button" id="update-saved_formation_<%= saved_formation.id %>" class="btn btn-custom4 btn-xs" data-toggle="modal" data-target="#myupdatesaved_formation_<%= saved_formation.id %>">
-    	Update or Delete</button></td>
-  </tr>
-</tbody>
 
-<div id="saved_formation_update<%= saved_formation.id %>">
-	<!-- Modal - update saved_formations -->
-	  <%= form_for(saved_formation, :method => :put, remote: true) do |f| %>
-	  <div class="modal fade" id="myupdatesaved_formation_<%= saved_formation.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title" id="myModalLabel">Update Formation</h4>
-	      </div>
-	      <div class="modal-body">
+<tr id="saved_formation_<%= saved_formation.id %>" class="formation-table" data-id="<%= saved_formation.id %>">
+  <td><%= saved_formation.title %></td>
+  <td class="table-right"><%= link_to 'Update or Delete', edit_saved_formation_path(saved_formation), class: "btn btn-custom4 btn-xs no-sort" %></td>
+</tr>
 
-	      <div class="field">
-	        <%= f.label :title, "Formation Name" %><br>
-	        <%= f.text_field :title, class: "form-control" %>
-	      </div>
 
-	      <div class="modal-footer">
-	      	<span class="pull-left" data-dismiss="modal" data-backdrop="false"> 
-	      		<%= link_to 'Delete Formation', saved_formation, method: :delete, class: "btn btn-custom2 small-block", remote: true, data: { confirm: 'Are you sure?' } %>  
-	    		</span> 
-	        <button type="button" id="myupdatebutton_<%= saved_formation.id %>" class="btn btn-default close-button-hide" data-dismiss="modal">Close</button>
-	        <%= submit_tag "Update", class: "btn btn-custom1 small-block" %>
-	      </div>
-	    </div>
-	  </div>
-	  </div>
-	  <% end %>
-	<!-- Modal -->
-</div>

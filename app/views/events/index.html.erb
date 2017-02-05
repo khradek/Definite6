@@ -36,7 +36,7 @@
             <div class="form-group">
               <%= f.label :event_type, "Type" %> 
               <div id="event-select">
-                <%= f.select(:event_type, options_for_select([[' ', ' '], ['Install', 'Install'], ['Script', 'Script'], ['Game Call Sheet', 'Gamecall'], ['Practice', 'Practice'], ['Game', 'Game'], ['Other', 'Other']]), {}, {class: "form-control"}) %>
+                <%= f.select(:event_type, options_for_select([[' ', ' '], ['Install', 'Install'], ['Script', 'Script'], ['Game Call Sheet', 'Gamecall']]), {}, {class: "form-control"}) %>
               </div>  
             </div>   
             <div id="select-install-select">
@@ -44,7 +44,8 @@
                 <%= label_tag :chose_install, 'Chose Install' %>
                 <%= select_tag 'ievent', options_from_collection_for_select(@ievents, 'id', 'title'), class: "form-control", id: "install-dropdown"%>
               </div>
-              <button type="button" class="btn btn-custom1 btn-sm" id="install-button">Link to Install</button>
+              <br>
+              <button type="button" class="btn btn-custom1 btn-sm btn-block" id="install-button">Go to Install</button>
             </div>
             <hr>   
             <div id="create-lower-body"> 
@@ -70,7 +71,7 @@
                 <div class="no-time">
                   <div class="field">
                     <%= f.label :start_time, "Start Date" %><br>
-                    <%= f.datetime_select_no_time :start_time, class: "form-control event_start_time" %>
+                    <%= f.datetime_select_no_time :start_time, class: "form-control event_start_time", id: "trythis" %>
                   </div>
                   <div class="field">
                     <%= f.label :end_time, "End Date" %><br>

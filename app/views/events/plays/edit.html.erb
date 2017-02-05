@@ -1,6 +1,194 @@
-<h1>Editing Play</h1>
 
-<%= render 'form' %>
+<div class="edit-play-container">  
 
-<%= link_to 'Show', @play %> |
-<%= link_to 'Back', plays_path %>
+  <% @title = @play.fullname + " - Definite6.com" %>
+
+  <p id="notice"><%= notice %></p>
+
+  <br>
+
+  <div class="update-play-box">
+    <h2 class="center"><strong><%= @play.fullname %></strong></h2>
+
+    <hr class="light-blue no-margin">
+
+    <%= form_for [@event, @play] do |f| %>
+      <% if @play.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@play.errors.count, "error") %> prohibited this play from being saved:</h2>
+
+          <ul>
+          <% @play.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <h3 class="no-top-margin">Play Name</h3>
+      
+      <div class="row">
+        <div class="field col-xs-6">
+          <%= f.label :piece1, "Formation" %><br>
+          <%= f.text_field :piece1, class: "form-control", id: "formation-text-#{@play.id}" %>
+        </div>
+        <div class="field col-xs-6">
+          <%= f.label :piece2, "Play" %><br>
+          <%= f.text_field :piece2, class: "form-control", id: "play-text-#{@play.id}" %>
+        </div>
+      </div>
+
+      <div class="saved-formations-and-plays">
+        <div class="row">
+          <div class="field col-xs-6">
+            <div class="form-group">
+              <%= select_tag "saved_formations", options_for_select(SavedFormation.where(:user_id => current_user.id).map{ |sm| [sm.title, data: {body: sm.title}] }), prompt: "Saved formations", class: "form-control input-sm formation-drop", id: "saved-formations-update-#{@play.id}" %>
+            </div>
+          </div>
+          <div class="field col-xs-6">
+            <div class="form-group">
+              <%= select_tag "saved_plays", options_for_select(SavedPlay.where(:user_id => current_user.id).map{ |sm| [sm.title, data: {body: sm.title}] }), prompt: "Saved plays", class: "form-control input-sm play-drop", id: "saved-plays-update-#{@play.id}" %>
+            </div>
+          </div>
+        </div>
+      </div>   
+
+      <button type="button" class="btn btn-custom3 btn-sm show-saved-plays-edit">Saved Formations & Plays</button>
+
+      <hr class="light-blue">
+
+      <h3 id="edit-practice-link">Practice Info <i class="fa fa-arrow-circle-right right-arrow ht blue" aria-hidden="true"></i><i class="fa fa-arrow-circle-down down-arrow blue" aria-hidden="true"></i></h3>
+      
+      <div id="edit-practice-info">
+
+        <div><strong>Number of Reps:&nbsp</strong><span><%= @play.play_count %></span></div>
+
+        <div class="row">
+          <div class="col-xs-6 col-md-8"></div>
+          <div class="col-xs-1"><strong>1</strong></div>
+          <div class="col-xs-1"><strong>2</strong></div>
+          <div class="col-xs-1"><strong>3</strong></div>
+          <div class="col-xs-1"><strong>4</strong></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 col-md-8"><strong>Practice in Segment:</strong></div>
+          <div class="col-xs-1">                    
+            <div class="field form-group">
+              <div class="checkbox-inline">
+                <%= f.check_box :period1 %>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-1">
+            <div class="field form-group">
+              <div class="checkbox-inline">
+                <%= f.check_box :period2 %>
+              </div>
+            </div>  
+          </div>
+          <div class="col-xs-1">
+            <div class="field form-group">
+              <div class="checkbox-inline">
+                <%= f.check_box :period3 %>
+              </div>
+            </div>   
+          </div>
+          <div class="col-xs-1">
+            <div class="field form-group">
+              <div class="checkbox-inline">
+                <%= f.check_box :period4 %>
+              </div>
+            </div>  
+          </div>
+        </div>
+      </div>
+
+      <hr class="light-smoke">
+
+      <h3 id="edit-situations-link">Situational Info <i class="fa fa-arrow-circle-right right-arrow ht blue" aria-hidden="true"></i><i class="fa fa-arrow-circle-down down-arrow blue" aria-hidden="true"></i></h3>
+
+      <div id="edit-play-situations">
+
+        <div class="form-group">
+          <%= f.label :play_type, "Run/Pass" %> 
+          <div>
+            <%= f.select(:play_type, options_for_select([[' ', ' '], ['Run', 'Run'], ['Pass', 'Pass']], :selected => f.object.play_type), {}, {class: "form-control"}) %>
+          </div>  
+        </div>
+
+        <div class="form-group hash">
+          <%= f.label :hash_mark, "Hash" %> 
+          <div>
+            <%= f.select(:hash_mark, options_for_select([[' ', ' '], ['Left', 'Left'], ['Right', 'Right']], :selected => f.object.hash_mark), {}, {class: "form-control"}) %>
+          </div>  
+        </div>
+
+        <h4>Situations</h4>
+
+        <div class="form-group">
+          <%= f.label :situation1, "First Assigned Situation" %>
+          <%= f.select(:situation1, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Long', '3rd & Long'],['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out'], ['Custom 1', 'Custom 1'], ['Custom 2', 'Custom 2'], ['Custom 3', 'Custom 3'],], :selected => f.object.situation1), {}, {class: "form-control"}) %>
+        </div> 
+
+        <div class="form-group">
+          <%= f.label :situation2, "Second Assigned Situation" %>
+          <%= f.select(:situation2, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Long', '3rd & Long'],['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out'], ['Custom 1', 'Custom 1'], ['Custom 2', 'Custom 2'], ['Custom 3', 'Custom 3'],], :selected => f.object.situation2), {}, {class: "form-control"}) %>
+        </div> 
+
+        <div class="form-group">
+          <%= f.label :situation3, "Third Assigned Situation" %>                
+          <%= f.select(:situation3, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Long', '3rd & Long'],['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out'], ['Custom 1', 'Custom 1'], ['Custom 2', 'Custom 2'], ['Custom 3', 'Custom 3'],], :selected => f.object.situation3), {}, {class: "form-control"}) %>
+        </div> 
+
+        <div class="form-group">
+          <%= f.label :situation4, "Fourth Assigned Situation" %>
+          <%= f.select(:situation4, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Long', '3rd & Long'],['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out'], ['Custom 1', 'Custom 1'], ['Custom 2', 'Custom 2'], ['Custom 3', 'Custom 3'],], :selected => f.object.situation4), {}, {class: "form-control"}) %>            
+        </div> 
+
+        <div class="form-group">
+          <%= f.label :situation5, "Fifth Assigned Situation" %>
+          <%= f.select(:situation5, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Long', '3rd & Long'],['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out'], ['Custom 1', 'Custom 1'], ['Custom 2', 'Custom 2'], ['Custom 3', 'Custom 3'],], :selected => f.object.situation5), {}, {class: "form-control"}) %>
+        </div> 
+
+
+        <div class="form-group">
+          <%= f.label :situation6, "Sixth Assigned Situation" %>
+          <%= f.select(:situation6, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Long', '3rd & Long'],['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out'], ['Custom 1', 'Custom 1'], ['Custom 2', 'Custom 2'], ['Custom 3', 'Custom 3'],], :selected => f.object.situation6), {}, {class: "form-control"}) %>
+        </div> 
+
+        <div class="form-group">
+          <%= f.label :situation7, "Seventh Assigned Situation" %> 
+          <%= f.select(:situation7, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Long', '3rd & Long'],['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out'], ['Custom 1', 'Custom 1'], ['Custom 2', 'Custom 2'], ['Custom 3', 'Custom 3'],], :selected => f.object.situation7), {}, {class: "form-control"}) %>
+        </div> 
+
+        <div class="form-group">
+          <%= f.label :situation8, "Eighth Assigned Situation" %>
+          <%= f.select(:situation8, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Long', '3rd & Long'],['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out'], ['Custom 1', 'Custom 1'], ['Custom 2', 'Custom 2'], ['Custom 3', 'Custom 3'],], :selected => f.object.situation8), {}, {class: "form-control"}) %>
+        </div> 
+
+        <div class="form-group">
+          <%= f.label :situation9, "Ninth Assigned Situation" %>
+          <%= f.select(:situation9, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Long', '3rd & Long'],['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out'], ['Custom 1', 'Custom 1'], ['Custom 2', 'Custom 2'], ['Custom 3', 'Custom 3'],], :selected => f.object.situation9), {}, {class: "form-control"}) %>
+        </div> 
+
+        <div class="form-group">
+          <%= f.label :situation10, "Tenth Assigned Situation" %>
+          <%= f.select(:situation10, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Long', '3rd & Long'],['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out'], ['Custom 1', 'Custom 1'], ['Custom 2', 'Custom 2'], ['Custom 3', 'Custom 3'],], :selected => f.object.situation10), {}, {class: "form-control"}) %>
+        </div>         
+      </div>
+
+      <hr class="light-smoke">
+
+      <div>
+        <%= link_to 'Return to Install', @event, class: "btn btn-custom3 btn-sm small-block" %>
+
+        <%= link_to '<i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Remove from Install'.html_safe, [@event, @play], method: :delete, class: "btn btn-custom2 btn-sm small-block pull-right", data: { confirm: 'Are you sure?' } %>
+      </div>
+
+      <br>
+
+      <%= submit_tag "Update Play", class: "btn btn-custom1 btn-block" %>
+      
+    <% end %>
+  </div>
+</div>

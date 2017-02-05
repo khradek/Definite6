@@ -1,6 +1,54 @@
+//Hides the modal
 $("#mynewplay").modal('hide');
 
-//$("#plays_table").append('<%= j render @play %>');
+//Clears/resets the form
+$("#mynewplay .form-control").val('');
+$(".saved-formations-and-plays").hide();
+$(".segment-check").prop('checked', true);
+$("#situations").hide()
+$("#situation2").hide()
+$("#situation3").hide()
+$("#situation4").hide()
+$("#situation5").hide()
+$("#situation6").hide()
+$("#situation7").hide()
+$("#situation8").hide()
+$("#situation9").hide()
+$("#situation10").hide()
+$('#situation-button1').show()
+$('#situation-button2').show()
+$('#situation-button3').show()
+$('#situation-button4').show()
+$('#situation-button5').show()
+$('#situation-button6').show()
+$('#situation-button7').show()
+$('#situation-button8').show()
+$('#situation-button9').show()
 
-location.reload();
-$(".overlay").show();
+//Adds new play to the install table
+$("#plays-body").append('<%= j render @play %>');
+
+//Adds new play to the Update Multiple modal
+$("#multiples-body").append('<%= j render "multiple", multiple_play: @play %>');
+
+//Adds new play to the Remove Multiple modal
+$("#remove-multiple-body").append('<%= j render "remove_multiple", remove_play: @play %>');
+
+//Updates the segment count td
+$("#period1-count").html('<%= @period1_count %>');
+$("#period2-count").html('<%= @period2_count %>');
+$("#period3-count").html('<%= @period3_count %>');
+$("#period4-count").html('<%= @period4_count %>');
+
+//Shows warning message if a segment goes over 25 plays
+<% if @period1_count > 25 || @period2_count > 25 || @period3_count > 25 || @period4_count > 25  %>
+  $("#ph-count-alert").html('Only the first 25 plays in each period will be included in the script when initially created.');
+<% end %>
+
+//Highlights plays in install list if duplicate 
+highlightDuplicateRows("#plays-body");
+
+
+
+
+

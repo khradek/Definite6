@@ -1,0 +1,39 @@
+  
+<tr>
+  <td><%= check_box_tag "play_ids[]", multiple_play.id, false, {:class => "play-checkbox"} %></td>
+  <td><%= multiple_play.fullname %></td>
+  <td class="table-center">
+    <% if multiple_play.situation1.blank? %>
+      <span>1</span>
+    <% end %>
+    <% if multiple_play.situation2.blank? %>
+      <span>2</span>
+    <% end %>
+    <% if multiple_play.situation3.blank? %>
+      <span>3</span>
+    <% end %>
+    <% if multiple_play.situation4.blank? %>
+      <span>4</span>
+    <% end %>
+    <% if multiple_play.situation5.blank? %>
+      <span>5</span>
+    <% end %>
+    <% if multiple_play.situation6.blank? %>
+      <span>6</span>
+    <% end %>
+    <% if multiple_play.situation7.blank? %>
+      <span>7</span>
+    <% end %>
+    <% if multiple_play.situation8.blank? %>
+      <span>8</span>
+    <% end %>
+    <% if multiple_play.situation9.blank? %>
+      <span>9</span>
+    <% end %>
+    <% if multiple_play.situation10.blank? %>
+      <span>10</span>
+    <% end %>                                                                                                           
+  </td>
+  <td class="table-center xs-screen-hide"><%= multiple_play.play_type %></td>
+  <td class="table-center xs-screen-hide"><%= multiple_play.hash_mark %></td>
+</tr>

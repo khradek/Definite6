@@ -1,11 +1,11 @@
-<tr id="gamecall_<%= gamecall.id %>">
-  <td class="script-col1"><%= gamecall.title %></td>
-  <td class="script-col2 table-center"><%= gamecall.start_time.strftime("%m-%d-%Y") if gamecall.start_time? %></td>
-  <td class="script-col3"><%= link_to 'Open Sheet', [@event, gamecall], class: "btn btn-custom3 btn-sm pull-right" %></td>
-  <td class="script-col3"><button type="button" id="update-gamecall_<%= gamecall.id %>" class="btn btn-custom4 btn-sm pull-right  update-gamecall-button" data-toggle="modal" data-target="#myupdategamecall_<%= gamecall.id %>">
+<div class="tr" id="gamecall_<%= gamecall.id %>">
+  <span class="script-col1 td"><%= gamecall.title %></span>
+  <span class="script-col2 td table-center"><%= gamecall.start_time.strftime("%m-%d-%Y") if gamecall.start_time? %></span>
+  <span class="script-col3 td"><%= link_to 'Open Sheet', [@event, gamecall], class: "btn btn-custom3 btn-sm pull-right" %></span>
+  <span class="script-col3 td"><button type="button" id="update-gamecall_<%= gamecall.id %>" class="btn btn-custom4 btn-sm pull-right  update-gamecall-button small-screen-hide" data-toggle="modal" data-target="#myupdategamecall_<%= gamecall.id %>">
     Update or Delete Sheet
-  </button></td>
-</tr>
+  </button></span>
+</div>
 
 <div id="gamecall<%= gamecall.id %>">
   <!-- Modal - update gamecalls -->
@@ -26,11 +26,7 @@
           <div class="field">
             <%= f.label :start_time, "Start Date" %><br>
             <%= f.datetime_select_no_time :start_time, class: "form-control event_start_time" %>
-          </div>
-          <div class="field">
-            <%= f.label :end_time, "End Date" %><br>
-            <%= f.datetime_select_no_time :end_time, class: "form-control event_end_time", id: "end-date" %>  
-          </div>          
+          </div>        
         </div>
         
         <div class="modal-footer">

@@ -18,5 +18,5 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require jquery-readyselector
-//= require_tree .
 //= require turbolinks
+//= require_tree .

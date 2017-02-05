@@ -59,7 +59,7 @@
   <% end %>  
 </div>
 
-<span data-no-turbolink><%= link_to 'Return to Install', @event, class: "btn btn-custom3 btn-sm print-button", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading Install Page..."} %></span>
+<span><%= link_to 'Return to Install', @event, class: "btn btn-custom3 btn-sm print-button" %></span>
 <span><%= link_to 'Print <i class="fa fa-print"></i>'.html_safe, '#', class: "btn btn-custom1 btn-sm print-button", :onclick => 'window.print();return false;'%></span>
 
 <p></p>

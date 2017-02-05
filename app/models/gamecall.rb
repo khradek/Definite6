@@ -12,9 +12,18 @@ class Gamecall < ActiveRecord::Base
   before_update :gcupdate_event
   after_destroy :gcdelete_event
 
+  before_validation :gc_set_end_time
+
+  #Sets the initial end date to equal the start date
+  def gc_set_end_time
+    if end_time.nil?
+      self.end_time = start_time
+    end
+  end
+
   #Creates an event in the calendar for the game call sheet
   def gcmake_event
-    Event.create :user_id => self.user_id, :gamecall_tag => self.id, :title => self.title, :start_time => self.start_time, :end_time => self.end_time, :event_type => "Gamecall"
+    Event.create :user_id => self.user_id, :gamecall_tag => self.id, :installgc_event_id => self.event_id, :title => self.title, :start_time => self.start_time, :end_time => self.end_time, :event_type => "Gamecall"
   end
 
   #Updates the calendar event when the game call sheet is updated

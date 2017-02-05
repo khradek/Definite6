@@ -2,8 +2,7 @@ var ready;
 ready = function(){
 
   $('.datetimepicker').datetimepicker({
-    useCurrent: false,
-    format: "DD/MM/YYYY"
+    format: "DD/MM/YYYY",
   });
  
   $('#calendar').fullCalendar({

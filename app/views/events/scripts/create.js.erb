@@ -1,7 +1,12 @@
+//Hides the modal
 $("#mynewscript").modal('hide');
-//$(".script-title").val('');
-//$(".script-start-time").val('');
-//$(".script-end-time").val('');
 
+//Clears the form
+//$("#mynewscript .form-control").val('');
+
+//Adds new script to the list of scripts
+//$("#scripts-table").append('<%= j render @script %>');
+
+//Reload because the datetime picker won't work after create (until after page is refreshed)
 location.reload();
 $(".overlay").show();

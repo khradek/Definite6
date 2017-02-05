@@ -1,11 +1,11 @@
-<tr id="script_<%= script.id %>">
-  <td class="script-col1"><%= script.title %></td>
-  <td class="script-col2 table-center"><%= script.start_time.strftime("%m-%d-%Y") if script.start_time? %></td>
-  <td class="script-col3"><%= link_to 'Open Script', [@event, script], class: "btn btn-custom3 btn-sm pull-right" %></td>
-  <td class="script-col3"><button type="button" id="update-script_<%= script.id %>" class="btn btn-custom4 btn-sm pull-right" data-toggle="modal" data-target="#myupdatescript_<%= script.id %>">
+<div class="tr" id="script_<%= script.id %>">
+  <span class="script-col1 td"><%= script.title %></span>
+  <span class="script-col2 table-center td"><%= script.start_time.strftime("%m-%d-%Y") if script.start_time? %></span>
+  <span class="script-col3 td"><%= link_to 'Open Script', [@event, script], class: "btn btn-custom3 btn-sm pull-right" %></span>
+  <span class="script-col3 td"><button type="button" id="update-script_<%= script.id %>" class="btn btn-custom4 btn-sm pull-right small-screen-hide" data-toggle="modal" data-target="#myupdatescript_<%= script.id %>">
   	Update or Delete Script
-  </button></td>
-</tr>
+  </button></span>
+</div>
 
 
 <div id="script<%= script.id %>">
@@ -25,13 +25,9 @@
 		        <%= f.text_field :title, class: "form-control play_piece1" %>
 		      </div>
 		      <div class="field">
-		        <%= f.label :start_time, "Start Date" %><br>
+		        <%= f.label :start_time, "Date" %><br>
 		        <%= f.datetime_select_no_time :start_time, class: "form-control event_start_time" %>
-		      </div>
-		      <div class="field">
-		        <%= f.label :end_time, "End Date" %><br>
-		        <%= f.datetime_select_no_time :end_time, class: "form-control event_end_time", id: "end-date" %>  
-		      </div> 	      	
+		      </div>      	
 	      </div>
 
 	      <div class="modal-footer">
@@ -39,7 +35,7 @@
 	          <%= link_to 'Delete Script', [@event, script], method: :delete, class: "btn btn-custom2 small-block", remote: true, data: { confirm: 'Are you sure?' } %>  
 	        </span> 
 	        <button type="button" class="btn btn-default close-button-hide" data-dismiss="modal">Close</button>
-	        <%= submit_tag "Update Script", class: "btn btn-custom1 small-block", id: "update" %>
+	        <%= submit_tag "Update Script", class: "btn btn-custom1 small-block", id: "script-update-button" %>
 	      </div>
 	    </div>
 	  </div>

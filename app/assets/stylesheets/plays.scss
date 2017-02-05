@@ -38,10 +38,6 @@
 	display: none;
 }
 
-#situation-title{
-  line-height: 1px;
-}
-
 .tablered{
   background: #f85032; /* Old browsers */
   background: -moz-linear-gradient(top,  #f85032 0%, #f16f5c 22%, #f6290c 63%, #f02f17 71%)  !important; /* FF3.6-15 */
@@ -65,10 +61,6 @@
 	padding-top: 1px;
 }
 
-.update-situations{
-	display: none;
-}
-
 .uhidden{
 	display: none;
 }
@@ -85,11 +77,11 @@
 	padding: 2px !important;
 }
 
-.saved-formations-and-plays{
-	display: none;
+.padding-lg{
+  padding: 6px !important;
 }
 
-.saved-formations-and-plays-update{
+.saved-formations-and-plays{
 	display: none;
 }
 
@@ -163,5 +155,69 @@
 
 .slim-td{
 	width: 33%;
+}
+
+.solid-border{
+  border-style: solid;
+}
+
+.dotted-border{
+  border-style: dotted;
+}
+
+.row.row-no-gutter {
+  margin: 0
+}
+.row.row-no-gutter [class*="col-"] {
+  padding: 0
+}
+
+.edit-play-container{
+  margin: auto;
+  max-width: 60%;
+}
+
+@media (min-width: 768px){
+  .medium-text{
+    font-size: 2.5em;
+    font-weight: 700;
+  }
+}
+
+@media (max-width: 768px){
+  .medium-text{
+    font-size: 1.5em;
+    font-weight: 700;
+  }
+}
+
+.update-play-box{
+  border-style: ridge;
+  border-width: 10px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  background-color: #F5F5F5;
+  border-color: #b6b6b6;
+}
+
+.plays.edit{
+  background-color: #fff !important;
+}
+
+#edit-situations-link{
+  cursor: pointer;
+}
+
+#edit-practice-link{
+  cursor: pointer;
+}
+
+#edit-play-situations{
+  display: none;
+}
+
+#edit-practice-info{
+  display: none;
 }
 

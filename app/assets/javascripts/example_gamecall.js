@@ -1,5 +1,4 @@
 $(".pages.example_gamecall").ready(function() {
-  console.log("test");
 
   exGameCallData1 = [
     ["Game Call Sheet vs Westlake","","",""],

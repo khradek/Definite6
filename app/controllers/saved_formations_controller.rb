@@ -47,7 +47,7 @@ class SavedFormationsController < ApplicationController
 
     respond_to do |format|
       if @saved_formation.update(saved_formation_params)
-        format.html { redirect_to @saved_formation, notice: 'The formation was successfully updated.' }
+        format.html { redirect_to saved_formations_path, info: 'The formation was successfully updated.' }
         format.json { render :show, status: :ok, location: @saved_formation }
         format.js
       else
@@ -63,7 +63,7 @@ class SavedFormationsController < ApplicationController
 
     respond_to do |format|
       if @saved_formation.destroy
-        format.html { redirect_to @saved_formation, notice: "The formation was deleted successfully." }
+        format.html { redirect_to @saved_formation, info: "The formation was deleted successfully." }
         format.js
       else
         format.html { render :show, flash[:error] = "There was an error deleting the formation." }

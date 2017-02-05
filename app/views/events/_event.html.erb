@@ -14,21 +14,27 @@
         <div class="form-group">
           <div class="event-type">
             <% if event.event_type == "Gamecall" %> 
-              <strong>Type: </strong> Game Call Sheet
+              <div><strong>Type: </strong>Game Call Sheet</div>
             <% else %>
-              <strong>Type: </strong><%= event.event_type %>  
+              <div><strong>Type: </strong><%= event.event_type %></div>  
             <% end %>
             <% if event.event_type == "Install" %>
-              <div class="event-type"><%= link_to "Open", event, target: "_blank", :class => "btn btn-custom1 btn-sm" %>
+              <div class="event-type"><%= link_to "Open", event, :class => "btn btn-custom1 btn-sm" %>
               </div>
             <% end %>  
             <% if event.event_type == "Script" %>
-              <button type="button" class="btn btn-custom1 btn-sm script-button">Open</button>
-              <div class="linked-event"><%= event.linked_event %></div>
+              <br>
+              <div>
+                <button type="button" class="btn btn-custom1 btn-sm script-button">Go to Script's Install Page</button>
+                <div class="linked-event"><%= event.install_event_id %></div> 
+              </div>
             <% end %> 
             <% if event.event_type == "Gamecall" %>
-              <button type="button" class="btn btn-custom1 btn-sm gamecall-button">Open</button>
-              <div class="linked-gcevent"><%= event.linked_gcevent %></div>
+              <br>
+              <div>
+                <button type="button" class="btn btn-custom1 btn-sm gamecall-button">Go to Game Call's Install Page</button>
+                <div class="linked-gcevent"><%= event.installgc_event_id %></div>
+              </div>
             <% end %> 
           </div>  
         </div>
@@ -53,7 +59,7 @@
           </div>
         <% end %>    
 
-        <% if event.event_type == "Install" || event.event_type == "Script" || event.event_type == "Gamecall" %>
+        <% if event.event_type == "Install" %> 
           <div class="field">
             <%= f.label :start_time, "Start Date" %><br>
             <%= f.datetime_select_no_time :start_time, class: "form-control event_start_time" %>
@@ -62,6 +68,13 @@
             <%= f.label :end_time, "End Date" %><br>
             <%= f.datetime_select_no_time :end_time, class: "form-control event_end_time", id: "end-date" %>  
           </div>  
+        <% end %>  
+
+        <% if event.event_type == "Script" || event.event_type == "Gamecall" %>
+          <div class="field">
+            <%= f.label :start_time, "Start Date" %><br>
+            <%= f.datetime_select_no_time :start_time, class: "form-control event_start_time" %>
+          </div>
         <% end %>  
 
       </div>

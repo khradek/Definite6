@@ -98,7 +98,7 @@
 <div class="fake-h4 inline">Dates:&nbsp </div><div class="inline"><%= @event.start_time.strftime("%m-%d-%Y") %> - <%= @event.end_time.strftime("%m-%d-%Y") %></div>
 </p>
 
-<div data-no-turbolink><%= link_to 'Return to Install', @event, class: "btn btn-custom3 btn-sm print-button", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading Install Page..."} %></div>
+<div><%= link_to 'Return to Install', @event, class: "btn btn-custom3 btn-sm print-button" %></div>
 
 <hr class="light-blue">
 

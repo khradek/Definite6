@@ -45,7 +45,7 @@
 <button id="save-button" class="btn btn-custom1">Save Updates to Sheet</button>
 <br>
 <br>
-<div data-no-turbolink><%= link_to "Return to Install Page", @event, :class => "btn btn-custom3", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading Install Page..."} %></div>
+<div><%= link_to "Return to Install Page", @event, :class => "btn btn-custom3" %></div>
 <hr>
 <%= link_to 'Printer Friendly Game Call Sheet', event_gamecall_print_path(@event, @gamecall), class: "btn btn-custom4" %> 
 <% unless browser.chrome? || browser.safari? %>

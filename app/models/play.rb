@@ -11,6 +11,10 @@ class Play < ActiveRecord::Base
 
 	default_scope { order(priority: :asc, created_at: :asc) }	
 
+  scope :opener, -> { where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', 'Opener', 'Opener', 'Opener', 'Opener', 'Opener', 'Opener', 'Opener', 'Opener', 'Opener', 'Opener')}
+  scope :opener_left, -> { opener.where('hash_mark = ?', 'Left')}
+  scope :opener_right, -> { opener.where('hash_mark = ?', 'Right')}
+
 	after_create :set_priority
 
 	def fullname
@@ -38,13 +42,6 @@ class Play < ActiveRecord::Base
 		play_count = count_em(s_string, self.fullname)
 	end	
   
-  #Determines if plays are duplicated in install
-  def duplicate_play
-    plays = Play.where(event_id: self.event_id)
-    m_plays = plays.where('piece1 = ? and piece2 = ?', self.piece1, self.piece2)
-    m_plays.length
-  end
-
   private
     def piece1_or_piece2
       if piece1.blank? && piece2.blank?

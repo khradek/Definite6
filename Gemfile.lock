@@ -20,6 +20,7 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.1)
+    active_record_query_trace (1.5.4)
     activejob (4.2.0.rc3)
       activesupport (= 4.2.0.rc3)
       globalid (>= 0.3.0)
@@ -259,6 +260,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  active_record_query_trace
   bootstrap-sass (~> 3.3, >= 3.3.6)
   bootstrap3-datetimepicker-rails (~> 4.17.37)
   browser (~> 2.2)
@@ -268,7 +270,7 @@ DEPENDENCIES
   frontend-generators
   jbuilder (~> 2.0)
   jquery-rails
-  jquery-turbolinks (~> 0.2.1)
+  jquery-turbolinks
   jquery-ui-rails
   momentjs-rails (>= 2.9.0)
   newrelic_rpm

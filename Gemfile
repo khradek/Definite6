@@ -14,8 +14,8 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'devise', '~> 4.0', '>= 4.0.1'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
+gem 'jquery-turbolinks'
 gem 'jquery-ui-rails'
-gem 'jquery-turbolinks', '~> 0.2.1'
 gem 'frontend-generators'
 gem 'rails_admin'
 gem 'puma', '~> 3.4'
@@ -36,6 +36,7 @@ group :development, :test do
 	gem 'sqlite3'
   gem 'byebug'
   gem 'web-console', '~> 2.0'
+  gem 'active_record_query_trace'
 end
 
 

@@ -18,14 +18,10 @@
         <%= f.text_field :title, class: "form-control script-title" %>
       </div>
       <div class="field">
-        <%= f.label :start_time, "Start Date" %><br>
-        <%= f.datetime_select_no_time :start_time, class: "form-control script-start-time" %>
+        <%= f.label :start_time, "Date" %><br>
+        <%= f.datetime_select_no_time :start_time, class: "form-control script-start-time", id: "start-time-script" %>
       </div>
-      <div class="field">
-        <%= f.label :end_time, "End Date" %><br>
-        <%= f.datetime_select_no_time :end_time, class: "form-control script-end-time", id: "end-date" %>  
-      </div>      
-      *All three fields must be completed in order for the script to be generated
+      *Both fields must be completed in order for the script to be generated
       </div>    
       <div class="modal-footer">
         <button type="button" class="btn btn-default close-button-hide-xs" data-dismiss="modal">Close</button>

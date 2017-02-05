@@ -1,0 +1,42 @@
+<div class="edit-play-container">  
+
+  <% @title = @saved_formation.title + " - Definite6.com" %>
+
+  <div class="update-play-box">
+    <h2 class="center"><strong><%= @saved_formation.title %></strong></h2>
+
+    <hr class="light-blue no-margin">
+
+    <%= form_for [@saved_formation] do |f| %>
+      <% if @saved_formation.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@saved_formation.errors.count, "error") %> prohibited this formation from being saved:</h2>
+
+          <ul>
+          <% @saved_formation.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= f.label :title, "Formation Name" %><br>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+
+      <hr class="light-smoke">
+
+      <div>
+        <%= link_to 'Return to My Formations', saved_formations_path, class: "btn btn-custom3 btn-sm small-block" %>
+
+        <%= link_to '<i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Delete Formation'.html_safe, [@saved_formation], method: :delete, class: "btn btn-custom2 btn-sm small-block pull-right", data: { confirm: 'Are you sure?' } %>
+      </div>
+
+      <br>
+
+      <%= submit_tag "Update Play", class: "btn btn-custom1 btn-block" %>
+      
+    <% end %>
+
+</div>

@@ -18,13 +18,13 @@
 
       <ul class="nav navbar-nav navbar-left">
         <% if user_signed_in? %>
-          <li data-no-turbolink class="<%= is_active?('/events') %>"><%= link_to 'Calendar', events_path %></li>  
+          <li class="<%= is_active?('/events') %>"><%= link_to 'Calendar', events_path %></li>  
           
           <li class="dropdown">
             <a href="#" class="dropdown-toggle <%= 'blue-nav' if controller_name == 'saved_formations' || controller_name == 'saved_plays'%>" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Play Database <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li data-no-turbolink class="<%= is_active?('/saved_formations') %>"><%= link_to 'Saved Formations', saved_formations_path %></li>
-              <li data-no-turbolink class="<%= is_active?('/saved_plays') %>"><%= link_to 'Saved Plays', saved_plays_path %></li>
+              <li class="<%= is_active?('/saved_formations') %>"><%= link_to 'Saved Formations', saved_formations_path %></li>
+              <li class="<%= is_active?('/saved_plays') %>"><%= link_to 'Saved Plays', saved_plays_path %></li>
             </ul>
           </li>
 
@@ -32,7 +32,7 @@
             <a href="#" class="dropdown-toggle <%= 'blue-nav' if controller_name == 'events' && action_name == 'show'%>" data-toggle="dropdown">Installs <b class="caret"></b></a>
             <ul class="dropdown-menu nav-limit-dropdown">
               <% @ievents.each do |ievent| %>
-                <li data-no-turbolink class='<%= is_active?("/events/#{ievent.id}") %>'><%= link_to ievent.title, event_path(ievent) %></li>
+                <li class='<%= is_active?("/events/#{ievent.id}") %>'><%= link_to ievent.title, event_path(ievent) %></li>
               <% end %>
             </ul>
           </li>

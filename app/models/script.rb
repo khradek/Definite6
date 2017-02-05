@@ -8,21 +8,30 @@ class Script < ActiveRecord::Base
 	belongs_to :event
 	belongs_to :user
 
-
 	after_create :make_event, :default_script
 	before_update :update_event
 	after_destroy :delete_event
 
+  before_validation :set_end_time
+ 
+  #Sets the initial end date to equal the start date
+  def set_end_time
+    if end_time.nil?
+      self.end_time = start_time
+    end
+  end
+
+
 	#Creates an event in the calendar for the script
 	def make_event
-		Event.create :user_id => self.user_id, :script_tag => self.id, :title => self.title, :start_time => self.start_time, :end_time => self.end_time, :event_type => "Script"
+		Event.create :user_id => self.user_id, :script_tag => self.id, :install_event_id => self.event_id, :title => self.title, :start_time => self.start_time, :end_time => self.end_time, :event_type => "Script"
 	end
 
 	#Updates the calendar event when the script is updated
 	def update_event
 		cal_event = Event.find_by(script_tag: self.id)
 		if cal_event.title != self.title || cal_event.start_time != self.start_time || cal_event.end_time != self.end_time
-			cal_event.update :title => self.title, :start_time => self.start_time, :end_time => self.end_time 
+			cal_event.update :title => self.title, :start_time => self.start_time, :end_time => self.start_time 
 		end	 		 
 	end
 

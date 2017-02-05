@@ -46,7 +46,7 @@ class SavedPlaysController < ApplicationController
 
     respond_to do |format|
       if @saved_play.update(saved_play_params)
-        format.html { redirect_to @saved_play, notice: 'The Play was successfully updated.' }
+        format.html { redirect_to saved_plays_path, info: 'The play was successfully updated.' }
         format.json { render :show, status: :ok, location: @saved_play }
         format.js
       else
@@ -62,7 +62,7 @@ class SavedPlaysController < ApplicationController
 
     respond_to do |format|
       if @saved_play.destroy
-        format.html { redirect_to @saved_play, notice: "The play was deleted successfully." }
+        format.html { redirect_to @saved_play, info: "The play was deleted successfully." }
         format.js
       else
         format.html { render :show, flash[:error] = "There was an error deleting the play." }

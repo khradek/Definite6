@@ -1,4 +1,8 @@
+//Hides the modal
 $("#mynewsaved_play").modal('hide');
 
- location.reload();
-$(".overlay").show();
+//Clears/resets the form
+$("#mynewsaved_play .form-control").val('');
+
+//Adds new play to the list
+$("#saved-plays-body").append('<%= j render @saved_play %>');

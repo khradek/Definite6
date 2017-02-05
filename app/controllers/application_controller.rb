@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user_subscribed?
   
+  #Redirect to calendar after user signs-in
   def after_sign_in_path_for(resource)
   	events_path
   end
@@ -23,4 +24,6 @@ class ApplicationController < ActionController::Base
     thank_you_path
   end
 
+  #Bootstrap flash messages
+  add_flash_types :success, :warning, :danger, :info
 end

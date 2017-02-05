@@ -135,6 +135,10 @@ class Events::PlaysController < ApplicationController
 
     respond_to do |format|
       if @play.save
+        @period1_count = @event.plays.where(:period1 => true).count
+        @period2_count = @event.plays.where(:period2 => true).count
+        @period3_count = @event.plays.where(:period3 => true).count
+        @period4_count = @event.plays.where(:period4 => true).count
         format.html { redirect_to @event, notice: 'The play was successfully created.' }
         format.json { render :show, status: :created, location: @play }
         format.js
@@ -149,14 +153,10 @@ class Events::PlaysController < ApplicationController
   def update
     @event = Event.find(params[:event_id])
     @play.update(play_params)
-    @period1_count = @event.plays.where(:period1 => true).count
-    @period2_count = @event.plays.where(:period2 => true).count
-    @period3_count = @event.plays.where(:period3 => true).count
-    @period4_count = @event.plays.where(:period4 => true).count
     
     respond_to do |format|
       if @play.update(play_params)
-        format.html { redirect_to @event, notice: 'The play was successfully updated.' }
+        format.html { redirect_to @event, info: 'The play was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
         format.js 
       else
@@ -173,7 +173,7 @@ class Events::PlaysController < ApplicationController
 
     respond_to do |format|
       if @play.destroy
-        format.html { redirect_to @event, notice: "The play was deleted successfully." }
+        format.html { redirect_to @event, info: "The play was deleted successfully." }
         format.js
       else
         format.html { render :show, flash[:error] = "There was an error deleting the play." }

@@ -1,8 +1,28 @@
+
+//Function for sort functionality of install table
 var set_positions;
 set_positions = function(){
   // loop through and give each task a data-pos attribute that holds its position in the DOM
   $('.play-table').each(function(i){
       $(this).attr("data-pos",i+1);
+  });
+}
+
+function highlightDuplicateRows(selector) {
+  var index = {},
+  getText = function () {
+    return $.trim( $(this).text() );
+  };
+  $(selector).find("tr").each(function (tr) {
+    var rowKey = $(this).find(".play-box").map(getText).toArray().join("|");
+    if (index.hasOwnProperty(rowKey)) {
+       index[rowKey].push(this);
+    } else {
+      index[rowKey] = [this];
+    }
+  });
+  $.each(index, function (rowKey, rows) {
+    $(rows).toggleClass("tablered", rows.length > 1);
   });
 }
 
@@ -12,8 +32,8 @@ $(".events.show").ready(function() {
 
   //Makes the plays table sortable; cancel line disallows sort on the header and footer
 	$('.sortable').sortable({
-		cancel: "#plays-thead, #plays-tfoot"
-	});
+    cancel: ".no-sort"
+  })
 
 
 	// after the order changes
@@ -42,9 +62,6 @@ $(".events.show").ready(function() {
 	//Hides blank script table row on show page  
 	$("#script_").hide();	
 
-  //Makes the create play modal draggable 
-  $("#mynewplay").draggable({ handle: ".modal-content" });
-
   //Makes the create script modal draggable 
   $("#mynewscript").draggable({ handle: ".modal-content" });
 
@@ -54,11 +71,7 @@ $(".events.show").ready(function() {
   //Makes the import plays modal draggable 
   $("#importPlaysModal").draggable({ handle: ".modal-content" });
 
-  //Makes the remove multiple plays modal draggable 
-  $("#removePlaysModal").draggable({ handle: ".modal-content" }); 
-
-  //Makes the update multiple plays modal draggable 
-  $("#updatePlaysModal").draggable({ handle: ".modal-content" });
-
+  //Marks duplicate plays in red
+  highlightDuplicateRows("#plays-body");
 	
 }); 

@@ -27,6 +27,10 @@
     	     <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
     		<% end %>
 
+        <script>
+          setTimeout("$('.alert').fadeOut('slow')", 3000)
+        </script>
+
     		<%= yield %>
 
         <%= render partial: "shared/footer" %>

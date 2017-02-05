@@ -12,7 +12,6 @@ $(".saved_formations.index").ready(function() {
 
   //Makes the plays table sortable; cancel line disallows sort on the header and footer
 	$('.sortable').sortable({
-		cancel: "#formations-thead"
 	});
 
 
@@ -35,4 +34,5 @@ $(".saved_formations.index").ready(function() {
 	    data: { order: updated_order }
 	  });	  
 	});
+
 });

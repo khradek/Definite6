@@ -8,7 +8,7 @@ class Event < ActiveRecord::Base
 	has_many :plays, dependent: :destroy
 	belongs_to :user
 
-  before_validation :strip_whitespace
+  before_validation :strip_whitespace, :end_time_check
 	after_update :update_script, :update_gamecall
 	after_destroy :delete_script, :delete_gamecall
   before_save :add_time
@@ -30,12 +30,6 @@ class Event < ActiveRecord::Base
 		update_script = Script.find_by(id: self.script_tag)
 		update_script.destroy if update_script
 	end
-
-	#Provides the actual script's event ID - used for the link in the script update modal
-	def linked_event
-		linked_script = Script.find_by(id: self.script_tag)
-		linked_event = linked_script.event_id
-	end
   #------End script------
 
 
@@ -55,12 +49,6 @@ class Event < ActiveRecord::Base
     update_gamecall = Gamecall.find_by(id: self.gamecall_tag)
     update_gamecall.destroy if update_gamecall
   end
-
-  #Provides the actual game call sheet's event ID - used for the link in the game call sheet update modal
-  def linked_gcevent
-    linked_gamecall = Gamecall.find_by(id: self.gamecall_tag)
-    linked_event = linked_gamecall.event_id
-  end
   #------End Game Call Sheet------
 
   private
@@ -76,4 +64,14 @@ class Event < ActiveRecord::Base
   def strip_whitespace
     self.title = self.title.strip
   end
+
+  #Ensures script and game call sheet event's end date is not after the start date (to avoid calendar event from stretching to multiple days)
+  def end_time_check
+    if self.event_type == "Script" || self.event_type == "Gamecall"
+      if end_time > start_time
+        self.end_time = start_time
+      end
+    end
+  end
+  
 end

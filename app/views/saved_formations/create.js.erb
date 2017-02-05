@@ -1,4 +1,11 @@
+//Hides the modal
 $("#mynewsaved_formation").modal('hide');
 
- location.reload();
-$(".overlay").show();
+//Clears/resets the form
+$("#mynewsaved_formation .form-control").val('');
+
+//Adds new formation to the list
+$("#saved-formations-body").append('<%= j render @saved_formation %>');
+
+
+
