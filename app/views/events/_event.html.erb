@@ -19,8 +19,8 @@
               <div><strong>Type: </strong><%= event.event_type %></div>  
             <% end %>
             <% if event.event_type == "Install" %>
-              <div class="event-type"><%= link_to "Open", event, :class => "btn btn-custom1 btn-sm" %>
-              </div>
+              <br>
+              <div class="event-type"><%= link_to "Go to Install Page", event, :class => "btn btn-custom1 btn-sm" %></div>
             <% end %>  
             <% if event.event_type == "Script" %>
               <br>

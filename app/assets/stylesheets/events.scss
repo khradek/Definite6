@@ -73,6 +73,13 @@
 	display: none;
 }
 
+.trans{
+  color: transparent;
+  -webkit-user-select: none; /* Disables highlighting text Chrome/Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+}
+
 @media (max-width: 729px){
   .small-screen-hide {
     display: none;
@@ -122,6 +129,9 @@
   padding: 10px;
 }
 
+.white-bg{
+  background-color: #fff;
+}
 
 @media (min-width: 1000px){
   .margin-left{
@@ -175,6 +185,12 @@
     font-size: 1.5em;
     font-weight: 700;
   }
+}
+
+.summary-border{
+  vertical-align: middle;
+  padding: .35em;
+  border: #a7a7a7 1px solid;
 }
 
 /*Blue*/

@@ -59,7 +59,7 @@
   <% end %>  
 </div>
 
-<span><%= link_to 'Return to Install', @event, class: "btn btn-custom3 btn-sm print-button" %></span>
+<span><%= link_to 'Return to Install', 'javascript:history.go(-1);', class: "btn btn-custom3 btn-sm print-button" %></span>
 <span><%= link_to 'Print <i class="fa fa-print"></i>'.html_safe, '#', class: "btn btn-custom1 btn-sm print-button", :onclick => 'window.print();return false;'%></span>
 
 <p></p>

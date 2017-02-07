@@ -1,0 +1,98 @@
+<% @title = @event.title + " Call Sheet Summary - Definite6.com" %>
+
+<br>
+
+<p class="large-text center">Call Sheet Summary</p>
+
+<div class="thin-container">
+
+  <br>
+  <br>
+
+  <div class="row row-no-gutter"> 
+    <div class="col-xs-2"></div> 
+    <div class="col-xs-8"><div class="center summary-border htlightwhite"><strong>Custom 3 - Run</strong></div></div>
+    <div class="col-xs-2"></div>
+  </div>
+  <div class="row row-no-gutter"> 
+    <div class="col-xs-2"></div> 
+    <div class="col-xs-4">        
+      <% @plays.run_left_custom_threes.each do |play| %>
+        <div class="center summary-border white-bg" ><%= play.fullname %></div>
+      <% end %> 
+      <div class="center summary-border white-bg trans <%= 'hidden' if @run_left_custom_threes_remain < 7 %>">9</div>
+      <div class="center summary-border white-bg trans <%= 'hidden' if @run_left_custom_threes_remain < 6 %>">10</div>
+      <div class="center summary-border white-bg trans <%= 'hidden' if @run_left_custom_threes_remain < 5 %>">11</div>
+      <div class="center summary-border white-bg trans <%= 'hidden' if @run_left_custom_threes_remain < 4 %>">12</div>
+      <div class="center summary-border white-bg trans <%= 'hidden' if @run_left_custom_threes_remain < 3 %>">13</div>
+      <div class="center summary-border white-bg trans <%= 'hidden' if @run_left_custom_threes_remain < 2 %>">14</div>
+      <div class="center summary-border white-bg trans <%= 'hidden' if @run_left_custom_threes_remain < 1 %>">15</div>
+    </div>  
+    <div class="col-xs-4">        
+      <% @plays.run_right_custom_threes.each do |play| %>
+        <div class="center summary-border white-bg" ><%= play.fullname %></div>
+      <% end %>
+      <div class="center summary-border white-bg trans <%= 'hidden' if @run_right_custom_threes_remain < 7 %>">9</div>
+      <div class="center summary-border white-bg trans <%= 'hidden' if @run_right_custom_threes_remain < 6 %>">10</div>
+      <div class="center summary-border white-bg trans <%= 'hidden' if @run_right_custom_threes_remain < 5 %>">11</div>
+      <div class="center summary-border white-bg trans <%= 'hidden' if @run_right_custom_threes_remain < 4 %>">12</div>
+      <div class="center summary-border white-bg trans <%= 'hidden' if @run_right_custom_threes_remain < 3 %>">13</div>
+      <div class="center summary-border white-bg trans <%= 'hidden' if @run_right_custom_threes_remain < 2 %>">14</div>
+      <div class="center summary-border white-bg trans <%= 'hidden' if @run_right_custom_threes_remain < 1 %>">15</div>
+    <div class="col-xs-2"></div>
+    </div>  
+  </div>
+  <div class="row">
+    <div class="col-xs-2"></div>
+    <div class="col-xs-4 center"><strong>Spaces Remaining: <%= @run_left_custom_threes_remain %></strong></div>
+    <div class="col-xs-4 center"><strong>Spaces Remaining: <%= @run_right_custom_threes_remain %></strong></div>
+    <div class="col-xs-2"></div>
+  </div>
+
+  <br>
+
+  <div class="row row-no-gutter"> 
+    <div class="col-xs-2"></div> 
+    <div class="col-xs-8"><div class="center summary-border htlightwhite"><strong>Custom 3 - Pass</strong></div></div>
+    <div class="col-xs-2"></div>
+  </div>
+  <div class="row row-no-gutter"> 
+    <div class="col-xs-2"></div> 
+    <div class="col-xs-4">        
+      <% @plays.pass_left_custom_threes.each do |play| %>
+        <div class="center summary-border white-bg" ><%= play.fullname %></div>
+      <% end %> 
+      <div class="center summary-border white-bg trans <%= 'hidden' if @pass_left_custom_threes_remain < 7 %>">9</div>
+      <div class="center summary-border white-bg trans <%= 'hidden' if @pass_left_custom_threes_remain < 6 %>">10</div>
+      <div class="center summary-border white-bg trans <%= 'hidden' if @pass_left_custom_threes_remain < 5 %>">11</div>
+      <div class="center summary-border white-bg trans <%= 'hidden' if @pass_left_custom_threes_remain < 4 %>">12</div>
+      <div class="center summary-border white-bg trans <%= 'hidden' if @pass_left_custom_threes_remain < 3 %>">13</div>
+      <div class="center summary-border white-bg trans <%= 'hidden' if @pass_left_custom_threes_remain < 2 %>">14</div>
+      <div class="center summary-border white-bg trans <%= 'hidden' if @pass_left_custom_threes_remain < 1 %>">15</div>
+    </div>  
+    <div class="col-xs-4">        
+      <% @plays.pass_right_custom_threes.each do |play| %>
+        <div class="center summary-border white-bg" ><%= play.fullname %></div>
+      <% end %>
+      <div class="center summary-border white-bg trans <%= 'hidden' if @pass_right_custom_threes_remain < 7 %>">9</div>
+      <div class="center summary-border white-bg trans <%= 'hidden' if @pass_right_custom_threes_remain < 6 %>">10</div>      
+      <div class="center summary-border white-bg trans <%= 'hidden' if @pass_right_custom_threes_remain < 5 %>">11</div>
+      <div class="center summary-border white-bg trans <%= 'hidden' if @pass_right_custom_threes_remain < 4 %>">12</div>
+      <div class="center summary-border white-bg trans <%= 'hidden' if @pass_right_custom_threes_remain < 3 %>">13</div>
+      <div class="center summary-border white-bg trans <%= 'hidden' if @pass_right_custom_threes_remain < 2 %>">14</div>
+      <div class="center summary-border white-bg trans <%= 'hidden' if @pass_right_custom_threes_remain < 1 %>">15</div>
+    <div class="col-xs-2"></div>
+    </div>  
+  </div>
+  <div class="row">
+    <div class="col-xs-2"></div>
+    <div class="col-xs-4 center"><strong>Spaces Remaining: <%= @pass_left_custom_threes_remain %></strong></div>
+    <div class="col-xs-4 center"><strong>Spaces Remaining: <%= @pass_right_custom_threes_remain %></strong></div>
+    <div class="col-xs-2"></div>
+  </div>
+
+  <%= link_to 'Return to Install', 'javascript:history.go(-1);', class: "btn btn-custom3 btn-sm small-block" %>
+
+  <hr class="light-smoke">
+
+</div>

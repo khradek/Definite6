@@ -82,6 +82,26 @@
 
     <%= link_to 'Sortable Play List Summaries', event_sortable_path(@event), class: "btn btn-custom3 btn-sm small-block" %>
 
+    <span class="dropdown">
+      <button class="btn btn-custom3 btn-sm small-block dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Call Sheet Summaries <b class="caret"></b></button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <li class="dropdown-item"><%= link_to 'Openers', event_summary_openers_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to '1st/2nd & Ten', event_summary_first_and_ten_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to '2nd & Long', event_summary_second_and_long_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to '3rd & Long', event_summary_third_and_long_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to '2nd & Medium', event_summary_second_and_medium_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to '3rd & Medium', event_summary_third_and_medium_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to '2nd & Short', event_summary_second_and_short_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to '3rd & Short', event_summary_third_and_short_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to 'Redzone', event_summary_redzone_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to 'Goaline', event_summary_goaline_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to 'Coming Out', event_summary_coming_out_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to 'Custom 1', event_summary_custom_one_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to 'Custom 2', event_summary_custom_two_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to 'Custom 3', event_summary_custom_three_path(@event) %></li>
+      </ul>
+    </span>
+
     <!-- Button trigger remove multiple plays modal -->
     <button type="button" class="btn btn-custom2 btn-sm small-block pull-right margin-left" data-toggle="modal" data-target="#removePlaysModal">Remove Multiple</button>
 
