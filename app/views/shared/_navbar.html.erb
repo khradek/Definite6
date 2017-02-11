@@ -54,9 +54,11 @@
           </li>
 
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle <%= 'blue-nav' if controller_name == 'articles'%>" data-toggle="dropdown">Free Coaching Articles <b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle <%= 'blue-nav' if controller_name == 'articles'%>" data-toggle="dropdown">Coaching Articles <b class="caret"></b></a>
             <ul class="dropdown-menu nav-long-dropdown">
               <li class="<%= is_active?('/articles/index') %>"><%= link_to 'Articles Index', articles_index_path %></li>
+              <li class="<%= is_active?('/articles/goal_line_part_one') %>"><%= link_to 'Goal Line - Part 1', articles_goal_line_part_one_path %></li>
+              <li class="<%= is_active?('/articles/the_quick_game_stick') %>"><%= link_to 'The Quick Game - Stick', articles_the_quick_game_stick_path %></li>
               <li class="<%= is_active?('/articles/the_quick_game_slant') %>"><%= link_to 'The Quick Game - Slant', articles_the_quick_game_slant_path %></li>
               <li class="<%= is_active?('/articles/the_quick_game_out') %>"><%= link_to 'The Quick Game - Out', articles_the_quick_game_out_path %></li>
               <li class="<%= is_active?('/articles/the_quick_game_fade') %>"><%= link_to "The Quick Game - Fade", articles_the_quick_game_fade_path %></li>
@@ -74,6 +76,8 @@
             <a href="#" class="dropdown-toggle <%= 'blue-nav' if controller_name == 'articles'%>" data-toggle="dropdown">Free Coaching Articles <b class="caret"></b></a>
             <ul class="dropdown-menu nav-long-dropdown">
               <li class="<%= is_active?('/articles/index') %>"><%= link_to 'Articles Index', articles_index_path %></li>
+              <li class="<%= is_active?('/articles/goal_line_part_one') %>"><%= link_to 'Goal Line - Part 1', articles_goal_line_part_one_path %></li>
+              <li class="<%= is_active?('/articles/the_quick_game_stick') %>"><%= link_to 'The Quick Game - Stick', articles_the_quick_game_stick_path %></li>
               <li class="<%= is_active?('/articles/the_quick_game_slant') %>"><%= link_to 'The Quick Game - Slant', articles_the_quick_game_slant_path %></li>
               <li class="<%= is_active?('/articles/the_quick_game_out') %>"><%= link_to 'The Quick Game - Out', articles_the_quick_game_out_path %></li>
               <li class="<%= is_active?('/articles/the_quick_game_fade') %>"><%= link_to "The Quick Game - Fade", articles_the_quick_game_fade_path %></li>

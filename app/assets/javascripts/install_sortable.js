@@ -12,7 +12,7 @@ $(".events.sortable").ready(function() {
     height: 600,
     renderAllRows: true,
     rowHeaders: true,
-    colHeaders: ["Play", "Hash", "Type", "<span>No. Practiced</span>", "Opener", "1st/2nd & Ten", "2nd & Long", "2nd & Medium", "2nd & Short", "3rd & Long", "3rd & Medium", "3rd & Short", "Redzone", "Goaline", "Coming Out", "Custom 1", "Custom 2", "Custom 3"],
+    colHeaders: ["Play", "Hash", "Type", "<span># of Reps</span>", "Opener", "1st/2nd & Ten", "2nd & Long", "2nd & Medium", "2nd & Short", "3rd & Long", "3rd & Medium", "3rd & Short", "Redzone", "Goaline", "Coming Out", "Custom 1", "Custom 2", "Custom 3"],
     contextMenu: ['undo', 'redo', 'alignment'],
     colWidths: [325, 65, 65, 115, 80, 125, 105, 125, 110, 105, 125, 110, 85, 85, 110, 95, 95, 95],   
     manualColumnResize: false,

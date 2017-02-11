@@ -95,76 +95,142 @@ $(document).on('page:change', function() {
   /////////Delete Multiple Modal/////////
   //Makes the modal draggable 
   $("#removePlaysModal").draggable({ handle: ".modal-content" }); 
-  //Check all functionality on update multiple modal
-  $('#check-all').click(function () { 
-    var checkBoxes = $(".play-checkbox");
-    checkBoxes.prop("checked", !checkBoxes.prop("checked"));
-  })
-
+  
   //Check all functionality on delete multiple modal
+  $('#delete-check-all').off();
   $('#delete-check-all').click(function () { 
     var checkBoxes = $(".delete-checkbox");
-    checkBoxes.prop("checked", !checkBoxes.prop("checked"));
-  })
+    if ($('#remove-multiple-body :input[type="checkbox"]:checked').length < $('#remove-multiple-body :input[type="checkbox"]').length){
+      checkBoxes.prop("checked", true);      
+    } else { checkBoxes.prop("checked", false);
+    };
+  });
+  $(document).off("change").on("change", ".delete-checkbox", function(){
+    if ($('#remove-multiple-body :input[type="checkbox"]:checked').length < $('#remove-multiple-body :input[type="checkbox"]').length){
+      $('#delete-check-all').prop("checked", false);
+    }
+    if ($('#remove-multiple-body :input[type="checkbox"]:checked').length == $('#remove-multiple-body :input[type="checkbox"]').length){
+      $('#delete-check-all').prop("checked", true);
+    };
+  });
+  
+  //Ensures the submit button is disabled unless at least one play is checked
+  if ($('#remove-multiple-body :input[type="checkbox"]:checked').length > 0){
+    $('.remove-multi-button').prop('disabled', false);
+  } else {
+    $('.remove-multi-button').prop('disabled', true); 
+  };
+  $(document).on("change", ".delete-checkbox, #delete-check-all", function(){
+    if ($('#remove-multiple-body :input[type="checkbox"]:checked').length > 0){
+      $('.remove-multi-button').prop('disabled', false);
+    } else {
+      $('.remove-multi-button').prop('disabled', true); 
+    }
+  });
 
 
 
   /////////Update Multiple Modal/////////
   //Makes the modal draggable 
   $("#updatePlaysModal").draggable({ handle: ".modal-content" });
+
+  //Check all functionality on update multiple modal
+  $('#check-all').off();
+  $('#check-all').click(function () { 
+    var checkBoxes = $(".play-checkbox");
+    if ($('#multiples-body :input[type="checkbox"]:checked').length < $('#multiples-body :input[type="checkbox"]').length){
+      checkBoxes.prop("checked", true);      
+    } else { checkBoxes.prop("checked", false);
+    };
+  });
+  $(document).on("change", ".play-checkbox", function(){
+    if ($('#multiples-body :input[type="checkbox"]:checked').length < $('#multiples-body :input[type="checkbox"]').length){
+      $('#check-all').prop("checked", false);
+    }
+    if ($('#multiples-body :input[type="checkbox"]:checked').length == $('#multiples-body :input[type="checkbox"]').length){
+      $('#check-all').prop("checked", true);
+    }
+  });
   
+  //Ensures the submit button is disabled unless at least one play is checked
+  if ($('#multiples-body :input[type="checkbox"]:checked').length > 0){
+    $('.update-multi-button').prop('disabled', false);
+  } else {
+    $('.update-multi-button').prop('disabled', true); 
+  };
+  $(document).on("change", ".play-checkbox, #check-all", function(){
+    if ($('#multiples-body :input[type="checkbox"]:checked').length > 0){
+      $('.update-multi-button').prop('disabled', false);
+    } else {
+      $('.update-multi-button').prop('disabled', true); 
+    }
+  });
+
   //Shows/hides Practice Period edit section in Update Multiple modal
+  $("#periods").off();
   $("#periods").change(function(){
     $(".period-select").toggle();
   });
 
   //Shows/hides Play Type edit section in Update Multiple modal
+  $("#types").off();
   $("#types").change(function(){
     $(".multi-type").toggle();
   });
 
   //Shows/hides Hash Mark edit section in Update Multiple modal
+  $("#hashes").off();
   $("#hashes").change(function(){
     $(".multi-hash").toggle();
   }); 
 
   //Shows/hides Situation 1-10 edit section in Update Multiple modal
+  $("#situation_1").off();
   $("#situation_1").change(function(){
     $(".multi-situation1").toggle();
   }); 
 
+  $("#situation_2").off();
   $("#situation_2").change(function(){
     $(".multi-situation2").toggle();
   });
 
+  $("#situation_3").off();
   $("#situation_3").change(function(){
     $(".multi-situation3").toggle();
   });
 
+  $("#situation_4").off();
   $("#situation_4").change(function(){
     $(".multi-situation4").toggle();
   });
 
+  $("#situation_5").off();
   $("#situation_5").change(function(){
     $(".multi-situation5").toggle();
   });
 
+  $("#situation_6").off();
   $("#situation_6").change(function(){
     $(".multi-situation6").toggle();
   });
 
+  $("#situation_7").off();
   $("#situation_7").change(function(){
     $(".multi-situation7").toggle();
   });
 
+  $("#situation_8").off();
   $("#situation_8").change(function(){
     $(".multi-situation8").toggle();
   });
 
+  $("#situation_9").off();
   $("#situation_9").change(function(){
     $(".multi-situation9").toggle();
   });
 
+  $("#situation_10").off();
   $("#situation_10").change(function(){
     $(".multi-situation10").toggle();
   });
