@@ -25,6 +25,7 @@ gem 'receipts', '~> 0.1.3'
 gem 'browser', '~> 2.2'
 gem 'sidekiq'
 gem 'newrelic_rpm'
+gem 'devise_masquerade', '~> 0.1.7'
 
 
 group :production do

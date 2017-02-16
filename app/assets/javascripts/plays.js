@@ -96,7 +96,7 @@ $(document).on('page:change', function() {
   //Makes the modal draggable 
   $("#removePlaysModal").draggable({ handle: ".modal-content" }); 
   
-  //Check all functionality on delete multiple modal
+  //Check all functionality on remove multiple modal
   $('#delete-check-all').off();
   $('#delete-check-all').click(function () { 
     var checkBoxes = $(".delete-checkbox");
@@ -279,7 +279,6 @@ $(document).on('page:change', function() {
       $("#play-text-" + id).val(choice);
     };
   });
-
 
 });
 

@@ -16,6 +16,8 @@
 
   <br>
 
+  <div id="errors_div"></div>
+  
   <!-- Have to render _events because update modal is located there -->
   <div class="row" id="container-events">
     <%= render @events %>
@@ -42,20 +44,20 @@
             <div id="select-install-select">
               <div class="form-group">
                 <%= label_tag :chose_install, 'Chose Install' %>
-                <%= select_tag 'ievent', options_from_collection_for_select(@ievents, 'id', 'title'), class: "form-control", id: "install-dropdown"%>
+                <%= select_tag 'ievent', options_from_collection_for_select(@ievents, 'id', 'title'), class: "form-control", id: "install-dropdown", size: 3 %>
               </div>
               <br>
               <button type="button" class="btn btn-custom1 btn-sm btn-block" id="install-button">Go to Install</button>
             </div>
-            <hr>   
+         
             <div id="create-lower-body"> 
               <div id="non-script-body">        
                 <div class="field">
                   <%= f.label :title %><br>
-                  <%= f.text_area :title, class: "form-control event_title" %>
+                  <%= f.text_area :title, class: "form-control event_title", id: "title-id" %>
                 </div>
                 <div class="field">
-                  <%= f.label :description %><br>
+                  <%= f.label :description, "Description <i>(optional)</i>".html_safe %><br>
                   <%= f.text_area :description, class: "form-control event_description" %>
                 </div>
                 <div class="time-showing">
@@ -71,22 +73,21 @@
                 <div class="no-time">
                   <div class="field">
                     <%= f.label :start_time, "Start Date" %><br>
-                    <%= f.datetime_select_no_time :start_time, class: "form-control event_start_time", id: "trythis" %>
+                    <%= f.datetime_select_install1 :start_time, class: "form-control event_start_time" %>
                   </div>
                   <div class="field">
                     <%= f.label :end_time, "End Date" %><br>
-                    <%= f.datetime_select_no_time :end_time, class: "form-control event_end_time", id: "end-date" %>  
+                    <%= f.datetime_select_install2 :end_time, class: "form-control event_end_time" %>  
                   </div>  
                 </div> 
               </div>      
               <div id="non-script-footer">
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal" id="myneweventclose">Close</button>
-                  <%= submit_tag "Create", class: "btn btn-custom1" %>
+                  <%= submit_tag "Create", class: "btn btn-custom1 create-event-button" %>
                 </div>
               </div>
             </div> 
-
             <div id="script-footer">
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal" id="script-close">Close</button>

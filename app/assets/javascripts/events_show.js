@@ -35,7 +35,6 @@ $(".events.show").ready(function() {
     cancel: ".no-sort"
   })
 
-
 	// after the order changes
 	$('.sortable').sortable().bind('sortupdate', function(e, ui) {
 	    // array to store new order
@@ -73,5 +72,40 @@ $(".events.show").ready(function() {
 
   //Marks duplicate plays in red
   highlightDuplicateRows("#plays-body");
+
+  //Disables the create button until the title and date fields are completed on the create script modal
+  if($(".script-title").val().length == 0 || $(".install-picker1").val().length == 0){
+    $('#create-script-button').prop('disabled', true);      
+  }else{ 
+    $('#create-script-button').prop('disabled', false);
+  };
+
+  $("body").on("change dp.change keyup", ".script-title, .install-picker1", function(){
+    if($(".script-title").val().length == 0 || $(".install-picker1").val().length == 0){
+      $('#create-script-button').prop('disabled', true);      
+    }else{ 
+      $('#create-script-button').prop('disabled', false);
+    };
+  });
+
+  //Disables the create button until the title and date fields are completed on the create gamecall modal
+  if($(".gamecall-title").val().length == 0 || $(".install-picker2").val().length == 0){
+    $('#create-gamecall-button').prop('disabled', true);      
+  }else{ 
+    $('#create-gamecall-button').prop('disabled', false);
+  };
+
+  $("body").on("change dp.change keyup", ".gamecall-title, .install-picker2", function(){
+    if($(".gamecall-title").val().length == 0 || $(".install-picker2").val().length == 0){
+      $('#create-gamecall-button').prop('disabled', true);      
+    }else{ 
+      $('#create-gamecall-button').prop('disabled', false);
+    };
+  });
+
+
+
+
+
 	
 }); 

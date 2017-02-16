@@ -180,7 +180,7 @@
       <hr class="light-smoke">
 
       <div>
-        <%= link_to 'Return to Install', @event, class: "btn btn-custom3 btn-sm small-block" %>
+        <%= link_to 'Return to Install', 'javascript:history.go(-1);', class: "btn btn-custom3 btn-sm small-block" %>
 
         <%= link_to '<i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Remove from Install'.html_safe, [@event, @play], method: :delete, class: "btn btn-custom2 btn-sm small-block pull-right", data: { confirm: 'Are you sure?' } %>
       </div>

@@ -1,3 +1,6 @@
 $("#myupdategamecall_<%= @gamecall.id %>").modal('hide');
 
 $("#gamecall_<%= @gamecall.id %>").replaceWith('<%= j render @gamecall %>');
+
+//Initializes datetimepicker on dynamically added content
+$(".datetimepicker").datetimepicker();

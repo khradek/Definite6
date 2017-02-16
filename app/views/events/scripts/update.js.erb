@@ -1,3 +1,6 @@
 $("#myupdatescript_<%= @script.id %>").modal('hide');
 
 $("#script_<%= @script.id %>").replaceWith('<%= j render @script %>');
+
+//Initializes datetimepicker on dynamically added content
+$(".datetimepicker").datetimepicker();

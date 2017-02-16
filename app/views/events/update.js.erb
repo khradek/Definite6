@@ -1,6 +1,11 @@
 $("#myupdateevent_<%= @event.id %>").modal('hide');
-//$("#container-events").prepend('<%= j render @event %>');
-//$('#calendar').fullCalendar("refetchEvents");
+$("#container-events").prepend('<%= j render @event %>');
+$('#calendar').fullCalendar("refetchEvents");
 
-$(".overlay").show();
-location.reload();
+//Initializes datetimepicker on dynamically added content
+$(".datetimepicker").datetimepicker();
+
+
+
+//$(".overlay").show();
+//location.reload();

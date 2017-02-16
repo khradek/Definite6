@@ -1,5 +1,5 @@
-var ready;
-ready = function(){
+
+$(".events.index").ready(function() {
 
 	//Displays/hides time from datetimepicker based on event_type - ability to add "Practice", "Other", etc (events that need to show the time) as dropdown choices
 	var noTime = $(".no-time");
@@ -30,6 +30,21 @@ ready = function(){
 		};		
 	});
 
+  //Disables the create button until the title and start/end date fields are completed on the create install modal
+  if($("#title-id").val().length == 0 || $(".install-picker1").val().length == 0 || $(".install-picker2").val().length == 0){
+    $('.create-event-button').prop('disabled', true);      
+  }else{ 
+    $('.create-event-button').prop('disabled', false);
+  };
+
+  $("body").on("change dp.change keyup", "#title-id, .install-picker1, .install-picker2", function(){
+    if($("#title-id").val().length == 0 || $(".install-picker1").val().length == 0 || $(".install-picker2").val().length == 0){
+      $('.create-event-button').prop('disabled', true);      
+    }else{ 
+      $('.create-event-button').prop('disabled', false);
+    };
+  });
+
   //Directs user to chosen install page on install dropdown (Create script or create game call sheet)
 	$("#install-button").click(function(){
 		var url = "events/" + $("#install-dropdown").val();
@@ -37,14 +52,13 @@ ready = function(){
 	});
 
 	//Opens corresponding install page when script button is clicked in script update modal
-	$(".script-button").click(function(){
+  $(document).on("click", ".script-button", function(){
 		var url = "events/" + $(this).next().text();
-    console.log(url);
 		window.location.href = url;
 	});
 
   //Opens corresponding install page when game call sheet button is clicked in game call sheet update modal
-  $(".gamecall-button").click(function(){
+  $(document).on("click", ".gamecall-button", function(){
     var url = "events/" + $(this).next().text();
     window.location.href= url;
   });
@@ -52,7 +66,6 @@ ready = function(){
 	//Makes the create event modal draggable 
   $("#mynewevent").draggable({ handle: ".modal-content" });
  
-};
+});
 
-$(document).ready(ready);
-$(document).on('page:load', ready);
+

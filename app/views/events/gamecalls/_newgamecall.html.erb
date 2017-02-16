@@ -19,13 +19,13 @@
       </div>
       <div class="field">
         <%= f.label :start_time, "Date" %><br>
-        <%= f.datetime_select_no_time :start_time, class: "form-control gamecall-start-time" %>
+        <%= f.datetime_select_install2 :start_time, class: "form-control gamecall-start-time" %>
       </div>  
       *Both fields must be completed in order for the game call sheet to be generated
       </div>    
       <div class="modal-footer">
         <button type="button" class="btn btn-default close-button-hide-xs" data-dismiss="modal">Close</button>
-        <%= submit_tag "Create New Game Call Sheet", class: "btn btn-custom1" %>
+        <%= submit_tag "Create New Game Call Sheet", class: "btn btn-custom1", id: "create-gamecall-button" %>
       </div>
     </div>
   </div>

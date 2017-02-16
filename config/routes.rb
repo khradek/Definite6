@@ -84,4 +84,6 @@ Rails.application.routes.draw do
 
   get '/thank_you' => "pages#thank_you"
 
+  get '/masquerade' => "pages#masquerade"
+
 end

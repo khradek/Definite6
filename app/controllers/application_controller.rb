@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 	before_filter :add_header_text
+  before_action :masquerade_user!
   
   def add_header_text
   	@ievents = Event.where(:event_type => "Install").where(:user_id => current_user.id).order(:start_time => :desc) if user_signed_in?

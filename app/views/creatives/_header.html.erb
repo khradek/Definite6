@@ -12,7 +12,7 @@
       <div class="row">
         <div class="col-xs-5">
           <hr>
-          <h2 class="black-text">Welcome <%= current_user.email %>, you have already created an account, but it is not active because you have yet to provide payment </h2>
+          <h2 class="black-text">Welcome <%= current_user.email %>, you have already created an account, but it is not active because you have yet to provide payment. </h2>
           <h2><%= link_to "Activate Account", new_subscription_path, :class => "btn btn-custom4 btn-lg", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading payment form..."} %></h2>
           <hr>          
         </div>

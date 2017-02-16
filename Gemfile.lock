@@ -68,6 +68,9 @@ GEM
       railties (>= 4.1.0, < 5.1)
       responders
       warden (~> 1.2.3)
+    devise_masquerade (0.1.8)
+      devise (>= 2.1.0)
+      railties (>= 3.0)
     domain_name (0.5.20160615)
       unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
@@ -267,6 +270,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   devise (~> 4.0, >= 4.0.1)
+  devise_masquerade (~> 0.1.7)
   frontend-generators
   jbuilder (~> 2.0)
   jquery-rails
