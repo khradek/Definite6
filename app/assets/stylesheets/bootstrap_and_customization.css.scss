@@ -213,6 +213,10 @@ $grid-float-breakpoint: 915px;
   cursor: move;
 }
 
+#situation-names-section{
+  display: none;
+}
+
 #charges-section{
   display: none;
 }
@@ -256,6 +260,10 @@ $grid-float-breakpoint: 915px;
   margin-bottom: 6px;
 }
 
+.deep-top{
+  padding-top: 7px;
+}
+
 .skinny{
   margin-top: 5px;
   margin-bottom: 5px;  
@@ -269,6 +277,14 @@ $grid-float-breakpoint: 915px;
 .medium-font{
   font-size: 1.25em;
   line-height: 1.5;
+}
+
+.large-font{
+  font-size: 1.75em;
+}
+
+.bold-font{
+  font-weight: bold;
 }
 
 .blue{
@@ -352,11 +368,12 @@ hr.no-margin {
   }
 }
 
-
-
 @media screen and (min-width: 800px) {
   .custom-class {
       width: 50%; /* either % (e.g. 60%) or px (400px) */
+  }
+  .custom-larger-class {
+      width: 60%; /* either % (e.g. 60%) or px (400px) */
   }
 }
 
@@ -472,4 +489,14 @@ SPAN.td{
   background: -webkit-linear-gradient(top,  #fceabb 0%,#f8b500 41%,#fbdf93 100%); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(to bottom,  #fceabb 0%,#f8b500 41%,#fbdf93 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', endColorstr='#fbdf93',GradientType=0 ); /* IE6-9 */
+}
+
+.gamecall-image{
+  display: block;
+  margin: auto;
+  width: 90%;
+}
+
+.pointer{
+  cursor: pointer;
 }

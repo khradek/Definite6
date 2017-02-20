@@ -105,6 +105,168 @@
   <br>
   <hr class="light-blue">
 
+  <h3 id="situation-names-link" class="pointer">Update Situation Names <i class="fa fa-arrow-circle-right right-arrow ht blue" aria-hidden="true"></i><i class="fa fa-arrow-circle-down down-arrow blue" aria-hidden="true"></i></h3>
+
+  <div id="situation-names-section">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    
+      <hr>  
+
+      <div class="center">
+        <span class="large-font bold-font">First Page</span>
+        <div class="deep-top pointer", data-toggle="modal" data-target="#Sheet1"><u><i>Show Call Sheet</i></u> &nbsp<i class="fa fa-info-circle fa-lg blue" aria-hidden="true"></i></div>
+      </div>
+        
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="field">
+            <%= f.label :s_name1, "Situation 1:" %>
+            <span class="pull-right">
+              15 Plays 
+            </span>
+            <br />
+            <%= f.text_field :s_name1, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="field">
+            <%= f.label :s_name2, "Situation 2:" %><span class="pull-right">7 Run / 7 Pass</span><br />
+            <%= f.text_field :s_name2, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="field">
+            <%= f.label :s_name3, "Situation 3:" %><span class="pull-right">5 Run / 6 Pass</span><br />
+            <%= f.text_field :s_name3, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="field">
+            <%= f.label :s_name4, "Situation 4:" %><span class="pull-right">5 Run / 5 Pass</span><br />
+            <%= f.text_field :s_name4, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="field">
+            <%= f.label :s_name5, "Situation 5:" %><span class="pull-right">5 Run / 5 Pass</span><br />
+            <%= f.text_field :s_name5, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="field">
+            <%= f.label :s_name6, "Situation 6:" %><span class="pull-right">3 Run / 8 Pass</span><br />
+            <%= f.text_field :s_name6, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="field">
+            <%= f.label :s_name7, "Situation 7:" %><span class="pull-right">5 Run / 5 Pass</span><br />
+            <%= f.text_field :s_name7, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="field">
+            <%= f.label :s_name8, "Situation 8:" %><span class="pull-right">7 Run / 3 Pass</span><br />
+            <%= f.text_field :s_name8, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="center">
+        <span class="large-font bold-font">Second Page</span>
+        <div class="deep-top pointer", data-toggle="modal" data-target="#Sheet2"><u><i>Show Call Sheet</i></u> &nbsp<i class="fa fa-info-circle fa-lg blue" aria-hidden="true"></i></div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="field">
+            <%= f.label :s_name9, "Situation 9:" %><span class="pull-right">7 Run / 7 Pass</span><br />
+            <%= f.text_field :s_name9, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="field">
+            <%= f.label :s_name10, "Situation 10:" %><span class="pull-right">7 Run / 7 Pass</span><br />
+            <%= f.text_field :s_name10, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="field">
+            <%= f.label :s_name11, "Situation 11:" %><span class="pull-right">7 Run / 7 Pass</span><br />
+            <%= f.text_field :s_name11, class: "form-control" %>
+          </div>
+        </div>
+      </div> 
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="field">
+            <%= f.label :s_name12, "Situation 12:" %><span class="pull-right">7 Run / 7 Pass</span><br />
+            <%= f.text_field :s_name12, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="field">
+            <%= f.label :s_name13, "Situation 13:" %><span class="pull-right">7 Run / 7 Pass</span><br />
+            <%= f.text_field :s_name13, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="field">
+            <%= f.label :s_name14, "Situation 14:" %><span class="pull-right">7 Run / 7 Pass</span><br />
+            <%= f.text_field :s_name14, class: "form-control" %>
+          </div>
+        </div>
+      </div>                                         
+
+      <br>
+
+      <div class="actions">
+        <%= f.button "Update Situation Names", class: "btn btn-custom3 btn-block", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Updating..."} %>
+      </div>
+
+    <% end %>  
+  </div>
+
+
+
+  <hr class="light-blue">
+
   <h3 id="charges-link">Prior Charges/Receipts <i class="fa fa-arrow-circle-right right-arrow ht blue" aria-hidden="true"></i><i class="fa fa-arrow-circle-down down-arrow blue" aria-hidden="true"></i></h3>
 
   <div id="charges-section">
@@ -249,3 +411,37 @@
 
 <br>
 <br>
+
+<!-- Modal for Game Call Sheet Page One-->
+<div class="modal fade" id="Sheet1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog custom-larger-class" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h2 class="modal-title center" id="exampleModalLabel">Game Call Sheet - Page One</h2>
+      </div>
+      <div class="modal-body">
+        <%= image_tag("GameCallP1.png", alt: "Game Call Sheet Page One", class: "gamecall-image") %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for Game Call Sheet Page Two-->
+<div class="modal fade" id="Sheet2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog custom-larger-class" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h2 class="modal-title center" id="exampleModalLabel">Game Call Sheet - Page Two</h2>
+      </div>
+      <div class="modal-body">
+        <%= image_tag("GameCallP2.png", alt: "Game Call Sheet Page Two", class: "gamecall-image") %>
+      </div>
+    </div>
+  </div>
+</div>

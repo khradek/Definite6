@@ -21,7 +21,6 @@ class Script < ActiveRecord::Base
     end
   end
 
-
 	#Creates an event in the calendar for the script
 	def make_event
 		Event.create :user_id => self.user_id, :script_tag => self.id, :install_event_id => self.event_id, :title => self.title, :start_time => self.start_time, :end_time => self.end_time, :event_type => "Script"

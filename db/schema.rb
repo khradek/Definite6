@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170204002814) do
+ActiveRecord::Schema.define(version: 20170218161202) do
 
   create_table "charges", force: true do |t|
     t.integer  "user_id"
@@ -141,6 +141,20 @@ ActiveRecord::Schema.define(version: 20170204002814) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "team"
+    t.string   "s_name1"
+    t.string   "s_name2"
+    t.string   "s_name3"
+    t.string   "s_name4"
+    t.string   "s_name5"
+    t.string   "s_name6"
+    t.string   "s_name7"
+    t.string   "s_name8"
+    t.string   "s_name9"
+    t.string   "s_name10"
+    t.string   "s_name11"
+    t.string   "s_name12"
+    t.string   "s_name13"
+    t.string   "s_name14"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

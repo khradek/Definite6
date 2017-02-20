@@ -1,5 +1,9 @@
 $(".events.sortable").ready(function() {
 
+  var setHeader = $("#colHeadings").text();
+  var replaceHeading = setHeader.replace(/'/g, '"');
+  var colHeadings = JSON.parse(replaceHeading);
+
   var setData = $("#sortData").text();
   var replaceData = setData.replace(/'/g, '"');
   var sortData1 = JSON.parse(replaceData);
@@ -12,9 +16,9 @@ $(".events.sortable").ready(function() {
     height: 600,
     renderAllRows: true,
     rowHeaders: true,
-    colHeaders: ["Play", "Hash", "Type", "<span># of Reps</span>", "Opener", "1st/2nd & Ten", "2nd & Long", "2nd & Medium", "2nd & Short", "3rd & Long", "3rd & Medium", "3rd & Short", "Redzone", "Goaline", "Coming Out", "Custom 1", "Custom 2", "Custom 3"],
+    colHeaders: colHeadings, 
     contextMenu: ['undo', 'redo', 'alignment'],
-    colWidths: [325, 65, 65, 115, 80, 125, 105, 125, 110, 105, 125, 110, 85, 85, 110, 95, 95, 95],   
+    colWidths: [325, 65, 65, 80, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125],   
     manualColumnResize: false,
     manualRowResize: false,
     fillHandle: false,
@@ -39,7 +43,7 @@ $(".events.sortable").ready(function() {
     rowHeaders: true,
     colHeaders: ["<span>Play</span>", "Situation 1", "Situation 2", "Situation 3", "Situation 4", "Situation 5", "Situation 6", "Situation 7", "Situation 8", "Situation 9", "Situation 10"],
     contextMenu: ['undo', 'redo', 'alignment'],
-    colWidths: [325, 125, 125, 125, 125, 125, 125, 125, 125, 125, 125],   
+    colWidths: [325, 140, 140, 140, 140, 140, 140, 140, 140, 140, 140],   
     manualColumnResize: false,
     manualRowResize: false,
     fillHandle: false,

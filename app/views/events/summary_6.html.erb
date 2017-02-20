@@ -1,4 +1,4 @@
-<% @title = @event.title + " Call Sheet Summary - Definite6.com" %>
+<% @title = current_user.s_name6 + " Call Sheet Summary - Definite6.com" %>
 
 <br>
 
@@ -11,7 +11,7 @@
 
   <div class="row row-no-gutter"> 
     <div class="col-xs-2"></div> 
-    <div class="col-xs-8"><div class="center summary-border htred"><strong>3rd & Long - Run</strong></div></div>
+    <div class="col-xs-8"><div class="center summary-border htred"><strong><%= current_user.s_name6 %> - Run</strong></div></div>
     <div class="col-xs-2"></div>
   </div>
   <div class="row row-no-gutter"> 
@@ -45,7 +45,7 @@
 
   <div class="row row-no-gutter"> 
     <div class="col-xs-2"></div> 
-    <div class="col-xs-8"><div class="center summary-border htred"><strong>3rd & Long - Pass</strong></div></div>
+    <div class="col-xs-8"><div class="center summary-border htred"><strong><%= current_user.s_name6 %> - Pass</strong></div></div>
     <div class="col-xs-2"></div>
   </div>
   <div class="row row-no-gutter"> 

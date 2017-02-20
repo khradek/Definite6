@@ -15,6 +15,11 @@ $(".subscriptions.new, .registrations.edit").ready(function() {
   });
 
   //Arrow functionality on Account Settings page
+  $("#situation-names-link").click(function(){
+    $(this).find(".right-arrow, .down-arrow").toggle();
+    $("#situation-names-section").toggle("blind");
+  })
+
   $("#charges-link").click(function(){
     $(this).find(".right-arrow, .down-arrow").toggle();
     $("#charges-section").toggle("blind");
@@ -29,7 +34,7 @@ $(".subscriptions.new, .registrations.edit").ready(function() {
     $(this).find(".right-arrow, .down-arrow").toggle();
     $("#deactivate-account-section").toggle("blind");
   })
-  
+
 });
 
 function stripeResponseHandler(status, response) {

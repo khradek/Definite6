@@ -1,5 +1,10 @@
 <% @title = "Sortable Play Summary - Definite6.com"%>
 
+
+<div id="colHeadings" class="hidden">
+  ["Play", "Hash", "Type", "<span># of Reps</span>", "<%= current_user.s_name1 %>", "<%= current_user.s_name2 %>", "<%= current_user.s_name3 %>", "<%= current_user.s_name4 %>", "<%= current_user.s_name5 %>", "<%= current_user.s_name6 %>", "<%= current_user.s_name7 %>", "<%= current_user.s_name8 %>", "<%= current_user.s_name9 %>", "<%= current_user.s_name10 %>", "<%= current_user.s_name11 %>", "<%= current_user.s_name12 %>", "<%= current_user.s_name13 %>", "<%= current_user.s_name14 %>"]
+</div>
+
 <div id="sortData" class="hidden">
   [<% @plays.each do |play| %> 
     ["<%= play.fullname %>",
@@ -59,7 +64,7 @@
     <% else %>
       " ",
     <% end %>
-    <% if play.situation1 == "Goaline" || play.situation2 == "Goaline" || play.situation3 == "Goaline" || play.situation4 == "Goaline" || play.situation5 == "Goaline" || play.situation6 == "Goaline" || play.situation7 == "Goaline" || play.situation8 == "Goaline" || play.situation9 == "Goaline" || play.situation10 == "Goaline" %>
+    <% if play.situation1 == "Goal Line" || play.situation2 == "Goal Line" || play.situation3 == "Goal Line" || play.situation4 == "Goal Line" || play.situation5 == "Goal Line" || play.situation6 == "Goal Line" || play.situation7 == "Goal Line" || play.situation8 == "Goal Line" || play.situation9 == "Goal Line" || play.situation10 == "Goal Line" %>
       "X",
     <% else %>
       " ",
@@ -84,7 +89,7 @@
     <% else %>
       " "]
     <% end %> 
-    <%= "," unless play == @event.plays.last %>
+    <%= "," unless play == @plays.last %>
   <% end %>]
 </div>
 
@@ -115,56 +120,56 @@ Click Hash, Type, or situation column headers to sort
   [<% @plays.each do |play| %> 
     ["<%= play.fullname %>",
     <% if play.situation1 %> 
-      "<%= play.situation1 %>", 
+      "<%= play.new_situation1 %>", 
     <% else %>  
       " ",
     <% end %>
     <% if play.situation2 %> 
-      "<%= play.situation2 %>", 
+      "<%= play.new_situation2 %>", 
     <% else %>  
       " ",
     <% end %>
     <% if play.situation3 %> 
-      "<%= play.situation3 %>", 
+      "<%= play.new_situation3 %>", 
     <% else %>  
       " ",
     <% end %>
     <% if play.situation4 %> 
-      "<%= play.situation4 %>", 
+      "<%= play.new_situation4 %>", 
     <% else %>  
       " ",
     <% end %>
     <% if play.situation5 %> 
-      "<%= play.situation5 %>", 
+      "<%= play.new_situation5 %>", 
     <% else %>  
       " ",
     <% end %>
     <% if play.situation6 %> 
-      "<%= play.situation6 %>", 
+      "<%= play.new_situation6 %>", 
     <% else %>  
       " ",
     <% end %>
     <% if play.situation7 %> 
-      "<%= play.situation7 %>", 
+      "<%= play.new_situation7 %>", 
     <% else %>  
       " ",
     <% end %>
     <% if play.situation8 %> 
-      "<%= play.situation8 %>", 
+      "<%= play.new_situation8 %>", 
     <% else %>  
       " ",
     <% end %>
     <% if play.situation9 %> 
-      "<%= play.situation9 %>", 
+      "<%= play.new_situation9 %>", 
     <% else %>  
       " ",
     <% end %>
     <% if play.situation10 %> 
-      "<%= play.situation10 %>"] 
+      "<%= play.new_situation10 %>"] 
     <% else %>  
       " "]
     <% end %>                                    
-    <%= "," unless play == @event.plays.last %>
+    <%= "," unless play == @plays.last %>
   <% end %>]
 </div>
    

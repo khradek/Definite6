@@ -12,18 +12,18 @@ class EventsController < ApplicationController
   end
 
   def sortable
-    @event = Event.find(params[:event_id]) 
-    @plays = @event.plays
+    @event = Event.find(params[:event_id])
+    @plays = @event.plays.includes(:user)
   end
 
-  def summary_openers
+  def summary_1
     @event = Event.find(params[:event_id])
     @plays = @event.plays
     @openers_left_remain = 15 - @plays.openers_left.count 
     @openers_right_remain = 15 - @plays.openers_right.count
   end
 
-  def summary_first_and_ten
+  def summary_2
     @event = Event.find(params[:event_id])
     @plays = @event.plays
     @run_left_first_tens_remain = 7 - @plays.run_left_first_tens.count
@@ -32,7 +32,7 @@ class EventsController < ApplicationController
     @pass_right_first_tens_remain = 7 - @plays.pass_right_first_tens.count
   end
 
-  def summary_second_and_long
+  def summary_3
     @event = Event.find(params[:event_id])
     @plays = @event.plays
     @run_left_second_longs_remain = 5 - @plays.run_left_second_longs.count
@@ -41,16 +41,7 @@ class EventsController < ApplicationController
     @pass_right_second_longs_remain = 6 - @plays.pass_right_second_longs.count
   end
 
-  def summary_third_and_long
-    @event = Event.find(params[:event_id])
-    @plays = @event.plays
-    @run_left_third_longs_remain = 3 - @plays.run_left_third_longs.count
-    @run_right_third_longs_remain = 3 - @plays.run_right_third_longs.count
-    @pass_left_third_longs_remain = 8 - @plays.pass_left_third_longs.count
-    @pass_right_third_longs_remain = 8 - @plays.pass_right_third_longs.count
-  end
-
-  def summary_second_and_medium
+  def summary_4
     @event = Event.find(params[:event_id])
     @plays = @event.plays
     @run_left_second_mediums_remain = 5 - @plays.run_left_second_mediums.count
@@ -59,16 +50,7 @@ class EventsController < ApplicationController
     @pass_right_second_mediums_remain = 5 - @plays.pass_right_second_mediums.count
   end
 
-  def summary_third_and_medium
-    @event = Event.find(params[:event_id])
-    @plays = @event.plays
-    @run_left_third_mediums_remain = 5 - @plays.run_left_third_mediums.count
-    @run_right_third_mediums_remain = 5 - @plays.run_right_third_mediums.count
-    @pass_left_third_mediums_remain = 5 - @plays.pass_left_third_mediums.count
-    @pass_right_third_mediums_remain = 5 - @plays.pass_right_third_mediums.count
-  end
-
-  def summary_second_and_short
+  def summary_5
     @event = Event.find(params[:event_id])
     @plays = @event.plays
     @run_left_second_shorts_remain = 5 - @plays.run_left_second_shorts.count
@@ -77,7 +59,25 @@ class EventsController < ApplicationController
     @pass_right_second_shorts_remain = 5 - @plays.pass_right_second_shorts.count
   end
 
-  def summary_third_and_short
+  def summary_6
+    @event = Event.find(params[:event_id])
+    @plays = @event.plays
+    @run_left_third_longs_remain = 3 - @plays.run_left_third_longs.count
+    @run_right_third_longs_remain = 3 - @plays.run_right_third_longs.count
+    @pass_left_third_longs_remain = 8 - @plays.pass_left_third_longs.count
+    @pass_right_third_longs_remain = 8 - @plays.pass_right_third_longs.count
+  end
+
+  def summary_7
+    @event = Event.find(params[:event_id])
+    @plays = @event.plays
+    @run_left_third_mediums_remain = 5 - @plays.run_left_third_mediums.count
+    @run_right_third_mediums_remain = 5 - @plays.run_right_third_mediums.count
+    @pass_left_third_mediums_remain = 5 - @plays.pass_left_third_mediums.count
+    @pass_right_third_mediums_remain = 5 - @plays.pass_right_third_mediums.count
+  end
+
+  def summary_8
     @event = Event.find(params[:event_id])
     @plays = @event.plays
     @run_left_third_shorts_remain = 7 - @plays.run_left_third_shorts.count
@@ -86,7 +86,7 @@ class EventsController < ApplicationController
     @pass_right_third_shorts_remain = 3 - @plays.pass_right_third_shorts.count
   end
 
-  def summary_redzone
+  def summary_9
     @event = Event.find(params[:event_id])
     @plays = @event.plays
     @run_left_redzones_remain = 7 - @plays.run_left_redzones.count
@@ -95,7 +95,7 @@ class EventsController < ApplicationController
     @pass_right_redzones_remain = 7 - @plays.pass_right_redzones.count
   end
 
-  def summary_goaline
+  def summary_10
     @event = Event.find(params[:event_id])
     @plays = @event.plays
     @run_left_goalines_remain = 7 - @plays.run_left_goalines.count
@@ -104,7 +104,7 @@ class EventsController < ApplicationController
     @pass_right_goalines_remain = 7 - @plays.pass_right_goalines.count
   end
 
-  def summary_coming_out
+  def summary_11
     @event = Event.find(params[:event_id])
     @plays = @event.plays
     @run_left_coming_outs_remain = 7 - @plays.run_left_coming_outs.count
@@ -113,7 +113,7 @@ class EventsController < ApplicationController
     @pass_right_coming_outs_remain = 7 - @plays.pass_right_coming_outs.count
   end
 
-  def summary_custom_one
+  def summary_12
     @event = Event.find(params[:event_id])
     @plays = @event.plays
     @run_left_custom_ones_remain = 7 - @plays.run_left_custom_ones.count
@@ -122,7 +122,7 @@ class EventsController < ApplicationController
     @pass_right_custom_ones_remain = 7 - @plays.pass_right_custom_ones.count
   end
 
-  def summary_custom_two
+  def summary_13
     @event = Event.find(params[:event_id])
     @plays = @event.plays
     @run_left_custom_twos_remain = 7 - @plays.run_left_custom_twos.count
@@ -131,7 +131,7 @@ class EventsController < ApplicationController
     @pass_right_custom_twos_remain = 7 - @plays.pass_right_custom_twos.count
   end
 
-  def summary_custom_three
+  def summary_14
     @event = Event.find(params[:event_id])
     @plays = @event.plays
     @run_left_custom_threes_remain = 7 - @plays.run_left_custom_threes.count

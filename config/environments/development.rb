@@ -46,6 +46,11 @@ Rails.application.configure do
 
   ActiveRecordQueryTrace.enabled = true
 
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = true
+  end
+
 end
 
 STRIPE_SECRET = "sk_test_CXoTzfim8jzH1Efo9fM0xKCS"

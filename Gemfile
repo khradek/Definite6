@@ -38,6 +38,7 @@ group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'active_record_query_trace'
+  gem 'bullet'
 end
 
 

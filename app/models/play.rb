@@ -90,8 +90,8 @@ class Play < ActiveRecord::Base
   scope :pass_left_redzones, -> { pass_redzones.where('hash_mark = ?', 'Left').limit(7)}
   scope :pass_right_redzones, -> { pass_redzones.where('hash_mark = ?', 'Right').limit(7)}
 
-  #----------Goaline----------
-  scope :goalines, -> { where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', 'Goaline', 'Goaline', 'Goaline', 'Goaline', 'Goaline', 'Goaline', 'Goaline', 'Goaline', 'Goaline', 'Goaline')}
+  #----------Goal Line----------
+  scope :goalines, -> { where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', 'Goal Line', 'Goal Line', 'Goal Line', 'Goal Line', 'Goal Line', 'Goal Line', 'Goal Line', 'Goal Line', 'Goal Line', 'Goal Line')}
   scope :run_goalines, -> { goalines.where('play_type = ?', 'Run')}
   scope :run_left_goalines, -> { run_goalines.where('hash_mark = ?', 'Left').limit(7)}
   scope :run_right_goalines, -> { run_goalines.where('hash_mark = ?', 'Right').limit(7)}
@@ -144,6 +144,339 @@ class Play < ActiveRecord::Base
 	def set_priority
 		self.update_attribute(:priority, 1000)
 	end
+  
+
+  #Displays the situation name entered by the user
+  def new_situation1
+    case situation1
+    when "Opener"
+      new_situation1 = self.user.s_name1
+    when "1st/2nd & 10"
+      new_situation1 = self.user.s_name2
+    when "2nd & Long"
+      new_situation1 = self.user.s_name3
+    when "3rd & Long"
+      new_situation1 = self.user.s_name4
+    when "2nd & Medium"
+      new_situation1 = self.user.s_name5
+    when "3rd & Medium"
+      new_situation1 = self.user.s_name6
+    when "2nd & Short"
+      new_situation1 = self.user.s_name7
+    when "3rd & Short"
+      new_situation1 = self.user.s_name8
+    when "Redzone"
+      new_situation1 = self.user.s_name9
+    when "Goal Line"
+      new_situation1 = self.user.s_name10
+    when "Coming Out"
+      new_situation1 = self.user.s_name11
+    when "Custom 1"
+      new_situation1 = self.user.s_name12
+    when "Custom 2"
+      new_situation1 = self.user.s_name13
+    when "Custom 3"
+      new_situation1 = self.user.s_name14                                                                     
+    end
+  end
+
+  def new_situation2
+    case situation2
+    when "Opener"
+      new_situation2 = self.user.s_name1
+    when "1st/2nd & 10"
+      new_situation2 = self.user.s_name2
+    when "2nd & Long"
+      new_situation2 = self.user.s_name3
+    when "3rd & Long"
+      new_situation2 = self.user.s_name4
+    when "2nd & Medium"
+      new_situation2 = self.user.s_name5
+    when "3rd & Medium"
+      new_situation2 = self.user.s_name6
+    when "2nd & Short"
+      new_situation2 = self.user.s_name7
+    when "3rd & Short"
+      new_situation2 = self.user.s_name8
+    when "Redzone"
+      new_situation2 = self.user.s_name9
+    when "Goal Line"
+      new_situation2 = self.user.s_name10
+    when "Coming Out"
+      new_situation2 = self.user.s_name11
+    when "Custom 1"
+      new_situation2 = self.user.s_name12
+    when "Custom 2"
+      new_situation2 = self.user.s_name13
+    when "Custom 3"
+      new_situation2 = self.user.s_name14                                                                     
+    end
+  end
+
+  def new_situation3
+    case situation3
+    when "Opener"
+      new_situation3 = self.user.s_name1
+    when "1st/2nd & 10"
+      new_situation3 = self.user.s_name2
+    when "2nd & Long"
+      new_situation3 = self.user.s_name3
+    when "3rd & Long"
+      new_situation3 = self.user.s_name4
+    when "2nd & Medium"
+      new_situation3 = self.user.s_name5
+    when "3rd & Medium"
+      new_situation3 = self.user.s_name6
+    when "2nd & Short"
+      new_situation3 = self.user.s_name7
+    when "3rd & Short"
+      new_situation3 = self.user.s_name8
+    when "Redzone"
+      new_situation3 = self.user.s_name9
+    when "Goal Line"
+      new_situation3 = self.user.s_name10
+    when "Coming Out"
+      new_situation3 = self.user.s_name11
+    when "Custom 1"
+      new_situation3 = self.user.s_name12
+    when "Custom 2"
+      new_situation3 = self.user.s_name13
+    when "Custom 3"
+      new_situation3 = self.user.s_name14                                                                     
+    end
+  end
+
+  def new_situation4
+    case situation4
+    when "Opener"
+      new_situation4 = self.user.s_name1
+    when "1st/2nd & 10"
+      new_situation4 = self.user.s_name2
+    when "2nd & Long"
+      new_situation4 = self.user.s_name3
+    when "3rd & Long"
+      new_situation4 = self.user.s_name4
+    when "2nd & Medium"
+      new_situation4 = self.user.s_name5
+    when "3rd & Medium"
+      new_situation4 = self.user.s_name6
+    when "2nd & Short"
+      new_situation4 = self.user.s_name7
+    when "3rd & Short"
+      new_situation4 = self.user.s_name8
+    when "Redzone"
+      new_situation4 = self.user.s_name9
+    when "Goal Line"
+      new_situation4 = self.user.s_name10
+    when "Coming Out"
+      new_situation4 = self.user.s_name11
+    when "Custom 1"
+      new_situation4 = self.user.s_name12
+    when "Custom 2"
+      new_situation4 = self.user.s_name13
+    when "Custom 3"
+      new_situation4 = self.user.s_name14                                                                     
+    end
+  end
+
+  def new_situation5
+    case situation5
+    when "Opener"
+      new_situation5 = self.user.s_name1
+    when "1st/2nd & 10"
+      new_situation5 = self.user.s_name2
+    when "2nd & Long"
+      new_situation5 = self.user.s_name3
+    when "3rd & Long"
+      new_situation5 = self.user.s_name4
+    when "2nd & Medium"
+      new_situation5 = self.user.s_name5
+    when "3rd & Medium"
+      new_situation5 = self.user.s_name6
+    when "2nd & Short"
+      new_situation5 = self.user.s_name7
+    when "3rd & Short"
+      new_situation5 = self.user.s_name8
+    when "Redzone"
+      new_situation5 = self.user.s_name9
+    when "Goal Line"
+      new_situation5 = self.user.s_name10
+    when "Coming Out"
+      new_situation5 = self.user.s_name11
+    when "Custom 1"
+      new_situation5 = self.user.s_name12
+    when "Custom 2"
+      new_situation5 = self.user.s_name13
+    when "Custom 3"
+      new_situation5 = self.user.s_name14                                                                     
+    end
+  end
+
+  def new_situation6
+    case situation6
+    when "Opener"
+      new_situation6 = self.user.s_name1
+    when "1st/2nd & 10"
+      new_situation6 = self.user.s_name2
+    when "2nd & Long"
+      new_situation6 = self.user.s_name3
+    when "3rd & Long"
+      new_situation6 = self.user.s_name4
+    when "2nd & Medium"
+      new_situation6 = self.user.s_name5
+    when "3rd & Medium"
+      new_situation6 = self.user.s_name6
+    when "2nd & Short"
+      new_situation6 = self.user.s_name7
+    when "3rd & Short"
+      new_situation6 = self.user.s_name8
+    when "Redzone"
+      new_situation6 = self.user.s_name9
+    when "Goal Line"
+      new_situation6 = self.user.s_name10
+    when "Coming Out"
+      new_situation6 = self.user.s_name11
+    when "Custom 1"
+      new_situation6 = self.user.s_name12
+    when "Custom 2"
+      new_situation6 = self.user.s_name13
+    when "Custom 3"
+      new_situation6 = self.user.s_name14                                                                     
+    end
+  end  
+
+  def new_situation7
+    case situation7
+    when "Opener"
+      new_situation7 = self.user.s_name1
+    when "1st/2nd & 10"
+      new_situation7 = self.user.s_name2
+    when "2nd & Long"
+      new_situation7 = self.user.s_name3
+    when "3rd & Long"
+      new_situation7 = self.user.s_name4
+    when "2nd & Medium"
+      new_situation7 = self.user.s_name5
+    when "3rd & Medium"
+      new_situation7 = self.user.s_name6
+    when "2nd & Short"
+      new_situation7 = self.user.s_name7
+    when "3rd & Short"
+      new_situation7 = self.user.s_name8
+    when "Redzone"
+      new_situation7 = self.user.s_name9
+    when "Goal Line"
+      new_situation7 = self.user.s_name10
+    when "Coming Out"
+      new_situation7 = self.user.s_name11
+    when "Custom 1"
+      new_situation7 = self.user.s_name12
+    when "Custom 2"
+      new_situation7 = self.user.s_name13
+    when "Custom 3"
+      new_situation7 = self.user.s_name14                                                                     
+    end
+  end  
+
+  def new_situation8
+    case situation8
+    when "Opener"
+      new_situation8 = self.user.s_name1
+    when "1st/2nd & 10"
+      new_situation8 = self.user.s_name2
+    when "2nd & Long"
+      new_situation8 = self.user.s_name3
+    when "3rd & Long"
+      new_situation8 = self.user.s_name4
+    when "2nd & Medium"
+      new_situation8 = self.user.s_name5
+    when "3rd & Medium"
+      new_situation8 = self.user.s_name6
+    when "2nd & Short"
+      new_situation8 = self.user.s_name7
+    when "3rd & Short"
+      new_situation8 = self.user.s_name8
+    when "Redzone"
+      new_situation8 = self.user.s_name9
+    when "Goal Line"
+      new_situation8 = self.user.s_name10
+    when "Coming Out"
+      new_situation8 = self.user.s_name11
+    when "Custom 1"
+      new_situation8 = self.user.s_name12
+    when "Custom 2"
+      new_situation8 = self.user.s_name13
+    when "Custom 3"
+      new_situation8 = self.user.s_name14                                                                     
+    end
+  end  
+
+  def new_situation9
+    case situation9
+    when "Opener"
+      new_situation9 = self.user.s_name1
+    when "1st/2nd & 10"
+      new_situation9 = self.user.s_name2
+    when "2nd & Long"
+      new_situation9 = self.user.s_name3
+    when "3rd & Long"
+      new_situation9 = self.user.s_name4
+    when "2nd & Medium"
+      new_situation9 = self.user.s_name5
+    when "3rd & Medium"
+      new_situation9 = self.user.s_name6
+    when "2nd & Short"
+      new_situation9 = self.user.s_name7
+    when "3rd & Short"
+      new_situation9 = self.user.s_name8
+    when "Redzone"
+      new_situation9 = self.user.s_name9
+    when "Goal Line"
+      new_situation9 = self.user.s_name10
+    when "Coming Out"
+      new_situation9 = self.user.s_name11
+    when "Custom 1"
+      new_situation9 = self.user.s_name12
+    when "Custom 2"
+      new_situation9 = self.user.s_name13
+    when "Custom 3"
+      new_situation9 = self.user.s_name14                                                                     
+    end
+  end  
+
+  def new_situation10
+    case situation10
+    when "Opener"
+      new_situation10 = self.user.s_name1
+    when "1st/2nd & 10"
+      new_situation10 = self.user.s_name2
+    when "2nd & Long"
+      new_situation10 = self.user.s_name3
+    when "3rd & Long"
+      new_situation10 = self.user.s_name4
+    when "2nd & Medium"
+      new_situation10 = self.user.s_name5
+    when "3rd & Medium"
+      new_situation10 = self.user.s_name6
+    when "2nd & Short"
+      new_situation10 = self.user.s_name7
+    when "3rd & Short"
+      new_situation10 = self.user.s_name8
+    when "Redzone"
+      new_situation10 = self.user.s_name9
+    when "Goal Line"
+      new_situation10 = self.user.s_name10
+    when "Coming Out"
+      new_situation10 = self.user.s_name11
+    when "Custom 1"
+      new_situation10 = self.user.s_name12
+    when "Custom 2"
+      new_situation10 = self.user.s_name13
+    when "Custom 3"
+      new_situation10 = self.user.s_name14                                                                     
+    end
+  end  
+  
 
 	#Counts the number of times play is shown in the install's scripts
 	def play_count

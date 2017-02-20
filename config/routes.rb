@@ -16,20 +16,20 @@ Rails.application.routes.draw do
     get :import_plays, on: :member
     get :print
     get :sortable
-    get :summary_openers
-    get :summary_first_and_ten
-    get :summary_second_and_long
-    get :summary_third_and_long
-    get :summary_second_and_medium
-    get :summary_third_and_medium
-    get :summary_second_and_short
-    get :summary_third_and_short
-    get :summary_redzone
-    get :summary_goaline
-    get :summary_coming_out
-    get :summary_custom_one
-    get :summary_custom_two
-    get :summary_custom_three
+    get :summary_1
+    get :summary_2
+    get :summary_3
+    get :summary_4
+    get :summary_5
+    get :summary_6
+    get :summary_7
+    get :summary_8
+    get :summary_9
+    get :summary_10
+    get :summary_11
+    get :summary_12
+    get :summary_13
+    get :summary_14
 
   	resources :scripts, controller: 'events/scripts' do
       get :print

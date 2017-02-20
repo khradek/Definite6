@@ -85,20 +85,20 @@
     <span class="dropdown">
       <button class="btn btn-custom3 btn-sm small-block dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Call Sheet Summaries <b class="caret"></b></button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <li class="dropdown-item"><%= link_to 'Openers', event_summary_openers_path(@event) %></li>
-        <li class="dropdown-item"><%= link_to '1st/2nd & Ten', event_summary_first_and_ten_path(@event) %></li>
-        <li class="dropdown-item"><%= link_to '2nd & Long', event_summary_second_and_long_path(@event) %></li>
-        <li class="dropdown-item"><%= link_to '3rd & Long', event_summary_third_and_long_path(@event) %></li>
-        <li class="dropdown-item"><%= link_to '2nd & Medium', event_summary_second_and_medium_path(@event) %></li>
-        <li class="dropdown-item"><%= link_to '3rd & Medium', event_summary_third_and_medium_path(@event) %></li>
-        <li class="dropdown-item"><%= link_to '2nd & Short', event_summary_second_and_short_path(@event) %></li>
-        <li class="dropdown-item"><%= link_to '3rd & Short', event_summary_third_and_short_path(@event) %></li>
-        <li class="dropdown-item"><%= link_to 'Redzone', event_summary_redzone_path(@event) %></li>
-        <li class="dropdown-item"><%= link_to 'Goaline', event_summary_goaline_path(@event) %></li>
-        <li class="dropdown-item"><%= link_to 'Coming Out', event_summary_coming_out_path(@event) %></li>
-        <li class="dropdown-item"><%= link_to 'Custom 1', event_summary_custom_one_path(@event) %></li>
-        <li class="dropdown-item"><%= link_to 'Custom 2', event_summary_custom_two_path(@event) %></li>
-        <li class="dropdown-item"><%= link_to 'Custom 3', event_summary_custom_three_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to "#{current_user.s_name1}", event_summary_1_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to "#{current_user.s_name2}", event_summary_2_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to "#{current_user.s_name3}", event_summary_3_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to "#{current_user.s_name4}", event_summary_4_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to "#{current_user.s_name5}", event_summary_5_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to "#{current_user.s_name6}", event_summary_6_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to "#{current_user.s_name7}", event_summary_7_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to "#{current_user.s_name8}", event_summary_8_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to "#{current_user.s_name9}", event_summary_9_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to "#{current_user.s_name10}", event_summary_10_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to "#{current_user.s_name11}", event_summary_11_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to "#{current_user.s_name12}", event_summary_12_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to "#{current_user.s_name13}", event_summary_13_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to "#{current_user.s_name14}", event_summary_14_path(@event) %></li>
       </ul>
     </span>
 
@@ -209,7 +209,7 @@
                 <br>
                 <%= f.label :situation1, "First Assigned Situation" %> 
                 <div>
-                  <%= f.select(:situation1, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Long', '3rd & Long'],['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out'], ['Custom 1', 'Custom 1'], ['Custom 2', 'Custom 2'], ['Custom 3', 'Custom 3']]), {}, {class: "form-control"}) %>
+                  <%= f.select(:situation1, options_for_select([[' ', ' '], ["#{current_user.s_name1}", 'Opener'], ["#{current_user.s_name2}", '1st/2nd & 10'], ["#{current_user.s_name3}", '2nd & Long'], ["#{current_user.s_name4}", '2nd & Medium'], ["#{current_user.s_name5}", '2nd & Short'], ["#{current_user.s_name6}", '3rd & Long'],["#{current_user.s_name7}", '3rd & Medium'], ["#{current_user.s_name8}", '3rd & Short'], ["#{current_user.s_name9}", 'Redzone'], ["#{current_user.s_name10}", 'Goal Line'], ["#{current_user.s_name11}", 'Coming Out'], ["#{current_user.s_name12}", 'Custom 1'], ["#{current_user.s_name13}", 'Custom 2'], ["#{current_user.s_name14}", 'Custom 3'],]), {}, {class: "form-control"}) %>
                 </div>  
               </div>
               <hr>
@@ -219,7 +219,7 @@
                 <br>
                 <%= f.label :situation2, "Second Assigned Situation" %> 
                 <div>
-                  <%= f.select(:situation2, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Long', '3rd & Long'],['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out'], ['Custom 1', 'Custom 1'], ['Custom 2', 'Custom 2'], ['Custom 3', 'Custom 3']]), {}, {class: "form-control"}) %>
+                  <%= f.select(:situation2, options_for_select([[' ', ' '], ["#{current_user.s_name1}", 'Opener'], ["#{current_user.s_name2}", '1st/2nd & 10'], ["#{current_user.s_name3}", '2nd & Long'], ["#{current_user.s_name4}", '2nd & Medium'], ["#{current_user.s_name5}", '2nd & Short'], ["#{current_user.s_name6}", '3rd & Long'],["#{current_user.s_name7}", '3rd & Medium'], ["#{current_user.s_name8}", '3rd & Short'], ["#{current_user.s_name9}", 'Redzone'], ["#{current_user.s_name10}", 'Goal Line'], ["#{current_user.s_name11}", 'Coming Out'], ["#{current_user.s_name12}", 'Custom 1'], ["#{current_user.s_name13}", 'Custom 2'], ["#{current_user.s_name14}", 'Custom 3'],]), {}, {class: "form-control"}) %>
                 </div>  
               </div>
               <hr>
@@ -229,7 +229,7 @@
                 <br>
                 <%= f.label :situation3, "Third Assigned Situation" %> 
                 <div>
-                  <%= f.select(:situation3, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Long', '3rd & Long'],['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out'], ['Custom 1', 'Custom 1'], ['Custom 2', 'Custom 2'], ['Custom 3', 'Custom 3']]), {}, {class: "form-control"}) %>
+                  <%= f.select(:situation3, options_for_select([[' ', ' '], ["#{current_user.s_name1}", 'Opener'], ["#{current_user.s_name2}", '1st/2nd & 10'], ["#{current_user.s_name3}", '2nd & Long'], ["#{current_user.s_name4}", '2nd & Medium'], ["#{current_user.s_name5}", '2nd & Short'], ["#{current_user.s_name6}", '3rd & Long'],["#{current_user.s_name7}", '3rd & Medium'], ["#{current_user.s_name8}", '3rd & Short'], ["#{current_user.s_name9}", 'Redzone'], ["#{current_user.s_name10}", 'Goal Line'], ["#{current_user.s_name11}", 'Coming Out'], ["#{current_user.s_name12}", 'Custom 1'], ["#{current_user.s_name13}", 'Custom 2'], ["#{current_user.s_name14}", 'Custom 3'],]), {}, {class: "form-control"}) %>
                 </div>  
               </div>
               <hr>
@@ -239,7 +239,7 @@
                 <br>
                 <%= f.label :situation4, "Fourth Assigned Situation" %> 
                 <div>
-                  <%= f.select(:situation4, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Long', '3rd & Long'],['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out'], ['Custom 1', 'Custom 1'], ['Custom 2', 'Custom 2'], ['Custom 3', 'Custom 3']]), {}, {class: "form-control"}) %>
+                  <%= f.select(:situation4, options_for_select([[' ', ' '], ["#{current_user.s_name1}", 'Opener'], ["#{current_user.s_name2}", '1st/2nd & 10'], ["#{current_user.s_name3}", '2nd & Long'], ["#{current_user.s_name4}", '2nd & Medium'], ["#{current_user.s_name5}", '2nd & Short'], ["#{current_user.s_name6}", '3rd & Long'],["#{current_user.s_name7}", '3rd & Medium'], ["#{current_user.s_name8}", '3rd & Short'], ["#{current_user.s_name9}", 'Redzone'], ["#{current_user.s_name10}", 'Goal Line'], ["#{current_user.s_name11}", 'Coming Out'], ["#{current_user.s_name12}", 'Custom 1'], ["#{current_user.s_name13}", 'Custom 2'], ["#{current_user.s_name14}", 'Custom 3'],]), {}, {class: "form-control"}) %>
                 </div>  
               </div>
               <hr>
@@ -249,7 +249,7 @@
                 <br>
                 <%= f.label :situation5, "Fifth Assigned Situation" %> 
                 <div>
-                  <%= f.select(:situation5, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Long', '3rd & Long'],['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out'], ['Custom 1', 'Custom 1'], ['Custom 2', 'Custom 2'], ['Custom 3', 'Custom 3']]), {}, {class: "form-control"}) %>
+                  <%= f.select(:situation5, options_for_select([[' ', ' '], ["#{current_user.s_name1}", 'Opener'], ["#{current_user.s_name2}", '1st/2nd & 10'], ["#{current_user.s_name3}", '2nd & Long'], ["#{current_user.s_name4}", '2nd & Medium'], ["#{current_user.s_name5}", '2nd & Short'], ["#{current_user.s_name6}", '3rd & Long'],["#{current_user.s_name7}", '3rd & Medium'], ["#{current_user.s_name8}", '3rd & Short'], ["#{current_user.s_name9}", 'Redzone'], ["#{current_user.s_name10}", 'Goal Line'], ["#{current_user.s_name11}", 'Coming Out'], ["#{current_user.s_name12}", 'Custom 1'], ["#{current_user.s_name13}", 'Custom 2'], ["#{current_user.s_name14}", 'Custom 3'],]), {}, {class: "form-control"}) %>
                 </div>  
               </div> 
               <hr>
@@ -259,7 +259,7 @@
                 <br>
                 <%= f.label :situation6, "Sixth Assigned Situation" %> 
                 <div>
-                  <%= f.select(:situation6, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Long', '3rd & Long'],['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out'], ['Custom 1', 'Custom 1'], ['Custom 2', 'Custom 2'], ['Custom 3', 'Custom 3']]), {}, {class: "form-control"}) %>
+                  <%= f.select(:situation6, options_for_select([[' ', ' '], ["#{current_user.s_name1}", 'Opener'], ["#{current_user.s_name2}", '1st/2nd & 10'], ["#{current_user.s_name3}", '2nd & Long'], ["#{current_user.s_name4}", '2nd & Medium'], ["#{current_user.s_name5}", '2nd & Short'], ["#{current_user.s_name6}", '3rd & Long'],["#{current_user.s_name7}", '3rd & Medium'], ["#{current_user.s_name8}", '3rd & Short'], ["#{current_user.s_name9}", 'Redzone'], ["#{current_user.s_name10}", 'Goal Line'], ["#{current_user.s_name11}", 'Coming Out'], ["#{current_user.s_name12}", 'Custom 1'], ["#{current_user.s_name13}", 'Custom 2'], ["#{current_user.s_name14}", 'Custom 3'],]), {}, {class: "form-control"}) %>
                 </div>  
               </div>                                                
               <hr>
@@ -269,7 +269,7 @@
                 <br>
                 <%= f.label :situation7, "Seventh Assigned Situation" %> 
                 <div>
-                  <%= f.select(:situation7, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Long', '3rd & Long'],['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out'], ['Custom 1', 'Custom 1'], ['Custom 2', 'Custom 2'], ['Custom 3', 'Custom 3']]), {}, {class: "form-control"}) %>
+                  <%= f.select(:situation7, options_for_select([[' ', ' '], ["#{current_user.s_name1}", 'Opener'], ["#{current_user.s_name2}", '1st/2nd & 10'], ["#{current_user.s_name3}", '2nd & Long'], ["#{current_user.s_name4}", '2nd & Medium'], ["#{current_user.s_name5}", '2nd & Short'], ["#{current_user.s_name6}", '3rd & Long'],["#{current_user.s_name7}", '3rd & Medium'], ["#{current_user.s_name8}", '3rd & Short'], ["#{current_user.s_name9}", 'Redzone'], ["#{current_user.s_name10}", 'Goal Line'], ["#{current_user.s_name11}", 'Coming Out'], ["#{current_user.s_name12}", 'Custom 1'], ["#{current_user.s_name13}", 'Custom 2'], ["#{current_user.s_name14}", 'Custom 3'],]), {}, {class: "form-control"}) %>
                 </div>  
               </div> 
               <hr>
@@ -279,7 +279,7 @@
                 <br>
                 <%= f.label :situation8, "Eighth Assigned Situation" %> 
                 <div>
-                  <%= f.select(:situation8, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Long', '3rd & Long'],['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out'], ['Custom 1', 'Custom 1'], ['Custom 2', 'Custom 2'], ['Custom 3', 'Custom 3']]), {}, {class: "form-control"}) %>
+                  <%= f.select(:situation8, options_for_select([[' ', ' '], ["#{current_user.s_name1}", 'Opener'], ["#{current_user.s_name2}", '1st/2nd & 10'], ["#{current_user.s_name3}", '2nd & Long'], ["#{current_user.s_name4}", '2nd & Medium'], ["#{current_user.s_name5}", '2nd & Short'], ["#{current_user.s_name6}", '3rd & Long'],["#{current_user.s_name7}", '3rd & Medium'], ["#{current_user.s_name8}", '3rd & Short'], ["#{current_user.s_name9}", 'Redzone'], ["#{current_user.s_name10}", 'Goal Line'], ["#{current_user.s_name11}", 'Coming Out'], ["#{current_user.s_name12}", 'Custom 1'], ["#{current_user.s_name13}", 'Custom 2'], ["#{current_user.s_name14}", 'Custom 3'],]), {}, {class: "form-control"}) %>
                 </div>  
               </div> 
               <hr>
@@ -289,7 +289,7 @@
                 <br>
                 <%= f.label :situation9, "Ninth Assigned Situation" %> 
                 <div>
-                  <%= f.select(:situation9, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Long', '3rd & Long'],['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out'], ['Custom 1', 'Custom 1'], ['Custom 2', 'Custom 2'], ['Custom 3', 'Custom 3']]), {}, {class: "form-control"}) %>
+                  <%= f.select(:situation9, options_for_select([[' ', ' '], ["#{current_user.s_name1}", 'Opener'], ["#{current_user.s_name2}", '1st/2nd & 10'], ["#{current_user.s_name3}", '2nd & Long'], ["#{current_user.s_name4}", '2nd & Medium'], ["#{current_user.s_name5}", '2nd & Short'], ["#{current_user.s_name6}", '3rd & Long'],["#{current_user.s_name7}", '3rd & Medium'], ["#{current_user.s_name8}", '3rd & Short'], ["#{current_user.s_name9}", 'Redzone'], ["#{current_user.s_name10}", 'Goal Line'], ["#{current_user.s_name11}", 'Coming Out'], ["#{current_user.s_name12}", 'Custom 1'], ["#{current_user.s_name13}", 'Custom 2'], ["#{current_user.s_name14}", 'Custom 3'],]), {}, {class: "form-control"}) %>
                 </div>  
               </div> 
               <hr>
@@ -299,7 +299,7 @@
                 <br>
                 <%= f.label :situation10, "Tenth Assigned Situation" %> 
                 <div>
-                  <%= f.select(:situation10, options_for_select([[' ', ' '], ['Opener', 'Opener'], ['1st/2nd & 10', '1st/2nd & 10'], ['2nd & Long', '2nd & Long'], ['2nd & Medium', '2nd & Medium'], ['2nd & Short', '2nd & Short'], ['3rd & Long', '3rd & Long'],['3rd & Medium', '3rd & Medium'], ['3rd & Short', '3rd & Short'], ['Redzone', 'Redzone'], ['Goaline', 'Goaline'], ['Coming Out', 'Coming Out'], ['Custom 1', 'Custom 1'], ['Custom 2', 'Custom 2'], ['Custom 3', 'Custom 3']]), {}, {class: "form-control"}) %>
+                  <%= f.select(:situation10, options_for_select([[' ', ' '], ["#{current_user.s_name1}", 'Opener'], ["#{current_user.s_name2}", '1st/2nd & 10'], ["#{current_user.s_name3}", '2nd & Long'], ["#{current_user.s_name4}", '2nd & Medium'], ["#{current_user.s_name5}", '2nd & Short'], ["#{current_user.s_name6}", '3rd & Long'],["#{current_user.s_name7}", '3rd & Medium'], ["#{current_user.s_name8}", '3rd & Short'], ["#{current_user.s_name9}", 'Redzone'], ["#{current_user.s_name10}", 'Goal Line'], ["#{current_user.s_name11}", 'Coming Out'], ["#{current_user.s_name12}", 'Custom 1'], ["#{current_user.s_name13}", 'Custom 2'], ["#{current_user.s_name14}", 'Custom 3'],]), {}, {class: "form-control"}) %>
                 </div>  
               </div>             
 
@@ -349,8 +349,8 @@
   </div>
 
 
+  <!-- Import plays modal -->
   <%= form_tag url_for(:controller => "events", :action => "import_plays"), :method => "get" do %>
-    <!-- Import plays modal -->
     <div class="modal fade" id="importPlaysModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -362,7 +362,7 @@
             
             <div class="form-group">
               <%= label_tag :chose_install, 'Chose Install' %>
-              <%= select_tag 'ievent', options_from_collection_for_select(@ievents, 'id', 'title'), class: "form-control", id: "install-dropdown"%>
+              <%= select_tag 'ievent', options_from_collection_for_select(@ievents, 'id', 'title'), class: "form-control", id: "install-dropdown", size: 3%>
             </div>
 
           </div>
