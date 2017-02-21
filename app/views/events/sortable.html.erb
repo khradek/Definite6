@@ -1,6 +1,10 @@
 <% @title = "Sortable Play Summary - Definite6.com"%>
 
 
+<% @event.scripts.each do |script| %>
+  <div><%= script.title %></div>
+<% end %>
+
 <div id="colHeadings" class="hidden">
   ["Play", "Hash", "Type", "<span># of Reps</span>", "<%= current_user.s_name1 %>", "<%= current_user.s_name2 %>", "<%= current_user.s_name3 %>", "<%= current_user.s_name4 %>", "<%= current_user.s_name5 %>", "<%= current_user.s_name6 %>", "<%= current_user.s_name7 %>", "<%= current_user.s_name8 %>", "<%= current_user.s_name9 %>", "<%= current_user.s_name10 %>", "<%= current_user.s_name11 %>", "<%= current_user.s_name12 %>", "<%= current_user.s_name13 %>", "<%= current_user.s_name14 %>"]
 </div>
@@ -18,7 +22,7 @@
     <% else %>  
       " ",
     <% end %> 
-    "<%= play.play_count %>",
+    "<%= play.play_count(@event.scripts) %>",
     <% if play.situation1 == "Opener" || play.situation2 == "Opener" || play.situation3 == "Opener" || play.situation4 == "Opener" || play.situation5 == "Opener" || play.situation6 == "Opener" || play.situation7 == "Opener" || play.situation8 == "Opener" || play.situation9 == "Opener" || play.situation10 == "Opener" %>
       "X",
     <% else %>

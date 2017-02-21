@@ -61,7 +61,7 @@
       
       <div id="edit-practice-info">
 
-        <div><strong>Number of Reps:&nbsp</strong><span><%= @play.play_count %></span></div>
+        <div><strong>Number of Reps:&nbsp</strong><span><%= @play.play_count(@event.scripts) %></span></div>
 
         <div class="row">
           <div class="col-xs-6 col-md-8"></div>

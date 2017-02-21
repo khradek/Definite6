@@ -479,8 +479,7 @@ class Play < ActiveRecord::Base
   
 
 	#Counts the number of times play is shown in the install's scripts
-	def play_count
-		scripts = Script.where(event_id: self.event_id).select("sdata")
+	def play_count(scripts)
 		s_string = ""
 		scripts.each do |script|
 			tring = script.sdata.to_s

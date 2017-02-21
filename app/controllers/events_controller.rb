@@ -12,7 +12,7 @@ class EventsController < ApplicationController
   end
 
   def sortable
-    @event = Event.find(params[:event_id])
+    @event = Event.includes(:scripts).find(params[:event_id])
     @plays = @event.plays.includes(:user)
   end
 

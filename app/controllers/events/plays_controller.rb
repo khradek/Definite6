@@ -124,7 +124,7 @@ class Events::PlaysController < ApplicationController
   end
 
   def edit
-    @event = Event.find(params[:event_id])
+    @event = Event.includes(:scripts).find(params[:event_id])
   end
 
   def create
