@@ -105,7 +105,7 @@
   <br>
   <hr class="light-blue">
 
-  <h3 id="situation-names-link" class="pointer">Update Situation Names <i class="fa fa-arrow-circle-right right-arrow ht blue" aria-hidden="true"></i><i class="fa fa-arrow-circle-down down-arrow blue" aria-hidden="true"></i></h3>
+  <h3 id="situation-names-link" class="pointer">Update Situations <i class="fa fa-arrow-circle-right right-arrow ht blue" aria-hidden="true"></i><i class="fa fa-arrow-circle-down down-arrow blue" aria-hidden="true"></i></h3>
 
   <div id="situation-names-section">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -130,10 +130,15 @@
 
       <div class="row row-no-gutter">
         <div class="col-xs-6">
-          <div class="center summary-border white-bg light-it">15 Plays</div>
+          <div class="center summary-border white-bg light-it openers-div">
+            15 Plays
+          </div>
         </div>
         <div class="col-xs-6">
-          <div class="center summary-border white-bg light-it">7 Run / 7 Pass</div>
+          <div class="center summary-border white-bg light-it">
+            <%= f.range_field :s_name2_num_run, {id: "name2-runs", :in => 0..14, :step => '1'} %>
+            <span id="name2-pass-count"></span> Pass / <span id="name2-run-count"><%= current_user.s_name2_num_run%></span> Run
+          </div>
         </div>
       </div>
 
@@ -151,15 +156,21 @@
 
       <div class="row row-no-gutter">
         <div class="col-xs-6">
-          <div class="center summary-border white-bg light-it">5 Run / 6 Pass</div>
+          <div class="center summary-border white-bg light-it">
+            <%= f.range_field :s_name3_num_run, {id: "name3-runs", :in => 0..11, :step => '1'} %>
+            <span id="name3-pass-count"></span> Pass / <span id="name3-run-count"><%= current_user.s_name3_num_run%></span> Run  
+          </div>
         </div>
+
         <div class="col-xs-6">
-          <div class="center summary-border white-bg light-it">3 Run / 8 Pass</div>
+          <div class="center summary-border white-bg light-it">
+            <%= f.range_field :s_name6_num_run, {id: "name6-runs", :in => 0..11, :step => '1'} %>
+            <span id="name6-pass-count"></span> Pass / <span id="name6-run-count"><%= current_user.s_name6_num_run%></span> Run
+          </div>
         </div>
       </div>
 
       <br>
-
 
       <div class="row row-no-gutter">
         <div class="col-xs-6">
@@ -173,10 +184,16 @@
 
       <div class="row row-no-gutter">
         <div class="col-xs-6">
-          <div class="center summary-border white-bg light-it">5 Run / 5 Pass</div>
+          <div class="center summary-border white-bg light-it">
+            <%= f.range_field :s_name4_num_run, {id: "name4-runs", :in => 0..10, :step => '1'} %>
+            <span id="name4-pass-count"></span> Pass / <span id="name4-run-count"><%= current_user.s_name4_num_run%></span> Run
+          </div>
         </div>
         <div class="col-xs-6">
-          <div class="center summary-border white-bg light-it">5 Run / 5 Pass</div>
+          <div class="center summary-border white-bg light-it">
+            <%= f.range_field :s_name7_num_run, {id: "name7-runs", :in => 0..10, :step => '1'} %>
+            <span id="name7-pass-count"></span> Pass / <span id="name7-run-count"><%= current_user.s_name7_num_run%></span> Run           
+          </div>
         </div>
       </div>
 
@@ -194,10 +211,16 @@
 
       <div class="row row-no-gutter">
         <div class="col-xs-6">
-          <div class="center summary-border white-bg light-it">5 Run / 5 Pass</div>
+          <div class="center summary-border white-bg light-it">
+            <%= f.range_field :s_name5_num_run, {id: "name5-runs", :in => 0..10, :step => '1'} %>
+            <span id="name5-pass-count"></span> Pass / <span id="name5-run-count"><%= current_user.s_name5_num_run%></span> Run
+          </div>
         </div>
         <div class="col-xs-6">
-          <div class="center summary-border white-bg light-it">7 Run / 3 Pass</div>
+          <div class="center summary-border white-bg light-it">
+            <%= f.range_field :s_name8_num_run, {id: "name8-runs", :in => 0..10, :step => '1'} %>
+            <span id="name8-pass-count"></span> Pass / <span id="name8-run-count"><%= current_user.s_name8_num_run%></span> Run
+          </div>
         </div>
       </div>
 
@@ -224,10 +247,16 @@
 
       <div class="row row-no-gutter">
         <div class="col-xs-6">
-          <div class="center summary-border white-bg light-it">7 Run / 7 Pass</div>
+          <div class="center summary-border white-bg light-it">            
+            <%= f.range_field :s_name9_num_run, {id: "name9-runs", :in => 0..14, :step => '1'} %>
+            <span id="name9-pass-count"></span> Pass / <span id="name9-run-count"><%= current_user.s_name9_num_run%></span> Run
+          </div>
         </div>
         <div class="col-xs-6">
-          <div class="center summary-border white-bg light-it">7 Run / 7 Pass</div>
+          <div class="center summary-border white-bg light-it">
+            <%= f.range_field :s_name10_num_run, {id: "name10-runs", :in => 0..14, :step => '1'} %>
+            <span id="name10-pass-count"></span> Pass / <span id="name10-run-count"><%= current_user.s_name10_num_run%></span> Run            
+          </div>
         </div>
       </div>
 
@@ -245,10 +274,16 @@
 
       <div class="row row-no-gutter">
         <div class="col-xs-6">
-          <div class="center summary-border white-bg light-it">7 Run / 7 Pass</div>
+          <div class="center summary-border white-bg light-it">
+            <%= f.range_field :s_name11_num_run, {id: "name11-runs", :in => 0..14, :step => '1'} %>
+            <span id="name11-pass-count"></span> Pass / <span id="name11-run-count"><%= current_user.s_name11_num_run%></span> Run            
+          </div>
         </div>
         <div class="col-xs-6">
-          <div class="center summary-border white-bg light-it">7 Run / 7 Pass</div>
+          <div class="center summary-border white-bg light-it">
+            <%= f.range_field :s_name12_num_run, {id: "name12-runs", :in => 0..14, :step => '1'} %>
+            <span id="name12-pass-count"></span> Pass / <span id="name12-run-count"><%= current_user.s_name12_num_run%></span> Run            
+          </div>
         </div>
       </div>
 
@@ -266,17 +301,23 @@
 
       <div class="row row-no-gutter">
         <div class="col-xs-6">
-          <div class="center summary-border white-bg light-it">7 Run / 7 Pass</div>
+          <div class="center summary-border white-bg light-it">
+            <%= f.range_field :s_name13_num_run, {id: "name13-runs", :in => 0..14, :step => '1'} %>
+            <span id="name13-pass-count"></span> Pass / <span id="name13-run-count"><%= current_user.s_name13_num_run%></span> Run            
+          </div>
         </div>
         <div class="col-xs-6">
-          <div class="center summary-border white-bg light-it">7 Run / 7 Pass</div>
+          <div class="center summary-border white-bg light-it">
+            <%= f.range_field :s_name14_num_run, {id: "name14-runs", :in => 0..14, :step => '1'} %>
+            <span id="name14-pass-count"></span> Pass / <span id="name14-run-count"><%= current_user.s_name14_num_run%></span> Run            
+          </div>
         </div>
       </div>
 
       <br>
 
       <div class="actions">
-        <%= f.button "Update Situation Names", class: "btn btn-custom3 btn-block", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Updating..."} %>
+        <%= f.button "Update Situations", class: "btn btn-custom3 btn-block", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Updating..."} %>
       </div>
 
     <% end %>  

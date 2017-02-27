@@ -155,13 +155,13 @@ class Play < ActiveRecord::Base
       new_situation1 = self.user.s_name2
     when "2nd & Long"
       new_situation1 = self.user.s_name3
-    when "3rd & Long"
-      new_situation1 = self.user.s_name4
     when "2nd & Medium"
-      new_situation1 = self.user.s_name5
-    when "3rd & Medium"
-      new_situation1 = self.user.s_name6
+      new_situation1 = self.user.s_name4
     when "2nd & Short"
+      new_situation1 = self.user.s_name5
+    when "3rd & Long"
+      new_situation1 = self.user.s_name6
+    when "3rd & Medium"
       new_situation1 = self.user.s_name7
     when "3rd & Short"
       new_situation1 = self.user.s_name8
@@ -188,13 +188,13 @@ class Play < ActiveRecord::Base
       new_situation2 = self.user.s_name2
     when "2nd & Long"
       new_situation2 = self.user.s_name3
-    when "3rd & Long"
-      new_situation2 = self.user.s_name4
     when "2nd & Medium"
-      new_situation2 = self.user.s_name5
-    when "3rd & Medium"
-      new_situation2 = self.user.s_name6
+      new_situation2 = self.user.s_name4
     when "2nd & Short"
+      new_situation2 = self.user.s_name5
+    when "3rd & Long"
+      new_situation2 = self.user.s_name6
+    when "3rd & Medium"
       new_situation2 = self.user.s_name7
     when "3rd & Short"
       new_situation2 = self.user.s_name8
@@ -221,13 +221,13 @@ class Play < ActiveRecord::Base
       new_situation3 = self.user.s_name2
     when "2nd & Long"
       new_situation3 = self.user.s_name3
-    when "3rd & Long"
-      new_situation3 = self.user.s_name4
     when "2nd & Medium"
-      new_situation3 = self.user.s_name5
-    when "3rd & Medium"
-      new_situation3 = self.user.s_name6
+      new_situation3 = self.user.s_name4
     when "2nd & Short"
+      new_situation3 = self.user.s_name5
+    when "3rd & Long"
+      new_situation3 = self.user.s_name6
+    when "3rd & Medium"
       new_situation3 = self.user.s_name7
     when "3rd & Short"
       new_situation3 = self.user.s_name8
@@ -254,13 +254,13 @@ class Play < ActiveRecord::Base
       new_situation4 = self.user.s_name2
     when "2nd & Long"
       new_situation4 = self.user.s_name3
-    when "3rd & Long"
-      new_situation4 = self.user.s_name4
     when "2nd & Medium"
-      new_situation4 = self.user.s_name5
-    when "3rd & Medium"
-      new_situation4 = self.user.s_name6
+      new_situation4 = self.user.s_name4
     when "2nd & Short"
+      new_situation4 = self.user.s_name5
+    when "3rd & Long"
+      new_situation4 = self.user.s_name6
+    when "3rd & Medium"
       new_situation4 = self.user.s_name7
     when "3rd & Short"
       new_situation4 = self.user.s_name8
@@ -287,13 +287,13 @@ class Play < ActiveRecord::Base
       new_situation5 = self.user.s_name2
     when "2nd & Long"
       new_situation5 = self.user.s_name3
-    when "3rd & Long"
-      new_situation5 = self.user.s_name4
     when "2nd & Medium"
-      new_situation5 = self.user.s_name5
-    when "3rd & Medium"
-      new_situation5 = self.user.s_name6
+      new_situation5 = self.user.s_name4
     when "2nd & Short"
+      new_situation5 = self.user.s_name5
+    when "3rd & Long"
+      new_situation5 = self.user.s_name6
+    when "3rd & Medium"
       new_situation5 = self.user.s_name7
     when "3rd & Short"
       new_situation5 = self.user.s_name8
@@ -320,13 +320,13 @@ class Play < ActiveRecord::Base
       new_situation6 = self.user.s_name2
     when "2nd & Long"
       new_situation6 = self.user.s_name3
-    when "3rd & Long"
-      new_situation6 = self.user.s_name4
     when "2nd & Medium"
-      new_situation6 = self.user.s_name5
-    when "3rd & Medium"
-      new_situation6 = self.user.s_name6
+      new_situation6 = self.user.s_name4
     when "2nd & Short"
+      new_situation6 = self.user.s_name5
+    when "3rd & Long"
+      new_situation6 = self.user.s_name6
+    when "3rd & Medium"
       new_situation6 = self.user.s_name7
     when "3rd & Short"
       new_situation6 = self.user.s_name8
@@ -343,7 +343,7 @@ class Play < ActiveRecord::Base
     when "Custom 3"
       new_situation6 = self.user.s_name14                                                                     
     end
-  end  
+  end 
 
   def new_situation7
     case situation7
@@ -353,13 +353,13 @@ class Play < ActiveRecord::Base
       new_situation7 = self.user.s_name2
     when "2nd & Long"
       new_situation7 = self.user.s_name3
-    when "3rd & Long"
-      new_situation7 = self.user.s_name4
     when "2nd & Medium"
-      new_situation7 = self.user.s_name5
-    when "3rd & Medium"
-      new_situation7 = self.user.s_name6
+      new_situation7 = self.user.s_name4
     when "2nd & Short"
+      new_situation7 = self.user.s_name5
+    when "3rd & Long"
+      new_situation7 = self.user.s_name6
+    when "3rd & Medium"
       new_situation7 = self.user.s_name7
     when "3rd & Short"
       new_situation7 = self.user.s_name8
@@ -376,7 +376,7 @@ class Play < ActiveRecord::Base
     when "Custom 3"
       new_situation7 = self.user.s_name14                                                                     
     end
-  end  
+  end 
 
   def new_situation8
     case situation8
@@ -386,13 +386,13 @@ class Play < ActiveRecord::Base
       new_situation8 = self.user.s_name2
     when "2nd & Long"
       new_situation8 = self.user.s_name3
-    when "3rd & Long"
-      new_situation8 = self.user.s_name4
     when "2nd & Medium"
-      new_situation8 = self.user.s_name5
-    when "3rd & Medium"
-      new_situation8 = self.user.s_name6
+      new_situation8 = self.user.s_name4
     when "2nd & Short"
+      new_situation8 = self.user.s_name5
+    when "3rd & Long"
+      new_situation8 = self.user.s_name6
+    when "3rd & Medium"
       new_situation8 = self.user.s_name7
     when "3rd & Short"
       new_situation8 = self.user.s_name8
@@ -409,7 +409,7 @@ class Play < ActiveRecord::Base
     when "Custom 3"
       new_situation8 = self.user.s_name14                                                                     
     end
-  end  
+  end 
 
   def new_situation9
     case situation9
@@ -419,13 +419,13 @@ class Play < ActiveRecord::Base
       new_situation9 = self.user.s_name2
     when "2nd & Long"
       new_situation9 = self.user.s_name3
-    when "3rd & Long"
-      new_situation9 = self.user.s_name4
     when "2nd & Medium"
-      new_situation9 = self.user.s_name5
-    when "3rd & Medium"
-      new_situation9 = self.user.s_name6
+      new_situation9 = self.user.s_name4
     when "2nd & Short"
+      new_situation9 = self.user.s_name5
+    when "3rd & Long"
+      new_situation9 = self.user.s_name6
+    when "3rd & Medium"
       new_situation9 = self.user.s_name7
     when "3rd & Short"
       new_situation9 = self.user.s_name8
@@ -442,7 +442,7 @@ class Play < ActiveRecord::Base
     when "Custom 3"
       new_situation9 = self.user.s_name14                                                                     
     end
-  end  
+  end 
 
   def new_situation10
     case situation10
@@ -452,13 +452,13 @@ class Play < ActiveRecord::Base
       new_situation10 = self.user.s_name2
     when "2nd & Long"
       new_situation10 = self.user.s_name3
-    when "3rd & Long"
-      new_situation10 = self.user.s_name4
     when "2nd & Medium"
-      new_situation10 = self.user.s_name5
-    when "3rd & Medium"
-      new_situation10 = self.user.s_name6
+      new_situation10 = self.user.s_name4
     when "2nd & Short"
+      new_situation10 = self.user.s_name5
+    when "3rd & Long"
+      new_situation10 = self.user.s_name6
+    when "3rd & Medium"
       new_situation10 = self.user.s_name7
     when "3rd & Short"
       new_situation10 = self.user.s_name8
@@ -475,7 +475,7 @@ class Play < ActiveRecord::Base
     when "Custom 3"
       new_situation10 = self.user.s_name14                                                                     
     end
-  end  
+  end 
   
 
 	#Counts the number of times play is shown in the install's scripts

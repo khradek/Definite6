@@ -8,7 +8,7 @@ class Gamecall < ActiveRecord::Base
   belongs_to :event
   belongs_to :user
   
-  after_create :gcmake_event, :default_gamecall
+  after_create :gcmake_event, :default_gamecall, :set_sit_title
   before_update :gcupdate_event
   after_destroy :gcdelete_event
 
@@ -38,6 +38,10 @@ class Gamecall < ActiveRecord::Base
   def gcdelete_event
     cal_event = Event.find_by(gamecall_tag: self.id)
     cal_event.destroy if cal_event
+  end
+
+  def set_sit_title
+    self.update :sit_title1 => self.user.s_name1, :sit_title2 => self.user.s_name2, :sit_title3 => self.user.s_name3, :sit_title4 => self.user.s_name4, :sit_title5 => self.user.s_name5, :sit_title6 => self.user.s_name6, :sit_title7 => self.user.s_name7, :sit_title8 => self.user.s_name8, :sit_title9 => self.user.s_name9, :sit_title10 => self.user.s_name10, :sit_title11 => self.user.s_name11, :sit_title12 => self.user.s_name12, :sit_title13 => self.user.s_name13, :sit_title14 => self.user.s_name14     
   end
 
   #Sets the initial game call sheet when created
@@ -178,6 +182,30 @@ class Gamecall < ActiveRecord::Base
     unless runFirstTensLeft[6].nil?  
       rftl7 = runFirstTensLeft[6].fullname 
     end
+    unless runFirstTensLeft[7].nil?  
+      rftl8 = runFirstTensLeft[7].fullname 
+    end
+    unless runFirstTensLeft[8].nil?  
+      rftl9 = runFirstTensLeft[8].fullname 
+    end
+    unless runFirstTensLeft[9].nil?  
+      rftl10 = runFirstTensLeft[9].fullname 
+    end
+    unless runFirstTensLeft[10].nil?  
+      rftl11 = runFirstTensLeft[10].fullname 
+    end
+    unless runFirstTensLeft[11].nil?  
+      rftl12 = runFirstTensLeft[11].fullname 
+    end
+    unless runFirstTensLeft[12].nil?  
+      rftl13 = runFirstTensLeft[12].fullname 
+    end
+    unless runFirstTensLeft[13].nil?  
+      rftl14 = runFirstTensLeft[13].fullname 
+    end    
+    unless runFirstTensLeft[14].nil?  
+      rftl15 = runFirstTensLeft[14].fullname 
+    end      
 
     #Run Right Hash
     unless runFirstTensRight[0].nil?  
@@ -201,6 +229,30 @@ class Gamecall < ActiveRecord::Base
     unless runFirstTensRight[6].nil?  
       rftr7 = runFirstTensRight[6].fullname 
     end
+    unless runFirstTensRight[7].nil?  
+      rftr8 = runFirstTensRight[7].fullname 
+    end
+    unless runFirstTensRight[8].nil?  
+      rftr9 = runFirstTensRight[8].fullname 
+    end
+    unless runFirstTensRight[9].nil?  
+      rftr10 = runFirstTensRight[9].fullname 
+    end
+    unless runFirstTensRight[10].nil?  
+      rftr11 = runFirstTensRight[10].fullname 
+    end
+    unless runFirstTensRight[11].nil?  
+      rftr12 = runFirstTensRight[11].fullname 
+    end
+    unless runFirstTensRight[12].nil?  
+      rftr13 = runFirstTensRight[12].fullname 
+    end
+    unless runFirstTensRight[13].nil?  
+      rftr14 = runFirstTensRight[13].fullname 
+    end
+    unless runFirstTensRight[14].nil?  
+      rftr15 = runFirstTensRight[14].fullname 
+    end        
 
     #Pass Left Hash
     unless passFirstTensLeft[0].nil?  
@@ -224,6 +276,30 @@ class Gamecall < ActiveRecord::Base
     unless passFirstTensLeft[6].nil?  
       pftl7 = passFirstTensLeft[6].fullname 
     end
+    unless passFirstTensLeft[7].nil?  
+      pftl8 = passFirstTensLeft[7].fullname 
+    end
+    unless passFirstTensLeft[8].nil?  
+      pftl9 = passFirstTensLeft[8].fullname 
+    end
+    unless passFirstTensLeft[9].nil?  
+      pftl10 = passFirstTensLeft[9].fullname 
+    end
+    unless passFirstTensLeft[10].nil?  
+      pftl11 = passFirstTensLeft[10].fullname 
+    end
+    unless passFirstTensLeft[11].nil?  
+      pftl12 = passFirstTensLeft[11].fullname 
+    end
+    unless passFirstTensLeft[12].nil?  
+      pftl13 = passFirstTensLeft[12].fullname 
+    end
+    unless passFirstTensLeft[13].nil?  
+      pftl14 = passFirstTensLeft[13].fullname 
+    end    
+    unless passFirstTensLeft[14].nil?  
+      pftl15 = passFirstTensLeft[14].fullname 
+    end 
 
     #Pass Right Hash
     unless passFirstTensRight[0].nil?  
@@ -246,7 +322,442 @@ class Gamecall < ActiveRecord::Base
     end
     unless passFirstTensRight[6].nil?  
       pftr7 = passFirstTensRight[6].fullname 
+    end   
+    unless passFirstTensRight[7].nil?  
+      pftr8 = passFirstTensRight[7].fullname 
+    end
+    unless passFirstTensRight[8].nil?  
+      pftr9 = passFirstTensRight[8].fullname 
     end    
+    unless passFirstTensRight[9].nil?  
+      pftr10 = passFirstTensRight[9].fullname 
+    end
+    unless passFirstTensRight[10].nil?  
+      pftr11 = passFirstTensRight[10].fullname 
+    end
+    unless passFirstTensRight[11].nil?  
+      pftr12 = passFirstTensRight[11].fullname 
+    end
+    unless passFirstTensRight[12].nil?  
+      pftr13 = passFirstTensRight[12].fullname 
+    end
+    unless passFirstTensRight[13].nil?  
+      pftr14 = passFirstTensRight[13].fullname 
+    end
+    unless passFirstTensRight[14].nil?  
+      pftr15 = passFirstTensRight[14].fullname 
+    end
+
+
+    #Number of user's run plays in situation 2
+    num_ftr = self.user.s_name2_num_run
+
+    #Left Hash
+    # ftl_s0 
+    if num_ftr > 0
+      ftl_s0 = self.user.s_name2 + ' - Run'
+    else
+      ftl_s0 = self.user.s_name2 + ' - Pass'
+    end
+
+    #ftl_s1 
+    if num_ftr > 0
+      ftl_s1 = rftl1
+    else
+      ftl_s1 = pftl1
+    end
+
+    #ftl_s2
+    if num_ftr == 0
+      ftl_s2 = pftl2
+    elsif num_ftr == 1
+      ftl_s2 = self.user.s_name2 + ' - Pass'
+    else num_ftr > 1
+      ftl_s2 = rftl2
+    end
+
+    #ftl_s3
+    case num_ftr
+      when 0 then ftl_s3 = pftl3       
+      when 1 then ftl_s3 = pftl1
+      when 2 then ftl_s3 = self.user.s_name2 + ' - Pass'
+      when 3..100 then ftl_s3 = rftl3
+    end
+
+    #ftl_s4
+    case num_ftr
+      when 0 then ftl_s4 = pftl4       
+      when 1 then ftl_s4 = pftl2
+      when 2 then ftl_s4 = pftl1
+      when 3 then ftl_s4 = self.user.s_name2 + ' - Pass'
+      when 4..100 then ftl_s4 = rftl4
+    end
+
+    #ftl_s5
+    case num_ftr
+      when 0 then ftl_s5 = pftl5       
+      when 1 then ftl_s5 = pftl3
+      when 2 then ftl_s5 = pftl2
+      when 3 then ftl_s5 = pftl1
+      when 4 then ftl_s5 = self.user.s_name2 + ' - Pass'
+      when 5..100 then ftl_s5 = rftl5
+    end
+
+    #ftl_s6
+    case num_ftr
+      when 0 then ftl_s6 = pftl6      
+      when 1 then ftl_s6 = pftl4
+      when 2 then ftl_s6 = pftl3
+      when 3 then ftl_s6 = pftl2
+      when 4 then ftl_s6 = pftl1
+      when 5 then ftl_s6 = self.user.s_name2 + ' - Pass'
+      when 6..100 then ftl_s6 = rftl6
+    end
+
+    #ftl_s7
+    case num_ftr
+      when 0 then ftl_s7 = pftl7      
+      when 1 then ftl_s7 = pftl5
+      when 2 then ftl_s7 = pftl4
+      when 3 then ftl_s7 = pftl3
+      when 4 then ftl_s7 = pftl2
+      when 5 then ftl_s7 = pftl1
+      when 6 then ftl_s7 = self.user.s_name2 + ' - Pass'
+      when 7..100 then ftl_s7 = rftl7
+    end
+
+    #ftl_s8
+    case num_ftr
+      when 0 then ftl_s8 = pftl8      
+      when 1 then ftl_s8 = pftl6
+      when 2 then ftl_s8 = pftl5
+      when 3 then ftl_s8 = pftl4
+      when 4 then ftl_s8 = pftl3
+      when 5 then ftl_s8 = pftl2
+      when 6 then ftl_s8 = pftl1
+      when 7 then ftl_s8 = self.user.s_name2 + ' - Pass'
+      when 8..100 then ftl_s8 = rftl8
+    end
+
+    #ftl_s9
+    case num_ftr
+      when 0 then ftl_s9 = pftl9      
+      when 1 then ftl_s9 = pftl7
+      when 2 then ftl_s9 = pftl6
+      when 3 then ftl_s9 = pftl5
+      when 4 then ftl_s9 = pftl4
+      when 5 then ftl_s9 = pftl3
+      when 6 then ftl_s9 = pftl2
+      when 7 then ftl_s9 = pftl1
+      when 8 then ftl_s9 = self.user.s_name2 + ' - Pass'
+      when 9..100 then ftl_s9 = rftl9
+    end
+
+    #ftl_s10
+    case num_ftr
+      when 0 then ftl_s10 = pftl10     
+      when 1 then ftl_s10 = pftl8
+      when 2 then ftl_s10 = pftl7
+      when 3 then ftl_s10 = pftl6
+      when 4 then ftl_s10 = pftl5
+      when 5 then ftl_s10 = pftl4
+      when 6 then ftl_s10 = pftl3
+      when 7 then ftl_s10 = pftl2
+      when 8 then ftl_s10 = pftl1
+      when 9 then ftl_s10 = self.user.s_name2 + ' - Pass'
+      when 10..100 then ftl_s10 = rftl10
+    end
+
+    #ftl_s11
+    case num_ftr
+      when 0 then ftl_s11 = pftl11     
+      when 1 then ftl_s11 = pftl9
+      when 2 then ftl_s11 = pftl8
+      when 3 then ftl_s11 = pftl7
+      when 4 then ftl_s11 = pftl6
+      when 5 then ftl_s11 = pftl5
+      when 6 then ftl_s11 = pftl4
+      when 7 then ftl_s11 = pftl3
+      when 8 then ftl_s11 = pftl2
+      when 9 then ftl_s11 = pftl1
+      when 10 then ftl_s11 = self.user.s_name2 + ' - Pass'
+      when 11..100 then ftl_s11 = rftl11
+    end
+
+    #ftl_s12
+    case num_ftr
+      when 0 then ftl_s12 = pftl12    
+      when 1 then ftl_s12 = pftl10
+      when 2 then ftl_s12 = pftl9
+      when 3 then ftl_s12 = pftl8
+      when 4 then ftl_s12 = pftl7
+      when 5 then ftl_s12 = pftl6
+      when 6 then ftl_s12 = pftl5
+      when 7 then ftl_s12 = pftl4
+      when 8 then ftl_s12 = pftl3
+      when 9 then ftl_s12 = pftl2
+      when 10 then ftl_s12 = pftl1
+      when 11 then ftl_s12 = self.user.s_name2 + ' - Pass'
+      when 12..100 then ftl_s12 = rftl12
+    end
+
+    #ftl_s13
+    case num_ftr
+      when 0 then ftl_s13 = pftl13    
+      when 1 then ftl_s13 = pftl11
+      when 2 then ftl_s13 = pftl10
+      when 3 then ftl_s13 = pftl9
+      when 4 then ftl_s13 = pftl8
+      when 5 then ftl_s13 = pftl7
+      when 6 then ftl_s13 = pftl6
+      when 7 then ftl_s13 = pftl5
+      when 8 then ftl_s13 = pftl4
+      when 9 then ftl_s13 = pftl3
+      when 10 then ftl_s13 = pftl2
+      when 11 then ftl_s13 = pftl1
+      when 12 then ftl_s13 = self.user.s_name2 + ' - Pass'
+      when 13..100 then ftl_s13 = rftl13
+    end
+
+    #ftl_s14
+    case num_ftr
+      when 0 then ftl_s14 = pftl14    
+      when 1 then ftl_s14 = pftl12
+      when 2 then ftl_s14 = pftl11
+      when 3 then ftl_s14 = pftl10
+      when 4 then ftl_s14 = pftl9
+      when 5 then ftl_s14 = pftl8
+      when 6 then ftl_s14 = pftl7
+      when 7 then ftl_s14 = pftl6
+      when 8 then ftl_s14 = pftl5
+      when 9 then ftl_s14 = pftl4
+      when 10 then ftl_s14 = pftl3
+      when 11 then ftl_s14 = pftl2
+      when 12 then ftl_s14 = pftl1  
+      when 13 then ftl_s14 = self.user.s_name2 + ' - Pass'
+      when 14..100 then ftl_s14 = rftl14
+    end
+
+    #ftl_s15
+    case num_ftr
+      when 0 then ftl_s15 = pftl15    
+      when 1 then ftl_s15 = pftl13
+      when 2 then ftl_s15 = pftl12
+      when 3 then ftl_s15 = pftl11
+      when 4 then ftl_s15 = pftl10
+      when 5 then ftl_s15 = pftl9
+      when 6 then ftl_s15 = pftl8
+      when 7 then ftl_s15 = pftl7
+      when 8 then ftl_s15 = pftl6
+      when 9 then ftl_s15 = pftl5
+      when 10 then ftl_s15 = pftl4
+      when 11 then ftl_s15 = pftl3
+      when 12 then ftl_s15 = pftl2
+      when 13 then ftl_s15 = pftl1  
+      when 14..100 then ftl_s15 = rftl15
+    end    
+
+
+    #Right Hash
+    # ftr_s0 would always be blank
+
+    #ftr_s1 
+    if num_ftr > 0
+      ftr_s1 = rftr1
+    else
+      ftr_s1 = pftr1
+    end
+
+    #ftr_s2
+    if num_ftr == 0
+      ftr_s2 = pftr2
+    elsif num_ftr == 1
+      ftr_s2 = ''
+    else num_ftr > 1
+      ftr_s2 = rftr2
+    end
+
+    #ftr_s3
+    case num_ftr
+      when 0 then ftr_s3 = pftr3       
+      when 1 then ftr_s3 = pftr1
+      when 2 then ftr_s3 = ''
+      when 3..100 then ftr_s3 = rftr3
+    end
+
+    #ftr_s4
+    case num_ftr
+      when 0 then ftr_s4 = pftr4       
+      when 1 then ftr_s4 = pftr2
+      when 2 then ftr_s4 = pftr1
+      when 3 then ''
+      when 4..100 then ftr_s4 = rftr4
+    end
+
+    #ftr_s5
+    case num_ftr
+      when 0 then ftr_s5 = pftr5       
+      when 1 then ftr_s5 = pftr3
+      when 2 then ftr_s5 = pftr2
+      when 3 then ftr_s5 = pftr1
+      when 4 then ftr_s5 = ''
+      when 5..100 then ftr_s5 = rftr5
+    end
+
+    #ftr_s6
+    case num_ftr
+      when 0 then ftr_s6 = pftr6      
+      when 1 then ftr_s6 = pftr4
+      when 2 then ftr_s6 = pftr3
+      when 3 then ftr_s6 = pftr2
+      when 4 then ftr_s6 = pftr1
+      when 5 then ftr_s6 = ''
+      when 6..100 then ftr_s6 = rftr6
+    end
+
+    #ftr_s7
+    case num_ftr
+      when 0 then ftr_s7 = pftr7      
+      when 1 then ftr_s7 = pftr5
+      when 2 then ftr_s7 = pftr4
+      when 3 then ftr_s7 = pftr3
+      when 4 then ftr_s7 = pftr2
+      when 5 then ftr_s7 = pftr1
+      when 6 then ftr_s7 = ''
+      when 7..100 then ftr_s7 = rftr7
+    end
+
+    #ftr_s8
+    case num_ftr
+      when 0 then ftr_s8 = pftr8      
+      when 1 then ftr_s8 = pftr6
+      when 2 then ftr_s8 = pftr5
+      when 3 then ftr_s8 = pftr4
+      when 4 then ftr_s8 = pftr3
+      when 5 then ftr_s8 = pftr2
+      when 6 then ftr_s8 = pftr1
+      when 7 then ftr_s8 = ''
+      when 8..100 then ftr_s8 = rftr8
+    end
+
+    #ftr_s9
+    case num_ftr
+      when 0 then ftr_s9 = pftr9      
+      when 1 then ftr_s9 = pftr7
+      when 2 then ftr_s9 = pftr6
+      when 3 then ftr_s9 = pftr5
+      when 4 then ftr_s9 = pftr4
+      when 5 then ftr_s9 = pftr3
+      when 6 then ftr_s9 = pftr2
+      when 7 then ftr_s9 = pftr1
+      when 8 then ftr_s9 = ''
+      when 9..100 then ftr_s9 = rftr9
+    end
+
+    #ftr_s10
+    case num_ftr
+      when 0 then ftr_s10 = pftr10     
+      when 1 then ftr_s10 = pftr8
+      when 2 then ftr_s10 = pftr7
+      when 3 then ftr_s10 = pftr6
+      when 4 then ftr_s10 = pftr5
+      when 5 then ftr_s10 = pftr4
+      when 6 then ftr_s10 = pftr3
+      when 7 then ftr_s10 = pftr2
+      when 8 then ftr_s10 = pftr1
+      when 9 then ftr_s10 = ''
+      when 10..100 then ftr_s10 = rftr10
+    end
+
+    #ftr_s11
+    case num_ftr
+      when 0 then ftr_s11 = pftr11     
+      when 1 then ftr_s11 = pftr9
+      when 2 then ftr_s11 = pftr8
+      when 3 then ftr_s11 = pftr7
+      when 4 then ftr_s11 = pftr6
+      when 5 then ftr_s11 = pftr5
+      when 6 then ftr_s11 = pftr4
+      when 7 then ftr_s11 = pftr3
+      when 8 then ftr_s11 = pftr2
+      when 9 then ftr_s11 = pftr1
+      when 10 then ftr_s11 = ''
+      when 11..100 then ftr_s11 = rftr11
+    end
+
+    #ftr_s12
+    case num_ftr
+      when 0 then ftr_s12 = pftr12    
+      when 1 then ftr_s12 = pftr10
+      when 2 then ftr_s12 = pftr9
+      when 3 then ftr_s12 = pftr8
+      when 4 then ftr_s12 = pftr7
+      when 5 then ftr_s12 = pftr6
+      when 6 then ftr_s12 = pftr5
+      when 7 then ftr_s12 = pftr4
+      when 8 then ftr_s12 = pftr3
+      when 9 then ftr_s12 = pftr2
+      when 10 then ftr_s12 = pftr1
+      when 11 then ftr_s12 = ''
+      when 12..100 then ftr_s12 = rftr12
+    end
+
+    #ftr_s13
+    case num_ftr
+      when 0 then ftr_s13 = pftr13    
+      when 1 then ftr_s13 = pftr11
+      when 2 then ftr_s13 = pftr10
+      when 3 then ftr_s13 = pftr9
+      when 4 then ftr_s13 = pftr8
+      when 5 then ftr_s13 = pftr7
+      when 6 then ftr_s13 = pftr6
+      when 7 then ftr_s13 = pftr5
+      when 8 then ftr_s13 = pftr4
+      when 9 then ftr_s13 = pftr3
+      when 10 then ftr_s13 = pftr2
+      when 11 then ftr_s13 = pftr1
+      when 12 then ftr_s13 = ''
+      when 13..100 then ftr_s13 = rftr13
+    end
+
+    #ftr_s14
+    case num_ftr
+      when 0 then ftr_s14 = pftr14    
+      when 1 then ftr_s14 = pftr12
+      when 2 then ftr_s14 = pftr11
+      when 3 then ftr_s14 = pftr10
+      when 4 then ftr_s14 = pftr9
+      when 5 then ftr_s14 = pftr8
+      when 6 then ftr_s14 = pftr7
+      when 7 then ftr_s14 = pftr6
+      when 8 then ftr_s14 = pftr5
+      when 9 then ftr_s14 = pftr4
+      when 10 then ftr_s14 = pftr3
+      when 11 then ftr_s14 = pftr2
+      when 12 then ftr_s14 = pftr1  
+      when 13 then ftr_s14 = ''
+      when 14..100 then ftr_s14 = rftr14
+    end
+
+    #ftr_s15
+    case num_ftr
+      when 0 then ftr_s15 = pftr15    
+      when 1 then ftr_s15 = pftr13
+      when 2 then ftr_s15 = pftr12
+      when 3 then ftr_s15 = pftr11
+      when 4 then ftr_s15 = pftr10
+      when 5 then ftr_s15 = pftr9
+      when 6 then ftr_s15 = pftr8
+      when 7 then ftr_s15 = pftr7
+      when 8 then ftr_s15 = pftr6
+      when 9 then ftr_s15 = pftr5
+      when 10 then ftr_s15 = pftr4
+      when 11 then ftr_s15 = pftr3
+      when 12 then ftr_s15 = pftr2
+      when 13 then ftr_s15 = pftr1  
+      when 14..100 then ftr_s15 = rftr15
+    end
+
     #----------End 1st/2nd & 10----------
 
     #----------2nd & Long----------
@@ -276,6 +787,27 @@ class Gamecall < ActiveRecord::Base
     unless runSecondLongsLeft[4].nil?  
       rsll5 = runSecondLongsLeft[4].fullname 
     end
+    unless runSecondLongsLeft[5].nil?  
+      rsll6 = runSecondLongsLeft[5].fullname 
+    end
+    unless runSecondLongsLeft[6].nil?  
+      rsll7 = runSecondLongsLeft[6].fullname 
+    end
+    unless runSecondLongsLeft[7].nil?  
+      rsll8 = runSecondLongsLeft[7].fullname 
+    end
+    unless runSecondLongsLeft[8].nil?  
+      rsll9 = runSecondLongsLeft[8].fullname 
+    end
+    unless runSecondLongsLeft[9].nil?  
+      rsll10 = runSecondLongsLeft[9].fullname 
+    end
+    unless runSecondLongsLeft[10].nil?  
+      rsll11 = runSecondLongsLeft[10].fullname 
+    end
+    unless runSecondLongsLeft[11].nil?  
+      rsll12 = runSecondLongsLeft[11].fullname 
+    end
 
     #Run Right Hash
     unless runSecondLongsRight[0].nil?  
@@ -293,6 +825,27 @@ class Gamecall < ActiveRecord::Base
     unless runSecondLongsRight[4].nil?  
       rslr5 = runSecondLongsRight[4].fullname 
     end
+    unless runSecondLongsRight[5].nil?  
+      rslr6 = runSecondLongsRight[5].fullname 
+    end
+    unless runSecondLongsRight[6].nil?  
+      rslr7 = runSecondLongsRight[6].fullname 
+    end
+    unless runSecondLongsRight[7].nil?  
+      rslr8 = runSecondLongsRight[7].fullname 
+    end
+    unless runSecondLongsRight[8].nil?  
+      rslr9 = runSecondLongsRight[8].fullname 
+    end
+    unless runSecondLongsRight[9].nil?  
+      rslr10 = runSecondLongsRight[9].fullname 
+    end    
+    unless runSecondLongsRight[10].nil?  
+      rslr11 = runSecondLongsRight[10].fullname 
+    end
+    unless runSecondLongsRight[11].nil?  
+      rslr12 = runSecondLongsRight[11].fullname 
+    end 
 
     #Pass Left Hash
     unless passSecondLongsLeft[0].nil?  
@@ -313,6 +866,24 @@ class Gamecall < ActiveRecord::Base
     unless passSecondLongsLeft[5].nil?  
       psll6 = passSecondLongsLeft[5].fullname 
     end
+    unless passSecondLongsLeft[6].nil?  
+      psll7 = passSecondLongsLeft[6].fullname 
+    end
+    unless passSecondLongsLeft[7].nil?  
+      psll8 = passSecondLongsLeft[7].fullname 
+    end
+    unless passSecondLongsLeft[8].nil?  
+      psll9 = passSecondLongsLeft[8].fullname 
+    end
+    unless passSecondLongsLeft[9].nil?  
+      psll10 = passSecondLongsLeft[9].fullname 
+    end
+    unless passSecondLongsLeft[10].nil?  
+      psll11 = passSecondLongsLeft[10].fullname 
+    end  
+    unless passSecondLongsLeft[11].nil?  
+      psll12 = passSecondLongsLeft[11].fullname 
+    end    
 
     #Pass Right Hash
     unless passSecondLongsRight[0].nil?  
@@ -332,7 +903,322 @@ class Gamecall < ActiveRecord::Base
     end  
     unless passSecondLongsRight[5].nil?  
       pslr6 = passSecondLongsRight[5].fullname 
-    end          
+    end 
+    unless passSecondLongsRight[6].nil?  
+      pslr7 = passSecondLongsRight[6].fullname 
+    end
+    unless passSecondLongsRight[7].nil?  
+      pslr8 = passSecondLongsRight[7].fullname 
+    end
+    unless passSecondLongsRight[8].nil?  
+      pslr9 = passSecondLongsRight[8].fullname 
+    end
+    unless passSecondLongsRight[9].nil?  
+      pslr10 = passSecondLongsRight[9].fullname 
+    end
+    unless passSecondLongsRight[10].nil?  
+      pslr11 = passSecondLongsRight[10].fullname 
+    end  
+    unless passSecondLongsRight[11].nil?  
+      pslr12 = passSecondLongsRight[11].fullname 
+    end             
+
+
+    #Number of user's run plays in situation 3
+    num_slr = self.user.s_name3_num_run
+
+    #Left Hash
+    # sll_s0 
+    if num_slr > 0
+      sll_s0 = self.user.s_name3 + ' - Run'
+    else
+      sll_s0 = self.user.s_name3 + ' - Pass'
+    end
+
+    #sll_s1 
+    if num_slr > 0
+      sll_s1 = rsll1
+    else
+      sll_s1 = psll1
+    end
+
+    #sll_s2
+    if num_slr == 0
+      sll_s2 = psll2
+    elsif num_slr == 1
+      sll_s2 = self.user.s_name3 + ' - Pass'
+    else num_slr > 1
+      sll_s2 = rsll2
+    end
+
+    #sll_s3
+    case num_slr
+      when 0 then sll_s3 = psll3       
+      when 1 then sll_s3 = psll1
+      when 2 then sll_s3 = self.user.s_name3 + ' - Pass'
+      when 3..100 then sll_s3 = rsll3
+    end
+
+    #sll_s4
+    case num_slr
+      when 0 then sll_s4 = psll4       
+      when 1 then sll_s4 = psll2
+      when 2 then sll_s4 = psll1
+      when 3 then sll_s4 = self.user.s_name3 + ' - Pass'
+      when 4..100 then sll_s4 = rsll4
+    end
+
+    #sll_s5
+    case num_slr
+      when 0 then sll_s5 = psll5       
+      when 1 then sll_s5 = psll3
+      when 2 then sll_s5 = psll2
+      when 3 then sll_s5 = psll1
+      when 4 then sll_s5 = self.user.s_name3 + ' - Pass'
+      when 5..100 then sll_s5 = rsll5
+    end
+
+    #sll_s6
+    case num_slr
+      when 0 then sll_s6 = psll6      
+      when 1 then sll_s6 = psll4
+      when 2 then sll_s6 = psll3
+      when 3 then sll_s6 = psll2
+      when 4 then sll_s6 = psll1
+      when 5 then sll_s6 = self.user.s_name3 + ' - Pass'
+      when 6..100 then sll_s6 = rsll6
+    end
+
+    #sll_s7
+    case num_slr
+      when 0 then sll_s7 = psll7      
+      when 1 then sll_s7 = psll5
+      when 2 then sll_s7 = psll4
+      when 3 then sll_s7 = psll3
+      when 4 then sll_s7 = psll2
+      when 5 then sll_s7 = psll1
+      when 6 then sll_s7 = self.user.s_name3 + ' - Pass'
+      when 7..100 then sll_s7 = rsll7
+    end
+
+    #sll_s8
+    case num_slr
+      when 0 then sll_s8 = psll8      
+      when 1 then sll_s8 = psll6
+      when 2 then sll_s8 = psll5
+      when 3 then sll_s8 = psll4
+      when 4 then sll_s8 = psll3
+      when 5 then sll_s8 = psll2
+      when 6 then sll_s8 = psll1
+      when 7 then sll_s8 = self.user.s_name3 + ' - Pass'
+      when 8..100 then sll_s8 = rsll8
+    end
+
+    #sll_s9
+    case num_slr
+      when 0 then sll_s9 = psll9      
+      when 1 then sll_s9 = psll7
+      when 2 then sll_s9 = psll6
+      when 3 then sll_s9 = psll5
+      when 4 then sll_s9 = psll4
+      when 5 then sll_s9 = psll3
+      when 6 then sll_s9 = psll2
+      when 7 then sll_s9 = psll1
+      when 8 then sll_s9 = self.user.s_name3 + ' - Pass'
+      when 9..100 then sll_s9 = rsll9
+    end
+
+    #sll_s10
+    case num_slr
+      when 0 then sll_s10 = psll10     
+      when 1 then sll_s10 = psll8
+      when 2 then sll_s10 = psll7
+      when 3 then sll_s10 = psll6
+      when 4 then sll_s10 = psll5
+      when 5 then sll_s10 = psll4
+      when 6 then sll_s10 = psll3
+      when 7 then sll_s10 = psll2
+      when 8 then sll_s10 = psll1
+      when 9 then sll_s10 = self.user.s_name3 + ' - Pass'
+      when 10..100 then sll_s10 = rsll10
+    end
+
+    #sll_s11
+    case num_slr
+      when 0 then sll_s11 = psll11     
+      when 1 then sll_s11 = psll9
+      when 2 then sll_s11 = psll8
+      when 3 then sll_s11 = psll7
+      when 4 then sll_s11 = psll6
+      when 5 then sll_s11 = psll5
+      when 6 then sll_s11 = psll4
+      when 7 then sll_s11 = psll3
+      when 8 then sll_s11 = psll2
+      when 9 then sll_s11 = psll1
+      when 10 then sll_s11 = self.user.s_name3 + ' - Pass'
+      when 11..100 then sll_s11 = rsll11
+    end
+
+    #sll_s12
+    case num_slr
+      when 0 then sll_s12 = psll12    
+      when 1 then sll_s12 = psll10
+      when 2 then sll_s12 = psll9
+      when 3 then sll_s12 = psll8
+      when 4 then sll_s12 = psll7
+      when 5 then sll_s12 = psll6
+      when 6 then sll_s12 = psll5
+      when 7 then sll_s12 = psll4
+      when 8 then sll_s12 = psll3
+      when 9 then sll_s12 = psll2
+      when 10 then sll_s12 = psll1
+      when 11..100 then sll_s12 = rsll12
+    end
+
+  
+    #Right Hash
+    # slr_s0 would always be blank
+
+    #slr_s1 
+    if num_slr > 0
+      slr_s1 = rslr1
+    else
+      slr_s1 = pslr1
+    end
+
+    #slr_s2
+    if num_slr == 0
+      slr_s2 = pslr2
+    elsif num_slr == 1
+      slr_s2 = ''
+    else num_slr > 1
+      slr_s2 = rslr2
+    end
+
+    #slr_s3
+    case num_slr
+      when 0 then slr_s3 = pslr3       
+      when 1 then slr_s3 = pslr1
+      when 2 then slr_s3 = ''
+      when 3..100 then slr_s3 = rslr3
+    end
+
+    #slr_s4
+    case num_slr
+      when 0 then slr_s4 = pslr4       
+      when 1 then slr_s4 = pslr2
+      when 2 then slr_s4 = pslr1
+      when 3 then ''
+      when 4..100 then slr_s4 = rslr4
+    end
+
+    #slr_s5
+    case num_slr
+      when 0 then slr_s5 = pslr5       
+      when 1 then slr_s5 = pslr3
+      when 2 then slr_s5 = pslr2
+      when 3 then slr_s5 = pslr1
+      when 4 then slr_s5 = ''
+      when 5..100 then slr_s5 = rslr5
+    end
+
+    #slr_s6
+    case num_slr
+      when 0 then slr_s6 = pslr6      
+      when 1 then slr_s6 = pslr4
+      when 2 then slr_s6 = pslr3
+      when 3 then slr_s6 = pslr2
+      when 4 then slr_s6 = pslr1
+      when 5 then slr_s6 = ''
+      when 6..100 then slr_s6 = rslr6
+    end
+
+    #slr_s7
+    case num_slr
+      when 0 then slr_s7 = pslr7      
+      when 1 then slr_s7 = pslr5
+      when 2 then slr_s7 = pslr4
+      when 3 then slr_s7 = pslr3
+      when 4 then slr_s7 = pslr2
+      when 5 then slr_s7 = pslr1
+      when 6 then slr_s7 = ''
+      when 7..100 then slr_s7 = rslr7
+    end
+
+    #slr_s8
+    case num_slr
+      when 0 then slr_s8 = pslr8      
+      when 1 then slr_s8 = pslr6
+      when 2 then slr_s8 = pslr5
+      when 3 then slr_s8 = pslr4
+      when 4 then slr_s8 = pslr3
+      when 5 then slr_s8 = pslr2
+      when 6 then slr_s8 = pslr1
+      when 7 then slr_s8 = ''
+      when 8..100 then slr_s8 = rslr8
+    end
+
+    #slr_s9
+    case num_slr
+      when 0 then slr_s9 = pslr9      
+      when 1 then slr_s9 = pslr7
+      when 2 then slr_s9 = pslr6
+      when 3 then slr_s9 = pslr5
+      when 4 then slr_s9 = pslr4
+      when 5 then slr_s9 = pslr3
+      when 6 then slr_s9 = pslr2
+      when 7 then slr_s9 = pslr1
+      when 8 then slr_s9 = ''
+      when 9..100 then slr_s9 = rslr9
+    end
+
+    #slr_s10
+    case num_slr
+      when 0 then slr_s10 = pslr10     
+      when 1 then slr_s10 = pslr8
+      when 2 then slr_s10 = pslr7
+      when 3 then slr_s10 = pslr6
+      when 4 then slr_s10 = pslr5
+      when 5 then slr_s10 = pslr4
+      when 6 then slr_s10 = pslr3
+      when 7 then slr_s10 = pslr2
+      when 8 then slr_s10 = pslr1
+      when 9 then slr_s10 = ''
+      when 10..100 then slr_s10 = rslr10
+    end
+
+    #slr_s11
+    case num_slr
+      when 0 then slr_s11 = pslr11     
+      when 1 then slr_s11 = pslr9
+      when 2 then slr_s11 = pslr8
+      when 3 then slr_s11 = pslr7
+      when 4 then slr_s11 = pslr6
+      when 5 then slr_s11 = pslr5
+      when 6 then slr_s11 = pslr4
+      when 7 then slr_s11 = pslr3
+      when 8 then slr_s11 = pslr2
+      when 9 then slr_s11 = pslr1
+      when 10 then slr_s11 = ''
+      when 11..100 then slr_s11 = rslr11
+    end
+
+    #slr_s12
+    case num_slr
+      when 0 then slr_s12 = pslr12    
+      when 1 then slr_s12 = pslr10
+      when 2 then slr_s12 = pslr9
+      when 3 then slr_s12 = pslr8
+      when 4 then slr_s12 = pslr7
+      when 5 then slr_s12 = pslr6
+      when 6 then slr_s12 = pslr5
+      when 7 then slr_s12 = pslr4
+      when 8 then slr_s12 = pslr3
+      when 9 then slr_s12 = pslr2
+      when 10 then slr_s12 = pslr1
+      when 11..100 then slr_s12 = rslr12
+    end
+
     #----------End 2nd & Long ----------
 
     #----------3rd & Long ----------
@@ -356,6 +1242,33 @@ class Gamecall < ActiveRecord::Base
     unless runThirdLongsLeft[2].nil?  
       rtll3 = runThirdLongsLeft[2].fullname 
     end
+    unless runThirdLongsLeft[3].nil?  
+      rtll4 = runThirdLongsLeft[3].fullname 
+    end
+    unless runThirdLongsLeft[4].nil?  
+      rtll5 = runThirdLongsLeft[4].fullname 
+    end
+    unless runThirdLongsLeft[5].nil?  
+      rtll6 = runThirdLongsLeft[5].fullname 
+    end
+    unless runThirdLongsLeft[6].nil?  
+      rtll7 = runThirdLongsLeft[6].fullname 
+    end
+    unless runThirdLongsLeft[7].nil?  
+      rtll8 = runThirdLongsLeft[7].fullname 
+    end
+    unless runThirdLongsLeft[8].nil?  
+      rtll9 = runThirdLongsLeft[8].fullname 
+    end
+    unless runThirdLongsLeft[9].nil?  
+      rtll10 = runThirdLongsLeft[9].fullname 
+    end
+    unless runThirdLongsLeft[10].nil?  
+      rtll11 = runThirdLongsLeft[10].fullname 
+    end
+    unless runThirdLongsLeft[11].nil?  
+      rtll12 = runThirdLongsLeft[11].fullname 
+    end
 
     #Run Right Hash
     unless runThirdLongsRight[0].nil?  
@@ -366,6 +1279,33 @@ class Gamecall < ActiveRecord::Base
     end
     unless runThirdLongsRight[2].nil?  
       rtlr3 = runThirdLongsRight[2].fullname 
+    end
+    unless runThirdLongsRight[3].nil?  
+      rtlr4 = runThirdLongsRight[3].fullname 
+    end
+    unless runThirdLongsRight[4].nil?  
+      rtlr5 = runThirdLongsRight[4].fullname 
+    end
+    unless runThirdLongsRight[5].nil?  
+      rtlr6 = runThirdLongsRight[5].fullname 
+    end
+    unless runThirdLongsRight[6].nil?  
+      rtlr7 = runThirdLongsRight[6].fullname 
+    end
+    unless runThirdLongsRight[7].nil?  
+      rtlr8 = runThirdLongsRight[7].fullname 
+    end
+    unless runThirdLongsRight[8].nil?  
+      rtlr9 = runThirdLongsRight[8].fullname 
+    end
+    unless runThirdLongsRight[9].nil?  
+      rtlr10 = runThirdLongsRight[9].fullname 
+    end
+    unless runThirdLongsRight[10].nil?  
+      rtlr11 = runThirdLongsRight[10].fullname 
+    end
+    unless runThirdLongsRight[11].nil?  
+      rtlr12 = runThirdLongsRight[11].fullname 
     end
 
     #Pass Left Hash
@@ -392,7 +1332,19 @@ class Gamecall < ActiveRecord::Base
     end
     unless passThirdLongsLeft[7].nil?  
       ptll8 = passThirdLongsLeft[7].fullname 
-    end           
+    end   
+    unless passThirdLongsLeft[8].nil?  
+      ptll9 = passThirdLongsLeft[8].fullname 
+    end
+    unless passThirdLongsLeft[9].nil?  
+      ptll10 = passThirdLongsLeft[9].fullname 
+    end
+    unless passThirdLongsLeft[10].nil?  
+      ptll11 = passThirdLongsLeft[10].fullname 
+    end
+    unless passThirdLongsLeft[11].nil?  
+      ptll12 = passThirdLongsLeft[11].fullname 
+    end         
 
     #Pass Right Hash
     unless passThirdLongsRight[0].nil?  
@@ -419,6 +1371,313 @@ class Gamecall < ActiveRecord::Base
     unless passThirdLongsRight[7].nil?  
       ptlr8 = passThirdLongsRight[7].fullname 
     end     
+    unless passThirdLongsRight[8].nil?  
+      ptlr9 = passThirdLongsRight[8].fullname 
+    end
+    unless passThirdLongsRight[9].nil?  
+      ptlr10 = passThirdLongsRight[9].fullname 
+    end
+    unless passThirdLongsRight[10].nil?  
+      ptlr11 = passThirdLongsRight[10].fullname 
+    end
+    unless passThirdLongsRight[11].nil?  
+      ptlr12 = passThirdLongsRight[11].fullname 
+    end 
+
+    #Number of user's run plays in situation 6
+    num_thirdlg = self.user.s_name6_num_run
+
+    #Left Hash
+    # tll_s0 
+    if num_thirdlg > 0
+      tll_s0 = self.user.s_name6 + ' - Run'
+    else
+      tll_s0 = self.user.s_name6 + ' - Pass'
+    end
+
+    #tll_s1 
+    if num_thirdlg > 0
+      tll_s1 = rtll1
+    else
+      tll_s1 = ptll1
+    end
+
+    #tll_s2
+    if num_thirdlg == 0
+      tll_s2 = ptll2
+    elsif num_thirdlg == 1
+      tll_s2 = self.user.s_name6 + ' - Pass'
+    else num_thirdlg > 1
+      tll_s2 = rtll2
+    end
+
+    #tll_s3
+    case num_thirdlg
+      when 0 then tll_s3 = ptll3       
+      when 1 then tll_s3 = ptll1
+      when 2 then tll_s3 = self.user.s_name6 + ' - Pass'
+      when 3..100 then tll_s3 = rtll3
+    end
+
+    #tll_s4
+    case num_thirdlg
+      when 0 then tll_s4 = ptll4       
+      when 1 then tll_s4 = ptll2
+      when 2 then tll_s4 = ptll1
+      when 3 then tll_s4 = self.user.s_name6 + ' - Pass'
+      when 4..100 then tll_s4 = rtll4
+    end
+
+    #tll_s5
+    case num_thirdlg
+      when 0 then tll_s5 = ptll5       
+      when 1 then tll_s5 = ptll3
+      when 2 then tll_s5 = ptll2
+      when 3 then tll_s5 = ptll1
+      when 4 then tll_s5 = self.user.s_name6 + ' - Pass'
+      when 5..100 then tll_s5 = rtll5
+    end
+
+    #tll_s6
+    case num_thirdlg
+      when 0 then tll_s6 = ptll6      
+      when 1 then tll_s6 = ptll4
+      when 2 then tll_s6 = ptll3
+      when 3 then tll_s6 = ptll2
+      when 4 then tll_s6 = ptll1
+      when 5 then tll_s6 = self.user.s_name6 + ' - Pass'
+      when 6..100 then tll_s6 = rtll6
+    end
+
+    #tll_s7
+    case num_thirdlg
+      when 0 then tll_s7 = ptll7      
+      when 1 then tll_s7 = ptll5
+      when 2 then tll_s7 = ptll4
+      when 3 then tll_s7 = ptll3
+      when 4 then tll_s7 = ptll2
+      when 5 then tll_s7 = ptll1
+      when 6 then tll_s7 = self.user.s_name6 + ' - Pass'
+      when 7..100 then tll_s7 = rtll7
+    end
+
+    #tll_s8
+    case num_thirdlg
+      when 0 then tll_s8 = ptll8      
+      when 1 then tll_s8 = ptll6
+      when 2 then tll_s8 = ptll5
+      when 3 then tll_s8 = ptll4
+      when 4 then tll_s8 = ptll3
+      when 5 then tll_s8 = ptll2
+      when 6 then tll_s8 = ptll1
+      when 7 then tll_s8 = self.user.s_name6 + ' - Pass'
+      when 8..100 then tll_s8 = rtll8
+    end
+
+    #tll_s9
+    case num_thirdlg
+      when 0 then tll_s9 = ptll9      
+      when 1 then tll_s9 = ptll7
+      when 2 then tll_s9 = ptll6
+      when 3 then tll_s9 = ptll5
+      when 4 then tll_s9 = ptll4
+      when 5 then tll_s9 = ptll3
+      when 6 then tll_s9 = ptll2
+      when 7 then tll_s9 = ptll1
+      when 8 then tll_s9 = self.user.s_name6 + ' - Pass'
+      when 9..100 then tll_s9 = rtll9
+    end
+
+    #tll_s10
+    case num_thirdlg
+      when 0 then tll_s10 = ptll10     
+      when 1 then tll_s10 = ptll8
+      when 2 then tll_s10 = ptll7
+      when 3 then tll_s10 = ptll6
+      when 4 then tll_s10 = ptll5
+      when 5 then tll_s10 = ptll4
+      when 6 then tll_s10 = ptll3
+      when 7 then tll_s10 = ptll2
+      when 8 then tll_s10 = ptll1
+      when 9 then tll_s10 = self.user.s_name6 + ' - Pass'
+      when 10..100 then tll_s10 = rtll10
+    end
+
+    #tll_s11
+    case num_thirdlg
+      when 0 then tll_s11 = ptll11     
+      when 1 then tll_s11 = ptll9
+      when 2 then tll_s11 = ptll8
+      when 3 then tll_s11 = ptll7
+      when 4 then tll_s11 = ptll6
+      when 5 then tll_s11 = ptll5
+      when 6 then tll_s11 = ptll4
+      when 7 then tll_s11 = ptll3
+      when 8 then tll_s11 = ptll2
+      when 9 then tll_s11 = ptll1
+      when 10 then tll_s11 = self.user.s_name6 + ' - Pass'
+      when 11..100 then tll_s11 = rtll11
+    end
+
+    #tll_s12
+    case num_thirdlg
+      when 0 then tll_s12 = ptll12    
+      when 1 then tll_s12 = ptll10
+      when 2 then tll_s12 = ptll9
+      when 3 then tll_s12 = ptll8
+      when 4 then tll_s12 = ptll7
+      when 5 then tll_s12 = ptll6
+      when 6 then tll_s12 = ptll5
+      when 7 then tll_s12 = ptll4
+      when 8 then tll_s12 = ptll3
+      when 9 then tll_s12 = ptll2
+      when 10 then tll_s12 = ptll1
+      when 11..100 then tll_s12 = rtll12
+    end
+
+  
+    #Right Hash
+    # tlr_s0 would always be blank
+
+    #tlr_s1 
+    if num_thirdlg > 0
+      tlr_s1 = rtlr1
+    else
+      tlr_s1 = ptlr1
+    end
+
+    #tlr_s2
+    if num_thirdlg == 0
+      tlr_s2 = ptlr2
+    elsif num_thirdlg == 1
+      tlr_s2 = ''
+    else num_thirdlg > 1
+      tlr_s2 = rtlr2
+    end
+
+    #tlr_s3
+    case num_thirdlg
+      when 0 then tlr_s3 = ptlr3       
+      when 1 then tlr_s3 = ptlr1
+      when 2 then tlr_s3 = ''
+      when 3..100 then tlr_s3 = rtlr3
+    end
+
+    #tlr_s4
+    case num_thirdlg
+      when 0 then tlr_s4 = ptlr4       
+      when 1 then tlr_s4 = ptlr2
+      when 2 then tlr_s4 = ptlr1
+      when 3 then ''
+      when 4..100 then tlr_s4 = rtlr4
+    end
+
+    #tlr_s5
+    case num_thirdlg
+      when 0 then tlr_s5 = ptlr5       
+      when 1 then tlr_s5 = ptlr3
+      when 2 then tlr_s5 = ptlr2
+      when 3 then tlr_s5 = ptlr1
+      when 4 then tlr_s5 = ''
+      when 5..100 then tlr_s5 = rtlr5
+    end
+
+    #tlr_s6
+    case num_thirdlg
+      when 0 then tlr_s6 = ptlr6      
+      when 1 then tlr_s6 = ptlr4
+      when 2 then tlr_s6 = ptlr3
+      when 3 then tlr_s6 = ptlr2
+      when 4 then tlr_s6 = ptlr1
+      when 5 then tlr_s6 = ''
+      when 6..100 then tlr_s6 = rtlr6
+    end
+
+    #tlr_s7
+    case num_thirdlg
+      when 0 then tlr_s7 = ptlr7      
+      when 1 then tlr_s7 = ptlr5
+      when 2 then tlr_s7 = ptlr4
+      when 3 then tlr_s7 = ptlr3
+      when 4 then tlr_s7 = ptlr2
+      when 5 then tlr_s7 = ptlr1
+      when 6 then tlr_s7 = ''
+      when 7..100 then tlr_s7 = rtlr7
+    end
+
+    #tlr_s8
+    case num_thirdlg
+      when 0 then tlr_s8 = ptlr8      
+      when 1 then tlr_s8 = ptlr6
+      when 2 then tlr_s8 = ptlr5
+      when 3 then tlr_s8 = ptlr4
+      when 4 then tlr_s8 = ptlr3
+      when 5 then tlr_s8 = ptlr2
+      when 6 then tlr_s8 = ptlr1
+      when 7 then tlr_s8 = ''
+      when 8..100 then tlr_s8 = rtlr8
+    end
+
+    #tlr_s9
+    case num_thirdlg
+      when 0 then tlr_s9 = ptlr9      
+      when 1 then tlr_s9 = ptlr7
+      when 2 then tlr_s9 = ptlr6
+      when 3 then tlr_s9 = ptlr5
+      when 4 then tlr_s9 = ptlr4
+      when 5 then tlr_s9 = ptlr3
+      when 6 then tlr_s9 = ptlr2
+      when 7 then tlr_s9 = ptlr1
+      when 8 then tlr_s9 = ''
+      when 9..100 then tlr_s9 = rtlr9
+    end
+
+    #tlr_s10
+    case num_thirdlg
+      when 0 then tlr_s10 = ptlr10     
+      when 1 then tlr_s10 = ptlr8
+      when 2 then tlr_s10 = ptlr7
+      when 3 then tlr_s10 = ptlr6
+      when 4 then tlr_s10 = ptlr5
+      when 5 then tlr_s10 = ptlr4
+      when 6 then tlr_s10 = ptlr3
+      when 7 then tlr_s10 = ptlr2
+      when 8 then tlr_s10 = ptlr1
+      when 9 then tlr_s10 = ''
+      when 10..100 then tlr_s10 = rtlr10
+    end
+
+    #tlr_s11
+    case num_thirdlg
+      when 0 then tlr_s11 = ptlr11     
+      when 1 then tlr_s11 = ptlr9
+      when 2 then tlr_s11 = ptlr8
+      when 3 then tlr_s11 = ptlr7
+      when 4 then tlr_s11 = ptlr6
+      when 5 then tlr_s11 = ptlr5
+      when 6 then tlr_s11 = ptlr4
+      when 7 then tlr_s11 = ptlr3
+      when 8 then tlr_s11 = ptlr2
+      when 9 then tlr_s11 = ptlr1
+      when 10 then tlr_s11 = ''
+      when 11..100 then tlr_s11 = rtlr11
+    end
+
+    #tlr_s12
+    case num_thirdlg
+      when 0 then tlr_s12 = ptlr12    
+      when 1 then tlr_s12 = ptlr10
+      when 2 then tlr_s12 = ptlr9
+      when 3 then tlr_s12 = ptlr8
+      when 4 then tlr_s12 = ptlr7
+      when 5 then tlr_s12 = ptlr6
+      when 6 then tlr_s12 = ptlr5
+      when 7 then tlr_s12 = ptlr4
+      when 8 then tlr_s12 = ptlr3
+      when 9 then tlr_s12 = ptlr2
+      when 10 then tlr_s12 = ptlr1
+      when 11..100 then tlr_s12 = rtlr12
+    end    
     #----------End 3rd & Long----------    
 
     #----------2nd & Medium----------
@@ -448,6 +1707,24 @@ class Gamecall < ActiveRecord::Base
     unless runSecondMediumsLeft[4].nil?  
       rsml5 = runSecondMediumsLeft[4].fullname
     end
+    unless runSecondMediumsLeft[5].nil?  
+      rsml6 = runSecondMediumsLeft[5].fullname 
+    end
+    unless runSecondMediumsLeft[6].nil?  
+      rsml7 = runSecondMediumsLeft[6].fullname 
+    end
+    unless runSecondMediumsLeft[7].nil?  
+      rsml8 = runSecondMediumsLeft[7].fullname 
+    end
+    unless runSecondMediumsLeft[8].nil?  
+      rsml9 = runSecondMediumsLeft[8].fullname 
+    end
+    unless runSecondMediumsLeft[9].nil?  
+      rsml10 = runSecondMediumsLeft[9].fullname
+    end    
+    unless runSecondMediumsLeft[10].nil?  
+      rsml11 = runSecondMediumsLeft[10].fullname
+    end 
 
     #Run Right Hash
     unless runSecondMediumsRight[0].nil?  
@@ -464,6 +1741,24 @@ class Gamecall < ActiveRecord::Base
     end
     unless runSecondMediumsRight[4].nil?  
       rsmr5 = runSecondMediumsRight[4].fullname
+    end
+    unless runSecondMediumsRight[5].nil?  
+      rsmr6 = runSecondMediumsRight[5].fullname 
+    end
+    unless runSecondMediumsRight[6].nil?  
+      rsmr7 = runSecondMediumsRight[6].fullname 
+    end
+    unless runSecondMediumsRight[7].nil?  
+      rsmr8 = runSecondMediumsRight[7].fullname 
+    end
+    unless runSecondMediumsRight[8].nil?  
+      rsmr9 = runSecondMediumsRight[8].fullname 
+    end
+    unless runSecondMediumsRight[9].nil?  
+      rsmr10 = runSecondMediumsRight[9].fullname
+    end
+    unless runSecondMediumsRight[10].nil?  
+      rsmr11 = runSecondMediumsRight[10].fullname
     end
 
     #Pass Left Hash
@@ -482,6 +1777,24 @@ class Gamecall < ActiveRecord::Base
     unless passSecondMediumsLeft[4].nil?  
       psml5 = passSecondMediumsLeft[4].fullname
     end
+    unless passSecondMediumsLeft[5].nil?  
+      psml6 = passSecondMediumsLeft[5].fullname 
+    end
+    unless passSecondMediumsLeft[6].nil?  
+      psml7 = passSecondMediumsLeft[6].fullname 
+    end
+    unless passSecondMediumsLeft[7].nil?  
+      psml8 = passSecondMediumsLeft[7].fullname 
+    end
+    unless passSecondMediumsLeft[8].nil?  
+      psml9 = passSecondMediumsLeft[8].fullname 
+    end
+    unless passSecondMediumsLeft[9].nil?  
+      psml10 = passSecondMediumsLeft[9].fullname
+    end
+    unless passSecondMediumsLeft[10].nil?  
+      psml11 = passSecondMediumsLeft[10].fullname 
+    end
 
     #Pass Right Hash
     unless passSecondMediumsRight[0].nil?  
@@ -499,6 +1812,285 @@ class Gamecall < ActiveRecord::Base
     unless passSecondMediumsRight[4].nil?  
       psmr5 = passSecondMediumsRight[4].fullname
     end
+    unless passSecondMediumsRight[5].nil?  
+      psmr6 = passSecondMediumsRight[5].fullname 
+    end
+    unless passSecondMediumsRight[6].nil?  
+      psmr7 = passSecondMediumsRight[6].fullname 
+    end
+    unless passSecondMediumsRight[7].nil?  
+      psmr8 = passSecondMediumsRight[7].fullname 
+    end
+    unless passSecondMediumsRight[8].nil?  
+      psmr9 = passSecondMediumsRight[8].fullname 
+    end
+    unless passSecondMediumsRight[9].nil?  
+      psmr10 = passSecondMediumsRight[9].fullname
+    end
+    unless passSecondMediumsRight[10].nil?  
+      psmr11 = passSecondMediumsRight[10].fullname 
+    end
+
+    #Number of user's run plays in situation 4
+    num_secondmd = self.user.s_name4_num_run
+
+    #Left Hash
+    # tll_s0 
+    if num_secondmd > 0
+      secondmdl_s0 = self.user.s_name4 + ' - Run'
+    else
+      secondmdl_s0 = self.user.s_name4 + ' - Pass'
+    end
+
+    #secondmdl_s1 
+    if num_secondmd > 0
+      secondmdl_s1 = rsml1
+    else
+      secondmdl_s1 = psml1
+    end
+
+    #secondmdl_s2
+    if num_secondmd == 0
+      secondmdl_s2 = psml2
+    elsif num_secondmd == 1
+      secondmdl_s2 = self.user.s_name4 + ' - Pass'
+    else num_secondmd > 1
+      secondmdl_s2 = rsml2
+    end
+
+    #secondmdl_s3
+    case num_secondmd
+      when 0 then secondmdl_s3 = psml3       
+      when 1 then secondmdl_s3 = psml1
+      when 2 then secondmdl_s3 = self.user.s_name4 + ' - Pass'
+      when 3..100 then secondmdl_s3 = rsml3
+    end
+
+    #secondmdl_s4
+    case num_secondmd
+      when 0 then secondmdl_s4 = psml4       
+      when 1 then secondmdl_s4 = psml2
+      when 2 then secondmdl_s4 = psml1
+      when 3 then secondmdl_s4 = self.user.s_name4 + ' - Pass'
+      when 4..100 then secondmdl_s4 = rsml4
+    end
+
+    #secondmdl_s5
+    case num_secondmd
+      when 0 then secondmdl_s5 = psml5       
+      when 1 then secondmdl_s5 = psml3
+      when 2 then secondmdl_s5 = psml2
+      when 3 then secondmdl_s5 = psml1
+      when 4 then secondmdl_s5 = self.user.s_name4 + ' - Pass'
+      when 5..100 then secondmdl_s5 = rsml5
+    end
+
+    #secondmdl_s6
+    case num_secondmd
+      when 0 then secondmdl_s6 = psml6      
+      when 1 then secondmdl_s6 = psml4
+      when 2 then secondmdl_s6 = psml3
+      when 3 then secondmdl_s6 = psml2
+      when 4 then secondmdl_s6 = psml1
+      when 5 then secondmdl_s6 = self.user.s_name4 + ' - Pass'
+      when 6..100 then secondmdl_s6 = rsml6
+    end
+
+    #secondmdl_s7
+    case num_secondmd
+      when 0 then secondmdl_s7 = psml7      
+      when 1 then secondmdl_s7 = psml5
+      when 2 then secondmdl_s7 = psml4
+      when 3 then secondmdl_s7 = psml3
+      when 4 then secondmdl_s7 = psml2
+      when 5 then secondmdl_s7 = psml1
+      when 6 then secondmdl_s7 = self.user.s_name4 + ' - Pass'
+      when 7..100 then secondmdl_s7 = rsml7
+    end
+
+    #secondmdl_s8
+    case num_secondmd
+      when 0 then secondmdl_s8 = psml8      
+      when 1 then secondmdl_s8 = psml6
+      when 2 then secondmdl_s8 = psml5
+      when 3 then secondmdl_s8 = psml4
+      when 4 then secondmdl_s8 = psml3
+      when 5 then secondmdl_s8 = psml2
+      when 6 then secondmdl_s8 = psml1
+      when 7 then secondmdl_s8 = self.user.s_name4 + ' - Pass'
+      when 8..100 then secondmdl_s8 = rsml8
+    end
+
+    #secondmdl_s9
+    case num_secondmd
+      when 0 then secondmdl_s9 = psml9      
+      when 1 then secondmdl_s9 = psml7
+      when 2 then secondmdl_s9 = psml6
+      when 3 then secondmdl_s9 = psml5
+      when 4 then secondmdl_s9 = psml4
+      when 5 then secondmdl_s9 = psml3
+      when 6 then secondmdl_s9 = psml2
+      when 7 then secondmdl_s9 = psml1
+      when 8 then secondmdl_s9 = self.user.s_name4 + ' - Pass'
+      when 9..100 then secondmdl_s9 = rsml9
+    end
+
+    #secondmdl_s10
+    case num_secondmd
+      when 0 then secondmdl_s10 = psml10     
+      when 1 then secondmdl_s10 = psml8
+      when 2 then secondmdl_s10 = psml7
+      when 3 then secondmdl_s10 = psml6
+      when 4 then secondmdl_s10 = psml5
+      when 5 then secondmdl_s10 = psml4
+      when 6 then secondmdl_s10 = psml3
+      when 7 then secondmdl_s10 = psml2
+      when 8 then secondmdl_s10 = psml1
+      when 9 then secondmdl_s10 = self.user.s_name4 + ' - Pass'
+      when 10..100 then secondmdl_s10 = rsml10
+    end
+
+    #secondmdl_s11
+    case num_secondmd
+      when 0 then secondmdl_s11 = psml11     
+      when 1 then secondmdl_s11 = psml9
+      when 2 then secondmdl_s11 = psml8
+      when 3 then secondmdl_s11 = psml7
+      when 4 then secondmdl_s11 = psml6
+      when 5 then secondmdl_s11 = psml5
+      when 6 then secondmdl_s11 = psml4
+      when 7 then secondmdl_s11 = psml3
+      when 8 then secondmdl_s11 = psml2
+      when 9 then secondmdl_s11 = psml1
+      when 10..100 then secondmdl_s11 = rsml11
+    end
+  
+    #Right Hash
+    # secondmdr_s0 would always be blank
+
+    #secondmdr_s1 
+    if num_secondmd > 0
+      secondmdr_s1 = rsmr1
+    else
+      secondmdr_s1 = psmr1
+    end
+
+    #secondmdr_s2
+    if num_secondmd == 0
+      secondmdr_s2 = psmr2
+    elsif num_secondmd == 1
+      secondmdr_s2 = ''
+    else num_secondmd > 1
+      secondmdr_s2 = rsmr2
+    end
+
+    #secondmdr_s3
+    case num_secondmd
+      when 0 then secondmdr_s3 = psmr3       
+      when 1 then secondmdr_s3 = psmr1
+      when 2 then secondmdr_s3 = ''
+      when 3..100 then secondmdr_s3 = rsmr3
+    end
+
+    #secondmdr_s4
+    case num_secondmd
+      when 0 then secondmdr_s4 = psmr4       
+      when 1 then secondmdr_s4 = psmr2
+      when 2 then secondmdr_s4 = psmr1
+      when 3 then ''
+      when 4..100 then secondmdr_s4 = rsmr4
+    end
+
+    #secondmdr_s5
+    case num_secondmd
+      when 0 then secondmdr_s5 = psmr5       
+      when 1 then secondmdr_s5 = psmr3
+      when 2 then secondmdr_s5 = psmr2
+      when 3 then secondmdr_s5 = psmr1
+      when 4 then secondmdr_s5 = ''
+      when 5..100 then secondmdr_s5 = rsmr5
+    end
+
+    #secondmdr_s6
+    case num_secondmd
+      when 0 then secondmdr_s6 = psmr6      
+      when 1 then secondmdr_s6 = psmr4
+      when 2 then secondmdr_s6 = psmr3
+      when 3 then secondmdr_s6 = psmr2
+      when 4 then secondmdr_s6 = psmr1
+      when 5 then secondmdr_s6 = ''
+      when 6..100 then secondmdr_s6 = rsmr6
+    end
+
+    #secondmdr_s7
+    case num_secondmd
+      when 0 then secondmdr_s7 = psmr7      
+      when 1 then secondmdr_s7 = psmr5
+      when 2 then secondmdr_s7 = psmr4
+      when 3 then secondmdr_s7 = psmr3
+      when 4 then secondmdr_s7 = psmr2
+      when 5 then secondmdr_s7 = psmr1
+      when 6 then secondmdr_s7 = ''
+      when 7..100 then secondmdr_s7 = rsmr7
+    end
+
+    #secondmdr_s8
+    case num_secondmd
+      when 0 then secondmdr_s8 = psmr8      
+      when 1 then secondmdr_s8 = psmr6
+      when 2 then secondmdr_s8 = psmr5
+      when 3 then secondmdr_s8 = psmr4
+      when 4 then secondmdr_s8 = psmr3
+      when 5 then secondmdr_s8 = psmr2
+      when 6 then secondmdr_s8 = psmr1
+      when 7 then secondmdr_s8 = ''
+      when 8..100 then secondmdr_s8 = rsmr8
+    end
+
+    #secondmdr_s9
+    case num_secondmd
+      when 0 then secondmdr_s9 = psmr9      
+      when 1 then secondmdr_s9 = psmr7
+      when 2 then secondmdr_s9 = psmr6
+      when 3 then secondmdr_s9 = psmr5
+      when 4 then secondmdr_s9 = psmr4
+      when 5 then secondmdr_s9 = psmr3
+      when 6 then secondmdr_s9 = psmr2
+      when 7 then secondmdr_s9 = psmr1
+      when 8 then secondmdr_s9 = ''
+      when 9..100 then secondmdr_s9 = rsmr9
+    end
+
+    #secondmdr_s10
+    case num_secondmd
+      when 0 then secondmdr_s10 = psmr10     
+      when 1 then secondmdr_s10 = psmr8
+      when 2 then secondmdr_s10 = psmr7
+      when 3 then secondmdr_s10 = psmr6
+      when 4 then secondmdr_s10 = psmr5
+      when 5 then secondmdr_s10 = psmr4
+      when 6 then secondmdr_s10 = psmr3
+      when 7 then secondmdr_s10 = psmr2
+      when 8 then secondmdr_s10 = psmr1
+      when 9 then secondmdr_s10 = ''
+      when 10..100 then secondmdr_s10 = rsmr10
+    end
+
+    #secondmdr_s11
+    case num_secondmd
+      when 0 then secondmdr_s11 = psmr11     
+      when 1 then secondmdr_s11 = psmr9
+      when 2 then secondmdr_s11 = psmr8
+      when 3 then secondmdr_s11 = psmr7
+      when 4 then secondmdr_s11 = psmr6
+      when 5 then secondmdr_s11 = psmr5
+      when 6 then secondmdr_s11 = psmr4
+      when 7 then secondmdr_s11 = psmr3
+      when 8 then secondmdr_s11 = psmr2
+      when 9 then secondmdr_s11 = psmr1
+      when 10..100 then secondmdr_s11 = rsmr11
+    end
+   
     #----------End 2nd & Medium----------
 
     #----------3rd & Medium----------
@@ -528,6 +2120,24 @@ class Gamecall < ActiveRecord::Base
     unless runThirdMediumsLeft[4].nil?  
       rtml5 = runThirdMediumsLeft[4].fullname
     end
+    unless runThirdMediumsLeft[5].nil?  
+      rtml6 = runThirdMediumsLeft[5].fullname 
+    end
+    unless runThirdMediumsLeft[6].nil?  
+      rtml7 = runThirdMediumsLeft[6].fullname 
+    end
+    unless runThirdMediumsLeft[7].nil?  
+      rtml8 = runThirdMediumsLeft[7].fullname 
+    end
+    unless runThirdMediumsLeft[8].nil?  
+      rtml9 = runThirdMediumsLeft[8].fullname 
+    end
+    unless runThirdMediumsLeft[9].nil?  
+      rtml10 = runThirdMediumsLeft[9].fullname
+    end
+    unless runThirdMediumsLeft[10].nil?  
+      rtml11 = runThirdMediumsLeft[10].fullname 
+    end
 
     #Run Right Hash
     unless runThirdMediumsRight[0].nil?  
@@ -545,6 +2155,25 @@ class Gamecall < ActiveRecord::Base
     unless runThirdMediumsRight[4].nil?  
       rtmr5 = runThirdMediumsRight[4].fullname
     end
+    unless runThirdMediumsRight[5].nil?  
+      rtmr6 = runThirdMediumsRight[5].fullname 
+    end
+    unless runThirdMediumsRight[6].nil?  
+      rtmr7 = runThirdMediumsRight[6].fullname 
+    end
+    unless runThirdMediumsRight[7].nil?  
+      rtmr8 = runThirdMediumsRight[7].fullname 
+    end
+    unless runThirdMediumsRight[8].nil?  
+      rtmr9 = runThirdMediumsRight[8].fullname 
+    end
+    unless runThirdMediumsRight[9].nil?  
+      rtmr10 = runThirdMediumsRight[9].fullname
+    end
+    unless runThirdMediumsRight[10].nil?  
+      rtmr11 = runThirdMediumsRight[10].fullname 
+    end
+    
 
     #Pass Left Hash
     unless passThirdMediumsLeft[0].nil?  
@@ -562,6 +2191,24 @@ class Gamecall < ActiveRecord::Base
     unless passThirdMediumsLeft[4].nil?  
       ptml5 = passThirdMediumsLeft[4].fullname
     end
+    unless passThirdMediumsLeft[5].nil?  
+      ptml6 = passThirdMediumsLeft[5].fullname 
+    end
+    unless passThirdMediumsLeft[6].nil?  
+      ptml7 = passThirdMediumsLeft[6].fullname 
+    end
+    unless passThirdMediumsLeft[7].nil?  
+      ptml8 = passThirdMediumsLeft[7].fullname 
+    end
+    unless passThirdMediumsLeft[8].nil?  
+      ptml9 = passThirdMediumsLeft[8].fullname 
+    end
+    unless passThirdMediumsLeft[9].nil?  
+      ptml10 = passThirdMediumsLeft[9].fullname
+    end
+    unless passThirdMediumsLeft[10].nil?  
+      ptml11 = passThirdMediumsLeft[10].fullname 
+    end
 
     #Pass Right Hash
     unless passThirdMediumsRight[0].nil?  
@@ -578,6 +2225,285 @@ class Gamecall < ActiveRecord::Base
     end
     unless passThirdMediumsRight[4].nil?  
       ptmr5 = passThirdMediumsRight[4].fullname
+    end
+    unless passThirdMediumsRight[5].nil?  
+      ptmr6 = passThirdMediumsRight[5].fullname 
+    end
+    unless passThirdMediumsRight[6].nil?  
+      ptmr7 = passThirdMediumsRight[6].fullname 
+    end
+    unless passThirdMediumsRight[7].nil?  
+      ptmr8 = passThirdMediumsRight[7].fullname 
+    end
+    unless passThirdMediumsRight[8].nil?  
+      ptmr9 = passThirdMediumsRight[8].fullname 
+    end
+    unless passThirdMediumsRight[9].nil?  
+      ptmr10 = passThirdMediumsRight[9].fullname
+    end
+    unless passThirdMediumsRight[10].nil?  
+      ptmr11 = passThirdMediumsRight[10].fullname 
+    end
+    
+
+    #Number of user's run plays in situation 7
+    num_thirdmd = self.user.s_name7_num_run
+
+    #Left Hash
+    # thirdmdl_s0 
+    if num_thirdmd > 0
+      thirdmdl_s0 = self.user.s_name7 + ' - Run'
+    else
+      thirdmdl_s0 = self.user.s_name7 + ' - Pass'
+    end
+
+    #thirdmdl_s1 
+    if num_thirdmd > 0
+      thirdmdl_s1 = rtml1
+    else
+      thirdmdl_s1 = ptml1
+    end
+
+    #thirdmdl_s2
+    if num_thirdmd == 0
+      thirdmdl_s2 = ptml2
+    elsif num_thirdmd == 1
+      thirdmdl_s2 = self.user.s_name7 + ' - Pass'
+    else num_thirdmd > 1
+      thirdmdl_s2 = rtml2
+    end
+
+    #thirdmdl_s3
+    case num_thirdmd
+      when 0 then thirdmdl_s3 = ptml3       
+      when 1 then thirdmdl_s3 = ptml1
+      when 2 then thirdmdl_s3 = self.user.s_name7 + ' - Pass'
+      when 3..100 then thirdmdl_s3 = rtml3
+    end
+
+    #thirdmdl_s4
+    case num_thirdmd
+      when 0 then thirdmdl_s4 = ptml4       
+      when 1 then thirdmdl_s4 = ptml2
+      when 2 then thirdmdl_s4 = ptml1
+      when 3 then thirdmdl_s4 = self.user.s_name7 + ' - Pass'
+      when 4..100 then thirdmdl_s4 = rtml4
+    end
+
+    #thirdmdl_s5
+    case num_thirdmd
+      when 0 then thirdmdl_s5 = ptml5       
+      when 1 then thirdmdl_s5 = ptml3
+      when 2 then thirdmdl_s5 = ptml2
+      when 3 then thirdmdl_s5 = ptml1
+      when 4 then thirdmdl_s5 = self.user.s_name7 + ' - Pass'
+      when 5..100 then thirdmdl_s5 = rtml5
+    end
+
+    #thirdmdl_s6
+    case num_thirdmd
+      when 0 then thirdmdl_s6 = ptml6      
+      when 1 then thirdmdl_s6 = ptml4
+      when 2 then thirdmdl_s6 = ptml3
+      when 3 then thirdmdl_s6 = ptml2
+      when 4 then thirdmdl_s6 = ptml1
+      when 5 then thirdmdl_s6 = self.user.s_name7 + ' - Pass'
+      when 6..100 then thirdmdl_s6 = rtml6
+    end
+
+    #thirdmdl_s7
+    case num_thirdmd
+      when 0 then thirdmdl_s7 = ptml7      
+      when 1 then thirdmdl_s7 = ptml5
+      when 2 then thirdmdl_s7 = ptml4
+      when 3 then thirdmdl_s7 = ptml3
+      when 4 then thirdmdl_s7 = ptml2
+      when 5 then thirdmdl_s7 = ptml1
+      when 6 then thirdmdl_s7 = self.user.s_name7 + ' - Pass'
+      when 7..100 then thirdmdl_s7 = rtml7
+    end
+
+    #thirdmdl_s8
+    case num_thirdmd
+      when 0 then thirdmdl_s8 = ptml8      
+      when 1 then thirdmdl_s8 = ptml6
+      when 2 then thirdmdl_s8 = ptml5
+      when 3 then thirdmdl_s8 = ptml4
+      when 4 then thirdmdl_s8 = ptml3
+      when 5 then thirdmdl_s8 = ptml2
+      when 6 then thirdmdl_s8 = ptml1
+      when 7 then thirdmdl_s8 = self.user.s_name7 + ' - Pass'
+      when 8..100 then thirdmdl_s8 = rtml8
+    end
+
+    #thirdmdl_s9
+    case num_thirdmd
+      when 0 then thirdmdl_s9 = ptml9      
+      when 1 then thirdmdl_s9 = ptml7
+      when 2 then thirdmdl_s9 = ptml6
+      when 3 then thirdmdl_s9 = ptml5
+      when 4 then thirdmdl_s9 = ptml4
+      when 5 then thirdmdl_s9 = ptml3
+      when 6 then thirdmdl_s9 = ptml2
+      when 7 then thirdmdl_s9 = ptml1
+      when 8 then thirdmdl_s9 = self.user.s_name7 + ' - Pass'
+      when 9..100 then thirdmdl_s9 = rtml9
+    end
+
+    #thirdmdl_s10
+    case num_thirdmd
+      when 0 then thirdmdl_s10 = ptml10     
+      when 1 then thirdmdl_s10 = ptml8
+      when 2 then thirdmdl_s10 = ptml7
+      when 3 then thirdmdl_s10 = ptml6
+      when 4 then thirdmdl_s10 = ptml5
+      when 5 then thirdmdl_s10 = ptml4
+      when 6 then thirdmdl_s10 = ptml3
+      when 7 then thirdmdl_s10 = ptml2
+      when 8 then thirdmdl_s10 = ptml1
+      when 9 then thirdmdl_s10 = self.user.s_name7 + ' - Pass'
+      when 10..100 then thirdmdl_s10 = rtml10
+    end
+
+    #thirdmdl_s11
+    case num_thirdmd
+      when 0 then thirdmdl_s11 = ptml11     
+      when 1 then thirdmdl_s11 = ptml9
+      when 2 then thirdmdl_s11 = ptml8
+      when 3 then thirdmdl_s11 = ptml7
+      when 4 then thirdmdl_s11 = ptml6
+      when 5 then thirdmdl_s11 = ptml5
+      when 6 then thirdmdl_s11 = ptml4
+      when 7 then thirdmdl_s11 = ptml3
+      when 8 then thirdmdl_s11 = ptml2
+      when 9 then thirdmdl_s11 = ptml1
+      when 10..100 then thirdmdl_s11 = rtml11
+    end
+  
+    #Right Hash
+    # thirdmdr_s0 would always be blank
+
+    #thirdmdr_s1 
+    if num_thirdmd > 0
+      thirdmdr_s1 = rtmr1
+    else
+      thirdmdr_s1 = ptmr1
+    end
+
+    #thirdmdr_s2
+    if num_thirdmd == 0
+      thirdmdr_s2 = ptmr2
+    elsif num_thirdmd == 1
+      thirdmdr_s2 = ''
+    else num_thirdmd > 1
+      thirdmdr_s2 = rtmr2
+    end
+
+    #thirdmdr_s3
+    case num_thirdmd
+      when 0 then thirdmdr_s3 = ptmr3       
+      when 1 then thirdmdr_s3 = ptmr1
+      when 2 then thirdmdr_s3 = ''
+      when 3..100 then thirdmdr_s3 = rtmr3
+    end
+
+    #thirdmdr_s4
+    case num_thirdmd
+      when 0 then thirdmdr_s4 = ptmr4       
+      when 1 then thirdmdr_s4 = ptmr2
+      when 2 then thirdmdr_s4 = ptmr1
+      when 3 then ''
+      when 4..100 then thirdmdr_s4 = rtmr4
+    end
+
+    #thirdmdr_s5
+    case num_thirdmd
+      when 0 then thirdmdr_s5 = ptmr5       
+      when 1 then thirdmdr_s5 = ptmr3
+      when 2 then thirdmdr_s5 = ptmr2
+      when 3 then thirdmdr_s5 = ptmr1
+      when 4 then thirdmdr_s5 = ''
+      when 5..100 then thirdmdr_s5 = rtmr5
+    end
+
+    #thirdmdr_s6
+    case num_thirdmd
+      when 0 then thirdmdr_s6 = ptmr6      
+      when 1 then thirdmdr_s6 = ptmr4
+      when 2 then thirdmdr_s6 = ptmr3
+      when 3 then thirdmdr_s6 = ptmr2
+      when 4 then thirdmdr_s6 = ptmr1
+      when 5 then thirdmdr_s6 = ''
+      when 6..100 then thirdmdr_s6 = rtmr6
+    end
+
+    #thirdmdr_s7
+    case num_thirdmd
+      when 0 then thirdmdr_s7 = ptmr7      
+      when 1 then thirdmdr_s7 = ptmr5
+      when 2 then thirdmdr_s7 = ptmr4
+      when 3 then thirdmdr_s7 = ptmr3
+      when 4 then thirdmdr_s7 = ptmr2
+      when 5 then thirdmdr_s7 = ptmr1
+      when 6 then thirdmdr_s7 = ''
+      when 7..100 then thirdmdr_s7 = rtmr7
+    end
+
+    #thirdmdr_s8
+    case num_thirdmd
+      when 0 then thirdmdr_s8 = ptmr8      
+      when 1 then thirdmdr_s8 = ptmr6
+      when 2 then thirdmdr_s8 = ptmr5
+      when 3 then thirdmdr_s8 = ptmr4
+      when 4 then thirdmdr_s8 = ptmr3
+      when 5 then thirdmdr_s8 = ptmr2
+      when 6 then thirdmdr_s8 = ptmr1
+      when 7 then thirdmdr_s8 = ''
+      when 8..100 then thirdmdr_s8 = rtmr8
+    end
+
+    #thirdmdr_s9
+    case num_thirdmd
+      when 0 then thirdmdr_s9 = ptmr9      
+      when 1 then thirdmdr_s9 = ptmr7
+      when 2 then thirdmdr_s9 = ptmr6
+      when 3 then thirdmdr_s9 = ptmr5
+      when 4 then thirdmdr_s9 = ptmr4
+      when 5 then thirdmdr_s9 = ptmr3
+      when 6 then thirdmdr_s9 = ptmr2
+      when 7 then thirdmdr_s9 = ptmr1
+      when 8 then thirdmdr_s9 = ''
+      when 9..100 then thirdmdr_s9 = rtmr9
+    end
+
+    #thirdmdr_s10
+    case num_thirdmd
+      when 0 then thirdmdr_s10 = ptmr10     
+      when 1 then thirdmdr_s10 = ptmr8
+      when 2 then thirdmdr_s10 = ptmr7
+      when 3 then thirdmdr_s10 = ptmr6
+      when 4 then thirdmdr_s10 = ptmr5
+      when 5 then thirdmdr_s10 = ptmr4
+      when 6 then thirdmdr_s10 = ptmr3
+      when 7 then thirdmdr_s10 = ptmr2
+      when 8 then thirdmdr_s10 = ptmr1
+      when 9 then thirdmdr_s10 = ''
+      when 10..100 then thirdmdr_s10 = rtmr10
+    end
+
+    #thirdmdr_s11
+    case num_thirdmd
+      when 0 then thirdmdr_s11 = ptmr11     
+      when 1 then thirdmdr_s11 = ptmr9
+      when 2 then thirdmdr_s11 = ptmr8
+      when 3 then thirdmdr_s11 = ptmr7
+      when 4 then thirdmdr_s11 = ptmr6
+      when 5 then thirdmdr_s11 = ptmr5
+      when 6 then thirdmdr_s11 = ptmr4
+      when 7 then thirdmdr_s11 = ptmr3
+      when 8 then thirdmdr_s11 = ptmr2
+      when 9 then thirdmdr_s11 = ptmr1
+      when 10..100 then thirdmdr_s11 = rtmr11
     end
     #----------End 3rd & Medium----------
 
@@ -608,6 +2534,24 @@ class Gamecall < ActiveRecord::Base
     unless runSecondShortsLeft[4].nil?  
       rssl5 = runSecondShortsLeft[4].fullname
     end
+    unless runSecondShortsLeft[5].nil?  
+      rssl6 = runSecondShortsLeft[5].fullname 
+    end
+    unless runSecondShortsLeft[6].nil?  
+      rssl7 = runSecondShortsLeft[6].fullname 
+    end
+    unless runSecondShortsLeft[7].nil?  
+      rssl8 = runSecondShortsLeft[7].fullname 
+    end
+    unless runSecondShortsLeft[8].nil?  
+      rssl9 = runSecondShortsLeft[8].fullname 
+    end
+    unless runSecondShortsLeft[9].nil?  
+      rssl10 = runSecondShortsLeft[9].fullname
+    end
+    unless runSecondShortsLeft[10].nil?  
+      rssl11 = runSecondShortsLeft[10].fullname
+    end
 
     #Run Right Hash
     unless runSecondShortsRight[0].nil?  
@@ -624,6 +2568,24 @@ class Gamecall < ActiveRecord::Base
     end
     unless runSecondShortsRight[4].nil?  
       rssr5 = runSecondShortsRight[4].fullname
+    end
+    unless runSecondShortsRight[5].nil?  
+      rssr6 = runSecondShortsRight[5].fullname 
+    end
+    unless runSecondShortsRight[6].nil?  
+      rssr7 = runSecondShortsRight[6].fullname 
+    end
+    unless runSecondShortsRight[7].nil?  
+      rssr8 = runSecondShortsRight[7].fullname 
+    end
+    unless runSecondShortsRight[8].nil?  
+      rssr9 = runSecondShortsRight[8].fullname 
+    end
+    unless runSecondShortsRight[9].nil?  
+      rssr10 = runSecondShortsRight[9].fullname
+    end
+    unless runSecondShortsRight[10].nil?  
+      rssr11 = runSecondShortsRight[10].fullname
     end
 
     #Pass Left Hash
@@ -642,6 +2604,24 @@ class Gamecall < ActiveRecord::Base
     unless passSecondShortsLeft[4].nil?  
       pssl5 = passSecondShortsLeft[4].fullname
     end
+    unless passSecondShortsLeft[5].nil?  
+      pssl6 = passSecondShortsLeft[5].fullname 
+    end
+    unless passSecondShortsLeft[6].nil?  
+      pssl7 = passSecondShortsLeft[6].fullname 
+    end
+    unless passSecondShortsLeft[7].nil?  
+      pssl8 = passSecondShortsLeft[7].fullname 
+    end
+    unless passSecondShortsLeft[8].nil?  
+      pssl9 = passSecondShortsLeft[8].fullname 
+    end
+    unless passSecondShortsLeft[9].nil?  
+      pssl10 = passSecondShortsLeft[9].fullname
+    end
+    unless passSecondShortsLeft[10].nil?  
+      pssl11 = passSecondShortsLeft[10].fullname
+    end
 
     #Pass Right Hash
     unless passSecondShortsRight[0].nil?  
@@ -659,6 +2639,284 @@ class Gamecall < ActiveRecord::Base
     unless passSecondShortsRight[4].nil?  
       pssr5 = passSecondShortsRight[4].fullname
     end
+    unless passSecondShortsRight[5].nil?  
+      pssr6 = passSecondShortsRight[5].fullname 
+    end
+    unless passSecondShortsRight[6].nil?  
+      pssr7 = passSecondShortsRight[6].fullname 
+    end
+    unless passSecondShortsRight[7].nil?  
+      pssr8 = passSecondShortsRight[7].fullname 
+    end
+    unless passSecondShortsRight[8].nil?  
+      pssr9 = passSecondShortsRight[8].fullname 
+    end
+    unless passSecondShortsRight[9].nil?  
+      pssr10 = passSecondShortsRight[9].fullname
+    end
+    unless passSecondShortsRight[10].nil?  
+      pssr11 = passSecondShortsRight[10].fullname
+    end
+
+    #Number of user's run plays in situation 5
+    num_secondst = self.user.s_name5_num_run
+
+    #Left Hash
+    # secondstl_s0 
+    if num_secondst > 0
+      secondstl_s0 = self.user.s_name5 + ' - Run'
+    else
+      secondstl_s0 = self.user.s_name5 + ' - Pass'
+    end
+
+    #secondstl_s1 
+    if num_secondst > 0
+      secondstl_s1 = rssl1
+    else
+      secondstl_s1 = pssl1
+    end
+
+    #secondstl_s2
+    if num_secondst == 0
+      secondstl_s2 = pssl2
+    elsif num_secondst == 1
+      secondstl_s2 = self.user.s_name5 + ' - Pass'
+    else num_secondst > 1
+      secondstl_s2 = rssl2
+    end
+
+    #secondstl_s3
+    case num_secondst
+      when 0 then secondstl_s3 = pssl3       
+      when 1 then secondstl_s3 = pssl1
+      when 2 then secondstl_s3 = self.user.s_name5 + ' - Pass'
+      when 3..100 then secondstl_s3 = rssl3
+    end
+
+    #secondstl_s4
+    case num_secondst
+      when 0 then secondstl_s4 = pssl4       
+      when 1 then secondstl_s4 = pssl2
+      when 2 then secondstl_s4 = pssl1
+      when 3 then secondstl_s4 = self.user.s_name5 + ' - Pass'
+      when 4..100 then secondstl_s4 = rssl4
+    end
+
+    #secondstl_s5
+    case num_secondst
+      when 0 then secondstl_s5 = pssl5       
+      when 1 then secondstl_s5 = pssl3
+      when 2 then secondstl_s5 = pssl2
+      when 3 then secondstl_s5 = pssl1
+      when 4 then secondstl_s5 = self.user.s_name5 + ' - Pass'
+      when 5..100 then secondstl_s5 = rssl5
+    end
+
+    #secondstl_s6
+    case num_secondst
+      when 0 then secondstl_s6 = pssl6      
+      when 1 then secondstl_s6 = pssl4
+      when 2 then secondstl_s6 = pssl3
+      when 3 then secondstl_s6 = pssl2
+      when 4 then secondstl_s6 = pssl1
+      when 5 then secondstl_s6 = self.user.s_name5 + ' - Pass'
+      when 6..100 then secondstl_s6 = rssl6
+    end
+
+    #secondstl_s7
+    case num_secondst
+      when 0 then secondstl_s7 = pssl7      
+      when 1 then secondstl_s7 = pssl5
+      when 2 then secondstl_s7 = pssl4
+      when 3 then secondstl_s7 = pssl3
+      when 4 then secondstl_s7 = pssl2
+      when 5 then secondstl_s7 = pssl1
+      when 6 then secondstl_s7 = self.user.s_name5 + ' - Pass'
+      when 7..100 then secondstl_s7 = rssl7
+    end
+
+    #secondstl_s8
+    case num_secondst
+      when 0 then secondstl_s8 = pssl8      
+      when 1 then secondstl_s8 = pssl6
+      when 2 then secondstl_s8 = pssl5
+      when 3 then secondstl_s8 = pssl4
+      when 4 then secondstl_s8 = pssl3
+      when 5 then secondstl_s8 = pssl2
+      when 6 then secondstl_s8 = pssl1
+      when 7 then secondstl_s8 = self.user.s_name5 + ' - Pass'
+      when 8..100 then secondstl_s8 = rssl8
+    end
+
+    #secondstl_s9
+    case num_secondst
+      when 0 then secondstl_s9 = pssl9      
+      when 1 then secondstl_s9 = pssl7
+      when 2 then secondstl_s9 = pssl6
+      when 3 then secondstl_s9 = pssl5
+      when 4 then secondstl_s9 = pssl4
+      when 5 then secondstl_s9 = pssl3
+      when 6 then secondstl_s9 = pssl2
+      when 7 then secondstl_s9 = pssl1
+      when 8 then secondstl_s9 = self.user.s_name5 + ' - Pass'
+      when 9..100 then secondstl_s9 = rssl9
+    end
+
+    #secondstl_s10
+    case num_secondst
+      when 0 then secondstl_s10 = pssl10     
+      when 1 then secondstl_s10 = pssl8
+      when 2 then secondstl_s10 = pssl7
+      when 3 then secondstl_s10 = pssl6
+      when 4 then secondstl_s10 = pssl5
+      when 5 then secondstl_s10 = pssl4
+      when 6 then secondstl_s10 = pssl3
+      when 7 then secondstl_s10 = pssl2
+      when 8 then secondstl_s10 = pssl1
+      when 9 then secondstl_s10 = self.user.s_name5 + ' - Pass'
+      when 10..100 then secondstl_s10 = rssl10
+    end
+
+    #secondstl_s11
+    case num_secondst
+      when 0 then secondstl_s11 = pssl11     
+      when 1 then secondstl_s11 = pssl9
+      when 2 then secondstl_s11 = pssl8
+      when 3 then secondstl_s11 = pssl7
+      when 4 then secondstl_s11 = pssl6
+      when 5 then secondstl_s11 = pssl5
+      when 6 then secondstl_s11 = pssl4
+      when 7 then secondstl_s11 = pssl3
+      when 8 then secondstl_s11 = pssl2
+      when 9 then secondstl_s11 = pssl1
+      when 10..100 then secondstl_s11 = rssl11
+    end
+  
+    #Right Hash
+    # secondstr_s0 would always be blank
+
+    #secondstr_s1 
+    if num_secondst > 0
+      secondstr_s1 = rssr1
+    else
+      secondstr_s1 = pssr1
+    end
+
+    #secondstr_s2
+    if num_secondst == 0
+      secondstr_s2 = pssr2
+    elsif num_secondst == 1
+      secondstr_s2 = ''
+    else num_secondst > 1
+      secondstr_s2 = rssr2
+    end
+
+    #secondstr_s3
+    case num_secondst
+      when 0 then secondstr_s3 = pssr3       
+      when 1 then secondstr_s3 = pssr1
+      when 2 then secondstr_s3 = ''
+      when 3..100 then secondstr_s3 = rssr3
+    end
+
+    #secondstr_s4
+    case num_secondst
+      when 0 then secondstr_s4 = pssr4       
+      when 1 then secondstr_s4 = pssr2
+      when 2 then secondstr_s4 = pssr1
+      when 3 then ''
+      when 4..100 then secondstr_s4 = rssr4
+    end
+
+    #secondstr_s5
+    case num_secondst
+      when 0 then secondstr_s5 = pssr5       
+      when 1 then secondstr_s5 = pssr3
+      when 2 then secondstr_s5 = pssr2
+      when 3 then secondstr_s5 = pssr1
+      when 4 then secondstr_s5 = ''
+      when 5..100 then secondstr_s5 = rssr5
+    end
+
+    #secondstr_s6
+    case num_secondst
+      when 0 then secondstr_s6 = pssr6      
+      when 1 then secondstr_s6 = pssr4
+      when 2 then secondstr_s6 = pssr3
+      when 3 then secondstr_s6 = pssr2
+      when 4 then secondstr_s6 = pssr1
+      when 5 then secondstr_s6 = ''
+      when 6..100 then secondstr_s6 = rssr6
+    end
+
+    #secondstr_s7
+    case num_secondst
+      when 0 then secondstr_s7 = pssr7      
+      when 1 then secondstr_s7 = pssr5
+      when 2 then secondstr_s7 = pssr4
+      when 3 then secondstr_s7 = pssr3
+      when 4 then secondstr_s7 = pssr2
+      when 5 then secondstr_s7 = pssr1
+      when 6 then secondstr_s7 = ''
+      when 7..100 then secondstr_s7 = rssr7
+    end
+
+    #secondstr_s8
+    case num_secondst
+      when 0 then secondstr_s8 = pssr8      
+      when 1 then secondstr_s8 = pssr6
+      when 2 then secondstr_s8 = pssr5
+      when 3 then secondstr_s8 = pssr4
+      when 4 then secondstr_s8 = pssr3
+      when 5 then secondstr_s8 = pssr2
+      when 6 then secondstr_s8 = pssr1
+      when 7 then secondstr_s8 = ''
+      when 8..100 then secondstr_s8 = rssr8
+    end
+
+    #secondstr_s9
+    case num_secondst
+      when 0 then secondstr_s9 = pssr9      
+      when 1 then secondstr_s9 = pssr7
+      when 2 then secondstr_s9 = pssr6
+      when 3 then secondstr_s9 = pssr5
+      when 4 then secondstr_s9 = pssr4
+      when 5 then secondstr_s9 = pssr3
+      when 6 then secondstr_s9 = pssr2
+      when 7 then secondstr_s9 = pssr1
+      when 8 then secondstr_s9 = ''
+      when 9..100 then secondstr_s9 = rssr9
+    end
+
+    #secondstr_s10
+    case num_secondst
+      when 0 then secondstr_s10 = pssr10     
+      when 1 then secondstr_s10 = pssr8
+      when 2 then secondstr_s10 = pssr7
+      when 3 then secondstr_s10 = pssr6
+      when 4 then secondstr_s10 = pssr5
+      when 5 then secondstr_s10 = pssr4
+      when 6 then secondstr_s10 = pssr3
+      when 7 then secondstr_s10 = pssr2
+      when 8 then secondstr_s10 = pssr1
+      when 9 then secondstr_s10 = ''
+      when 10..100 then secondstr_s10 = rssr10
+    end
+
+    #secondstr_s11
+    case num_secondst
+      when 0 then secondstr_s11 = pssr11     
+      when 1 then secondstr_s11 = pssr9
+      when 2 then secondstr_s11 = pssr8
+      when 3 then secondstr_s11 = pssr7
+      when 4 then secondstr_s11 = pssr6
+      when 5 then secondstr_s11 = pssr5
+      when 6 then secondstr_s11 = pssr4
+      when 7 then secondstr_s11 = pssr3
+      when 8 then secondstr_s11 = pssr2
+      when 9 then secondstr_s11 = pssr1
+      when 10..100 then secondstr_s11 = rssr11
+    end    
     #----------End 2nd & Short----------
 
     #----------3rd & Short----------
@@ -694,6 +2952,18 @@ class Gamecall < ActiveRecord::Base
     unless runThirdShortsLeft[6].nil?  
       rtsl7 = runThirdShortsLeft[6].fullname
     end    
+    unless runThirdShortsLeft[7].nil?  
+      rtsl8 = runThirdShortsLeft[7].fullname 
+    end
+    unless runThirdShortsLeft[8].nil?  
+      rtsl9 = runThirdShortsLeft[8].fullname 
+    end
+    unless runThirdShortsLeft[9].nil?  
+      rtsl10 = runThirdShortsLeft[9].fullname 
+    end
+    unless runThirdShortsLeft[10].nil?  
+      rtsl11 = runThirdShortsLeft[10].fullname 
+    end
 
     #Run Right Hash
     unless runThirdShortsRight[0].nil?  
@@ -717,6 +2987,18 @@ class Gamecall < ActiveRecord::Base
     unless runThirdShortsRight[6].nil?  
       rtsr7 = runThirdShortsRight[6].fullname
     end    
+    unless runThirdShortsRight[7].nil?  
+      rtsr8 = runThirdShortsRight[7].fullname 
+    end
+    unless runThirdShortsRight[8].nil?  
+      rtsr9 = runThirdShortsRight[8].fullname
+    end
+    unless runThirdShortsRight[9].nil?  
+      rtsr10 = runThirdShortsRight[9].fullname 
+    end
+    unless runThirdShortsRight[10].nil?  
+      rtsr11 = runThirdShortsRight[10].fullname
+    end 
 
     #Pass Left Hash
     unless passThirdShortsLeft[0].nil?  
@@ -727,6 +3009,30 @@ class Gamecall < ActiveRecord::Base
     end
     unless passThirdShortsLeft[2].nil?  
       ptsl3 = passThirdShortsLeft[2].fullname 
+    end
+    unless passThirdShortsLeft[3].nil?  
+      ptsl4 = passThirdShortsLeft[3].fullname 
+    end
+    unless passThirdShortsLeft[4].nil?  
+      ptsl5 = passThirdShortsLeft[4].fullname 
+    end
+    unless passThirdShortsLeft[5].nil?  
+      ptsl6 = passThirdShortsLeft[5].fullname 
+    end
+    unless passThirdShortsLeft[6].nil?  
+      ptsl7 = passThirdShortsLeft[6].fullname 
+    end
+    unless passThirdShortsLeft[7].nil?  
+      ptsl8 = passThirdShortsLeft[7].fullname 
+    end
+    unless passThirdShortsLeft[8].nil?  
+      ptsl9 = passThirdShortsLeft[8].fullname 
+    end
+    unless passThirdShortsLeft[9].nil?  
+      ptsl10 = passThirdShortsLeft[9].fullname 
+    end
+    unless passThirdShortsLeft[10].nil?  
+      ptsl11 = passThirdShortsLeft[10].fullname 
     end
 
     #Pass Right Hash
@@ -739,6 +3045,290 @@ class Gamecall < ActiveRecord::Base
     unless passThirdShortsRight[2].nil?  
       ptsr3 = passThirdShortsRight[2].fullname 
     end
+    unless passThirdShortsRight[3].nil?  
+      ptsr4 = passThirdShortsRight[3].fullname 
+    end
+    unless passThirdShortsRight[4].nil?  
+      ptsr5 = passThirdShortsRight[4].fullname 
+    end
+    unless passThirdShortsRight[5].nil?  
+      ptsr6 = passThirdShortsRight[5].fullname 
+    end
+    unless passThirdShortsRight[6].nil?  
+      ptsr7 = passThirdShortsRight[6].fullname 
+    end
+    unless passThirdShortsRight[7].nil?  
+      ptsr8 = passThirdShortsRight[7].fullname 
+    end
+    unless passThirdShortsRight[8].nil?  
+      ptsr9 = passThirdShortsRight[8].fullname 
+    end
+    unless passThirdShortsRight[9].nil?  
+      ptsr10 = passThirdShortsRight[9].fullname 
+    end
+    unless passThirdShortsRight[10].nil?  
+      ptsr11 = passThirdShortsRight[10].fullname 
+    end
+
+    #Number of user's run plays in situation 8
+    num_thirdst = self.user.s_name8_num_run
+
+    #Left Hash
+    # thirdstl_s0 
+    if num_thirdst > 0
+      thirdstl_s0 = self.user.s_name8 + ' - Run'
+    else
+      thirdstl_s0 = self.user.s_name8 + ' - Pass'
+    end
+
+    #thirdstl_s1 
+    if num_thirdst > 0
+      thirdstl_s1 = rtsl1
+    else
+      thirdstl_s1 = ptsl1
+    end
+
+    #thirdstl_s2
+    if num_thirdst == 0
+      thirdstl_s2 = ptsl2
+    elsif num_thirdst == 1
+      thirdstl_s2 = self.user.s_name8 + ' - Pass'
+    else num_thirdst > 1
+      thirdstl_s2 = rtsl2
+    end
+
+    #thirdstl_s3
+    case num_thirdst
+      when 0 then thirdstl_s3 = ptsl3       
+      when 1 then thirdstl_s3 = ptsl1
+      when 2 then thirdstl_s3 = self.user.s_name8 + ' - Pass'
+      when 3..100 then thirdstl_s3 = rtsl3
+    end
+
+    #thirdstl_s4
+    case num_thirdst
+      when 0 then thirdstl_s4 = ptsl4       
+      when 1 then thirdstl_s4 = ptsl2
+      when 2 then thirdstl_s4 = ptsl1
+      when 3 then thirdstl_s4 = self.user.s_name8 + ' - Pass'
+      when 4..100 then thirdstl_s4 = rtsl4
+    end
+
+    #thirdstl_s5
+    case num_thirdst
+      when 0 then thirdstl_s5 = ptsl5       
+      when 1 then thirdstl_s5 = ptsl3
+      when 2 then thirdstl_s5 = ptsl2
+      when 3 then thirdstl_s5 = ptsl1
+      when 4 then thirdstl_s5 = self.user.s_name8 + ' - Pass'
+      when 5..100 then thirdstl_s5 = rtsl5
+    end
+
+    #thirdstl_s6
+    case num_thirdst
+      when 0 then thirdstl_s6 = ptsl6      
+      when 1 then thirdstl_s6 = ptsl4
+      when 2 then thirdstl_s6 = ptsl3
+      when 3 then thirdstl_s6 = ptsl2
+      when 4 then thirdstl_s6 = ptsl1
+      when 5 then thirdstl_s6 = self.user.s_name8 + ' - Pass'
+      when 6..100 then thirdstl_s6 = rtsl6
+    end
+
+    #thirdstl_s7
+    case num_thirdst
+      when 0 then thirdstl_s7 = ptsl7      
+      when 1 then thirdstl_s7 = ptsl5
+      when 2 then thirdstl_s7 = ptsl4
+      when 3 then thirdstl_s7 = ptsl3
+      when 4 then thirdstl_s7 = ptsl2
+      when 5 then thirdstl_s7 = ptsl1
+      when 6 then thirdstl_s7 = self.user.s_name8 + ' - Pass'
+      when 7..100 then thirdstl_s7 = rtsl7
+    end
+
+    #thirdstl_s8
+    case num_thirdst
+      when 0 then thirdstl_s8 = ptsl8      
+      when 1 then thirdstl_s8 = ptsl6
+      when 2 then thirdstl_s8 = ptsl5
+      when 3 then thirdstl_s8 = ptsl4
+      when 4 then thirdstl_s8 = ptsl3
+      when 5 then thirdstl_s8 = ptsl2
+      when 6 then thirdstl_s8 = ptsl1
+      when 7 then thirdstl_s8 = self.user.s_name8 + ' - Pass'
+      when 8..100 then thirdstl_s8 = rtsl8
+    end
+
+    #thirdstl_s9
+    case num_thirdst
+      when 0 then thirdstl_s9 = ptsl9      
+      when 1 then thirdstl_s9 = ptsl7
+      when 2 then thirdstl_s9 = ptsl6
+      when 3 then thirdstl_s9 = ptsl5
+      when 4 then thirdstl_s9 = ptsl4
+      when 5 then thirdstl_s9 = ptsl3
+      when 6 then thirdstl_s9 = ptsl2
+      when 7 then thirdstl_s9 = ptsl1
+      when 8 then thirdstl_s9 = self.user.s_name8 + ' - Pass'
+      when 9..100 then thirdstl_s9 = rtsl9
+    end
+
+    #thirdstl_s10
+    case num_thirdst
+      when 0 then thirdstl_s10 = ptsl10     
+      when 1 then thirdstl_s10 = ptsl8
+      when 2 then thirdstl_s10 = ptsl7
+      when 3 then thirdstl_s10 = ptsl6
+      when 4 then thirdstl_s10 = ptsl5
+      when 5 then thirdstl_s10 = ptsl4
+      when 6 then thirdstl_s10 = ptsl3
+      when 7 then thirdstl_s10 = ptsl2
+      when 8 then thirdstl_s10 = ptsl1
+      when 9 then thirdstl_s10 = self.user.s_name8 + ' - Pass'
+      when 10..100 then thirdstl_s10 = rtsl10
+    end
+
+    #thirdstl_s11
+    case num_thirdst
+      when 0 then thirdstl_s11 = ptsl11     
+      when 1 then thirdstl_s11 = ptsl9
+      when 2 then thirdstl_s11 = ptsl8
+      when 3 then thirdstl_s11 = ptsl7
+      when 4 then thirdstl_s11 = ptsl6
+      when 5 then thirdstl_s11 = ptsl5
+      when 6 then thirdstl_s11 = ptsl4
+      when 7 then thirdstl_s11 = ptsl3
+      when 8 then thirdstl_s11 = ptsl2
+      when 9 then thirdstl_s11 = ptsl1
+      when 10..100 then thirdstl_s11 = rtsl11
+    end
+  
+    #Right Hash
+    # thirdstr_s0 would always be blank
+
+    #thirdstr_s1 
+    if num_thirdst > 0
+      thirdstr_s1 = rtsr1
+    else
+      thirdstr_s1 = ptsr1
+    end
+
+    #thirdstr_s2
+    if num_thirdst == 0
+      thirdstr_s2 = ptsr2
+    elsif num_thirdst == 1
+      thirdstr_s2 = ''
+    else num_thirdst > 1
+      thirdstr_s2 = rtsr2
+    end
+
+    #thirdstr_s3
+    case num_thirdst
+      when 0 then thirdstr_s3 = ptsr3       
+      when 1 then thirdstr_s3 = ptsr1
+      when 2 then thirdstr_s3 = ''
+      when 3..100 then thirdstr_s3 = rtsr3
+    end
+
+    #thirdstr_s4
+    case num_thirdst
+      when 0 then thirdstr_s4 = ptsr4       
+      when 1 then thirdstr_s4 = ptsr2
+      when 2 then thirdstr_s4 = ptsr1
+      when 3 then ''
+      when 4..100 then thirdstr_s4 = rtsr4
+    end
+
+    #thirdstr_s5
+    case num_thirdst
+      when 0 then thirdstr_s5 = ptsr5       
+      when 1 then thirdstr_s5 = ptsr3
+      when 2 then thirdstr_s5 = ptsr2
+      when 3 then thirdstr_s5 = ptsr1
+      when 4 then thirdstr_s5 = ''
+      when 5..100 then thirdstr_s5 = rtsr5
+    end
+
+    #thirdstr_s6
+    case num_thirdst
+      when 0 then thirdstr_s6 = ptsr6      
+      when 1 then thirdstr_s6 = ptsr4
+      when 2 then thirdstr_s6 = ptsr3
+      when 3 then thirdstr_s6 = ptsr2
+      when 4 then thirdstr_s6 = ptsr1
+      when 5 then thirdstr_s6 = ''
+      when 6..100 then thirdstr_s6 = rtsr6
+    end
+
+    #thirdstr_s7
+    case num_thirdst
+      when 0 then thirdstr_s7 = ptsr7      
+      when 1 then thirdstr_s7 = ptsr5
+      when 2 then thirdstr_s7 = ptsr4
+      when 3 then thirdstr_s7 = ptsr3
+      when 4 then thirdstr_s7 = ptsr2
+      when 5 then thirdstr_s7 = ptsr1
+      when 6 then thirdstr_s7 = ''
+      when 7..100 then thirdstr_s7 = rtsr7
+    end
+
+    #thirdstr_s8
+    case num_thirdst
+      when 0 then thirdstr_s8 = ptsr8      
+      when 1 then thirdstr_s8 = ptsr6
+      when 2 then thirdstr_s8 = ptsr5
+      when 3 then thirdstr_s8 = ptsr4
+      when 4 then thirdstr_s8 = ptsr3
+      when 5 then thirdstr_s8 = ptsr2
+      when 6 then thirdstr_s8 = ptsr1
+      when 7 then thirdstr_s8 = ''
+      when 8..100 then thirdstr_s8 = rtsr8
+    end
+
+    #thirdstr_s9
+    case num_thirdst
+      when 0 then thirdstr_s9 = ptsr9      
+      when 1 then thirdstr_s9 = ptsr7
+      when 2 then thirdstr_s9 = ptsr6
+      when 3 then thirdstr_s9 = ptsr5
+      when 4 then thirdstr_s9 = ptsr4
+      when 5 then thirdstr_s9 = ptsr3
+      when 6 then thirdstr_s9 = ptsr2
+      when 7 then thirdstr_s9 = ptsr1
+      when 8 then thirdstr_s9 = ''
+      when 9..100 then thirdstr_s9 = rtsr9
+    end
+
+    #thirdstr_s10
+    case num_thirdst
+      when 0 then thirdstr_s10 = ptsr10     
+      when 1 then thirdstr_s10 = ptsr8
+      when 2 then thirdstr_s10 = ptsr7
+      when 3 then thirdstr_s10 = ptsr6
+      when 4 then thirdstr_s10 = ptsr5
+      when 5 then thirdstr_s10 = ptsr4
+      when 6 then thirdstr_s10 = ptsr3
+      when 7 then thirdstr_s10 = ptsr2
+      when 8 then thirdstr_s10 = ptsr1
+      when 9 then thirdstr_s10 = ''
+      when 10..100 then thirdstr_s10 = rtsr10
+    end
+
+    #thirdstr_s11
+    case num_thirdst
+      when 0 then thirdstr_s11 = ptsr11     
+      when 1 then thirdstr_s11 = ptsr9
+      when 2 then thirdstr_s11 = ptsr8
+      when 3 then thirdstr_s11 = ptsr7
+      when 4 then thirdstr_s11 = ptsr6
+      when 5 then thirdstr_s11 = ptsr5
+      when 6 then thirdstr_s11 = ptsr4
+      when 7 then thirdstr_s11 = ptsr3
+      when 8 then thirdstr_s11 = ptsr2
+      when 9 then thirdstr_s11 = ptsr1
+      when 10..100 then thirdstr_s11 = rtsr11
+    end      
     #----------End 3rd & Short----------    
 
     #----------Redzone----------
@@ -774,6 +3364,30 @@ class Gamecall < ActiveRecord::Base
     unless runredzonesLeft[6].nil?  
       rrzl7 = runredzonesLeft[6].fullname
     end    
+    unless runredzonesLeft[7].nil?  
+      rrzl8 = runredzonesLeft[7].fullname 
+    end
+    unless runredzonesLeft[8].nil?  
+      rrzl9 = runredzonesLeft[8].fullname 
+    end
+    unless runredzonesLeft[9].nil?  
+      rrzl10 = runredzonesLeft[9].fullname 
+    end
+    unless runredzonesLeft[10].nil?  
+      rrzl11 = runredzonesLeft[10].fullname 
+    end
+    unless runredzonesLeft[11].nil?  
+      rrzl12 = runredzonesLeft[11].fullname
+    end
+    unless runredzonesLeft[12].nil?  
+      rrzl13 = runredzonesLeft[12].fullname 
+    end
+    unless runredzonesLeft[13].nil?  
+      rrzl14 = runredzonesLeft[13].fullname
+    end 
+    unless runredzonesLeft[14].nil?  
+      rrzl15 = runredzonesLeft[14].fullname
+    end 
 
     #Run Right Hash
     unless runredzonesRight[0].nil?  
@@ -797,6 +3411,30 @@ class Gamecall < ActiveRecord::Base
     unless runredzonesRight[6].nil?  
       rrzr7 = runredzonesRight[6].fullname
     end    
+    unless runredzonesRight[7].nil?  
+      rrzr8 = runredzonesRight[7].fullname 
+    end
+    unless runredzonesRight[8].nil?  
+      rrzr9 = runredzonesRight[8].fullname 
+    end
+    unless runredzonesRight[9].nil?  
+      rrzr10 = runredzonesRight[9].fullname 
+    end
+    unless runredzonesRight[10].nil?  
+      rrzr11 = runredzonesRight[10].fullname 
+    end
+    unless runredzonesRight[11].nil?  
+      rrzr12 = runredzonesRight[11].fullname
+    end
+    unless runredzonesRight[12].nil?  
+      rrzr13 = runredzonesRight[12].fullname 
+    end
+    unless runredzonesRight[13].nil?  
+      rrzr14 = runredzonesRight[13].fullname
+    end 
+    unless runredzonesRight[14].nil?  
+      rrzr15 = runredzonesRight[14].fullname
+    end 
 
     #Pass Left Hash
     unless passredzonesLeft[0].nil?  
@@ -820,6 +3458,30 @@ class Gamecall < ActiveRecord::Base
     unless passredzonesLeft[6].nil?  
       przl7 = passredzonesLeft[6].fullname 
     end       
+    unless passredzonesLeft[7].nil?  
+      przl8 = passredzonesLeft[7].fullname 
+    end
+    unless passredzonesLeft[8].nil?  
+      przl9 = passredzonesLeft[8].fullname 
+    end
+    unless passredzonesLeft[9].nil?  
+      przl10 = passredzonesLeft[9].fullname 
+    end
+    unless passredzonesLeft[10].nil?  
+      przl11 = passredzonesLeft[10].fullname 
+    end
+    unless passredzonesLeft[11].nil?  
+      przl12 = passredzonesLeft[11].fullname 
+    end
+    unless passredzonesLeft[12].nil?  
+      przl13 = passredzonesLeft[12].fullname 
+    end 
+    unless passredzonesLeft[13].nil?  
+      przl14 = passredzonesLeft[13].fullname 
+    end 
+    unless passredzonesLeft[14].nil?  
+      przl15 = passredzonesLeft[14].fullname 
+    end 
 
     #Pass Right Hash
     unless passredzonesRight[0].nil?  
@@ -842,7 +3504,441 @@ class Gamecall < ActiveRecord::Base
     end
     unless passredzonesRight[6].nil?  
       przr7 = passredzonesRight[6].fullname 
-    end        
+    end   
+    unless passredzonesRight[7].nil?  
+      przr8 = passredzonesRight[7].fullname 
+    end
+    unless passredzonesRight[8].nil?  
+      przr9 = passredzonesRight[8].fullname 
+    end
+    unless passredzonesRight[9].nil?  
+      przr10 = passredzonesRight[9].fullname 
+    end
+    unless passredzonesRight[10].nil?  
+      przr11 = passredzonesRight[10].fullname 
+    end
+    unless passredzonesRight[11].nil?  
+      przr12 = passredzonesRight[11].fullname 
+    end
+    unless passredzonesRight[12].nil?  
+      przr13 = passredzonesRight[12].fullname 
+    end
+    unless passredzonesRight[13].nil?  
+      przr14 = passredzonesRight[13].fullname 
+    end     
+    unless passredzonesRight[14].nil?  
+      przr15 = passredzonesRight[14].fullname 
+    end 
+
+    #Number of user's run plays in situation 9
+    num_rzoner = self.user.s_name9_num_run
+
+    #Left Hash
+    # rzonel_s0 
+    if num_rzoner > 0
+      rzonel_s0 = self.user.s_name9 + ' - Run'
+    else
+      rzonel_s0 = self.user.s_name9 + ' - Pass'
+    end
+
+    #rzonel_s1 
+    if num_rzoner > 0
+      rzonel_s1 = rrzl1
+    else
+      rzonel_s1 = przl1
+    end
+
+    #rzonel_s2
+    if num_rzoner == 0
+      rzonel_s2 = przl2
+    elsif num_rzoner == 1
+      rzonel_s2 = self.user.s_name9 + ' - Pass'
+    else num_rzoner > 1
+      rzonel_s2 = rrzl2
+    end
+
+    #rzonel_s3
+    case num_rzoner
+      when 0 then rzonel_s3 = przl3       
+      when 1 then rzonel_s3 = przl1
+      when 2 then rzonel_s3 = self.user.s_name9 + ' - Pass'
+      when 3..100 then rzonel_s3 = rrzl3
+    end
+
+    #rzonel_s4
+    case num_rzoner
+      when 0 then rzonel_s4 = przl4       
+      when 1 then rzonel_s4 = przl2
+      when 2 then rzonel_s4 = przl1
+      when 3 then rzonel_s4 = self.user.s_name9 + ' - Pass'
+      when 4..100 then rzonel_s4 = rrzl4
+    end
+
+    #rzonel_s5
+    case num_rzoner
+      when 0 then rzonel_s5 = przl5       
+      when 1 then rzonel_s5 = przl3
+      when 2 then rzonel_s5 = przl2
+      when 3 then rzonel_s5 = przl1
+      when 4 then rzonel_s5 = self.user.s_name9 + ' - Pass'
+      when 5..100 then rzonel_s5 = rrzl5
+    end
+
+    #rzonel_s6
+    case num_rzoner
+      when 0 then rzonel_s6 = przl6      
+      when 1 then rzonel_s6 = przl4
+      when 2 then rzonel_s6 = przl3
+      when 3 then rzonel_s6 = przl2
+      when 4 then rzonel_s6 = przl1
+      when 5 then rzonel_s6 = self.user.s_name9 + ' - Pass'
+      when 6..100 then rzonel_s6 = rrzl6
+    end
+
+    #rzonel_s7
+    case num_rzoner
+      when 0 then rzonel_s7 = przl7      
+      when 1 then rzonel_s7 = przl5
+      when 2 then rzonel_s7 = przl4
+      when 3 then rzonel_s7 = przl3
+      when 4 then rzonel_s7 = przl2
+      when 5 then rzonel_s7 = przl1
+      when 6 then rzonel_s7 = self.user.s_name9 + ' - Pass'
+      when 7..100 then rzonel_s7 = rrzl7
+    end
+
+    #rzonel_s8
+    case num_rzoner
+      when 0 then rzonel_s8 = przl8      
+      when 1 then rzonel_s8 = przl6
+      when 2 then rzonel_s8 = przl5
+      when 3 then rzonel_s8 = przl4
+      when 4 then rzonel_s8 = przl3
+      when 5 then rzonel_s8 = przl2
+      when 6 then rzonel_s8 = przl1
+      when 7 then rzonel_s8 = self.user.s_name9 + ' - Pass'
+      when 8..100 then rzonel_s8 = rrzl8
+    end
+
+    #rzonel_s9
+    case num_rzoner
+      when 0 then rzonel_s9 = przl9      
+      when 1 then rzonel_s9 = przl7
+      when 2 then rzonel_s9 = przl6
+      when 3 then rzonel_s9 = przl5
+      when 4 then rzonel_s9 = przl4
+      when 5 then rzonel_s9 = przl3
+      when 6 then rzonel_s9 = przl2
+      when 7 then rzonel_s9 = przl1
+      when 8 then rzonel_s9 = self.user.s_name9 + ' - Pass'
+      when 9..100 then rzonel_s9 = rrzl9
+    end
+
+    #rzonel_s10
+    case num_rzoner
+      when 0 then rzonel_s10 = przl10     
+      when 1 then rzonel_s10 = przl8
+      when 2 then rzonel_s10 = przl7
+      when 3 then rzonel_s10 = przl6
+      when 4 then rzonel_s10 = przl5
+      when 5 then rzonel_s10 = przl4
+      when 6 then rzonel_s10 = przl3
+      when 7 then rzonel_s10 = przl2
+      when 8 then rzonel_s10 = przl1
+      when 9 then rzonel_s10 = self.user.s_name9 + ' - Pass'
+      when 10..100 then rzonel_s10 = rrzl10
+    end
+
+    #rzonel_s11
+    case num_rzoner
+      when 0 then rzonel_s11 = przl11     
+      when 1 then rzonel_s11 = przl9
+      when 2 then rzonel_s11 = przl8
+      when 3 then rzonel_s11 = przl7
+      when 4 then rzonel_s11 = przl6
+      when 5 then rzonel_s11 = przl5
+      when 6 then rzonel_s11 = przl4
+      when 7 then rzonel_s11 = przl3
+      when 8 then rzonel_s11 = przl2
+      when 9 then rzonel_s11 = przl1
+      when 10 then rzonel_s11 = self.user.s_name9 + ' - Pass'
+      when 11..100 then rzonel_s11 = rrzl11
+    end
+
+    #rzonel_s12
+    case num_rzoner
+      when 0 then rzonel_s12 = przl12    
+      when 1 then rzonel_s12 = przl10
+      when 2 then rzonel_s12 = przl9
+      when 3 then rzonel_s12 = przl8
+      when 4 then rzonel_s12 = przl7
+      when 5 then rzonel_s12 = przl6
+      when 6 then rzonel_s12 = przl5
+      when 7 then rzonel_s12 = przl4
+      when 8 then rzonel_s12 = przl3
+      when 9 then rzonel_s12 = przl2
+      when 10 then rzonel_s12 = przl1
+      when 11 then rzonel_s12 = self.user.s_name9 + ' - Pass'
+      when 12..100 then rzonel_s12 = rrzl12
+    end
+
+    #rzonel_s13
+    case num_rzoner
+      when 0 then rzonel_s13 = przl13    
+      when 1 then rzonel_s13 = przl11
+      when 2 then rzonel_s13 = przl10
+      when 3 then rzonel_s13 = przl9
+      when 4 then rzonel_s13 = przl8
+      when 5 then rzonel_s13 = przl7
+      when 6 then rzonel_s13 = przl6
+      when 7 then rzonel_s13 = przl5
+      when 8 then rzonel_s13 = przl4
+      when 9 then rzonel_s13 = przl3
+      when 10 then rzonel_s13 = przl2
+      when 11 then rzonel_s13 = przl1
+      when 12 then rzonel_s13 = self.user.s_name9 + ' - Pass'
+      when 13..100 then rzonel_s13 = rrzl13
+    end
+
+    #rzonel_s14
+    case num_rzoner
+      when 0 then rzonel_s14 = przl14    
+      when 1 then rzonel_s14 = przl12
+      when 2 then rzonel_s14 = przl11
+      when 3 then rzonel_s14 = przl10
+      when 4 then rzonel_s14 = przl9
+      when 5 then rzonel_s14 = przl8
+      when 6 then rzonel_s14 = przl7
+      when 7 then rzonel_s14 = przl6
+      when 8 then rzonel_s14 = przl5
+      when 9 then rzonel_s14 = przl4
+      when 10 then rzonel_s14 = przl3
+      when 11 then rzonel_s14 = przl2
+      when 12 then rzonel_s14 = przl1  
+      when 13 then rzonel_s14 = self.user.s_name9 + ' - Pass'
+      when 14..100 then rzonel_s14 = rrzl14
+    end
+
+    #rzonel_s15
+    case num_rzoner
+      when 0 then rzonel_s15 = przl15    
+      when 1 then rzonel_s15 = przl13
+      when 2 then rzonel_s15 = przl12
+      when 3 then rzonel_s15 = przl11
+      when 4 then rzonel_s15 = przl10
+      when 5 then rzonel_s15 = przl9
+      when 6 then rzonel_s15 = przl8
+      when 7 then rzonel_s15 = przl7
+      when 8 then rzonel_s15 = przl6
+      when 9 then rzonel_s15 = przl5
+      when 10 then rzonel_s15 = przl4
+      when 11 then rzonel_s15 = przl3
+      when 12 then rzonel_s15 = przl2
+      when 13 then rzonel_s15 = przl1  
+      when 14..100 then rzonel_s15 = rrzl15
+    end    
+
+
+    #Right Hash
+    # rzoner_s0 would always be blank
+
+    #rzoner_s1 
+    if num_rzoner > 0
+      rzoner_s1 = rrzr1
+    else
+      rzoner_s1 = przr1
+    end
+
+    #rzoner_s2
+    if num_rzoner == 0
+      rzoner_s2 = przr2
+    elsif num_rzoner == 1
+      rzoner_s2 = ''
+    else num_rzoner > 1
+      rzoner_s2 = rrzr2
+    end
+
+    #rzoner_s3
+    case num_rzoner
+      when 0 then rzoner_s3 = przr3       
+      when 1 then rzoner_s3 = przr1
+      when 2 then rzoner_s3 = ''
+      when 3..100 then rzoner_s3 = rrzr3
+    end
+
+    #rzoner_s4
+    case num_rzoner
+      when 0 then rzoner_s4 = przr4       
+      when 1 then rzoner_s4 = przr2
+      when 2 then rzoner_s4 = przr1
+      when 3 then ''
+      when 4..100 then rzoner_s4 = rrzr4
+    end
+
+    #rzoner_s5
+    case num_rzoner
+      when 0 then rzoner_s5 = przr5       
+      when 1 then rzoner_s5 = przr3
+      when 2 then rzoner_s5 = przr2
+      when 3 then rzoner_s5 = przr1
+      when 4 then rzoner_s5 = ''
+      when 5..100 then rzoner_s5 = rrzr5
+    end
+
+    #rzoner_s6
+    case num_rzoner
+      when 0 then rzoner_s6 = przr6      
+      when 1 then rzoner_s6 = przr4
+      when 2 then rzoner_s6 = przr3
+      when 3 then rzoner_s6 = przr2
+      when 4 then rzoner_s6 = przr1
+      when 5 then rzoner_s6 = ''
+      when 6..100 then rzoner_s6 = rrzr6
+    end
+
+    #rzoner_s7
+    case num_rzoner
+      when 0 then rzoner_s7 = przr7      
+      when 1 then rzoner_s7 = przr5
+      when 2 then rzoner_s7 = przr4
+      when 3 then rzoner_s7 = przr3
+      when 4 then rzoner_s7 = przr2
+      when 5 then rzoner_s7 = przr1
+      when 6 then rzoner_s7 = ''
+      when 7..100 then rzoner_s7 = rrzr7
+    end
+
+    #rzoner_s8
+    case num_rzoner
+      when 0 then rzoner_s8 = przr8      
+      when 1 then rzoner_s8 = przr6
+      when 2 then rzoner_s8 = przr5
+      when 3 then rzoner_s8 = przr4
+      when 4 then rzoner_s8 = przr3
+      when 5 then rzoner_s8 = przr2
+      when 6 then rzoner_s8 = przr1
+      when 7 then rzoner_s8 = ''
+      when 8..100 then rzoner_s8 = rrzr8
+    end
+
+    #rzoner_s9
+    case num_rzoner
+      when 0 then rzoner_s9 = przr9      
+      when 1 then rzoner_s9 = przr7
+      when 2 then rzoner_s9 = przr6
+      when 3 then rzoner_s9 = przr5
+      when 4 then rzoner_s9 = przr4
+      when 5 then rzoner_s9 = przr3
+      when 6 then rzoner_s9 = przr2
+      when 7 then rzoner_s9 = przr1
+      when 8 then rzoner_s9 = ''
+      when 9..100 then rzoner_s9 = rrzr9
+    end
+
+    #rzoner_s10
+    case num_rzoner
+      when 0 then rzoner_s10 = przr10     
+      when 1 then rzoner_s10 = przr8
+      when 2 then rzoner_s10 = przr7
+      when 3 then rzoner_s10 = przr6
+      when 4 then rzoner_s10 = przr5
+      when 5 then rzoner_s10 = przr4
+      when 6 then rzoner_s10 = przr3
+      when 7 then rzoner_s10 = przr2
+      when 8 then rzoner_s10 = przr1
+      when 9 then rzoner_s10 = ''
+      when 10..100 then rzoner_s10 = rrzr10
+    end
+
+    #rzoner_s11
+    case num_rzoner
+      when 0 then rzoner_s11 = przr11     
+      when 1 then rzoner_s11 = przr9
+      when 2 then rzoner_s11 = przr8
+      when 3 then rzoner_s11 = przr7
+      when 4 then rzoner_s11 = przr6
+      when 5 then rzoner_s11 = przr5
+      when 6 then rzoner_s11 = przr4
+      when 7 then rzoner_s11 = przr3
+      when 8 then rzoner_s11 = przr2
+      when 9 then rzoner_s11 = przr1
+      when 10 then rzoner_s11 = ''
+      when 11..100 then rzoner_s11 = rrzr11
+    end
+
+    #rzoner_s12
+    case num_rzoner
+      when 0 then rzoner_s12 = przr12    
+      when 1 then rzoner_s12 = przr10
+      when 2 then rzoner_s12 = przr9
+      when 3 then rzoner_s12 = przr8
+      when 4 then rzoner_s12 = przr7
+      when 5 then rzoner_s12 = przr6
+      when 6 then rzoner_s12 = przr5
+      when 7 then rzoner_s12 = przr4
+      when 8 then rzoner_s12 = przr3
+      when 9 then rzoner_s12 = przr2
+      when 10 then rzoner_s12 = przr1
+      when 11 then rzoner_s12 = ''
+      when 12..100 then rzoner_s12 = rrzr12
+    end
+
+    #rzoner_s13
+    case num_rzoner
+      when 0 then rzoner_s13 = przr13    
+      when 1 then rzoner_s13 = przr11
+      when 2 then rzoner_s13 = przr10
+      when 3 then rzoner_s13 = przr9
+      when 4 then rzoner_s13 = przr8
+      when 5 then rzoner_s13 = przr7
+      when 6 then rzoner_s13 = przr6
+      when 7 then rzoner_s13 = przr5
+      when 8 then rzoner_s13 = przr4
+      when 9 then rzoner_s13 = przr3
+      when 10 then rzoner_s13 = przr2
+      when 11 then rzoner_s13 = przr1
+      when 12 then rzoner_s13 = ''
+      when 13..100 then rzoner_s13 = rrzr13
+    end
+
+    #rzoner_s14
+    case num_rzoner
+      when 0 then rzoner_s14 = przr14    
+      when 1 then rzoner_s14 = przr12
+      when 2 then rzoner_s14 = przr11
+      when 3 then rzoner_s14 = przr10
+      when 4 then rzoner_s14 = przr9
+      when 5 then rzoner_s14 = przr8
+      when 6 then rzoner_s14 = przr7
+      when 7 then rzoner_s14 = przr6
+      when 8 then rzoner_s14 = przr5
+      when 9 then rzoner_s14 = przr4
+      when 10 then rzoner_s14 = przr3
+      when 11 then rzoner_s14 = przr2
+      when 12 then rzoner_s14 = przr1  
+      when 13 then rzoner_s14 = ''
+      when 14..100 then rzoner_s14 = rrzr14
+    end
+
+    #rzoner_s15
+    case num_rzoner
+      when 0 then rzoner_s15 = przr15    
+      when 1 then rzoner_s15 = przr13
+      when 2 then rzoner_s15 = przr12
+      when 3 then rzoner_s15 = przr11
+      when 4 then rzoner_s15 = przr10
+      when 5 then rzoner_s15 = przr9
+      when 6 then rzoner_s15 = przr8
+      when 7 then rzoner_s15 = przr7
+      when 8 then rzoner_s15 = przr6
+      when 9 then rzoner_s15 = przr5
+      when 10 then rzoner_s15 = przr4
+      when 11 then rzoner_s15 = przr3
+      when 12 then rzoner_s15 = przr2
+      when 13 then rzoner_s15 = przr1  
+      when 14..100 then rzoner_s15 = rrzr15
+    end
+
     #----------End Redzone---------- 
 
     #----------Goal Line----------
@@ -877,7 +3973,31 @@ class Gamecall < ActiveRecord::Base
     end
     unless rungoalinesLeft[6].nil?  
       rgll7 = rungoalinesLeft[6].fullname
-    end    
+    end  
+      unless rungoalinesLeft[7].nil?  
+      rgll8 = rungoalinesLeft[7].fullname 
+    end
+    unless rungoalinesLeft[8].nil?  
+      rgll9 = rungoalinesLeft[8].fullname 
+    end
+    unless rungoalinesLeft[9].nil?  
+      rgll10 = rungoalinesLeft[9].fullname 
+    end
+    unless rungoalinesLeft[10].nil?  
+      rgll11 = rungoalinesLeft[10].fullname 
+    end
+    unless rungoalinesLeft[11].nil?  
+      rgll12 = rungoalinesLeft[11].fullname
+    end
+    unless rungoalinesLeft[12].nil?  
+      rgll13 = rungoalinesLeft[12].fullname 
+    end
+    unless rungoalinesLeft[13].nil?  
+      rgll14 = rungoalinesLeft[13].fullname
+    end  
+    unless rungoalinesLeft[14].nil?  
+      rgll15 = rungoalinesLeft[14].fullname
+    end
 
     #Run Right Hash
     unless rungoalinesRight[0].nil?  
@@ -901,6 +4021,30 @@ class Gamecall < ActiveRecord::Base
     unless rungoalinesRight[6].nil?  
       rglr7 = rungoalinesRight[6].fullname
     end    
+    unless rungoalinesRight[7].nil?  
+      rglr8 = rungoalinesRight[7].fullname 
+    end
+    unless rungoalinesRight[8].nil?  
+      rglr9 = rungoalinesRight[8].fullname 
+    end
+    unless rungoalinesRight[9].nil?  
+      rglr10 = rungoalinesRight[9].fullname 
+    end
+    unless rungoalinesRight[10].nil?  
+      rglr11 = rungoalinesRight[10].fullname 
+    end
+    unless rungoalinesRight[11].nil?  
+      rglr12 = rungoalinesRight[11].fullname
+    end
+    unless rungoalinesRight[12].nil?  
+      rglr13 = rungoalinesRight[12].fullname 
+    end
+    unless rungoalinesRight[13].nil?  
+      rglr14 = rungoalinesRight[13].fullname
+    end 
+    unless rungoalinesRight[14].nil?  
+      rglr15 = rungoalinesRight[14].fullname
+    end 
 
     #Pass Left Hash
     unless passgoalinesLeft[0].nil?  
@@ -924,6 +4068,30 @@ class Gamecall < ActiveRecord::Base
     unless passgoalinesLeft[6].nil?  
       pgll7 = passgoalinesLeft[6].fullname 
     end       
+    unless passgoalinesLeft[7].nil?  
+      pgll8 = passgoalinesLeft[7].fullname 
+    end
+    unless passgoalinesLeft[8].nil?  
+      pgll9 = passgoalinesLeft[8].fullname 
+    end
+    unless passgoalinesLeft[9].nil?  
+      pgll10 = passgoalinesLeft[9].fullname 
+    end
+    unless passgoalinesLeft[10].nil?  
+      pgll11 = passgoalinesLeft[10].fullname 
+    end
+    unless passgoalinesLeft[11].nil?  
+      pgll12 = passgoalinesLeft[11].fullname 
+    end
+    unless passgoalinesLeft[12].nil?  
+      pgll13 = passgoalinesLeft[12].fullname 
+    end 
+    unless passgoalinesLeft[13].nil?  
+      pgll14 = passgoalinesLeft[13].fullname 
+    end 
+    unless passgoalinesLeft[14].nil?  
+      pgll15 = passgoalinesLeft[14].fullname 
+    end 
 
     #Pass Right Hash
     unless passgoalinesRight[0].nil?  
@@ -946,6 +4114,439 @@ class Gamecall < ActiveRecord::Base
     end
     unless passgoalinesRight[6].nil?  
       pglr7 = passgoalinesRight[6].fullname 
+    end    
+    unless passgoalinesRight[7].nil?  
+      pglr8 = passgoalinesRight[7].fullname 
+    end
+    unless passgoalinesRight[8].nil?  
+      pglr9 = passgoalinesRight[8].fullname 
+    end
+    unless passgoalinesRight[9].nil?  
+      pglr10 = passgoalinesRight[9].fullname 
+    end
+    unless passgoalinesRight[10].nil?  
+      pglr11 = passgoalinesRight[10].fullname 
+    end
+    unless passgoalinesRight[11].nil?  
+      pglr12 = passgoalinesRight[11].fullname 
+    end
+    unless passgoalinesRight[12].nil?  
+      pglr13 = passgoalinesRight[12].fullname 
+    end
+    unless passgoalinesRight[13].nil?  
+      pglr14 = passgoalinesRight[13].fullname 
+    end 
+    unless passgoalinesRight[14].nil?  
+      pglr15 = passgoalinesRight[14].fullname 
+    end 
+
+    #Number of user's run plays in situation 10
+    num_gliner = self.user.s_name10_num_run
+
+    #Left Hash
+    # glinel_s0 
+    if num_gliner > 0
+      glinel_s0 = self.user.s_name10 + ' - Run'
+    else
+      glinel_s0 = self.user.s_name10 + ' - Pass'
+    end
+
+    #glinel_s1 
+    if num_gliner > 0
+      glinel_s1 = rgll1
+    else
+      glinel_s1 = pgll1
+    end
+
+    #glinel_s2
+    if num_gliner == 0
+      glinel_s2 = pgll2
+    elsif num_gliner == 1
+      glinel_s2 = self.user.s_name10 + ' - Pass'
+    else num_gliner > 1
+      glinel_s2 = rgll2
+    end
+
+    #glinel_s3
+    case num_gliner
+      when 0 then glinel_s3 = pgll3       
+      when 1 then glinel_s3 = pgll1
+      when 2 then glinel_s3 = self.user.s_name10 + ' - Pass'
+      when 3..100 then glinel_s3 = rgll3
+    end
+
+    #glinel_s4
+    case num_gliner
+      when 0 then glinel_s4 = pgll4       
+      when 1 then glinel_s4 = pgll2
+      when 2 then glinel_s4 = pgll1
+      when 3 then glinel_s4 = self.user.s_name10 + ' - Pass'
+      when 4..100 then glinel_s4 = rgll4
+    end
+
+    #glinel_s5
+    case num_gliner
+      when 0 then glinel_s5 = pgll5       
+      when 1 then glinel_s5 = pgll3
+      when 2 then glinel_s5 = pgll2
+      when 3 then glinel_s5 = pgll1
+      when 4 then glinel_s5 = self.user.s_name10 + ' - Pass'
+      when 5..100 then glinel_s5 = rgll5
+    end
+
+    #glinel_s6
+    case num_gliner
+      when 0 then glinel_s6 = pgll6      
+      when 1 then glinel_s6 = pgll4
+      when 2 then glinel_s6 = pgll3
+      when 3 then glinel_s6 = pgll2
+      when 4 then glinel_s6 = pgll1
+      when 5 then glinel_s6 = self.user.s_name10 + ' - Pass'
+      when 6..100 then glinel_s6 = rgll6
+    end
+
+    #glinel_s7
+    case num_gliner
+      when 0 then glinel_s7 = pgll7      
+      when 1 then glinel_s7 = pgll5
+      when 2 then glinel_s7 = pgll4
+      when 3 then glinel_s7 = pgll3
+      when 4 then glinel_s7 = pgll2
+      when 5 then glinel_s7 = pgll1
+      when 6 then glinel_s7 = self.user.s_name10 + ' - Pass'
+      when 7..100 then glinel_s7 = rgll7
+    end
+
+    #glinel_s8
+    case num_gliner
+      when 0 then glinel_s8 = pgll8      
+      when 1 then glinel_s8 = pgll6
+      when 2 then glinel_s8 = pgll5
+      when 3 then glinel_s8 = pgll4
+      when 4 then glinel_s8 = pgll3
+      when 5 then glinel_s8 = pgll2
+      when 6 then glinel_s8 = pgll1
+      when 7 then glinel_s8 = self.user.s_name10 + ' - Pass'
+      when 8..100 then glinel_s8 = rgll8
+    end
+
+    #glinel_s9
+    case num_gliner
+      when 0 then glinel_s9 = pgll9      
+      when 1 then glinel_s9 = pgll7
+      when 2 then glinel_s9 = pgll6
+      when 3 then glinel_s9 = pgll5
+      when 4 then glinel_s9 = pgll4
+      when 5 then glinel_s9 = pgll3
+      when 6 then glinel_s9 = pgll2
+      when 7 then glinel_s9 = pgll1
+      when 8 then glinel_s9 = self.user.s_name10 + ' - Pass'
+      when 9..100 then glinel_s9 = rgll9
+    end
+
+    #glinel_s10
+    case num_gliner
+      when 0 then glinel_s10 = pgll10     
+      when 1 then glinel_s10 = pgll8
+      when 2 then glinel_s10 = pgll7
+      when 3 then glinel_s10 = pgll6
+      when 4 then glinel_s10 = pgll5
+      when 5 then glinel_s10 = pgll4
+      when 6 then glinel_s10 = pgll3
+      when 7 then glinel_s10 = pgll2
+      when 8 then glinel_s10 = pgll1
+      when 9 then glinel_s10 = self.user.s_name10 + ' - Pass'
+      when 10..100 then glinel_s10 = rgll10
+    end
+
+    #glinel_s11
+    case num_gliner
+      when 0 then glinel_s11 = pgll11     
+      when 1 then glinel_s11 = pgll9
+      when 2 then glinel_s11 = pgll8
+      when 3 then glinel_s11 = pgll7
+      when 4 then glinel_s11 = pgll6
+      when 5 then glinel_s11 = pgll5
+      when 6 then glinel_s11 = pgll4
+      when 7 then glinel_s11 = pgll3
+      when 8 then glinel_s11 = pgll2
+      when 9 then glinel_s11 = pgll1
+      when 10 then glinel_s11 = self.user.s_name10 + ' - Pass'
+      when 11..100 then glinel_s11 = rgll11
+    end
+
+    #glinel_s12
+    case num_gliner
+      when 0 then glinel_s12 = pgll12    
+      when 1 then glinel_s12 = pgll10
+      when 2 then glinel_s12 = pgll9
+      when 3 then glinel_s12 = pgll8
+      when 4 then glinel_s12 = pgll7
+      when 5 then glinel_s12 = pgll6
+      when 6 then glinel_s12 = pgll5
+      when 7 then glinel_s12 = pgll4
+      when 8 then glinel_s12 = pgll3
+      when 9 then glinel_s12 = pgll2
+      when 10 then glinel_s12 = pgll1
+      when 11 then glinel_s12 = self.user.s_name10 + ' - Pass'
+      when 12..100 then glinel_s12 = rgll12
+    end
+
+    #glinel_s13
+    case num_gliner
+      when 0 then glinel_s13 = pgll13    
+      when 1 then glinel_s13 = pgll11
+      when 2 then glinel_s13 = pgll10
+      when 3 then glinel_s13 = pgll9
+      when 4 then glinel_s13 = pgll8
+      when 5 then glinel_s13 = pgll7
+      when 6 then glinel_s13 = pgll6
+      when 7 then glinel_s13 = pgll5
+      when 8 then glinel_s13 = pgll4
+      when 9 then glinel_s13 = pgll3
+      when 10 then glinel_s13 = pgll2
+      when 11 then glinel_s13 = pgll1
+      when 12 then glinel_s13 = self.user.s_name10 + ' - Pass'
+      when 13..100 then glinel_s13 = rgll13
+    end
+
+    #glinel_s14
+    case num_gliner
+      when 0 then glinel_s14 = pgll14    
+      when 1 then glinel_s14 = pgll12
+      when 2 then glinel_s14 = pgll11
+      when 3 then glinel_s14 = pgll10
+      when 4 then glinel_s14 = pgll9
+      when 5 then glinel_s14 = pgll8
+      when 6 then glinel_s14 = pgll7
+      when 7 then glinel_s14 = pgll6
+      when 8 then glinel_s14 = pgll5
+      when 9 then glinel_s14 = pgll4
+      when 10 then glinel_s14 = pgll3
+      when 11 then glinel_s14 = pgll2
+      when 12 then glinel_s14 = pgll1  
+      when 13 then glinel_s14 = self.user.s_name10 + ' - Pass'
+      when 14..100 then glinel_s14 = rgll14
+    end
+
+    #glinel_s15
+    case num_gliner
+      when 0 then glinel_s15 = pgll15    
+      when 1 then glinel_s15 = pgll13
+      when 2 then glinel_s15 = pgll12
+      when 3 then glinel_s15 = pgll11
+      when 4 then glinel_s15 = pgll10
+      when 5 then glinel_s15 = pgll9
+      when 6 then glinel_s15 = pgll8
+      when 7 then glinel_s15 = pgll7
+      when 8 then glinel_s15 = pgll6
+      when 9 then glinel_s15 = pgll5
+      when 10 then glinel_s15 = pgll4
+      when 11 then glinel_s15 = pgll3
+      when 12 then glinel_s15 = pgll2
+      when 13 then glinel_s15 = pgll1  
+      when 14..100 then glinel_s15 = rgll15
+    end    
+
+
+    #Right Hash
+    # gliner_s0 would always be blank
+
+    #gliner_s1 
+    if num_gliner > 0
+      gliner_s1 = rglr1
+    else
+      gliner_s1 = pglr1
+    end
+
+    #gliner_s2
+    if num_gliner == 0
+      gliner_s2 = pglr2
+    elsif num_gliner == 1
+      gliner_s2 = ''
+    else num_gliner > 1
+      gliner_s2 = rglr2
+    end
+
+    #gliner_s3
+    case num_gliner
+      when 0 then gliner_s3 = pglr3       
+      when 1 then gliner_s3 = pglr1
+      when 2 then gliner_s3 = ''
+      when 3..100 then gliner_s3 = rglr3
+    end
+
+    #gliner_s4
+    case num_gliner
+      when 0 then gliner_s4 = pglr4       
+      when 1 then gliner_s4 = pglr2
+      when 2 then gliner_s4 = pglr1
+      when 3 then ''
+      when 4..100 then gliner_s4 = rglr4
+    end
+
+    #gliner_s5
+    case num_gliner
+      when 0 then gliner_s5 = pglr5       
+      when 1 then gliner_s5 = pglr3
+      when 2 then gliner_s5 = pglr2
+      when 3 then gliner_s5 = pglr1
+      when 4 then gliner_s5 = ''
+      when 5..100 then gliner_s5 = rglr5
+    end
+
+    #gliner_s6
+    case num_gliner
+      when 0 then gliner_s6 = pglr6      
+      when 1 then gliner_s6 = pglr4
+      when 2 then gliner_s6 = pglr3
+      when 3 then gliner_s6 = pglr2
+      when 4 then gliner_s6 = pglr1
+      when 5 then gliner_s6 = ''
+      when 6..100 then gliner_s6 = rglr6
+    end
+
+    #gliner_s7
+    case num_gliner
+      when 0 then gliner_s7 = pglr7      
+      when 1 then gliner_s7 = pglr5
+      when 2 then gliner_s7 = pglr4
+      when 3 then gliner_s7 = pglr3
+      when 4 then gliner_s7 = pglr2
+      when 5 then gliner_s7 = pglr1
+      when 6 then gliner_s7 = ''
+      when 7..100 then gliner_s7 = rglr7
+    end
+
+    #gliner_s8
+    case num_gliner
+      when 0 then gliner_s8 = pglr8      
+      when 1 then gliner_s8 = pglr6
+      when 2 then gliner_s8 = pglr5
+      when 3 then gliner_s8 = pglr4
+      when 4 then gliner_s8 = pglr3
+      when 5 then gliner_s8 = pglr2
+      when 6 then gliner_s8 = pglr1
+      when 7 then gliner_s8 = ''
+      when 8..100 then gliner_s8 = rglr8
+    end
+
+    #gliner_s9
+    case num_gliner
+      when 0 then gliner_s9 = pglr9      
+      when 1 then gliner_s9 = pglr7
+      when 2 then gliner_s9 = pglr6
+      when 3 then gliner_s9 = pglr5
+      when 4 then gliner_s9 = pglr4
+      when 5 then gliner_s9 = pglr3
+      when 6 then gliner_s9 = pglr2
+      when 7 then gliner_s9 = pglr1
+      when 8 then gliner_s9 = ''
+      when 9..100 then gliner_s9 = rglr9
+    end
+
+    #gliner_s10
+    case num_gliner
+      when 0 then gliner_s10 = pglr10     
+      when 1 then gliner_s10 = pglr8
+      when 2 then gliner_s10 = pglr7
+      when 3 then gliner_s10 = pglr6
+      when 4 then gliner_s10 = pglr5
+      when 5 then gliner_s10 = pglr4
+      when 6 then gliner_s10 = pglr3
+      when 7 then gliner_s10 = pglr2
+      when 8 then gliner_s10 = pglr1
+      when 9 then gliner_s10 = ''
+      when 10..100 then gliner_s10 = rglr10
+    end
+
+    #gliner_s11
+    case num_gliner
+      when 0 then gliner_s11 = pglr11     
+      when 1 then gliner_s11 = pglr9
+      when 2 then gliner_s11 = pglr8
+      when 3 then gliner_s11 = pglr7
+      when 4 then gliner_s11 = pglr6
+      when 5 then gliner_s11 = pglr5
+      when 6 then gliner_s11 = pglr4
+      when 7 then gliner_s11 = pglr3
+      when 8 then gliner_s11 = pglr2
+      when 9 then gliner_s11 = pglr1
+      when 10 then gliner_s11 = ''
+      when 11..100 then gliner_s11 = rglr11
+    end
+
+    #gliner_s12
+    case num_gliner
+      when 0 then gliner_s12 = pglr12    
+      when 1 then gliner_s12 = pglr10
+      when 2 then gliner_s12 = pglr9
+      when 3 then gliner_s12 = pglr8
+      when 4 then gliner_s12 = pglr7
+      when 5 then gliner_s12 = pglr6
+      when 6 then gliner_s12 = pglr5
+      when 7 then gliner_s12 = pglr4
+      when 8 then gliner_s12 = pglr3
+      when 9 then gliner_s12 = pglr2
+      when 10 then gliner_s12 = pglr1
+      when 11 then gliner_s12 = ''
+      when 12..100 then gliner_s12 = rglr12
+    end
+
+    #gliner_s13
+    case num_gliner
+      when 0 then gliner_s13 = pglr13    
+      when 1 then gliner_s13 = pglr11
+      when 2 then gliner_s13 = pglr10
+      when 3 then gliner_s13 = pglr9
+      when 4 then gliner_s13 = pglr8
+      when 5 then gliner_s13 = pglr7
+      when 6 then gliner_s13 = pglr6
+      when 7 then gliner_s13 = pglr5
+      when 8 then gliner_s13 = pglr4
+      when 9 then gliner_s13 = pglr3
+      when 10 then gliner_s13 = pglr2
+      when 11 then gliner_s13 = pglr1
+      when 12 then gliner_s13 = ''
+      when 13..100 then gliner_s13 = rglr13
+    end
+
+    #gliner_s14
+    case num_gliner
+      when 0 then gliner_s14 = pglr14    
+      when 1 then gliner_s14 = pglr12
+      when 2 then gliner_s14 = pglr11
+      when 3 then gliner_s14 = pglr10
+      when 4 then gliner_s14 = pglr9
+      when 5 then gliner_s14 = pglr8
+      when 6 then gliner_s14 = pglr7
+      when 7 then gliner_s14 = pglr6
+      when 8 then gliner_s14 = pglr5
+      when 9 then gliner_s14 = pglr4
+      when 10 then gliner_s14 = pglr3
+      when 11 then gliner_s14 = pglr2
+      when 12 then gliner_s14 = pglr1  
+      when 13 then gliner_s14 = ''
+      when 14..100 then gliner_s14 = rglr14
+    end
+
+    #gliner_s15
+    case num_gliner
+      when 0 then gliner_s15 = pglr15    
+      when 1 then gliner_s15 = pglr13
+      when 2 then gliner_s15 = pglr12
+      when 3 then gliner_s15 = pglr11
+      when 4 then gliner_s15 = pglr10
+      when 5 then gliner_s15 = pglr9
+      when 6 then gliner_s15 = pglr8
+      when 7 then gliner_s15 = pglr7
+      when 8 then gliner_s15 = pglr6
+      when 9 then gliner_s15 = pglr5
+      when 10 then gliner_s15 = pglr4
+      when 11 then gliner_s15 = pglr3
+      when 12 then gliner_s15 = pglr2
+      when 13 then gliner_s15 = pglr1  
+      when 14..100 then gliner_s15 = rglr15
     end        
     #----------End Goaline----------  
 
@@ -982,6 +4583,30 @@ class Gamecall < ActiveRecord::Base
     unless runComingOutsLeft[6].nil?  
       rcol7 = runComingOutsLeft[6].fullname
     end    
+    unless runComingOutsLeft[7].nil?  
+      rcol8 = runComingOutsLeft[7].fullname 
+    end
+    unless runComingOutsLeft[8].nil?  
+      rcol9 = runComingOutsLeft[8].fullname 
+    end
+    unless runComingOutsLeft[9].nil?  
+      rcol10 = runComingOutsLeft[9].fullname 
+    end
+    unless runComingOutsLeft[10].nil?  
+      rcol11 = runComingOutsLeft[10].fullname 
+    end
+    unless runComingOutsLeft[11].nil?  
+      rcol12 = runComingOutsLeft[11].fullname
+    end
+    unless runComingOutsLeft[12].nil?  
+      rcol13 = runComingOutsLeft[12].fullname 
+    end
+    unless runComingOutsLeft[13].nil?  
+      rcol14 = runComingOutsLeft[13].fullname
+    end  
+    unless runComingOutsLeft[14].nil?  
+      rcol15 = runComingOutsLeft[14].fullname
+    end 
 
     #Run Right Hash
     unless runComingOutsRight[0].nil?  
@@ -1005,6 +4630,30 @@ class Gamecall < ActiveRecord::Base
     unless runComingOutsRight[6].nil?  
       rcor7 = runComingOutsRight[6].fullname
     end    
+    unless runComingOutsRight[7].nil?  
+      rcor8 = runComingOutsRight[7].fullname 
+    end
+    unless runComingOutsRight[8].nil?  
+      rcor9 = runComingOutsRight[8].fullname 
+    end
+    unless runComingOutsRight[9].nil?  
+      rcor10 = runComingOutsRight[9].fullname 
+    end
+    unless runComingOutsRight[10].nil?  
+      rcor11 = runComingOutsRight[10].fullname 
+    end
+    unless runComingOutsRight[11].nil?  
+      rcor12 = runComingOutsRight[11].fullname
+    end
+    unless runComingOutsRight[12].nil?  
+      rcor13 = runComingOutsRight[12].fullname 
+    end
+    unless runComingOutsRight[13].nil?  
+      rcor14 = runComingOutsRight[13].fullname
+    end
+    unless runComingOutsRight[14].nil?  
+      rcor15 = runComingOutsRight[14].fullname
+    end
 
     #Pass Left Hash
     unless passComingOutsLeft[0].nil?  
@@ -1028,6 +4677,30 @@ class Gamecall < ActiveRecord::Base
     unless passComingOutsLeft[6].nil?  
       pcol7 = passComingOutsLeft[6].fullname 
     end       
+    unless passComingOutsLeft[7].nil?  
+      pcol8 = passComingOutsLeft[7].fullname 
+    end
+    unless passComingOutsLeft[8].nil?  
+      pcol9 = passComingOutsLeft[8].fullname 
+    end
+    unless passComingOutsLeft[9].nil?  
+      pcol10 = passComingOutsLeft[9].fullname 
+    end
+    unless passComingOutsLeft[10].nil?  
+      pcol11 = passComingOutsLeft[10].fullname 
+    end
+    unless passComingOutsLeft[11].nil?  
+      pcol12 = passComingOutsLeft[11].fullname 
+    end
+    unless passComingOutsLeft[12].nil?  
+      pcol13 = passComingOutsLeft[12].fullname 
+    end 
+    unless passComingOutsLeft[13].nil?  
+      pcol14 = passComingOutsLeft[13].fullname 
+    end
+    unless passComingOutsLeft[14].nil?  
+      pcol15 = passComingOutsLeft[14].fullname 
+    end
 
     #Pass Right Hash
     unless passComingOutsRight[0].nil?  
@@ -1050,7 +4723,440 @@ class Gamecall < ActiveRecord::Base
     end
     unless passComingOutsRight[6].nil?  
       pcor7 = passComingOutsRight[6].fullname 
-    end        
+    end     
+    unless passComingOutsRight[7].nil?  
+      pcor8 = passComingOutsRight[7].fullname 
+    end
+    unless passComingOutsRight[8].nil?  
+      pcor9 = passComingOutsRight[8].fullname 
+    end
+    unless passComingOutsRight[9].nil?  
+      pcor10 = passComingOutsRight[9].fullname 
+    end
+    unless passComingOutsRight[10].nil?  
+      pcor11 = passComingOutsRight[10].fullname 
+    end
+    unless passComingOutsRight[11].nil?  
+      pcor12 = passComingOutsRight[11].fullname 
+    end
+    unless passComingOutsRight[12].nil?  
+      pcor13 = passComingOutsRight[12].fullname 
+    end
+    unless passComingOutsRight[13].nil?  
+      pcor14 = passComingOutsRight[13].fullname 
+    end   
+    unless passComingOutsRight[14].nil?  
+      pcor15 = passComingOutsRight[14].fullname 
+    end  
+
+    #Number of user's run plays in situation 11
+    num_cor = self.user.s_name11_num_run
+
+    #Left Hash
+    # coutl_s0 
+    if num_cor > 0
+      coutl_s0 = self.user.s_name11 + ' - Run'
+    else
+      coutl_s0 = self.user.s_name11 + ' - Pass'
+    end
+
+    #coutl_s1 
+    if num_cor > 0
+      coutl_s1 = rcol1
+    else
+      coutl_s1 = pcol1
+    end
+
+    #coutl_s2
+    if num_cor == 0
+      coutl_s2 = pcol2
+    elsif num_cor == 1
+      coutl_s2 = self.user.s_name11 + ' - Pass'
+    else num_cor > 1
+      coutl_s2 = rcol2
+    end
+
+    #coutl_s3
+    case num_cor
+      when 0 then coutl_s3 = pcol3       
+      when 1 then coutl_s3 = pcol1
+      when 2 then coutl_s3 = self.user.s_name11 + ' - Pass'
+      when 3..100 then coutl_s3 = rcol3
+    end
+
+    #coutl_s4
+    case num_cor
+      when 0 then coutl_s4 = pcol4       
+      when 1 then coutl_s4 = pcol2
+      when 2 then coutl_s4 = pcol1
+      when 3 then coutl_s4 = self.user.s_name11 + ' - Pass'
+      when 4..100 then coutl_s4 = rcol4
+    end
+
+    #coutl_s5
+    case num_cor
+      when 0 then coutl_s5 = pcol5       
+      when 1 then coutl_s5 = pcol3
+      when 2 then coutl_s5 = pcol2
+      when 3 then coutl_s5 = pcol1
+      when 4 then coutl_s5 = self.user.s_name11 + ' - Pass'
+      when 5..100 then coutl_s5 = rcol5
+    end
+
+    #coutl_s6
+    case num_cor
+      when 0 then coutl_s6 = pcol6      
+      when 1 then coutl_s6 = pcol4
+      when 2 then coutl_s6 = pcol3
+      when 3 then coutl_s6 = pcol2
+      when 4 then coutl_s6 = pcol1
+      when 5 then coutl_s6 = self.user.s_name11 + ' - Pass'
+      when 6..100 then coutl_s6 = rcol6
+    end
+
+    #coutl_s7
+    case num_cor
+      when 0 then coutl_s7 = pcol7      
+      when 1 then coutl_s7 = pcol5
+      when 2 then coutl_s7 = pcol4
+      when 3 then coutl_s7 = pcol3
+      when 4 then coutl_s7 = pcol2
+      when 5 then coutl_s7 = pcol1
+      when 6 then coutl_s7 = self.user.s_name11 + ' - Pass'
+      when 7..100 then coutl_s7 = rcol7
+    end
+
+    #coutl_s8
+    case num_cor
+      when 0 then coutl_s8 = pcol8      
+      when 1 then coutl_s8 = pcol6
+      when 2 then coutl_s8 = pcol5
+      when 3 then coutl_s8 = pcol4
+      when 4 then coutl_s8 = pcol3
+      when 5 then coutl_s8 = pcol2
+      when 6 then coutl_s8 = pcol1
+      when 7 then coutl_s8 = self.user.s_name11 + ' - Pass'
+      when 8..100 then coutl_s8 = rcol8
+    end
+
+    #coutl_s9
+    case num_cor
+      when 0 then coutl_s9 = pcol9      
+      when 1 then coutl_s9 = pcol7
+      when 2 then coutl_s9 = pcol6
+      when 3 then coutl_s9 = pcol5
+      when 4 then coutl_s9 = pcol4
+      when 5 then coutl_s9 = pcol3
+      when 6 then coutl_s9 = pcol2
+      when 7 then coutl_s9 = pcol1
+      when 8 then coutl_s9 = self.user.s_name11 + ' - Pass'
+      when 9..100 then coutl_s9 = rcol9
+    end
+
+    #coutl_s10
+    case num_cor
+      when 0 then coutl_s10 = pcol10     
+      when 1 then coutl_s10 = pcol8
+      when 2 then coutl_s10 = pcol7
+      when 3 then coutl_s10 = pcol6
+      when 4 then coutl_s10 = pcol5
+      when 5 then coutl_s10 = pcol4
+      when 6 then coutl_s10 = pcol3
+      when 7 then coutl_s10 = pcol2
+      when 8 then coutl_s10 = pcol1
+      when 9 then coutl_s10 = self.user.s_name11 + ' - Pass'
+      when 10..100 then coutl_s10 = rcol10
+    end
+
+    #coutl_s11
+    case num_cor
+      when 0 then coutl_s11 = pcol11     
+      when 1 then coutl_s11 = pcol9
+      when 2 then coutl_s11 = pcol8
+      when 3 then coutl_s11 = pcol7
+      when 4 then coutl_s11 = pcol6
+      when 5 then coutl_s11 = pcol5
+      when 6 then coutl_s11 = pcol4
+      when 7 then coutl_s11 = pcol3
+      when 8 then coutl_s11 = pcol2
+      when 9 then coutl_s11 = pcol1
+      when 10 then coutl_s11 = self.user.s_name11 + ' - Pass'
+      when 11..100 then coutl_s11 = rcol11
+    end
+
+    #coutl_s12
+    case num_cor
+      when 0 then coutl_s12 = pcol12    
+      when 1 then coutl_s12 = pcol10
+      when 2 then coutl_s12 = pcol9
+      when 3 then coutl_s12 = pcol8
+      when 4 then coutl_s12 = pcol7
+      when 5 then coutl_s12 = pcol6
+      when 6 then coutl_s12 = pcol5
+      when 7 then coutl_s12 = pcol4
+      when 8 then coutl_s12 = pcol3
+      when 9 then coutl_s12 = pcol2
+      when 10 then coutl_s12 = pcol1
+      when 11 then coutl_s12 = self.user.s_name11 + ' - Pass'
+      when 12..100 then coutl_s12 = rcol12
+    end
+
+    #coutl_s13
+    case num_cor
+      when 0 then coutl_s13 = pcol13    
+      when 1 then coutl_s13 = pcol11
+      when 2 then coutl_s13 = pcol10
+      when 3 then coutl_s13 = pcol9
+      when 4 then coutl_s13 = pcol8
+      when 5 then coutl_s13 = pcol7
+      when 6 then coutl_s13 = pcol6
+      when 7 then coutl_s13 = pcol5
+      when 8 then coutl_s13 = pcol4
+      when 9 then coutl_s13 = pcol3
+      when 10 then coutl_s13 = pcol2
+      when 11 then coutl_s13 = pcol1
+      when 12 then coutl_s13 = self.user.s_name11 + ' - Pass'
+      when 13..100 then coutl_s13 = rcol13
+    end
+
+    #coutl_s14
+    case num_cor
+      when 0 then coutl_s14 = pcol14    
+      when 1 then coutl_s14 = pcol12
+      when 2 then coutl_s14 = pcol11
+      when 3 then coutl_s14 = pcol10
+      when 4 then coutl_s14 = pcol9
+      when 5 then coutl_s14 = pcol8
+      when 6 then coutl_s14 = pcol7
+      when 7 then coutl_s14 = pcol6
+      when 8 then coutl_s14 = pcol5
+      when 9 then coutl_s14 = pcol4
+      when 10 then coutl_s14 = pcol3
+      when 11 then coutl_s14 = pcol2
+      when 12 then coutl_s14 = pcol1  
+      when 13 then coutl_s14 = self.user.s_name11 + ' - Pass'
+      when 14..100 then coutl_s14 = rcol14
+    end
+
+    #coutl_s15
+    case num_cor
+      when 0 then coutl_s15 = pcol15    
+      when 1 then coutl_s15 = pcol13
+      when 2 then coutl_s15 = pcol12
+      when 3 then coutl_s15 = pcol11
+      when 4 then coutl_s15 = pcol10
+      when 5 then coutl_s15 = pcol9
+      when 6 then coutl_s15 = pcol8
+      when 7 then coutl_s15 = pcol7
+      when 8 then coutl_s15 = pcol6
+      when 9 then coutl_s15 = pcol5
+      when 10 then coutl_s15 = pcol4
+      when 11 then coutl_s15 = pcol3
+      when 12 then coutl_s15 = pcol2
+      when 13 then coutl_s15 = pcol1  
+      when 14..100 then coutl_s15 = rcol15
+    end    
+
+
+    #Right Hash
+    # coutr_s0 would always be blank
+
+    #coutr_s1 
+    if num_cor > 0
+      coutr_s1 = rcor1
+    else
+      coutr_s1 = pcor1
+    end
+
+    #coutr_s2
+    if num_cor == 0
+      coutr_s2 = pcor2
+    elsif num_cor == 1
+      coutr_s2 = ''
+    else num_cor > 1
+      coutr_s2 = rcor2
+    end
+
+    #coutr_s3
+    case num_cor
+      when 0 then coutr_s3 = pcor3       
+      when 1 then coutr_s3 = pcor1
+      when 2 then coutr_s3 = ''
+      when 3..100 then coutr_s3 = rcor3
+    end
+
+    #coutr_s4
+    case num_cor
+      when 0 then coutr_s4 = pcor4       
+      when 1 then coutr_s4 = pcor2
+      when 2 then coutr_s4 = pcor1
+      when 3 then ''
+      when 4..100 then coutr_s4 = rcor4
+    end
+
+    #coutr_s5
+    case num_cor
+      when 0 then coutr_s5 = pcor5       
+      when 1 then coutr_s5 = pcor3
+      when 2 then coutr_s5 = pcor2
+      when 3 then coutr_s5 = pcor1
+      when 4 then coutr_s5 = ''
+      when 5..100 then coutr_s5 = rcor5
+    end
+
+    #coutr_s6
+    case num_cor
+      when 0 then coutr_s6 = pcor6      
+      when 1 then coutr_s6 = pcor4
+      when 2 then coutr_s6 = pcor3
+      when 3 then coutr_s6 = pcor2
+      when 4 then coutr_s6 = pcor1
+      when 5 then coutr_s6 = ''
+      when 6..100 then coutr_s6 = rcor6
+    end
+
+    #coutr_s7
+    case num_cor
+      when 0 then coutr_s7 = pcor7      
+      when 1 then coutr_s7 = pcor5
+      when 2 then coutr_s7 = pcor4
+      when 3 then coutr_s7 = pcor3
+      when 4 then coutr_s7 = pcor2
+      when 5 then coutr_s7 = pcor1
+      when 6 then coutr_s7 = ''
+      when 7..100 then coutr_s7 = rcor7
+    end
+
+    #coutr_s8
+    case num_cor
+      when 0 then coutr_s8 = pcor8      
+      when 1 then coutr_s8 = pcor6
+      when 2 then coutr_s8 = pcor5
+      when 3 then coutr_s8 = pcor4
+      when 4 then coutr_s8 = pcor3
+      when 5 then coutr_s8 = pcor2
+      when 6 then coutr_s8 = pcor1
+      when 7 then coutr_s8 = ''
+      when 8..100 then coutr_s8 = rcor8
+    end
+
+    #coutr_s9
+    case num_cor
+      when 0 then coutr_s9 = pcor9      
+      when 1 then coutr_s9 = pcor7
+      when 2 then coutr_s9 = pcor6
+      when 3 then coutr_s9 = pcor5
+      when 4 then coutr_s9 = pcor4
+      when 5 then coutr_s9 = pcor3
+      when 6 then coutr_s9 = pcor2
+      when 7 then coutr_s9 = pcor1
+      when 8 then coutr_s9 = ''
+      when 9..100 then coutr_s9 = rcor9
+    end
+
+    #coutr_s10
+    case num_cor
+      when 0 then coutr_s10 = pcor10     
+      when 1 then coutr_s10 = pcor8
+      when 2 then coutr_s10 = pcor7
+      when 3 then coutr_s10 = pcor6
+      when 4 then coutr_s10 = pcor5
+      when 5 then coutr_s10 = pcor4
+      when 6 then coutr_s10 = pcor3
+      when 7 then coutr_s10 = pcor2
+      when 8 then coutr_s10 = pcor1
+      when 9 then coutr_s10 = ''
+      when 10..100 then coutr_s10 = rcor10
+    end
+
+    #coutr_s11
+    case num_cor
+      when 0 then coutr_s11 = pcor11     
+      when 1 then coutr_s11 = pcor9
+      when 2 then coutr_s11 = pcor8
+      when 3 then coutr_s11 = pcor7
+      when 4 then coutr_s11 = pcor6
+      when 5 then coutr_s11 = pcor5
+      when 6 then coutr_s11 = pcor4
+      when 7 then coutr_s11 = pcor3
+      when 8 then coutr_s11 = pcor2
+      when 9 then coutr_s11 = pcor1
+      when 10 then coutr_s11 = ''
+      when 11..100 then coutr_s11 = rcor11
+    end
+
+    #coutr_s12
+    case num_cor
+      when 0 then coutr_s12 = pcor12    
+      when 1 then coutr_s12 = pcor10
+      when 2 then coutr_s12 = pcor9
+      when 3 then coutr_s12 = pcor8
+      when 4 then coutr_s12 = pcor7
+      when 5 then coutr_s12 = pcor6
+      when 6 then coutr_s12 = pcor5
+      when 7 then coutr_s12 = pcor4
+      when 8 then coutr_s12 = pcor3
+      when 9 then coutr_s12 = pcor2
+      when 10 then coutr_s12 = pcor1
+      when 11 then coutr_s12 = ''
+      when 12..100 then coutr_s12 = rcor12
+    end
+
+    #coutr_s13
+    case num_cor
+      when 0 then coutr_s13 = pcor13    
+      when 1 then coutr_s13 = pcor11
+      when 2 then coutr_s13 = pcor10
+      when 3 then coutr_s13 = pcor9
+      when 4 then coutr_s13 = pcor8
+      when 5 then coutr_s13 = pcor7
+      when 6 then coutr_s13 = pcor6
+      when 7 then coutr_s13 = pcor5
+      when 8 then coutr_s13 = pcor4
+      when 9 then coutr_s13 = pcor3
+      when 10 then coutr_s13 = pcor2
+      when 11 then coutr_s13 = pcor1
+      when 12 then coutr_s13 = ''
+      when 13..100 then coutr_s13 = rcor13
+    end
+
+    #coutr_s14
+    case num_cor
+      when 0 then coutr_s14 = pcor14    
+      when 1 then coutr_s14 = pcor12
+      when 2 then coutr_s14 = pcor11
+      when 3 then coutr_s14 = pcor10
+      when 4 then coutr_s14 = pcor9
+      when 5 then coutr_s14 = pcor8
+      when 6 then coutr_s14 = pcor7
+      when 7 then coutr_s14 = pcor6
+      when 8 then coutr_s14 = pcor5
+      when 9 then coutr_s14 = pcor4
+      when 10 then coutr_s14 = pcor3
+      when 11 then coutr_s14 = pcor2
+      when 12 then coutr_s14 = pcor1  
+      when 13 then coutr_s14 = ''
+      when 14..100 then coutr_s14 = rcor14
+    end
+
+    #coutr_s15
+    case num_cor
+      when 0 then coutr_s15 = pcor15    
+      when 1 then coutr_s15 = pcor13
+      when 2 then coutr_s15 = pcor12
+      when 3 then coutr_s15 = pcor11
+      when 4 then coutr_s15 = pcor10
+      when 5 then coutr_s15 = pcor9
+      when 6 then coutr_s15 = pcor8
+      when 7 then coutr_s15 = pcor7
+      when 8 then coutr_s15 = pcor6
+      when 9 then coutr_s15 = pcor5
+      when 10 then coutr_s15 = pcor4
+      when 11 then coutr_s15 = pcor3
+      when 12 then coutr_s15 = pcor2
+      when 13 then coutr_s15 = pcor1  
+      when 14..100 then coutr_s15 = rcor15
+    end 
     #----------End Coming Out---------- 
 
     #----------Custom 1----------
@@ -1086,6 +5192,30 @@ class Gamecall < ActiveRecord::Base
     unless runCustomOnesLeft[6].nil?  
       rcuol7 = runCustomOnesLeft[6].fullname
     end    
+    unless runCustomOnesLeft[7].nil?  
+      rcuol8 = runCustomOnesLeft[7].fullname 
+    end
+    unless runCustomOnesLeft[8].nil?  
+      rcuol9 = runCustomOnesLeft[8].fullname 
+    end
+    unless runCustomOnesLeft[9].nil?  
+      rcuol10 = runCustomOnesLeft[9].fullname 
+    end
+    unless runCustomOnesLeft[10].nil?  
+      rcuol11 = runCustomOnesLeft[10].fullname 
+    end
+    unless runCustomOnesLeft[11].nil?  
+      rcuol12 = runCustomOnesLeft[11].fullname
+    end
+    unless runCustomOnesLeft[12].nil?  
+      rcuol13 = runCustomOnesLeft[12].fullname 
+    end
+    unless runCustomOnesLeft[13].nil?  
+      rcuol14 = runCustomOnesLeft[13].fullname
+    end 
+    unless runCustomOnesLeft[14].nil?  
+      rcuol15 = runCustomOnesLeft[14].fullname
+    end 
 
     #Run Right Hash
     unless runCustomOnesRight[0].nil?  
@@ -1109,6 +5239,30 @@ class Gamecall < ActiveRecord::Base
     unless runCustomOnesRight[6].nil?  
       rcuor7 = runCustomOnesRight[6].fullname
     end    
+    unless runCustomOnesRight[7].nil?  
+      rcuor8 = runCustomOnesRight[7].fullname 
+    end
+    unless runCustomOnesRight[8].nil?  
+      rcuor9 = runCustomOnesRight[8].fullname 
+    end
+    unless runCustomOnesRight[9].nil?  
+      rcuor10 = runCustomOnesRight[9].fullname 
+    end
+    unless runCustomOnesRight[10].nil?  
+      rcuor11 = runCustomOnesRight[10].fullname 
+    end
+    unless runCustomOnesRight[11].nil?  
+      rcuor12 = runCustomOnesRight[11].fullname
+    end
+    unless runCustomOnesRight[12].nil?  
+      rcuor13 = runCustomOnesRight[12].fullname 
+    end
+    unless runCustomOnesRight[13].nil?  
+      rcuor14 = runCustomOnesRight[13].fullname
+    end 
+    unless runCustomOnesRight[14].nil?  
+      rcuor15 = runCustomOnesRight[14].fullname
+    end 
 
     #Pass Left Hash
     unless passCustomOnesLeft[0].nil?  
@@ -1132,6 +5286,30 @@ class Gamecall < ActiveRecord::Base
     unless passCustomOnesLeft[6].nil?  
       pcuol7 = passCustomOnesLeft[6].fullname 
     end       
+    unless passCustomOnesLeft[7].nil?  
+      pcuol8 = passCustomOnesLeft[7].fullname 
+    end
+    unless passCustomOnesLeft[8].nil?  
+      pcuol9 = passCustomOnesLeft[8].fullname 
+    end
+    unless passCustomOnesLeft[9].nil?  
+      pcuol10 = passCustomOnesLeft[9].fullname 
+    end
+    unless passCustomOnesLeft[10].nil?  
+      pcuol11 = passCustomOnesLeft[10].fullname 
+    end
+    unless passCustomOnesLeft[11].nil?  
+      pcuol12 = passCustomOnesLeft[11].fullname 
+    end
+    unless passCustomOnesLeft[12].nil?  
+      pcuol13 = passCustomOnesLeft[12].fullname 
+    end 
+    unless passCustomOnesLeft[13].nil?  
+      pcuol14 = passCustomOnesLeft[13].fullname 
+    end 
+    unless passCustomOnesLeft[14].nil?  
+      pcuol15 = passCustomOnesLeft[14].fullname 
+    end 
 
     #Pass Right Hash
     unless passCustomOnesRight[0].nil?  
@@ -1154,7 +5332,440 @@ class Gamecall < ActiveRecord::Base
     end
     unless passCustomOnesRight[6].nil?  
       pcuor7 = passCustomOnesRight[6].fullname 
-    end        
+    end    
+    unless passCustomOnesRight[7].nil?  
+      pcuor8 = passCustomOnesRight[7].fullname 
+    end
+    unless passCustomOnesRight[8].nil?  
+      pcuor9 = passCustomOnesRight[8].fullname 
+    end
+    unless passCustomOnesRight[9].nil?  
+      pcuor10 = passCustomOnesRight[9].fullname 
+    end
+    unless passCustomOnesRight[10].nil?  
+      pcuor11 = passCustomOnesRight[10].fullname 
+    end
+    unless passCustomOnesRight[11].nil?  
+      pcuor12 = passCustomOnesRight[11].fullname 
+    end
+    unless passCustomOnesRight[12].nil?  
+      pcuor13 = passCustomOnesRight[12].fullname 
+    end
+    unless passCustomOnesRight[13].nil?  
+      pcuor14 = passCustomOnesRight[13].fullname 
+    end       
+    unless passCustomOnesRight[14].nil?  
+      pcuor15 = passCustomOnesRight[14].fullname 
+    end    
+
+    #Number of user's run plays in situation 12
+    num_cus1r = self.user.s_name12_num_run
+
+    #Left Hash
+    # cus1l_s0 
+    if num_cus1r > 0
+      cus1l_s0 = self.user.s_name12 + ' - Run'
+    else
+      cus1l_s0 = self.user.s_name12 + ' - Pass'
+    end
+
+    #cus1l_s1 
+    if num_cus1r > 0
+      cus1l_s1 = rcuol1
+    else
+      cus1l_s1 = pcuol1
+    end
+
+    #cus1l_s2
+    if num_cus1r == 0
+      cus1l_s2 = pcuol2
+    elsif num_cus1r == 1
+      cus1l_s2 = self.user.s_name12 + ' - Pass'
+    else num_cus1r > 1
+      cus1l_s2 = rcuol2
+    end
+
+    #cus1l_s3
+    case num_cus1r
+      when 0 then cus1l_s3 = pcuol3       
+      when 1 then cus1l_s3 = pcuol1
+      when 2 then cus1l_s3 = self.user.s_name12 + ' - Pass'
+      when 3..100 then cus1l_s3 = rcuol3
+    end
+
+    #cus1l_s4
+    case num_cus1r
+      when 0 then cus1l_s4 = pcuol4       
+      when 1 then cus1l_s4 = pcuol2
+      when 2 then cus1l_s4 = pcuol1
+      when 3 then cus1l_s4 = self.user.s_name12 + ' - Pass'
+      when 4..100 then cus1l_s4 = rcuol4
+    end
+
+    #cus1l_s5
+    case num_cus1r
+      when 0 then cus1l_s5 = pcuol5       
+      when 1 then cus1l_s5 = pcuol3
+      when 2 then cus1l_s5 = pcuol2
+      when 3 then cus1l_s5 = pcuol1
+      when 4 then cus1l_s5 = self.user.s_name12 + ' - Pass'
+      when 5..100 then cus1l_s5 = rcuol5
+    end
+
+    #cus1l_s6
+    case num_cus1r
+      when 0 then cus1l_s6 = pcuol6      
+      when 1 then cus1l_s6 = pcuol4
+      when 2 then cus1l_s6 = pcuol3
+      when 3 then cus1l_s6 = pcuol2
+      when 4 then cus1l_s6 = pcuol1
+      when 5 then cus1l_s6 = self.user.s_name12 + ' - Pass'
+      when 6..100 then cus1l_s6 = rcuol6
+    end
+
+    #cus1l_s7
+    case num_cus1r
+      when 0 then cus1l_s7 = pcuol7      
+      when 1 then cus1l_s7 = pcuol5
+      when 2 then cus1l_s7 = pcuol4
+      when 3 then cus1l_s7 = pcuol3
+      when 4 then cus1l_s7 = pcuol2
+      when 5 then cus1l_s7 = pcuol1
+      when 6 then cus1l_s7 = self.user.s_name12 + ' - Pass'
+      when 7..100 then cus1l_s7 = rcuol7
+    end
+
+    #cus1l_s8
+    case num_cus1r
+      when 0 then cus1l_s8 = pcuol8      
+      when 1 then cus1l_s8 = pcuol6
+      when 2 then cus1l_s8 = pcuol5
+      when 3 then cus1l_s8 = pcuol4
+      when 4 then cus1l_s8 = pcuol3
+      when 5 then cus1l_s8 = pcuol2
+      when 6 then cus1l_s8 = pcuol1
+      when 7 then cus1l_s8 = self.user.s_name12 + ' - Pass'
+      when 8..100 then cus1l_s8 = rcuol8
+    end
+
+    #cus1l_s9
+    case num_cus1r
+      when 0 then cus1l_s9 = pcuol9      
+      when 1 then cus1l_s9 = pcuol7
+      when 2 then cus1l_s9 = pcuol6
+      when 3 then cus1l_s9 = pcuol5
+      when 4 then cus1l_s9 = pcuol4
+      when 5 then cus1l_s9 = pcuol3
+      when 6 then cus1l_s9 = pcuol2
+      when 7 then cus1l_s9 = pcuol1
+      when 8 then cus1l_s9 = self.user.s_name12 + ' - Pass'
+      when 9..100 then cus1l_s9 = rcuol9
+    end
+
+    #cus1l_s10
+    case num_cus1r
+      when 0 then cus1l_s10 = pcuol10     
+      when 1 then cus1l_s10 = pcuol8
+      when 2 then cus1l_s10 = pcuol7
+      when 3 then cus1l_s10 = pcuol6
+      when 4 then cus1l_s10 = pcuol5
+      when 5 then cus1l_s10 = pcuol4
+      when 6 then cus1l_s10 = pcuol3
+      when 7 then cus1l_s10 = pcuol2
+      when 8 then cus1l_s10 = pcuol1
+      when 9 then cus1l_s10 = self.user.s_name12 + ' - Pass'
+      when 10..100 then cus1l_s10 = rcuol10
+    end
+
+    #cus1l_s11
+    case num_cus1r
+      when 0 then cus1l_s11 = pcuol11     
+      when 1 then cus1l_s11 = pcuol9
+      when 2 then cus1l_s11 = pcuol8
+      when 3 then cus1l_s11 = pcuol7
+      when 4 then cus1l_s11 = pcuol6
+      when 5 then cus1l_s11 = pcuol5
+      when 6 then cus1l_s11 = pcuol4
+      when 7 then cus1l_s11 = pcuol3
+      when 8 then cus1l_s11 = pcuol2
+      when 9 then cus1l_s11 = pcuol1
+      when 10 then cus1l_s11 = self.user.s_name12 + ' - Pass'
+      when 11..100 then cus1l_s11 = rcuol11
+    end
+
+    #cus1l_s12
+    case num_cus1r
+      when 0 then cus1l_s12 = pcuol12    
+      when 1 then cus1l_s12 = pcuol10
+      when 2 then cus1l_s12 = pcuol9
+      when 3 then cus1l_s12 = pcuol8
+      when 4 then cus1l_s12 = pcuol7
+      when 5 then cus1l_s12 = pcuol6
+      when 6 then cus1l_s12 = pcuol5
+      when 7 then cus1l_s12 = pcuol4
+      when 8 then cus1l_s12 = pcuol3
+      when 9 then cus1l_s12 = pcuol2
+      when 10 then cus1l_s12 = pcuol1
+      when 11 then cus1l_s12 = self.user.s_name12 + ' - Pass'
+      when 12..100 then cus1l_s12 = rcuol12
+    end
+
+    #cus1l_s13
+    case num_cus1r
+      when 0 then cus1l_s13 = pcuol13    
+      when 1 then cus1l_s13 = pcuol11
+      when 2 then cus1l_s13 = pcuol10
+      when 3 then cus1l_s13 = pcuol9
+      when 4 then cus1l_s13 = pcuol8
+      when 5 then cus1l_s13 = pcuol7
+      when 6 then cus1l_s13 = pcuol6
+      when 7 then cus1l_s13 = pcuol5
+      when 8 then cus1l_s13 = pcuol4
+      when 9 then cus1l_s13 = pcuol3
+      when 10 then cus1l_s13 = pcuol2
+      when 11 then cus1l_s13 = pcuol1
+      when 12 then cus1l_s13 = self.user.s_name12 + ' - Pass'
+      when 13..100 then cus1l_s13 = rcuol13
+    end
+
+    #cus1l_s14
+    case num_cus1r
+      when 0 then cus1l_s14 = pcuol14    
+      when 1 then cus1l_s14 = pcuol12
+      when 2 then cus1l_s14 = pcuol11
+      when 3 then cus1l_s14 = pcuol10
+      when 4 then cus1l_s14 = pcuol9
+      when 5 then cus1l_s14 = pcuol8
+      when 6 then cus1l_s14 = pcuol7
+      when 7 then cus1l_s14 = pcuol6
+      when 8 then cus1l_s14 = pcuol5
+      when 9 then cus1l_s14 = pcuol4
+      when 10 then cus1l_s14 = pcuol3
+      when 11 then cus1l_s14 = pcuol2
+      when 12 then cus1l_s14 = pcuol1  
+      when 13 then cus1l_s14 = self.user.s_name12 + ' - Pass'
+      when 14..100 then cus1l_s14 = rcuol14
+    end
+
+    #cus1l_s15
+    case num_cus1r
+      when 0 then cus1l_s15 = pcuol15    
+      when 1 then cus1l_s15 = pcuol13
+      when 2 then cus1l_s15 = pcuol12
+      when 3 then cus1l_s15 = pcuol11
+      when 4 then cus1l_s15 = pcuol10
+      when 5 then cus1l_s15 = pcuol9
+      when 6 then cus1l_s15 = pcuol8
+      when 7 then cus1l_s15 = pcuol7
+      when 8 then cus1l_s15 = pcuol6
+      when 9 then cus1l_s15 = pcuol5
+      when 10 then cus1l_s15 = pcuol4
+      when 11 then cus1l_s15 = pcuol3
+      when 12 then cus1l_s15 = pcuol2
+      when 13 then cus1l_s15 = pcuol1  
+      when 14..100 then cus1l_s15 = rcuol15
+    end    
+
+
+    #Right Hash
+    # cus1r_s0 would always be blank
+
+    #cus1r_s1 
+    if num_cus1r > 0
+      cus1r_s1 = rcuor1
+    else
+      cus1r_s1 = pcuor1
+    end
+
+    #cus1r_s2
+    if num_cus1r == 0
+      cus1r_s2 = pcuor2
+    elsif num_cus1r == 1
+      cus1r_s2 = ''
+    else num_cus1r > 1
+      cus1r_s2 = rcuor2
+    end
+
+    #cus1r_s3
+    case num_cus1r
+      when 0 then cus1r_s3 = pcuor3       
+      when 1 then cus1r_s3 = pcuor1
+      when 2 then cus1r_s3 = ''
+      when 3..100 then cus1r_s3 = rcuor3
+    end
+
+    #cus1r_s4
+    case num_cus1r
+      when 0 then cus1r_s4 = pcuor4       
+      when 1 then cus1r_s4 = pcuor2
+      when 2 then cus1r_s4 = pcuor1
+      when 3 then ''
+      when 4..100 then cus1r_s4 = rcuor4
+    end
+
+    #cus1r_s5
+    case num_cus1r
+      when 0 then cus1r_s5 = pcuor5       
+      when 1 then cus1r_s5 = pcuor3
+      when 2 then cus1r_s5 = pcuor2
+      when 3 then cus1r_s5 = pcuor1
+      when 4 then cus1r_s5 = ''
+      when 5..100 then cus1r_s5 = rcuor5
+    end
+
+    #cus1r_s6
+    case num_cus1r
+      when 0 then cus1r_s6 = pcuor6      
+      when 1 then cus1r_s6 = pcuor4
+      when 2 then cus1r_s6 = pcuor3
+      when 3 then cus1r_s6 = pcuor2
+      when 4 then cus1r_s6 = pcuor1
+      when 5 then cus1r_s6 = ''
+      when 6..100 then cus1r_s6 = rcuor6
+    end
+
+    #cus1r_s7
+    case num_cus1r
+      when 0 then cus1r_s7 = pcuor7      
+      when 1 then cus1r_s7 = pcuor5
+      when 2 then cus1r_s7 = pcuor4
+      when 3 then cus1r_s7 = pcuor3
+      when 4 then cus1r_s7 = pcuor2
+      when 5 then cus1r_s7 = pcuor1
+      when 6 then cus1r_s7 = ''
+      when 7..100 then cus1r_s7 = rcuor7
+    end
+
+    #cus1r_s8
+    case num_cus1r
+      when 0 then cus1r_s8 = pcuor8      
+      when 1 then cus1r_s8 = pcuor6
+      when 2 then cus1r_s8 = pcuor5
+      when 3 then cus1r_s8 = pcuor4
+      when 4 then cus1r_s8 = pcuor3
+      when 5 then cus1r_s8 = pcuor2
+      when 6 then cus1r_s8 = pcuor1
+      when 7 then cus1r_s8 = ''
+      when 8..100 then cus1r_s8 = rcuor8
+    end
+
+    #cus1r_s9
+    case num_cus1r
+      when 0 then cus1r_s9 = pcuor9      
+      when 1 then cus1r_s9 = pcuor7
+      when 2 then cus1r_s9 = pcuor6
+      when 3 then cus1r_s9 = pcuor5
+      when 4 then cus1r_s9 = pcuor4
+      when 5 then cus1r_s9 = pcuor3
+      when 6 then cus1r_s9 = pcuor2
+      when 7 then cus1r_s9 = pcuor1
+      when 8 then cus1r_s9 = ''
+      when 9..100 then cus1r_s9 = rcuor9
+    end
+
+    #cus1r_s10
+    case num_cus1r
+      when 0 then cus1r_s10 = pcuor10     
+      when 1 then cus1r_s10 = pcuor8
+      when 2 then cus1r_s10 = pcuor7
+      when 3 then cus1r_s10 = pcuor6
+      when 4 then cus1r_s10 = pcuor5
+      when 5 then cus1r_s10 = pcuor4
+      when 6 then cus1r_s10 = pcuor3
+      when 7 then cus1r_s10 = pcuor2
+      when 8 then cus1r_s10 = pcuor1
+      when 9 then cus1r_s10 = ''
+      when 10..100 then cus1r_s10 = rcuor10
+    end
+
+    #cus1r_s11
+    case num_cus1r
+      when 0 then cus1r_s11 = pcuor11     
+      when 1 then cus1r_s11 = pcuor9
+      when 2 then cus1r_s11 = pcuor8
+      when 3 then cus1r_s11 = pcuor7
+      when 4 then cus1r_s11 = pcuor6
+      when 5 then cus1r_s11 = pcuor5
+      when 6 then cus1r_s11 = pcuor4
+      when 7 then cus1r_s11 = pcuor3
+      when 8 then cus1r_s11 = pcuor2
+      when 9 then cus1r_s11 = pcuor1
+      when 10 then cus1r_s11 = ''
+      when 11..100 then cus1r_s11 = rcuor11
+    end
+
+    #cus1r_s12
+    case num_cus1r
+      when 0 then cus1r_s12 = pcuor12    
+      when 1 then cus1r_s12 = pcuor10
+      when 2 then cus1r_s12 = pcuor9
+      when 3 then cus1r_s12 = pcuor8
+      when 4 then cus1r_s12 = pcuor7
+      when 5 then cus1r_s12 = pcuor6
+      when 6 then cus1r_s12 = pcuor5
+      when 7 then cus1r_s12 = pcuor4
+      when 8 then cus1r_s12 = pcuor3
+      when 9 then cus1r_s12 = pcuor2
+      when 10 then cus1r_s12 = pcuor1
+      when 11 then cus1r_s12 = ''
+      when 12..100 then cus1r_s12 = rcuor12
+    end
+
+    #cus1r_s13
+    case num_cus1r
+      when 0 then cus1r_s13 = pcuor13    
+      when 1 then cus1r_s13 = pcuor11
+      when 2 then cus1r_s13 = pcuor10
+      when 3 then cus1r_s13 = pcuor9
+      when 4 then cus1r_s13 = pcuor8
+      when 5 then cus1r_s13 = pcuor7
+      when 6 then cus1r_s13 = pcuor6
+      when 7 then cus1r_s13 = pcuor5
+      when 8 then cus1r_s13 = pcuor4
+      when 9 then cus1r_s13 = pcuor3
+      when 10 then cus1r_s13 = pcuor2
+      when 11 then cus1r_s13 = pcuor1
+      when 12 then cus1r_s13 = ''
+      when 13..100 then cus1r_s13 = rcuor13
+    end
+
+    #cus1r_s14
+    case num_cus1r
+      when 0 then cus1r_s14 = pcuor14    
+      when 1 then cus1r_s14 = pcuor12
+      when 2 then cus1r_s14 = pcuor11
+      when 3 then cus1r_s14 = pcuor10
+      when 4 then cus1r_s14 = pcuor9
+      when 5 then cus1r_s14 = pcuor8
+      when 6 then cus1r_s14 = pcuor7
+      when 7 then cus1r_s14 = pcuor6
+      when 8 then cus1r_s14 = pcuor5
+      when 9 then cus1r_s14 = pcuor4
+      when 10 then cus1r_s14 = pcuor3
+      when 11 then cus1r_s14 = pcuor2
+      when 12 then cus1r_s14 = pcuor1  
+      when 13 then cus1r_s14 = ''
+      when 14..100 then cus1r_s14 = rcuor14
+    end
+
+    #cus1r_s15
+    case num_cus1r
+      when 0 then cus1r_s15 = pcuor15    
+      when 1 then cus1r_s15 = pcuor13
+      when 2 then cus1r_s15 = pcuor12
+      when 3 then cus1r_s15 = pcuor11
+      when 4 then cus1r_s15 = pcuor10
+      when 5 then cus1r_s15 = pcuor9
+      when 6 then cus1r_s15 = pcuor8
+      when 7 then cus1r_s15 = pcuor7
+      when 8 then cus1r_s15 = pcuor6
+      when 9 then cus1r_s15 = pcuor5
+      when 10 then cus1r_s15 = pcuor4
+      when 11 then cus1r_s15 = pcuor3
+      when 12 then cus1r_s15 = pcuor2
+      when 13 then cus1r_s15 = pcuor1  
+      when 14..100 then cus1r_s15 = rcuor15
+    end     
     #----------End Custom 1----------   
 
     #----------Custom 2----------
@@ -1190,6 +5801,30 @@ class Gamecall < ActiveRecord::Base
     unless runCustomTwosLeft[6].nil?  
       rcutl7 = runCustomTwosLeft[6].fullname
     end    
+    unless runCustomTwosLeft[7].nil?  
+      rcutl8 = runCustomTwosLeft[7].fullname 
+    end
+    unless runCustomTwosLeft[8].nil?  
+      rcutl9 = runCustomTwosLeft[8].fullname 
+    end
+    unless runCustomTwosLeft[9].nil?  
+      rcutl10 = runCustomTwosLeft[9].fullname 
+    end
+    unless runCustomTwosLeft[10].nil?  
+      rcutl11 = runCustomTwosLeft[10].fullname 
+    end
+    unless runCustomTwosLeft[11].nil?  
+      rcutl12 = runCustomTwosLeft[11].fullname
+    end
+    unless runCustomTwosLeft[12].nil?  
+      rcutl13 = runCustomTwosLeft[12].fullname 
+    end
+    unless runCustomTwosLeft[13].nil?  
+      rcutl14 = runCustomTwosLeft[13].fullname
+    end 
+    unless runCustomTwosLeft[14].nil?  
+      rcutl15 = runCustomTwosLeft[14].fullname
+    end
 
     #Run Right Hash
     unless runCustomTwosRight[0].nil?  
@@ -1213,6 +5848,30 @@ class Gamecall < ActiveRecord::Base
     unless runCustomTwosRight[6].nil?  
       rcutr7 = runCustomTwosRight[6].fullname
     end    
+    unless runCustomTwosRight[7].nil?  
+      rcutr8 = runCustomTwosRight[7].fullname 
+    end
+    unless runCustomTwosRight[8].nil?  
+      rcutr9 = runCustomTwosRight[8].fullname 
+    end
+    unless runCustomTwosRight[9].nil?  
+      rcutr10 = runCustomTwosRight[9].fullname 
+    end
+    unless runCustomTwosRight[10].nil?  
+      rcutr11 = runCustomTwosRight[10].fullname 
+    end
+    unless runCustomTwosRight[11].nil?  
+      rcutr12 = runCustomTwosRight[11].fullname
+    end
+    unless runCustomTwosRight[12].nil?  
+      rcutr13 = runCustomTwosRight[12].fullname 
+    end
+    unless runCustomTwosRight[13].nil?  
+      rcutr14 = runCustomTwosRight[13].fullname
+    end 
+    unless runCustomTwosRight[14].nil?  
+      rcutr15 = runCustomTwosRight[14].fullname
+    end 
 
     #Pass Left Hash
     unless passCustomTwosLeft[0].nil?  
@@ -1236,6 +5895,30 @@ class Gamecall < ActiveRecord::Base
     unless passCustomTwosLeft[6].nil?  
       pcutl7 = passCustomTwosLeft[6].fullname 
     end       
+    unless passCustomTwosLeft[7].nil?  
+      pcutl8 = passCustomTwosLeft[7].fullname 
+    end
+    unless passCustomTwosLeft[8].nil?  
+      pcutl9 = passCustomTwosLeft[8].fullname 
+    end
+    unless passCustomTwosLeft[9].nil?  
+      pcutl10 = passCustomTwosLeft[9].fullname 
+    end
+    unless passCustomTwosLeft[10].nil?  
+      pcutl11 = passCustomTwosLeft[10].fullname 
+    end
+    unless passCustomTwosLeft[11].nil?  
+      pcutl12 = passCustomTwosLeft[11].fullname 
+    end
+    unless passCustomTwosLeft[12].nil?  
+      pcutl13 = passCustomTwosLeft[12].fullname 
+    end 
+    unless passCustomTwosLeft[13].nil?  
+      pcutl14 = passCustomTwosLeft[13].fullname 
+    end 
+    unless passCustomTwosLeft[14].nil?  
+      pcutl15 = passCustomTwosLeft[14].fullname 
+    end 
 
     #Pass Right Hash
     unless passCustomTwosRight[0].nil?  
@@ -1258,7 +5941,440 @@ class Gamecall < ActiveRecord::Base
     end
     unless passCustomTwosRight[6].nil?  
       pcutr7 = passCustomTwosRight[6].fullname 
-    end        
+    end      
+    unless passCustomTwosRight[7].nil?  
+      pcutr8 = passCustomTwosRight[7].fullname 
+    end
+    unless passCustomTwosRight[8].nil?  
+      pcutr9 = passCustomTwosRight[8].fullname 
+    end
+    unless passCustomTwosRight[9].nil?  
+      pcutr10 = passCustomTwosRight[9].fullname 
+    end
+    unless passCustomTwosRight[10].nil?  
+      pcutr11 = passCustomTwosRight[10].fullname 
+    end
+    unless passCustomTwosRight[11].nil?  
+      pcutr12 = passCustomTwosRight[11].fullname 
+    end
+    unless passCustomTwosRight[12].nil?  
+      pcutr13 = passCustomTwosRight[12].fullname 
+    end
+    unless passCustomTwosRight[13].nil?  
+      pcutr14 = passCustomTwosRight[13].fullname 
+    end   
+    unless passCustomTwosRight[14].nil?  
+      pcutr15 = passCustomTwosRight[14].fullname 
+    end          
+
+    #Number of user's run plays in situation 13
+    num_cus2r = self.user.s_name13_num_run
+
+    #Left Hash
+    # cus2l_s0 
+    if num_cus2r > 0
+      cus2l_s0 = self.user.s_name13 + ' - Run'
+    else
+      cus2l_s0 = self.user.s_name13 + ' - Pass'
+    end
+
+    #cus2l_s1 
+    if num_cus2r > 0
+      cus2l_s1 = rcutl1
+    else
+      cus2l_s1 = pcutl1
+    end
+
+    #cus2l_s2
+    if num_cus2r == 0
+      cus2l_s2 = pcutl2
+    elsif num_cus2r == 1
+      cus2l_s2 = self.user.s_name13 + ' - Pass'
+    else num_cus2r > 1
+      cus2l_s2 = rcutl2
+    end
+
+    #cus2l_s3
+    case num_cus2r
+      when 0 then cus2l_s3 = pcutl3       
+      when 1 then cus2l_s3 = pcutl1
+      when 2 then cus2l_s3 = self.user.s_name13 + ' - Pass'
+      when 3..100 then cus2l_s3 = rcutl3
+    end
+
+    #cus2l_s4
+    case num_cus2r
+      when 0 then cus2l_s4 = pcutl4       
+      when 1 then cus2l_s4 = pcutl2
+      when 2 then cus2l_s4 = pcutl1
+      when 3 then cus2l_s4 = self.user.s_name13 + ' - Pass'
+      when 4..100 then cus2l_s4 = rcutl4
+    end
+
+    #cus2l_s5
+    case num_cus2r
+      when 0 then cus2l_s5 = pcutl5       
+      when 1 then cus2l_s5 = pcutl3
+      when 2 then cus2l_s5 = pcutl2
+      when 3 then cus2l_s5 = pcutl1
+      when 4 then cus2l_s5 = self.user.s_name13 + ' - Pass'
+      when 5..100 then cus2l_s5 = rcutl5
+    end
+
+    #cus2l_s6
+    case num_cus2r
+      when 0 then cus2l_s6 = pcutl6      
+      when 1 then cus2l_s6 = pcutl4
+      when 2 then cus2l_s6 = pcutl3
+      when 3 then cus2l_s6 = pcutl2
+      when 4 then cus2l_s6 = pcutl1
+      when 5 then cus2l_s6 = self.user.s_name13 + ' - Pass'
+      when 6..100 then cus2l_s6 = rcutl6
+    end
+
+    #cus2l_s7
+    case num_cus2r
+      when 0 then cus2l_s7 = pcutl7      
+      when 1 then cus2l_s7 = pcutl5
+      when 2 then cus2l_s7 = pcutl4
+      when 3 then cus2l_s7 = pcutl3
+      when 4 then cus2l_s7 = pcutl2
+      when 5 then cus2l_s7 = pcutl1
+      when 6 then cus2l_s7 = self.user.s_name13 + ' - Pass'
+      when 7..100 then cus2l_s7 = rcutl7
+    end
+
+    #cus2l_s8
+    case num_cus2r
+      when 0 then cus2l_s8 = pcutl8      
+      when 1 then cus2l_s8 = pcutl6
+      when 2 then cus2l_s8 = pcutl5
+      when 3 then cus2l_s8 = pcutl4
+      when 4 then cus2l_s8 = pcutl3
+      when 5 then cus2l_s8 = pcutl2
+      when 6 then cus2l_s8 = pcutl1
+      when 7 then cus2l_s8 = self.user.s_name13 + ' - Pass'
+      when 8..100 then cus2l_s8 = rcutl8
+    end
+
+    #cus2l_s9
+    case num_cus2r
+      when 0 then cus2l_s9 = pcutl9      
+      when 1 then cus2l_s9 = pcutl7
+      when 2 then cus2l_s9 = pcutl6
+      when 3 then cus2l_s9 = pcutl5
+      when 4 then cus2l_s9 = pcutl4
+      when 5 then cus2l_s9 = pcutl3
+      when 6 then cus2l_s9 = pcutl2
+      when 7 then cus2l_s9 = pcutl1
+      when 8 then cus2l_s9 = self.user.s_name13 + ' - Pass'
+      when 9..100 then cus2l_s9 = rcutl9
+    end
+
+    #cus2l_s10
+    case num_cus2r
+      when 0 then cus2l_s10 = pcutl10     
+      when 1 then cus2l_s10 = pcutl8
+      when 2 then cus2l_s10 = pcutl7
+      when 3 then cus2l_s10 = pcutl6
+      when 4 then cus2l_s10 = pcutl5
+      when 5 then cus2l_s10 = pcutl4
+      when 6 then cus2l_s10 = pcutl3
+      when 7 then cus2l_s10 = pcutl2
+      when 8 then cus2l_s10 = pcutl1
+      when 9 then cus2l_s10 = self.user.s_name13 + ' - Pass'
+      when 10..100 then cus2l_s10 = rcutl10
+    end
+
+    #cus2l_s11
+    case num_cus2r
+      when 0 then cus2l_s11 = pcutl11     
+      when 1 then cus2l_s11 = pcutl9
+      when 2 then cus2l_s11 = pcutl8
+      when 3 then cus2l_s11 = pcutl7
+      when 4 then cus2l_s11 = pcutl6
+      when 5 then cus2l_s11 = pcutl5
+      when 6 then cus2l_s11 = pcutl4
+      when 7 then cus2l_s11 = pcutl3
+      when 8 then cus2l_s11 = pcutl2
+      when 9 then cus2l_s11 = pcutl1
+      when 10 then cus2l_s11 = self.user.s_name13 + ' - Pass'
+      when 11..100 then cus2l_s11 = rcutl11
+    end
+
+    #cus2l_s12
+    case num_cus2r
+      when 0 then cus2l_s12 = pcutl12    
+      when 1 then cus2l_s12 = pcutl10
+      when 2 then cus2l_s12 = pcutl9
+      when 3 then cus2l_s12 = pcutl8
+      when 4 then cus2l_s12 = pcutl7
+      when 5 then cus2l_s12 = pcutl6
+      when 6 then cus2l_s12 = pcutl5
+      when 7 then cus2l_s12 = pcutl4
+      when 8 then cus2l_s12 = pcutl3
+      when 9 then cus2l_s12 = pcutl2
+      when 10 then cus2l_s12 = pcutl1
+      when 11 then cus2l_s12 = self.user.s_name13 + ' - Pass'
+      when 12..100 then cus2l_s12 = rcutl12
+    end
+
+    #cus2l_s13
+    case num_cus2r
+      when 0 then cus2l_s13 = pcutl13    
+      when 1 then cus2l_s13 = pcutl11
+      when 2 then cus2l_s13 = pcutl10
+      when 3 then cus2l_s13 = pcutl9
+      when 4 then cus2l_s13 = pcutl8
+      when 5 then cus2l_s13 = pcutl7
+      when 6 then cus2l_s13 = pcutl6
+      when 7 then cus2l_s13 = pcutl5
+      when 8 then cus2l_s13 = pcutl4
+      when 9 then cus2l_s13 = pcutl3
+      when 10 then cus2l_s13 = pcutl2
+      when 11 then cus2l_s13 = pcutl1
+      when 12 then cus2l_s13 = self.user.s_name13 + ' - Pass'
+      when 13..100 then cus2l_s13 = rcutl13
+    end
+
+    #cus2l_s14
+    case num_cus2r
+      when 0 then cus2l_s14 = pcutl14    
+      when 1 then cus2l_s14 = pcutl12
+      when 2 then cus2l_s14 = pcutl11
+      when 3 then cus2l_s14 = pcutl10
+      when 4 then cus2l_s14 = pcutl9
+      when 5 then cus2l_s14 = pcutl8
+      when 6 then cus2l_s14 = pcutl7
+      when 7 then cus2l_s14 = pcutl6
+      when 8 then cus2l_s14 = pcutl5
+      when 9 then cus2l_s14 = pcutl4
+      when 10 then cus2l_s14 = pcutl3
+      when 11 then cus2l_s14 = pcutl2
+      when 12 then cus2l_s14 = pcutl1  
+      when 13 then cus2l_s14 = self.user.s_name13 + ' - Pass'
+      when 14..100 then cus2l_s14 = rcutl14
+    end
+
+    #cus2l_s15
+    case num_cus2r
+      when 0 then cus2l_s15 = pcutl15    
+      when 1 then cus2l_s15 = pcutl13
+      when 2 then cus2l_s15 = pcutl12
+      when 3 then cus2l_s15 = pcutl11
+      when 4 then cus2l_s15 = pcutl10
+      when 5 then cus2l_s15 = pcutl9
+      when 6 then cus2l_s15 = pcutl8
+      when 7 then cus2l_s15 = pcutl7
+      when 8 then cus2l_s15 = pcutl6
+      when 9 then cus2l_s15 = pcutl5
+      when 10 then cus2l_s15 = pcutl4
+      when 11 then cus2l_s15 = pcutl3
+      when 12 then cus2l_s15 = pcutl2
+      when 13 then cus2l_s15 = pcutl1  
+      when 14..100 then cus2l_s15 = rcutl15
+    end    
+
+
+    #Right Hash
+    # cus2r_s0 would always be blank
+
+    #cus2r_s1 
+    if num_cus2r > 0
+      cus2r_s1 = rcutr1
+    else
+      cus2r_s1 = pcutr1
+    end
+
+    #cus2r_s2
+    if num_cus2r == 0
+      cus2r_s2 = pcutr2
+    elsif num_cus2r == 1
+      cus2r_s2 = ''
+    else num_cus2r > 1
+      cus2r_s2 = rcutr2
+    end
+
+    #cus2r_s3
+    case num_cus2r
+      when 0 then cus2r_s3 = pcutr3       
+      when 1 then cus2r_s3 = pcutr1
+      when 2 then cus2r_s3 = ''
+      when 3..100 then cus2r_s3 = rcutr3
+    end
+
+    #cus2r_s4
+    case num_cus2r
+      when 0 then cus2r_s4 = pcutr4       
+      when 1 then cus2r_s4 = pcutr2
+      when 2 then cus2r_s4 = pcutr1
+      when 3 then ''
+      when 4..100 then cus2r_s4 = rcutr4
+    end
+
+    #cus2r_s5
+    case num_cus2r
+      when 0 then cus2r_s5 = pcutr5       
+      when 1 then cus2r_s5 = pcutr3
+      when 2 then cus2r_s5 = pcutr2
+      when 3 then cus2r_s5 = pcutr1
+      when 4 then cus2r_s5 = ''
+      when 5..100 then cus2r_s5 = rcutr5
+    end
+
+    #cus2r_s6
+    case num_cus2r
+      when 0 then cus2r_s6 = pcutr6      
+      when 1 then cus2r_s6 = pcutr4
+      when 2 then cus2r_s6 = pcutr3
+      when 3 then cus2r_s6 = pcutr2
+      when 4 then cus2r_s6 = pcutr1
+      when 5 then cus2r_s6 = ''
+      when 6..100 then cus2r_s6 = rcutr6
+    end
+
+    #cus2r_s7
+    case num_cus2r
+      when 0 then cus2r_s7 = pcutr7      
+      when 1 then cus2r_s7 = pcutr5
+      when 2 then cus2r_s7 = pcutr4
+      when 3 then cus2r_s7 = pcutr3
+      when 4 then cus2r_s7 = pcutr2
+      when 5 then cus2r_s7 = pcutr1
+      when 6 then cus2r_s7 = ''
+      when 7..100 then cus2r_s7 = rcutr7
+    end
+
+    #cus2r_s8
+    case num_cus2r
+      when 0 then cus2r_s8 = pcutr8      
+      when 1 then cus2r_s8 = pcutr6
+      when 2 then cus2r_s8 = pcutr5
+      when 3 then cus2r_s8 = pcutr4
+      when 4 then cus2r_s8 = pcutr3
+      when 5 then cus2r_s8 = pcutr2
+      when 6 then cus2r_s8 = pcutr1
+      when 7 then cus2r_s8 = ''
+      when 8..100 then cus2r_s8 = rcutr8
+    end
+
+    #cus2r_s9
+    case num_cus2r
+      when 0 then cus2r_s9 = pcutr9      
+      when 1 then cus2r_s9 = pcutr7
+      when 2 then cus2r_s9 = pcutr6
+      when 3 then cus2r_s9 = pcutr5
+      when 4 then cus2r_s9 = pcutr4
+      when 5 then cus2r_s9 = pcutr3
+      when 6 then cus2r_s9 = pcutr2
+      when 7 then cus2r_s9 = pcutr1
+      when 8 then cus2r_s9 = ''
+      when 9..100 then cus2r_s9 = rcutr9
+    end
+
+    #cus2r_s10
+    case num_cus2r
+      when 0 then cus2r_s10 = pcutr10     
+      when 1 then cus2r_s10 = pcutr8
+      when 2 then cus2r_s10 = pcutr7
+      when 3 then cus2r_s10 = pcutr6
+      when 4 then cus2r_s10 = pcutr5
+      when 5 then cus2r_s10 = pcutr4
+      when 6 then cus2r_s10 = pcutr3
+      when 7 then cus2r_s10 = pcutr2
+      when 8 then cus2r_s10 = pcutr1
+      when 9 then cus2r_s10 = ''
+      when 10..100 then cus2r_s10 = rcutr10
+    end
+
+    #cus2r_s11
+    case num_cus2r
+      when 0 then cus2r_s11 = pcutr11     
+      when 1 then cus2r_s11 = pcutr9
+      when 2 then cus2r_s11 = pcutr8
+      when 3 then cus2r_s11 = pcutr7
+      when 4 then cus2r_s11 = pcutr6
+      when 5 then cus2r_s11 = pcutr5
+      when 6 then cus2r_s11 = pcutr4
+      when 7 then cus2r_s11 = pcutr3
+      when 8 then cus2r_s11 = pcutr2
+      when 9 then cus2r_s11 = pcutr1
+      when 10 then cus2r_s11 = ''
+      when 11..100 then cus2r_s11 = rcutr11
+    end
+
+    #cus2r_s12
+    case num_cus2r
+      when 0 then cus2r_s12 = pcutr12    
+      when 1 then cus2r_s12 = pcutr10
+      when 2 then cus2r_s12 = pcutr9
+      when 3 then cus2r_s12 = pcutr8
+      when 4 then cus2r_s12 = pcutr7
+      when 5 then cus2r_s12 = pcutr6
+      when 6 then cus2r_s12 = pcutr5
+      when 7 then cus2r_s12 = pcutr4
+      when 8 then cus2r_s12 = pcutr3
+      when 9 then cus2r_s12 = pcutr2
+      when 10 then cus2r_s12 = pcutr1
+      when 11 then cus2r_s12 = ''
+      when 12..100 then cus2r_s12 = rcutr12
+    end
+
+    #cus2r_s13
+    case num_cus2r
+      when 0 then cus2r_s13 = pcutr13    
+      when 1 then cus2r_s13 = pcutr11
+      when 2 then cus2r_s13 = pcutr10
+      when 3 then cus2r_s13 = pcutr9
+      when 4 then cus2r_s13 = pcutr8
+      when 5 then cus2r_s13 = pcutr7
+      when 6 then cus2r_s13 = pcutr6
+      when 7 then cus2r_s13 = pcutr5
+      when 8 then cus2r_s13 = pcutr4
+      when 9 then cus2r_s13 = pcutr3
+      when 10 then cus2r_s13 = pcutr2
+      when 11 then cus2r_s13 = pcutr1
+      when 12 then cus2r_s13 = ''
+      when 13..100 then cus2r_s13 = rcutr13
+    end
+
+    #cus2r_s14
+    case num_cus2r
+      when 0 then cus2r_s14 = pcutr14    
+      when 1 then cus2r_s14 = pcutr12
+      when 2 then cus2r_s14 = pcutr11
+      when 3 then cus2r_s14 = pcutr10
+      when 4 then cus2r_s14 = pcutr9
+      when 5 then cus2r_s14 = pcutr8
+      when 6 then cus2r_s14 = pcutr7
+      when 7 then cus2r_s14 = pcutr6
+      when 8 then cus2r_s14 = pcutr5
+      when 9 then cus2r_s14 = pcutr4
+      when 10 then cus2r_s14 = pcutr3
+      when 11 then cus2r_s14 = pcutr2
+      when 12 then cus2r_s14 = pcutr1  
+      when 13 then cus2r_s14 = ''
+      when 14..100 then cus2r_s14 = rcutr14
+    end
+
+    #cus2r_s15
+    case num_cus2r
+      when 0 then cus2r_s15 = pcutr15    
+      when 1 then cus2r_s15 = pcutr13
+      when 2 then cus2r_s15 = pcutr12
+      when 3 then cus2r_s15 = pcutr11
+      when 4 then cus2r_s15 = pcutr10
+      when 5 then cus2r_s15 = pcutr9
+      when 6 then cus2r_s15 = pcutr8
+      when 7 then cus2r_s15 = pcutr7
+      when 8 then cus2r_s15 = pcutr6
+      when 9 then cus2r_s15 = pcutr5
+      when 10 then cus2r_s15 = pcutr4
+      when 11 then cus2r_s15 = pcutr3
+      when 12 then cus2r_s15 = pcutr2
+      when 13 then cus2r_s15 = pcutr1  
+      when 14..100 then cus2r_s15 = rcutr15
+    end       
     #----------End Custom 2---------- 
 
     #----------Custom 3----------
@@ -1294,6 +6410,30 @@ class Gamecall < ActiveRecord::Base
     unless runCustomThreesLeft[6].nil?  
       rcuthl7 = runCustomThreesLeft[6].fullname
     end    
+    unless runCustomThreesLeft[7].nil?  
+      rcuthl8 = runCustomThreesLeft[7].fullname 
+    end
+    unless runCustomThreesLeft[8].nil?  
+      rcuthl9 = runCustomThreesLeft[8].fullname 
+    end
+    unless runCustomThreesLeft[9].nil?  
+      rcuthl10 = runCustomThreesLeft[9].fullname 
+    end
+    unless runCustomThreesLeft[10].nil?  
+      rcuthl11 = runCustomThreesLeft[10].fullname 
+    end
+    unless runCustomThreesLeft[11].nil?  
+      rcuthl12 = runCustomThreesLeft[11].fullname
+    end
+    unless runCustomThreesLeft[12].nil?  
+      rcuthl13 = runCustomThreesLeft[12].fullname 
+    end
+    unless runCustomThreesLeft[13].nil?  
+      rcuthl14 = runCustomThreesLeft[13].fullname
+    end   
+    unless runCustomThreesLeft[14].nil?  
+      rcuthl15 = runCustomThreesLeft[14].fullname
+    end 
 
     #Run Right Hash
     unless runCustomThreesRight[0].nil?  
@@ -1317,6 +6457,30 @@ class Gamecall < ActiveRecord::Base
     unless runCustomThreesRight[6].nil?  
       rcuthr7 = runCustomThreesRight[6].fullname
     end    
+    unless runCustomThreesRight[7].nil?  
+      rcuthr8 = runCustomThreesRight[7].fullname 
+    end
+    unless runCustomThreesRight[8].nil?  
+      rcuthr9 = runCustomThreesRight[8].fullname 
+    end
+    unless runCustomThreesRight[9].nil?  
+      rcuthr10 = runCustomThreesRight[9].fullname 
+    end
+    unless runCustomThreesRight[10].nil?  
+      rcuthr11 = runCustomThreesRight[10].fullname 
+    end
+    unless runCustomThreesRight[11].nil?  
+      rcuthr12 = runCustomThreesRight[11].fullname
+    end
+    unless runCustomThreesRight[12].nil?  
+      rcuthr13 = runCustomThreesRight[12].fullname 
+    end
+    unless runCustomThreesRight[13].nil?  
+      rcuthr14 = runCustomThreesRight[13].fullname
+    end 
+    unless runCustomThreesRight[14].nil?  
+      rcuthr15 = runCustomThreesRight[14].fullname
+    end 
 
     #Pass Left Hash
     unless passCustomThreesLeft[0].nil?  
@@ -1340,6 +6504,30 @@ class Gamecall < ActiveRecord::Base
     unless passCustomThreesLeft[6].nil?  
       pcuthl7 = passCustomThreesLeft[6].fullname 
     end       
+    unless passCustomThreesLeft[7].nil?  
+      pcuthl8 = passCustomThreesLeft[7].fullname 
+    end
+    unless passCustomThreesLeft[8].nil?  
+      pcuthl9 = passCustomThreesLeft[8].fullname 
+    end
+    unless passCustomThreesLeft[9].nil?  
+      pcuthl10 = passCustomThreesLeft[9].fullname 
+    end
+    unless passCustomThreesLeft[10].nil?  
+      pcuthl11 = passCustomThreesLeft[10].fullname 
+    end
+    unless passCustomThreesLeft[11].nil?  
+      pcuthl12 = passCustomThreesLeft[11].fullname 
+    end
+    unless passCustomThreesLeft[12].nil?  
+      pcuthl13 = passCustomThreesLeft[12].fullname 
+    end 
+    unless passCustomThreesLeft[13].nil?  
+      pcuthl14 = passCustomThreesLeft[13].fullname 
+    end
+    unless passCustomThreesLeft[14].nil?  
+      pcuthl15 = passCustomThreesLeft[14].fullname 
+    end
 
     #Pass Right Hash
     unless passCustomThreesRight[0].nil?  
@@ -1362,116 +6550,549 @@ class Gamecall < ActiveRecord::Base
     end
     unless passCustomThreesRight[6].nil?  
       pcuthr7 = passCustomThreesRight[6].fullname 
-    end        
+    end    
+    unless passCustomThreesRight[7].nil?  
+      pcuthr8 = passCustomThreesRight[7].fullname 
+    end
+    unless passCustomThreesRight[8].nil?  
+      pcuthr9 = passCustomThreesRight[8].fullname 
+    end
+    unless passCustomThreesRight[9].nil?  
+      pcuthr10 = passCustomThreesRight[9].fullname 
+    end
+    unless passCustomThreesRight[10].nil?  
+      pcuthr11 = passCustomThreesRight[10].fullname 
+    end
+    unless passCustomThreesRight[11].nil?  
+      pcuthr12 = passCustomThreesRight[11].fullname 
+    end
+    unless passCustomThreesRight[12].nil?  
+      pcuthr13 = passCustomThreesRight[12].fullname 
+    end
+    unless passCustomThreesRight[13].nil?  
+      pcuthr14 = passCustomThreesRight[13].fullname 
+    end    
+    unless passCustomThreesRight[14].nil?  
+      pcuthr15 = passCustomThreesRight[14].fullname 
+    end    
+
+    #Number of user's run plays in situation 14
+    num_cus3r = self.user.s_name14_num_run
+
+    #Left Hash
+    # cus3l_s0 
+    if num_cus3r > 0
+      cus3l_s0 = self.user.s_name14 + ' - Run'
+    else
+      cus3l_s0 = self.user.s_name14 + ' - Pass'
+    end
+
+    #cus3l_s1 
+    if num_cus3r > 0
+      cus3l_s1 = rcuthl1
+    else
+      cus3l_s1 = pcuthl1
+    end
+
+    #cus3l_s2
+    if num_cus3r == 0
+      cus3l_s2 = pcuthl2
+    elsif num_cus3r == 1
+      cus3l_s2 = self.user.s_name14 + ' - Pass'
+    else num_cus3r > 1
+      cus3l_s2 = rcuthl2
+    end
+
+    #cus3l_s3
+    case num_cus3r
+      when 0 then cus3l_s3 = pcuthl3       
+      when 1 then cus3l_s3 = pcuthl1
+      when 2 then cus3l_s3 = self.user.s_name14 + ' - Pass'
+      when 3..100 then cus3l_s3 = rcuthl3
+    end
+
+    #cus3l_s4
+    case num_cus3r
+      when 0 then cus3l_s4 = pcuthl4       
+      when 1 then cus3l_s4 = pcuthl2
+      when 2 then cus3l_s4 = pcuthl1
+      when 3 then cus3l_s4 = self.user.s_name14 + ' - Pass'
+      when 4..100 then cus3l_s4 = rcuthl4
+    end
+
+    #cus3l_s5
+    case num_cus3r
+      when 0 then cus3l_s5 = pcuthl5       
+      when 1 then cus3l_s5 = pcuthl3
+      when 2 then cus3l_s5 = pcuthl2
+      when 3 then cus3l_s5 = pcuthl1
+      when 4 then cus3l_s5 = self.user.s_name14 + ' - Pass'
+      when 5..100 then cus3l_s5 = rcuthl5
+    end
+
+    #cus3l_s6
+    case num_cus3r
+      when 0 then cus3l_s6 = pcuthl6      
+      when 1 then cus3l_s6 = pcuthl4
+      when 2 then cus3l_s6 = pcuthl3
+      when 3 then cus3l_s6 = pcuthl2
+      when 4 then cus3l_s6 = pcuthl1
+      when 5 then cus3l_s6 = self.user.s_name14 + ' - Pass'
+      when 6..100 then cus3l_s6 = rcuthl6
+    end
+
+    #cus3l_s7
+    case num_cus3r
+      when 0 then cus3l_s7 = pcuthl7      
+      when 1 then cus3l_s7 = pcuthl5
+      when 2 then cus3l_s7 = pcuthl4
+      when 3 then cus3l_s7 = pcuthl3
+      when 4 then cus3l_s7 = pcuthl2
+      when 5 then cus3l_s7 = pcuthl1
+      when 6 then cus3l_s7 = self.user.s_name14 + ' - Pass'
+      when 7..100 then cus3l_s7 = rcuthl7
+    end
+
+    #cus3l_s8
+    case num_cus3r
+      when 0 then cus3l_s8 = pcuthl8      
+      when 1 then cus3l_s8 = pcuthl6
+      when 2 then cus3l_s8 = pcuthl5
+      when 3 then cus3l_s8 = pcuthl4
+      when 4 then cus3l_s8 = pcuthl3
+      when 5 then cus3l_s8 = pcuthl2
+      when 6 then cus3l_s8 = pcuthl1
+      when 7 then cus3l_s8 = self.user.s_name14 + ' - Pass'
+      when 8..100 then cus3l_s8 = rcuthl8
+    end
+
+    #cus3l_s9
+    case num_cus3r
+      when 0 then cus3l_s9 = pcuthl9      
+      when 1 then cus3l_s9 = pcuthl7
+      when 2 then cus3l_s9 = pcuthl6
+      when 3 then cus3l_s9 = pcuthl5
+      when 4 then cus3l_s9 = pcuthl4
+      when 5 then cus3l_s9 = pcuthl3
+      when 6 then cus3l_s9 = pcuthl2
+      when 7 then cus3l_s9 = pcuthl1
+      when 8 then cus3l_s9 = self.user.s_name14 + ' - Pass'
+      when 9..100 then cus3l_s9 = rcuthl9
+    end
+
+    #cus3l_s10
+    case num_cus3r
+      when 0 then cus3l_s10 = pcuthl10     
+      when 1 then cus3l_s10 = pcuthl8
+      when 2 then cus3l_s10 = pcuthl7
+      when 3 then cus3l_s10 = pcuthl6
+      when 4 then cus3l_s10 = pcuthl5
+      when 5 then cus3l_s10 = pcuthl4
+      when 6 then cus3l_s10 = pcuthl3
+      when 7 then cus3l_s10 = pcuthl2
+      when 8 then cus3l_s10 = pcuthl1
+      when 9 then cus3l_s10 = self.user.s_name14 + ' - Pass'
+      when 10..100 then cus3l_s10 = rcuthl10
+    end
+
+    #cus3l_s11
+    case num_cus3r
+      when 0 then cus3l_s11 = pcuthl11     
+      when 1 then cus3l_s11 = pcuthl9
+      when 2 then cus3l_s11 = pcuthl8
+      when 3 then cus3l_s11 = pcuthl7
+      when 4 then cus3l_s11 = pcuthl6
+      when 5 then cus3l_s11 = pcuthl5
+      when 6 then cus3l_s11 = pcuthl4
+      when 7 then cus3l_s11 = pcuthl3
+      when 8 then cus3l_s11 = pcuthl2
+      when 9 then cus3l_s11 = pcuthl1
+      when 10 then cus3l_s11 = self.user.s_name14 + ' - Pass'
+      when 11..100 then cus3l_s11 = rcuthl11
+    end
+
+    #cus3l_s12
+    case num_cus3r
+      when 0 then cus3l_s12 = pcuthl12    
+      when 1 then cus3l_s12 = pcuthl10
+      when 2 then cus3l_s12 = pcuthl9
+      when 3 then cus3l_s12 = pcuthl8
+      when 4 then cus3l_s12 = pcuthl7
+      when 5 then cus3l_s12 = pcuthl6
+      when 6 then cus3l_s12 = pcuthl5
+      when 7 then cus3l_s12 = pcuthl4
+      when 8 then cus3l_s12 = pcuthl3
+      when 9 then cus3l_s12 = pcuthl2
+      when 10 then cus3l_s12 = pcuthl1
+      when 11 then cus3l_s12 = self.user.s_name14 + ' - Pass'
+      when 12..100 then cus3l_s12 = rcuthl12
+    end
+
+    #cus3l_s13
+    case num_cus3r
+      when 0 then cus3l_s13 = pcuthl13    
+      when 1 then cus3l_s13 = pcuthl11
+      when 2 then cus3l_s13 = pcuthl10
+      when 3 then cus3l_s13 = pcuthl9
+      when 4 then cus3l_s13 = pcuthl8
+      when 5 then cus3l_s13 = pcuthl7
+      when 6 then cus3l_s13 = pcuthl6
+      when 7 then cus3l_s13 = pcuthl5
+      when 8 then cus3l_s13 = pcuthl4
+      when 9 then cus3l_s13 = pcuthl3
+      when 10 then cus3l_s13 = pcuthl2
+      when 11 then cus3l_s13 = pcuthl1
+      when 12 then cus3l_s13 = self.user.s_name14 + ' - Pass'
+      when 13..100 then cus3l_s13 = rcuthl13
+    end
+
+    #cus3l_s14
+    case num_cus3r
+      when 0 then cus3l_s14 = pcuthl14    
+      when 1 then cus3l_s14 = pcuthl12
+      when 2 then cus3l_s14 = pcuthl11
+      when 3 then cus3l_s14 = pcuthl10
+      when 4 then cus3l_s14 = pcuthl9
+      when 5 then cus3l_s14 = pcuthl8
+      when 6 then cus3l_s14 = pcuthl7
+      when 7 then cus3l_s14 = pcuthl6
+      when 8 then cus3l_s14 = pcuthl5
+      when 9 then cus3l_s14 = pcuthl4
+      when 10 then cus3l_s14 = pcuthl3
+      when 11 then cus3l_s14 = pcuthl2
+      when 12 then cus3l_s14 = pcuthl1  
+      when 13 then cus3l_s14 = self.user.s_name14 + ' - Pass'
+      when 14..100 then cus3l_s14 = rcuthl14
+    end
+
+    #cus3l_s15
+    case num_cus3r
+      when 0 then cus3l_s15 = pcuthl15    
+      when 1 then cus3l_s15 = pcuthl13
+      when 2 then cus3l_s15 = pcuthl12
+      when 3 then cus3l_s15 = pcuthl11
+      when 4 then cus3l_s15 = pcuthl10
+      when 5 then cus3l_s15 = pcuthl9
+      when 6 then cus3l_s15 = pcuthl8
+      when 7 then cus3l_s15 = pcuthl7
+      when 8 then cus3l_s15 = pcuthl6
+      when 9 then cus3l_s15 = pcuthl5
+      when 10 then cus3l_s15 = pcuthl4
+      when 11 then cus3l_s15 = pcuthl3
+      when 12 then cus3l_s15 = pcuthl2
+      when 13 then cus3l_s15 = pcuthl1  
+      when 14..100 then cus3l_s15 = rcuthl15
+    end    
+
+
+    #Right Hash
+    #cus3r_s0 would always be blank
+
+    #cus3r_s1 
+    if num_cus3r > 0
+      cus3r_s1 = rcuthr1
+    else
+      cus3r_s1 = pcuthr1
+    end
+
+    #cus3r_s2
+    if num_cus3r == 0
+      cus3r_s2 = pcuthr2
+    elsif num_cus3r == 1
+      cus3r_s2 = ''
+    else num_cus3r > 1
+      cus3r_s2 = rcuthr2
+    end
+
+    #cus3r_s3
+    case num_cus3r
+      when 0 then cus3r_s3 = pcuthr3       
+      when 1 then cus3r_s3 = pcuthr1
+      when 2 then cus3r_s3 = ''
+      when 3..100 then cus3r_s3 = rcuthr3
+    end
+
+    #cus3r_s4
+    case num_cus3r
+      when 0 then cus3r_s4 = pcuthr4       
+      when 1 then cus3r_s4 = pcuthr2
+      when 2 then cus3r_s4 = pcuthr1
+      when 3 then ''
+      when 4..100 then cus3r_s4 = rcuthr4
+    end
+
+    #cus3r_s5
+    case num_cus3r
+      when 0 then cus3r_s5 = pcuthr5       
+      when 1 then cus3r_s5 = pcuthr3
+      when 2 then cus3r_s5 = pcuthr2
+      when 3 then cus3r_s5 = pcuthr1
+      when 4 then cus3r_s5 = ''
+      when 5..100 then cus3r_s5 = rcuthr5
+    end
+
+    #cus3r_s6
+    case num_cus3r
+      when 0 then cus3r_s6 = pcuthr6      
+      when 1 then cus3r_s6 = pcuthr4
+      when 2 then cus3r_s6 = pcuthr3
+      when 3 then cus3r_s6 = pcuthr2
+      when 4 then cus3r_s6 = pcuthr1
+      when 5 then cus3r_s6 = ''
+      when 6..100 then cus3r_s6 = rcuthr6
+    end
+
+    #cus3r_s7
+    case num_cus3r
+      when 0 then cus3r_s7 = pcuthr7      
+      when 1 then cus3r_s7 = pcuthr5
+      when 2 then cus3r_s7 = pcuthr4
+      when 3 then cus3r_s7 = pcuthr3
+      when 4 then cus3r_s7 = pcuthr2
+      when 5 then cus3r_s7 = pcuthr1
+      when 6 then cus3r_s7 = ''
+      when 7..100 then cus3r_s7 = rcuthr7
+    end
+
+    #cus3r_s8
+    case num_cus3r
+      when 0 then cus3r_s8 = pcuthr8      
+      when 1 then cus3r_s8 = pcuthr6
+      when 2 then cus3r_s8 = pcuthr5
+      when 3 then cus3r_s8 = pcuthr4
+      when 4 then cus3r_s8 = pcuthr3
+      when 5 then cus3r_s8 = pcuthr2
+      when 6 then cus3r_s8 = pcuthr1
+      when 7 then cus3r_s8 = ''
+      when 8..100 then cus3r_s8 = rcuthr8
+    end
+
+    #cus3r_s9
+    case num_cus3r
+      when 0 then cus3r_s9 = pcuthr9      
+      when 1 then cus3r_s9 = pcuthr7
+      when 2 then cus3r_s9 = pcuthr6
+      when 3 then cus3r_s9 = pcuthr5
+      when 4 then cus3r_s9 = pcuthr4
+      when 5 then cus3r_s9 = pcuthr3
+      when 6 then cus3r_s9 = pcuthr2
+      when 7 then cus3r_s9 = pcuthr1
+      when 8 then cus3r_s9 = ''
+      when 9..100 then cus3r_s9 = rcuthr9
+    end
+
+    #cus3r_s10
+    case num_cus3r
+      when 0 then cus3r_s10 = pcuthr10     
+      when 1 then cus3r_s10 = pcuthr8
+      when 2 then cus3r_s10 = pcuthr7
+      when 3 then cus3r_s10 = pcuthr6
+      when 4 then cus3r_s10 = pcuthr5
+      when 5 then cus3r_s10 = pcuthr4
+      when 6 then cus3r_s10 = pcuthr3
+      when 7 then cus3r_s10 = pcuthr2
+      when 8 then cus3r_s10 = pcuthr1
+      when 9 then cus3r_s10 = ''
+      when 10..100 then cus3r_s10 = rcuthr10
+    end
+
+    #cus3r_s11
+    case num_cus3r
+      when 0 then cus3r_s11 = pcuthr11     
+      when 1 then cus3r_s11 = pcuthr9
+      when 2 then cus3r_s11 = pcuthr8
+      when 3 then cus3r_s11 = pcuthr7
+      when 4 then cus3r_s11 = pcuthr6
+      when 5 then cus3r_s11 = pcuthr5
+      when 6 then cus3r_s11 = pcuthr4
+      when 7 then cus3r_s11 = pcuthr3
+      when 8 then cus3r_s11 = pcuthr2
+      when 9 then cus3r_s11 = pcuthr1
+      when 10 then cus3r_s11 = ''
+      when 11..100 then cus3r_s11 = rcuthr11
+    end
+
+    #cus3r_s12
+    case num_cus3r
+      when 0 then cus3r_s12 = pcuthr12    
+      when 1 then cus3r_s12 = pcuthr10
+      when 2 then cus3r_s12 = pcuthr9
+      when 3 then cus3r_s12 = pcuthr8
+      when 4 then cus3r_s12 = pcuthr7
+      when 5 then cus3r_s12 = pcuthr6
+      when 6 then cus3r_s12 = pcuthr5
+      when 7 then cus3r_s12 = pcuthr4
+      when 8 then cus3r_s12 = pcuthr3
+      when 9 then cus3r_s12 = pcuthr2
+      when 10 then cus3r_s12 = pcuthr1
+      when 11 then cus3r_s12 = ''
+      when 12..100 then cus3r_s12 = rcuthr12
+    end
+
+    #cus3r_s13
+    case num_cus3r
+      when 0 then cus3r_s13 = pcuthr13    
+      when 1 then cus3r_s13 = pcuthr11
+      when 2 then cus3r_s13 = pcuthr10
+      when 3 then cus3r_s13 = pcuthr9
+      when 4 then cus3r_s13 = pcuthr8
+      when 5 then cus3r_s13 = pcuthr7
+      when 6 then cus3r_s13 = pcuthr6
+      when 7 then cus3r_s13 = pcuthr5
+      when 8 then cus3r_s13 = pcuthr4
+      when 9 then cus3r_s13 = pcuthr3
+      when 10 then cus3r_s13 = pcuthr2
+      when 11 then cus3r_s13 = pcuthr1
+      when 12 then cus3r_s13 = ''
+      when 13..100 then cus3r_s13 = rcuthr13
+    end
+
+    #cus3r_s14
+    case num_cus3r
+      when 0 then cus3r_s14 = pcuthr14    
+      when 1 then cus3r_s14 = pcuthr12
+      when 2 then cus3r_s14 = pcuthr11
+      when 3 then cus3r_s14 = pcuthr10
+      when 4 then cus3r_s14 = pcuthr9
+      when 5 then cus3r_s14 = pcuthr8
+      when 6 then cus3r_s14 = pcuthr7
+      when 7 then cus3r_s14 = pcuthr6
+      when 8 then cus3r_s14 = pcuthr5
+      when 9 then cus3r_s14 = pcuthr4
+      when 10 then cus3r_s14 = pcuthr3
+      when 11 then cus3r_s14 = pcuthr2
+      when 12 then cus3r_s14 = pcuthr1  
+      when 13 then cus3r_s14 = ''
+      when 14..100 then cus3r_s14 = rcuthr14
+    end
+
+    #cus3r_s15
+    case num_cus3r
+      when 0 then cus3r_s15 = pcuthr15    
+      when 1 then cus3r_s15 = pcuthr13
+      when 2 then cus3r_s15 = pcuthr12
+      when 3 then cus3r_s15 = pcuthr11
+      when 4 then cus3r_s15 = pcuthr10
+      when 5 then cus3r_s15 = pcuthr9
+      when 6 then cus3r_s15 = pcuthr8
+      when 7 then cus3r_s15 = pcuthr7
+      when 8 then cus3r_s15 = pcuthr6
+      when 9 then cus3r_s15 = pcuthr5
+      when 10 then cus3r_s15 = pcuthr4
+      when 11 then cus3r_s15 = pcuthr3
+      when 12 then cus3r_s15 = pcuthr2
+      when 13 then cus3r_s15 = pcuthr1  
+      when 14..100 then cus3r_s15 = rcuthr15
+    end       
     #----------End Custom 3----------                 
 
     self.update :gdata => "[
     ['#{title}', '', '', ''],
-    ['#{self.user.s_name1}', '', '#{self.user.s_name2} - Run', ''],
-    ['#{openl1}', '#{openr1}', '#{rftl1}', '#{rftr1}'],
-    ['#{openl2}', '#{openr2}', '#{rftl2}', '#{rftr2}'],
-    ['#{openl3}', '#{openr3}', '#{rftl3}', '#{rftr3}'],
-    ['#{openl4}', '#{openr4}', '#{rftl4}', '#{rftr4}'],
-    ['#{openl5}', '#{openr5}', '#{rftl5}', '#{rftr5}'],
-    ['#{openl6}', '#{openr6}', '#{rftl6}', '#{rftr6}'],
-    ['#{openl7}', '#{openr7}', '#{rftl7}', '#{rftr7}'],    
-    ['#{openl8}', '#{openr8}', '#{self.user.s_name2} - Pass', ''],
-    ['#{openl9}', '#{openr9}', '#{pftl1}', '#{pftr1}'],
-    ['#{openl10}', '#{openr10}', '#{pftl2}', '#{pftr2}'],
-    ['#{openl11}', '#{openr11}', '#{pftl3}', '#{pftr3}'],
-    ['#{openl12}', '#{openr12}', '#{pftl4}', '#{pftr4}'],
-    ['#{openl13}', '#{openr13}', '#{pftl5}', '#{pftr5}'],
-    ['#{openl14}', '#{openr14}', '#{pftl6}', '#{pftr6}'],
-    ['#{openl15}', '#{openr15}', '#{pftl7}', '#{pftr7}'],
-    ['#{self.user.s_name3} - Run', '', '#{self.user.s_name6} - Run', ''],
-    ['#{rsll1}', '#{rslr1}', '#{rtll1}', '#{rtlr1}'],
-    ['#{rsll2}', '#{rslr2}', '#{rtll2}', '#{rtlr2}'],
-    ['#{rsll3}', '#{rslr3}', '#{rtll3}', '#{rtlr3}'],
-    ['#{rsll4}', '#{rslr4}', '#{self.user.s_name6} - Pass', ''],
-    ['#{rsll5}', '#{rslr5}', '#{ptll1}', '#{ptlr1}'],
-    ['#{self.user.s_name3} - Pass', '', '#{ptll2}', '#{ptlr2}'],
-    ['#{psll1}', '#{pslr1}', '#{ptll3}', '#{ptlr3}'],
-    ['#{psll2}', '#{pslr2}', '#{ptll4}', '#{ptlr4}'],
-    ['#{psll3}', '#{pslr3}', '#{ptll5}', '#{ptlr5}'],
-    ['#{psll4}', '#{pslr4}', '#{ptll6}', '#{ptlr6}'],
-    ['#{psll5}', '#{pslr5}', '#{ptll7}', '#{ptlr7}'],
-    ['#{psll6}', '#{pslr6}', '#{ptll8}', '#{ptlr8}'],
-    ['#{self.user.s_name4} - Run', '', '#{self.user.s_name7} - Run', ''],
-    ['#{rsml1}', '#{rsmr1}', '#{rtml1}', '#{rtmr1}'],
-    ['#{rsml2}', '#{rsmr2}', '#{rtml2}', '#{rtmr2}'],
-    ['#{rsml3}', '#{rsmr3}', '#{rtml3}', '#{rtmr3}'],
-    ['#{rsml4}', '#{rsmr4}', '#{rtml4}', '#{rtmr4}'],
-    ['#{rsml5}', '#{rsmr5}', '#{rtml5}', '#{rtmr5}'],
-    ['#{self.user.s_name4} - Pass', '', '#{self.user.s_name7} - Pass', ''],
-    ['#{psml1}', '#{psmr1}', '#{ptml1}', '#{ptmr1}'],
-    ['#{psml2}', '#{psmr2}', '#{ptml2}', '#{ptmr2}'],
-    ['#{psml3}', '#{psmr3}', '#{ptml3}', '#{ptmr3}'],
-    ['#{psml4}', '#{psmr4}', '#{ptml4}', '#{ptmr4}'],
-    ['#{psml5}', '#{psmr5}', '#{ptml5}', '#{ptmr5}'],
-    ['#{self.user.s_name5} - Run', '', '#{self.user.s_name8} - Run', ''],
-    ['#{rssl1}', '#{rssr1}', '#{rtsl1}', '#{rtsr1}'],
-    ['#{rssl2}', '#{rssr2}', '#{rtsl2}', '#{rtsr2}'],
-    ['#{rssl3}', '#{rssr3}', '#{rtsl3}', '#{rtsr3}'],
-    ['#{rssl4}', '#{rssr4}', '#{rtsl4}', '#{rtsr4}'],
-    ['#{rssl5}', '#{rssr5}', '#{rtsl5}', '#{rtsr5}'],
-    ['#{self.user.s_name5} - Pass', '', '#{rtsl6}', '#{rtsr6}'],
-    ['#{pssl1}', '#{pssr1}', '#{rtsl7}', '#{rtsr7}'],
-    ['#{pssl2}', '#{pssr2}', '#{self.user.s_name8} - Pass', ''],
-    ['#{pssl3}', '#{pssr3}', '#{ptsl1}', '#{ptsr1}'],
-    ['#{pssl4}', '#{pssr4}', '#{ptsl2}', '#{ptsr2}'],
-    ['#{pssl5}', '#{pssr5}', '#{ptsl3}', '#{ptsr3}']
+    ['#{self.user.s_name1}', '', '#{ftl_s0}', ''],
+    ['#{openl1}', '#{openr1}', '#{ftl_s1}', '#{ftr_s1}'],
+    ['#{openl2}', '#{openr2}', '#{ftl_s2}', '#{ftr_s2}'],
+    ['#{openl3}', '#{openr3}', '#{ftl_s3}', '#{ftr_s3}'],
+    ['#{openl4}', '#{openr4}', '#{ftl_s4}', '#{ftr_s4}'],
+    ['#{openl5}', '#{openr5}', '#{ftl_s5}', '#{ftr_s5}'],
+    ['#{openl6}', '#{openr6}', '#{ftl_s6}', '#{ftr_s6}'],
+    ['#{openl7}', '#{openr7}', '#{ftl_s7}', '#{ftr_s7}'],    
+    ['#{openl8}', '#{openr8}', '#{ftl_s8}', '#{ftr_s8}'],
+    ['#{openl9}', '#{openr9}', '#{ftl_s9}', '#{ftr_s9}'],
+    ['#{openl10}', '#{openr10}', '#{ftl_s10}', '#{ftr_s10}'],
+    ['#{openl11}', '#{openr11}', '#{ftl_s11}', '#{ftr_s11}'],
+    ['#{openl12}', '#{openr12}', '#{ftl_s12}', '#{ftr_s12}'],
+    ['#{openl13}', '#{openr13}', '#{ftl_s13}', '#{ftr_s13}'],
+    ['#{openl14}', '#{openr14}', '#{ftl_s14}', '#{ftr_s14}'],
+    ['#{openl15}', '#{openr15}', '#{ftl_s15}', '#{ftr_s15}'],
+    ['#{sll_s0}', '', '#{tll_s0}', ''],
+    ['#{sll_s1}', '#{slr_s1}', '#{tll_s1}', '#{tlr_s1}'],
+    ['#{sll_s2}', '#{slr_s2}', '#{tll_s2}', '#{tlr_s2}'],
+    ['#{sll_s3}', '#{slr_s3}', '#{tll_s3}', '#{tlr_s3}'],
+    ['#{sll_s4}', '#{slr_s4}', '#{tll_s4}', '#{tlr_s4}'],
+    ['#{sll_s5}', '#{slr_s5}', '#{tll_s5}', '#{tlr_s5}'],
+    ['#{sll_s6}', '#{slr_s6}', '#{tll_s6}', '#{tlr_s6}'],
+    ['#{sll_s7}', '#{slr_s7}', '#{tll_s7}', '#{tlr_s7}'],
+    ['#{sll_s8}', '#{slr_s8}', '#{tll_s8}', '#{tlr_s8}'],
+    ['#{sll_s9}', '#{slr_s9}', '#{tll_s9}', '#{tlr_s9}'],
+    ['#{sll_s10}', '#{slr_s10}', '#{tll_s10}', '#{tlr_s10}'],
+    ['#{sll_s11}', '#{slr_s11}', '#{tll_s11}', '#{tlr_s11}'],
+    ['#{sll_s12}', '#{slr_s12}', '#{tll_s12}', '#{tlr_s12}'],
+    ['#{secondmdl_s0}', '', '#{thirdmdl_s0 }', ''],
+    ['#{secondmdl_s1}', '#{secondmdr_s1}', '#{thirdmdl_s1 }', '#{thirdmdr_s1}'],
+    ['#{secondmdl_s2}', '#{secondmdr_s2}', '#{thirdmdl_s2}', '#{thirdmdr_s2}'],
+    ['#{secondmdl_s3}', '#{secondmdr_s3}', '#{thirdmdl_s3}', '#{thirdmdr_s3}'],
+    ['#{secondmdl_s4}', '#{secondmdr_s4}', '#{thirdmdl_s4}', '#{thirdmdr_s4}'],
+    ['#{secondmdl_s5}', '#{secondmdr_s5}', '#{thirdmdl_s5}', '#{thirdmdr_s5}'],
+    ['#{secondmdl_s6}', '#{secondmdr_s6}', '#{thirdmdl_s6}', '#{thirdmdr_s6}'],
+    ['#{secondmdl_s7}', '#{secondmdr_s7}', '#{thirdmdl_s7}', '#{thirdmdr_s7}'],
+    ['#{secondmdl_s8}', '#{secondmdr_s8}', '#{thirdmdl_s8}', '#{thirdmdr_s8}'],
+    ['#{secondmdl_s9}', '#{secondmdr_s9}', '#{thirdmdl_s9}', '#{thirdmdr_s9}'],
+    ['#{secondmdl_s10}', '#{secondmdr_s10}', '#{thirdmdl_s10}', '#{thirdmdr_s10}'],
+    ['#{secondmdl_s11}', '#{secondmdr_s11}', '#{thirdmdl_s11}', '#{thirdmdr_s11}'],
+    ['#{secondstl_s0}', '', '#{thirdstl_s0}', ''],
+    ['#{secondstl_s1}', '#{secondstr_s1}', '#{thirdstl_s1}', '#{thirdstr_s1}'],
+    ['#{secondstl_s2}', '#{secondstr_s2}', '#{thirdstl_s2}', '#{thirdstr_s2}'],
+    ['#{secondstl_s3}', '#{secondstr_s3}', '#{thirdstl_s3}', '#{thirdstr_s3}'],
+    ['#{secondstl_s4}', '#{secondstr_s4}', '#{thirdstl_s4}', '#{thirdstr_s4}'],
+    ['#{secondstl_s5}', '#{secondstr_s5}', '#{thirdstl_s5}', '#{thirdstr_s5}'],
+    ['#{secondstl_s6}', '#{secondstr_s6}', '#{thirdstl_s6}', '#{thirdstr_s6}'],
+    ['#{secondstl_s7}', '#{secondstr_s7}', '#{thirdstl_s7}', '#{thirdstr_s7}'],
+    ['#{secondstl_s8}', '#{secondstr_s8}', '#{thirdstl_s8}', '#{thirdstr_s8}'],
+    ['#{secondstl_s9}', '#{secondstr_s9}', '#{thirdstl_s9}', '#{thirdstr_s9}'],
+    ['#{secondstl_s10}', '#{secondstr_s10}', '#{thirdstl_s10}', '#{thirdstr_s10}'],
+    ['#{secondstl_s11}', '#{secondstr_s11}', '#{thirdstl_s11}', '#{thirdstr_s11}']
     ]"
 
     self.update :gdata2 => "[ 
     ['Page Two', '', '', ''],
-    ['#{self.user.s_name9} - Run', '', '#{self.user.s_name10} - Run', ''],
-    ['#{rrzl1}', '#{rrzr1}', '#{rgll1}', '#{rglr1}'],
-    ['#{rrzl2}', '#{rrzr2}', '#{rgll2}', '#{rglr2}'],
-    ['#{rrzl3}', '#{rrzr3}', '#{rgll3}', '#{rglr3}'],
-    ['#{rrzl4}', '#{rrzr4}', '#{rgll4}', '#{rglr4}'],
-    ['#{rrzl5}', '#{rrzr5}', '#{rgll5}', '#{rglr5}'],
-    ['#{rrzl6}', '#{rrzr6}', '#{rgll6}', '#{rglr6}'],
-    ['#{rrzl7}', '#{rrzr7}', '#{rgll7}', '#{rglr7}'],
-    ['#{self.user.s_name9} - Pass', '', '#{self.user.s_name10} - Pass', ''],
-    ['#{przl1}', '#{przr1}', '#{pgll1}', '#{pglr1}'],
-    ['#{przl2}', '#{przr2}', '#{pgll2}', '#{pglr2}'],
-    ['#{przl3}', '#{przr3}', '#{pgll3}', '#{pglr3}'],
-    ['#{przl4}', '#{przr4}', '#{pgll4}', '#{pglr4}'],
-    ['#{przl5}', '#{przr5}', '#{pgll5}', '#{pglr5}'],
-    ['#{przl6}', '#{przr6}', '#{pgll6}', '#{pglr6}'],
-    ['#{przl7}', '#{przr7}', '#{pgll7}', '#{pglr7}'],
-    ['#{self.user.s_name11} - Run', '', '#{self.user.s_name12} - Run', ''],
-    ['#{rcol1}', '#{rcor1}', '#{rcuol1}', '#{rcuor1}'],
-    ['#{rcol2}', '#{rcor2}', '#{rcuol2}', '#{rcuor2}'],
-    ['#{rcol3}', '#{rcor3}', '#{rcuol3}', '#{rcuor3}'],
-    ['#{rcol4}', '#{rcor4}', '#{rcuol4}', '#{rcuor4}'],
-    ['#{rcol5}', '#{rcor5}', '#{rcuol5}', '#{rcuor5}'],
-    ['#{rcol6}', '#{rcor6}', '#{rcuol6}', '#{rcuor6}'],
-    ['#{rcol7}', '#{rcor7}', '#{rcuol7}', '#{rcuor7}'],
-    ['#{self.user.s_name11} - Pass', '', '#{self.user.s_name12} - Pass', ''],
-    ['#{pcol1}', '#{pcor1}', '#{pcuol1}', '#{pcuor1}'],
-    ['#{pcol2}', '#{pcor2}', '#{pcuol2}', '#{pcuor2}'],
-    ['#{pcol3}', '#{pcor3}', '#{pcuol3}', '#{pcuor3}'],
-    ['#{pcol4}', '#{pcor4}', '#{pcuol4}', '#{pcuor4}'],
-    ['#{pcol5}', '#{pcor5}', '#{pcuol5}', '#{pcuor5}'],
-    ['#{pcol6}', '#{pcor6}', '#{pcuol6}', '#{pcuor6}'],
-    ['#{pcol7}', '#{pcor7}', '#{pcuol7}', '#{pcuor7}'],
-    ['#{self.user.s_name13} - Run', '', '#{self.user.s_name14} - Run', ''],
-    ['#{rcutl1}', '#{rcutr1}', '#{rcuthl1}', '#{rcuthr1}'],
-    ['#{rcutl2}', '#{rcutr2}', '#{rcuthl2}', '#{rcuthr2}'],
-    ['#{rcutl3}', '#{rcutr3}', '#{rcuthl3}', '#{rcuthr3}'],
-    ['#{rcutl4}', '#{rcutr4}', '#{rcuthl4}', '#{rcuthr4}'],
-    ['#{rcutl5}', '#{rcutr5}', '#{rcuthl5}', '#{rcuthr5}'],
-    ['#{rcutl6}', '#{rcutr6}', '#{rcuthl6}', '#{rcuthr6}'],
-    ['#{rcutl7}', '#{rcutr7}', '#{rcuthl7}', '#{rcuthr7}'],
-    ['#{self.user.s_name13} - Pass', '', '#{self.user.s_name14} - Pass', ''],
-    ['#{pcutl1}', '#{pcutr1}', '#{pcuthl1}', '#{pcuthr1}'],
-    ['#{pcutl2}', '#{pcutr2}', '#{pcuthl2}', '#{pcuthr2}'],
-    ['#{pcutl3}', '#{pcutr3}', '#{pcuthl3}', '#{pcuthr3}'],
-    ['#{pcutl4}', '#{pcutr4}', '#{pcuthl4}', '#{pcuthr4}'],
-    ['#{pcutl5}', '#{pcutr5}', '#{pcuthl5}', '#{pcuthr5}'],
-    ['#{pcutl6}', '#{pcutr6}', '#{pcuthl6}', '#{pcuthr6}'],
-    ['#{pcutl7}', '#{pcutr7}', '#{pcuthl7}', '#{pcuthr7}']
+    ['#{rzonel_s0}', '', '#{glinel_s0}', ''],
+    ['#{rzonel_s1}', '#{rzoner_s1}', '#{glinel_s1}', '#{gliner_s1}'],
+    ['#{rzonel_s2}', '#{rzoner_s2}', '#{glinel_s2}', '#{gliner_s2}'],
+    ['#{rzonel_s3}', '#{rzoner_s3}', '#{glinel_s3}', '#{gliner_s3}'],
+    ['#{rzonel_s4}', '#{rzoner_s4}', '#{glinel_s4}', '#{gliner_s4}'],
+    ['#{rzonel_s5}', '#{rzoner_s5}', '#{glinel_s5}', '#{gliner_s5}'],
+    ['#{rzonel_s6}', '#{rzoner_s6}', '#{glinel_s6}', '#{gliner_s6}'],
+    ['#{rzonel_s7}', '#{rzoner_s7}', '#{glinel_s7}', '#{gliner_s7}'],
+    ['#{rzonel_s8}', '#{rzoner_s8}', '#{glinel_s8}', '#{gliner_s8}'],
+    ['#{rzonel_s9}', '#{rzoner_s9}', '#{glinel_s9}', '#{gliner_s9}'],
+    ['#{rzonel_s10}', '#{rzoner_s10}', '#{glinel_s10}', '#{gliner_s10}'],
+    ['#{rzonel_s11}', '#{rzoner_s11}', '#{glinel_s11}', '#{gliner_s11}'],
+    ['#{rzonel_s12}', '#{rzoner_s12}', '#{glinel_s12}', '#{gliner_s12}'],
+    ['#{rzonel_s13}', '#{rzoner_s13}', '#{glinel_s13}', '#{gliner_s13}'],
+    ['#{rzonel_s14}', '#{rzoner_s14}', '#{glinel_s14}', '#{gliner_s14}'],
+    ['#{rzonel_s15}', '#{rzoner_s15}', '#{glinel_s15}', '#{gliner_s15}'],
+    ['#{coutl_s0}', '', '#{cus1l_s0}', ''],
+    ['#{coutl_s1}', '#{coutr_s1}', '#{cus1l_s1}', '#{cus1r_s1}'],
+    ['#{coutl_s2}', '#{coutr_s2}', '#{cus1l_s2}', '#{cus1r_s2}'],
+    ['#{coutl_s3}', '#{coutr_s3}', '#{cus1l_s3}', '#{cus1r_s3}'],
+    ['#{coutl_s4}', '#{coutr_s4}', '#{cus1l_s4}', '#{cus1r_s4}'],
+    ['#{coutl_s5}', '#{coutr_s5}', '#{cus1l_s5}', '#{cus1r_s5}'],
+    ['#{coutl_s6}', '#{coutr_s6}', '#{cus1l_s6}', '#{cus1r_s6}'],
+    ['#{coutl_s7}', '#{coutr_s7}', '#{cus1l_s7}', '#{cus1r_s7}'],
+    ['#{coutl_s8}', '#{coutr_s8}', '#{cus1l_s8}', '#{cus1r_s8}'],
+    ['#{coutl_s9}', '#{coutr_s9}', '#{cus1l_s9}', '#{cus1r_s9}'],
+    ['#{coutl_s10}', '#{coutr_s10}', '#{cus1l_s10}', '#{cus1r_s10}'],
+    ['#{coutl_s11}', '#{coutr_s11}', '#{cus1l_s11}', '#{cus1r_s11}'],
+    ['#{coutl_s12}', '#{coutr_s12}', '#{cus1l_s12}', '#{cus1r_s12}'],
+    ['#{coutl_s13}', '#{coutr_s13}', '#{cus1l_s13}', '#{cus1r_s13}'],
+    ['#{coutl_s14}', '#{coutr_s14}', '#{cus1l_s14}', '#{cus1r_s14}'],
+    ['#{coutl_s15}', '#{coutr_s15}', '#{cus1l_s15}', '#{cus1r_s15}'],
+    ['#{cus2l_s0}', '', '#{cus3l_s0}', ''],
+    ['#{cus2l_s1}', '#{cus2r_s1}', '#{cus3l_s1}', '#{cus3r_s1}'],
+    ['#{cus2l_s2}', '#{cus2r_s2}', '#{cus3l_s2}', '#{cus3r_s2}'],
+    ['#{cus2l_s3}', '#{cus2r_s3}', '#{cus3l_s3}', '#{cus3r_s3}'],
+    ['#{cus2l_s4}', '#{cus2r_s4}', '#{cus3l_s4}', '#{cus3r_s4}'],
+    ['#{cus2l_s5}', '#{cus2r_s5}', '#{cus3l_s5}', '#{cus3r_s5}'],
+    ['#{cus2l_s6}', '#{cus2r_s6}', '#{cus3l_s6}', '#{cus3r_s6}'],
+    ['#{cus2l_s7}', '#{cus2r_s7}', '#{cus3l_s7}', '#{cus3r_s7}'],
+    ['#{cus2l_s8}', '#{cus2r_s8}', '#{cus3l_s8}', '#{cus3r_s8}'],
+    ['#{cus2l_s9}', '#{cus2r_s9}', '#{cus3l_s9}', '#{cus3r_s9}'],
+    ['#{cus2l_s10}', '#{cus2r_s10}', '#{cus3l_s10}', '#{cus3r_s10}'],
+    ['#{cus2l_s11}', '#{cus2r_s11}', '#{cus3l_s11}', '#{cus3r_s11}'],
+    ['#{cus2l_s12}', '#{cus2r_s12}', '#{cus3l_s12}', '#{cus3r_s12}'],
+    ['#{cus2l_s13}', '#{cus2r_s13}', '#{cus3l_s13}', '#{cus3r_s13}'],
+    ['#{cus2l_s14}', '#{cus2r_s14}', '#{cus3l_s14}', '#{cus3r_s14}'],
+    ['#{cus2l_s15}', '#{cus2r_s15}', '#{cus3l_s15}', '#{cus3r_s15}']
     ]"   
   end
 

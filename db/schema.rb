@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170218161202) do
+ActiveRecord::Schema.define(version: 20170225164002) do
 
   create_table "charges", force: true do |t|
     t.integer  "user_id"
@@ -52,9 +52,23 @@ ActiveRecord::Schema.define(version: 20170218161202) do
     t.integer  "user_id"
     t.datetime "start_time"
     t.datetime "end_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.text     "gdata2"
+    t.string   "sit_title1"
+    t.string   "sit_title2"
+    t.string   "sit_title3"
+    t.string   "sit_title4"
+    t.string   "sit_title5"
+    t.string   "sit_title6"
+    t.string   "sit_title7"
+    t.string   "sit_title8"
+    t.string   "sit_title9"
+    t.string   "sit_title10"
+    t.string   "sit_title11"
+    t.string   "sit_title12"
+    t.string   "sit_title13"
+    t.string   "sit_title14"
   end
 
   create_table "plays", force: true do |t|
@@ -155,6 +169,19 @@ ActiveRecord::Schema.define(version: 20170218161202) do
     t.string   "s_name12"
     t.string   "s_name13"
     t.string   "s_name14"
+    t.integer  "s_name2_num_run"
+    t.integer  "s_name3_num_run"
+    t.integer  "s_name4_num_run"
+    t.integer  "s_name5_num_run"
+    t.integer  "s_name6_num_run"
+    t.integer  "s_name7_num_run"
+    t.integer  "s_name8_num_run"
+    t.integer  "s_name9_num_run"
+    t.integer  "s_name10_num_run"
+    t.integer  "s_name11_num_run"
+    t.integer  "s_name12_num_run"
+    t.integer  "s_name13_num_run"
+    t.integer  "s_name14_num_run"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

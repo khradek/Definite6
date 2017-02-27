@@ -16,21 +16,9 @@ class User < ActiveRecord::Base
 
   after_create :set_default_s_names
 
+  #Sets default situation names and number of run plays
   def set_default_s_names
-    self.update_attribute(:s_name1, "Openers")
-    self.update_attribute(:s_name2, "1st/2nd & 10")
-    self.update_attribute(:s_name3, "2nd & Long")
-    self.update_attribute(:s_name4, "2nd & Medium")
-    self.update_attribute(:s_name5, "2nd & Short")
-    self.update_attribute(:s_name6, "3rd & Long")
-    self.update_attribute(:s_name7, "3rd & Medium")
-    self.update_attribute(:s_name8, "3rd & Short")
-    self.update_attribute(:s_name9, "Redzone")
-    self.update_attribute(:s_name10, "Goal Line")
-    self.update_attribute(:s_name11, "Coming Out")
-    self.update_attribute(:s_name12, "Custom 1")
-    self.update_attribute(:s_name13, "Custom 2")
-    self.update_attribute(:s_name14, "Custom 3")
+    self.update :s_name1 => "Openers", :s_name2 => "1st/2nd & 10", :s_name3 => "2nd & Long", :s_name4 => "2nd & Medium", :s_name5 => "2nd & Short", :s_name6 => "3rd & Long", :s_name7 => "3rd & Medium", :s_name8 => "3rd & Short", :s_name9 => "Redzone", :s_name10 => "Goal Line", :s_name11 => "Coming Out", :s_name12 => "Custom 1", :s_name13 => "Custom 2", :s_name14 => "Custom 3", :s_name2_num_run => 7, :s_name3_num_run => 5, :s_name4_num_run => 5, :s_name5_num_run => 5, :s_name6_num_run => 3, :s_name7_num_run => 5, :s_name8_num_run => 7, :s_name9_num_run => 7, :s_name10_num_run => 7, :s_name11_num_run => 7, :s_name12_num_run => 7, :s_name13_num_run => 7, :s_name14_num_run => 7  
   end
 
   def subscribed?

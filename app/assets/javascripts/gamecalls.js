@@ -40,6 +40,66 @@ $(".gamecalls.show").ready(function() {
     $("#gdata2").text(JSONData2);   
   });
 
+  var sitTitle1 = $('#gamecall-title1').text();
+  var sitTitle2 = $('#gamecall-title2').text();
+  var sitTitle3 = $('#gamecall-title3').text();
+  var sitTitle4 = $('#gamecall-title4').text();
+  var sitTitle5 = $('#gamecall-title5').text();
+  var sitTitle6 = $('#gamecall-title6').text();
+  var sitTitle7 = $('#gamecall-title7').text();
+  var sitTitle8 = $('#gamecall-title8').text();
+  var sitTitle9 = $('#gamecall-title9').text();
+  var sitTitle10 = $('#gamecall-title10').text();
+  var sitTitle11 = $('#gamecall-title11').text();
+  var sitTitle12 = $('#gamecall-title12').text();
+  var sitTitle13 = $('#gamecall-title13').text();
+  var sitTitle14 = $('#gamecall-title14').text();
+
+  gcCellRenderer = function(instance, td, row, col, prop, value, cellProperties) {
+    Handsontable.renderers.TextRenderer.apply(this, arguments);
+    if (row === 0 && col === 0){
+      td.className = 'ulshade bold fontlarge htMiddle htCenter tallrow';
+      td.setAttribute("colspan", 4);
+      cellProperties.readOnly = true;
+    } else if (value === sitTitle1 || value === sitTitle5 + " - Run" || value === sitTitle5 + " - Pass" || value ===  sitTitle14 + " - Run" || value === sitTitle14 + " - Pass"){
+      td.className = 'htlightwhite underline bold htCenter hide-next';
+      td.setAttribute("colspan", 2);
+      cellProperties.readOnly = true;
+    } else if (value ===  sitTitle2 + " - Run" || value === sitTitle2 + " - Pass" || value ===  sitTitle10 + " - Run" || value === sitTitle10 + " - Pass"){
+      td.className = 'lightgreen underline bold htCenter';
+      td.setAttribute("colspan", 2);
+      cellProperties.readOnly = true;
+    } else if (value ===  sitTitle3 + " - Run" || value === sitTitle3 + " - Pass" || value ===  sitTitle13 + " - Run" || value === sitTitle13 + " - Pass"){
+      td.className = 'htorange underline bold htCenter hide-next';
+      td.setAttribute("colspan", 2);
+      cellProperties.readOnly = true;     
+    } else if (value ===  sitTitle6 + " - Run" || value === sitTitle6 + " - Pass" || value ===  sitTitle9 + " - Run" || value === sitTitle9 + " - Pass"){
+      td.className = 'htred underline bold htCenter hide-next';
+      td.setAttribute("colspan", 2);
+      cellProperties.readOnly = true;   
+    } else if (value ===  sitTitle4 + " - Run" || value === sitTitle4 + " - Pass" || value ===  sitTitle11 + " - Run" || value === sitTitle11 + " - Pass"){
+      td.className = 'htblue underline bold htCenter hide-next';
+      td.setAttribute("colspan", 2);
+      cellProperties.readOnly = true;    
+    } else if (value ===  sitTitle7 + " - Run" || value === sitTitle7 + " - Pass"){
+      td.className = 'ulshade underline bold htCenter';
+      td.setAttribute("colspan", 2);
+      cellProperties.readOnly = true;  
+    } else if (value ===  sitTitle8 + " - Run" || value === sitTitle8 + " - Pass" || value ===  sitTitle12 + " - Run" || value === sitTitle12 + " - Pass"){
+      td.className = 'htyellow underline bold htCenter hide-next';
+      td.setAttribute("colspan", 2);
+      cellProperties.readOnly = true;              
+    } else {
+      Handsontable.AutocompleteCell.renderer.apply(this, arguments);
+      cellProperties.type = 'dropdown';
+      cellProperties.source = jCollection;
+    }
+    $(".hide-next").closest('td').next().addClass('hidden');
+    return td;
+  };
+
+  Handsontable.renderers.registerRenderer('gcCellRenderer', gcCellRenderer);
+
   $("#gamecallGrid1").handsontable({
     data: gdata,
     minSpareCols: 0,
@@ -57,7 +117,15 @@ $(".gamecalls.show").ready(function() {
     allowInvalid: false,
     allowEmpty: true,
     validator: char_validator,
-    mergeCells: [
+    cells: function (row, col, prop) {
+      var cellProperties = {};
+      
+      cellProperties.renderer = "gcCellRenderer";
+
+      return cellProperties;
+    }
+
+   /* mergeCells: [
       {row: 0, col: 0, rowspan: 1, colspan: 4},
       {row: 1, col: 0, rowspan: 1, colspan: 2},
       {row: 1, col: 2, rowspan: 1, colspan: 2},    
@@ -74,8 +142,9 @@ $(".gamecalls.show").ready(function() {
       {row: 42, col: 2, rowspan: 1, colspan: 2},
       {row: 48, col: 0, rowspan: 1, colspan: 2},    
       {row: 50, col: 2, rowspan: 1, colspan: 2}                                              
-    ],
-    cell: [
+    ], */
+    
+   /* cell: [
       {row: 0, col: 0, className: "ulshade bold fontlarge htMiddle htCenter tallrow"},
       {row: 1, col: 0, className: "htlightwhite underline bold htCenter"},
       {row: 1, col: 2, className: "lightgreen underline bold htCenter"},
@@ -302,8 +371,14 @@ $(".gamecalls.show").ready(function() {
       {row: 42, col: 2, className: "htyellow underline bold htCenter"},
       {row: 48, col: 0, className: "htlightwhite underline bold htCenter"},
       {row: 50, col: 2, className: "htyellow underline bold htCenter"}                                                
-    ],
+    ],*/
   });
+
+
+
+
+
+
 
 
   $("#gamecallGrid2").handsontable({
@@ -323,7 +398,16 @@ $(".gamecalls.show").ready(function() {
     allowEmpty: true,
     validator: char_validator,
     className: "htCenter",
-    mergeCells: [
+    cells: function (row, col, prop) {
+      var cellProperties = {};
+      
+      cellProperties.renderer = "gcCellRenderer";
+
+      return cellProperties;
+    }
+
+
+ /*   mergeCells: [
       {row: 0, col: 0, rowspan: 1, colspan: 4},
       {row: 1, col: 0, rowspan: 1, colspan: 2},
       {row: 1, col: 2, rowspan: 1, colspan: 2},
@@ -560,7 +644,7 @@ $(".gamecalls.show").ready(function() {
       {row: 58, col: 1, className: "htCenter", type: 'dropdown', source: jCollection},
       {row: 58, col: 2, className: "htCenter", type: 'dropdown', source: jCollection},
       {row: 58, col: 3, className: "htCenter", type: 'dropdown', source: jCollection}                                                                                                  
-    ],
+    ],   */
   });
 
 });
