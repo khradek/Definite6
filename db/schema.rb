@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170225164002) do
+ActiveRecord::Schema.define(version: 20170302004305) do
 
   create_table "charges", force: true do |t|
     t.integer  "user_id"
@@ -69,6 +69,20 @@ ActiveRecord::Schema.define(version: 20170225164002) do
     t.string   "sit_title12"
     t.string   "sit_title13"
     t.string   "sit_title14"
+    t.string   "sit_color1"
+    t.string   "sit_color2"
+    t.string   "sit_color3"
+    t.string   "sit_color4"
+    t.string   "sit_color5"
+    t.string   "sit_color6"
+    t.string   "sit_color7"
+    t.string   "sit_color8"
+    t.string   "sit_color9"
+    t.string   "sit_color10"
+    t.string   "sit_color11"
+    t.string   "sit_color12"
+    t.string   "sit_color13"
+    t.string   "sit_color14"
   end
 
   create_table "plays", force: true do |t|
@@ -182,6 +196,20 @@ ActiveRecord::Schema.define(version: 20170225164002) do
     t.integer  "s_name12_num_run"
     t.integer  "s_name13_num_run"
     t.integer  "s_name14_num_run"
+    t.string   "sit1_color"
+    t.string   "sit2_color"
+    t.string   "sit3_color"
+    t.string   "sit4_color"
+    t.string   "sit5_color"
+    t.string   "sit6_color"
+    t.string   "sit7_color"
+    t.string   "sit8_color"
+    t.string   "sit9_color"
+    t.string   "sit10_color"
+    t.string   "sit11_color"
+    t.string   "sit12_color"
+    t.string   "sit13_color"
+    t.string   "sit14_color"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

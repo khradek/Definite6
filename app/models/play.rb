@@ -21,20 +21,20 @@ class Play < ActiveRecord::Base
   #----------1st/2nd & 10----------
   scope :first_tens, -> { where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', '1st/2nd & 10', '1st/2nd & 10', '1st/2nd & 10', '1st/2nd & 10', '1st/2nd & 10', '1st/2nd & 10', '1st/2nd & 10', '1st/2nd & 10', '1st/2nd & 10', '1st/2nd & 10')}
   scope :run_first_tens, -> { first_tens.where('play_type = ?', 'Run')}
-  scope :run_left_first_tens, -> { run_first_tens.where('hash_mark = ?', 'Left').limit(7)}
-  scope :run_right_first_tens, -> { run_first_tens.where('hash_mark = ?', 'Right').limit(7)}
+  scope :run_left_first_tens, -> { run_first_tens.where('hash_mark = ?', 'Left').limit(15)}
+  scope :run_right_first_tens, -> { run_first_tens.where('hash_mark = ?', 'Right').limit(15)}
   scope :pass_first_tens, -> { first_tens.where('play_type = ?', 'Pass')}
-  scope :pass_left_first_tens, -> { pass_first_tens.where('hash_mark = ?', 'Left').limit(7)}
-  scope :pass_right_first_tens, -> { pass_first_tens.where('hash_mark = ?', 'Right').limit(7)}
+  scope :pass_left_first_tens, -> { pass_first_tens.where('hash_mark = ?', 'Left').limit(15)}
+  scope :pass_right_first_tens, -> { pass_first_tens.where('hash_mark = ?', 'Right').limit(15)}
 
   #----------2nd & Long----------
   scope :second_longs, -> { where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', '2nd & Long', '2nd & Long', '2nd & Long', '2nd & Long', '2nd & Long', '2nd & Long', '2nd & Long', '2nd & Long', '2nd & Long', '2nd & Long')}
   scope :run_second_longs, -> { second_longs.where('play_type = ?', 'Run')}
-  scope :run_left_second_longs, -> { run_second_longs.where('hash_mark = ?', 'Left').limit(5)}
-  scope :run_right_second_longs, -> { run_second_longs.where('hash_mark = ?', 'Right').limit(5)}
+  scope :run_left_second_longs, -> { run_second_longs.where('hash_mark = ?', 'Left').limit(12)}
+  scope :run_right_second_longs, -> { run_second_longs.where('hash_mark = ?', 'Right').limit(12)}
   scope :pass_second_longs, -> { second_longs.where('play_type = ?', 'Pass')}
-  scope :pass_left_second_longs, -> { pass_second_longs.where('hash_mark = ?', 'Left').limit(6)}
-  scope :pass_right_second_longs, -> { pass_second_longs.where('hash_mark = ?', 'Right').limit(6)}
+  scope :pass_left_second_longs, -> { pass_second_longs.where('hash_mark = ?', 'Left').limit(12)}
+  scope :pass_right_second_longs, -> { pass_second_longs.where('hash_mark = ?', 'Right').limit(12)}
 
   #----------3rd & Long----------
   scope :third_longs, -> { where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', '3rd & Long', '3rd & Long', '3rd & Long', '3rd & Long', '3rd & Long', '3rd & Long', '3rd & Long', '3rd & Long', '3rd & Long', '3rd & Long')}

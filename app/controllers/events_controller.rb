@@ -25,119 +25,327 @@ class EventsController < ApplicationController
 
   def summary_2
     @event = Event.find(params[:event_id])
-    @plays = @event.plays
-    @run_left_first_tens_remain = 7 - @plays.run_left_first_tens.count
-    @run_right_first_tens_remain = 7 - @plays.run_right_first_tens.count
-    @pass_left_first_tens_remain = 7 - @plays.pass_left_first_tens.count
-    @pass_right_first_tens_remain = 7 - @plays.pass_right_first_tens.count
+    @plays = @event.plays.first_tens
+    @num_runs = if current_user.s_name2_num_run == 14
+                  15
+                else
+                  current_user.s_name2_num_run
+                end
+    @run_lefts = @plays.run_left_first_tens.limit(@num_runs)
+    @run_lefts_remain = @num_runs - @run_lefts.count
+    @run_rights = @plays.run_right_first_tens.limit(@num_runs)
+    @run_rights_remain = @num_runs - @run_rights.count
+    @num_passes = if @num_runs == 15
+                    0
+                  elsif @num_runs == 0
+                    15  
+                  else    
+                    14 - @num_runs 
+                  end  
+    @pass_lefts = @plays.pass_left_first_tens.limit(@num_passes)
+    @pass_lefts_remain = @num_passes - @pass_lefts.count
+    @pass_rights = @plays.pass_right_first_tens.limit(@num_passes)
+    @pass_rights_remain = @num_passes - @pass_rights.count
   end
 
   def summary_3
     @event = Event.find(params[:event_id])
-    @plays = @event.plays
-    @run_left_second_longs_remain = 5 - @plays.run_left_second_longs.count
-    @run_right_second_longs_remain = 5 - @plays.run_right_second_longs.count
-    @pass_left_second_longs_remain = 6 - @plays.pass_left_second_longs.count
-    @pass_right_second_longs_remain = 6 - @plays.pass_right_second_longs.count
+    @plays = @event.plays.second_longs
+    @num_runs = if current_user.s_name3_num_run == 11
+                  12
+                else
+                  current_user.s_name3_num_run
+                end
+    @run_lefts = @plays.run_left_second_longs.limit(@num_runs)
+    @run_lefts_remain = @num_runs - @run_lefts.count
+    @run_rights = @plays.run_right_second_longs.limit(@num_runs)
+    @run_rights_remain = @num_runs - @run_rights.count
+    @num_passes = if @num_runs == 12
+                    0
+                  elsif @num_runs == 0
+                    12  
+                  else    
+                    11 - @num_runs 
+                  end  
+    @pass_lefts = @plays.pass_left_second_longs.limit(@num_passes)
+    @pass_lefts_remain = @num_passes - @pass_lefts.count
+    @pass_rights = @plays.pass_right_second_longs.limit(@num_passes)
+    @pass_rights_remain = @num_passes - @pass_rights.count
   end
 
   def summary_4
     @event = Event.find(params[:event_id])
-    @plays = @event.plays
-    @run_left_second_mediums_remain = 5 - @plays.run_left_second_mediums.count
-    @run_right_second_mediums_remain = 5 - @plays.run_right_second_mediums.count
-    @pass_left_second_mediums_remain = 5 - @plays.pass_left_second_mediums.count
-    @pass_right_second_mediums_remain = 5 - @plays.pass_right_second_mediums.count
+    @plays = @event.plays.second_mediums
+    @num_runs = if current_user.s_name4_num_run == 10
+                  11
+                else
+                  current_user.s_name4_num_run
+                end
+    @run_lefts = @plays.run_left_second_mediums.limit(@num_runs)
+    @run_lefts_remain = @num_runs - @run_lefts.count
+    @run_rights = @plays.run_right_second_mediums.limit(@num_runs)
+    @run_rights_remain = @num_runs - @run_rights.count
+    @num_passes = if @num_runs == 11
+                    0
+                  elsif @num_runs == 0
+                    11  
+                  else    
+                    10 - @num_runs 
+                  end  
+    @pass_lefts = @plays.pass_left_second_mediums.limit(@num_passes)
+    @pass_lefts_remain = @num_passes - @pass_lefts.count
+    @pass_rights = @plays.pass_right_second_mediums.limit(@num_passes)
+    @pass_rights_remain = @num_passes - @pass_rights.count
   end
 
   def summary_5
     @event = Event.find(params[:event_id])
-    @plays = @event.plays
-    @run_left_second_shorts_remain = 5 - @plays.run_left_second_shorts.count
-    @run_right_second_shorts_remain = 5 - @plays.run_right_second_shorts.count
-    @pass_left_second_shorts_remain = 5 - @plays.pass_left_second_shorts.count
-    @pass_right_second_shorts_remain = 5 - @plays.pass_right_second_shorts.count
+    @plays = @event.plays.second_shorts
+    @num_runs = if current_user.s_name5_num_run == 10
+                  11
+                else
+                  current_user.s_name5_num_run
+                end
+    @run_lefts = @plays.run_left_second_shorts.limit(@num_runs)
+    @run_lefts_remain = @num_runs - @run_lefts.count
+    @run_rights = @plays.run_right_second_shorts.limit(@num_runs)
+    @run_rights_remain = @num_runs - @run_rights.count
+    @num_passes = if @num_runs == 11
+                    0
+                  elsif @num_runs == 0
+                    11  
+                  else    
+                    10 - @num_runs 
+                  end  
+    @pass_lefts = @plays.pass_left_second_shorts.limit(@num_passes)
+    @pass_lefts_remain = @num_passes - @pass_lefts.count
+    @pass_rights = @plays.pass_right_second_shorts.limit(@num_passes)
+    @pass_rights_remain = @num_passes - @pass_rights.count
   end
 
   def summary_6
     @event = Event.find(params[:event_id])
-    @plays = @event.plays
-    @run_left_third_longs_remain = 3 - @plays.run_left_third_longs.count
-    @run_right_third_longs_remain = 3 - @plays.run_right_third_longs.count
-    @pass_left_third_longs_remain = 8 - @plays.pass_left_third_longs.count
-    @pass_right_third_longs_remain = 8 - @plays.pass_right_third_longs.count
+    @plays = @event.plays.third_longs
+    @num_runs = if current_user.s_name6_num_run == 11
+                  12
+                else
+                  current_user.s_name6_num_run
+                end
+    @run_lefts = @plays.run_left_third_longs.limit(@num_runs)
+    @run_lefts_remain = @num_runs - @run_lefts.count
+    @run_rights = @plays.run_right_third_longs.limit(@num_runs)
+    @run_rights_remain = @num_runs - @run_rights.count
+    @num_passes = if @num_runs == 12
+                    0
+                  elsif @num_runs == 0
+                    12  
+                  else    
+                    11 - @num_runs 
+                  end  
+    @pass_lefts = @plays.pass_left_third_longs.limit(@num_passes)
+    @pass_lefts_remain = @num_passes - @pass_lefts.count
+    @pass_rights = @plays.pass_right_third_longs.limit(@num_passes)
+    @pass_rights_remain = @num_passes - @pass_rights.count
   end
 
   def summary_7
     @event = Event.find(params[:event_id])
-    @plays = @event.plays
-    @run_left_third_mediums_remain = 5 - @plays.run_left_third_mediums.count
-    @run_right_third_mediums_remain = 5 - @plays.run_right_third_mediums.count
-    @pass_left_third_mediums_remain = 5 - @plays.pass_left_third_mediums.count
-    @pass_right_third_mediums_remain = 5 - @plays.pass_right_third_mediums.count
+    @plays = @event.plays.third_mediums
+    @num_runs = if current_user.s_name7_num_run == 10
+                  11
+                else
+                  current_user.s_name7_num_run
+                end
+    @run_lefts = @plays.run_left_third_mediums.limit(@num_runs)
+    @run_lefts_remain = @num_runs - @run_lefts.count
+    @run_rights = @plays.run_right_third_mediums.limit(@num_runs)
+    @run_rights_remain = @num_runs - @run_rights.count
+    @num_passes = if @num_runs == 11
+                    0
+                  elsif @num_runs == 0
+                    11  
+                  else    
+                    10 - @num_runs 
+                  end  
+    @pass_lefts = @plays.pass_left_third_mediums.limit(@num_passes)
+    @pass_lefts_remain = @num_passes - @pass_lefts.count
+    @pass_rights = @plays.pass_right_third_mediums.limit(@num_passes)
+    @pass_rights_remain = @num_passes - @pass_rights.count
   end
 
   def summary_8
     @event = Event.find(params[:event_id])
-    @plays = @event.plays
-    @run_left_third_shorts_remain = 7 - @plays.run_left_third_shorts.count
-    @run_right_third_shorts_remain = 7 - @plays.run_right_third_shorts.count
-    @pass_left_third_shorts_remain = 3 - @plays.pass_left_third_shorts.count
-    @pass_right_third_shorts_remain = 3 - @plays.pass_right_third_shorts.count
+    @plays = @event.plays.third_shorts 
+    @num_runs = if current_user.s_name8_num_run == 10
+                  11
+                else
+                  current_user.s_name8_num_run
+                end
+    @run_lefts = @plays.run_left_third_shorts.limit(@num_runs)
+    @run_lefts_remain = @num_runs - @run_lefts.count
+    @run_rights = @plays.run_right_third_shorts.limit(@num_runs)
+    @run_rights_remain = @num_runs - @run_rights.count
+    @num_passes = if @num_runs == 11
+                    0
+                  elsif @num_runs == 0
+                    11  
+                  else    
+                    10 - @num_runs 
+                  end  
+    @pass_lefts = @plays.pass_left_third_shorts.limit(@num_passes)
+    @pass_lefts_remain = @num_passes - @pass_lefts.count
+    @pass_rights = @plays.pass_right_third_shorts.limit(@num_passes)
+    @pass_rights_remain = @num_passes - @pass_rights.count
   end
 
   def summary_9
     @event = Event.find(params[:event_id])
-    @plays = @event.plays
-    @run_left_redzones_remain = 7 - @plays.run_left_redzones.count
-    @run_right_redzones_remain = 7 - @plays.run_right_redzones.count
-    @pass_left_redzones_remain = 7 - @plays.pass_left_redzones.count
-    @pass_right_redzones_remain = 7 - @plays.pass_right_redzones.count
+    @plays = @event.plays.redzones 
+    @num_runs = if current_user.s_name9_num_run == 14
+                  15
+                else
+                  current_user.s_name9_num_run
+                end
+    @run_lefts = @plays.run_left_redzones.limit(@num_runs)
+    @run_lefts_remain = @num_runs - @run_lefts.count
+    @run_rights = @plays.run_right_redzones.limit(@num_runs)
+    @run_rights_remain = @num_runs - @run_rights.count
+    @num_passes = if @num_runs == 15
+                    0
+                  elsif @num_runs == 0
+                    15  
+                  else    
+                    14 - @num_runs 
+                  end  
+    @pass_lefts = @plays.pass_left_redzones.limit(@num_passes)
+    @pass_lefts_remain = @num_passes - @pass_lefts.count
+    @pass_rights = @plays.pass_right_redzones.limit(@num_passes)
+    @pass_rights_remain = @num_passes - @pass_rights.count
   end
 
   def summary_10
     @event = Event.find(params[:event_id])
-    @plays = @event.plays
-    @run_left_goalines_remain = 7 - @plays.run_left_goalines.count
-    @run_right_goalines_remain = 7 - @plays.run_right_goalines.count
-    @pass_left_goalines_remain = 7 - @plays.pass_left_goalines.count
-    @pass_right_goalines_remain = 7 - @plays.pass_right_goalines.count
+    @plays = @event.plays.goalines
+    @num_runs = if current_user.s_name10_num_run == 14
+                  15
+                else
+                  current_user.s_name10_num_run
+                end
+    @run_lefts = @plays.run_left_goalines.limit(@num_runs)
+    @run_lefts_remain = @num_runs - @run_lefts.count
+    @run_rights = @plays.run_right_goalines.limit(@num_runs)
+    @run_rights_remain = @num_runs - @run_rights.count
+    @num_passes = if @num_runs == 15
+                    0
+                  elsif @num_runs == 0
+                    15  
+                  else    
+                    14 - @num_runs 
+                  end  
+    @pass_lefts = @plays.pass_left_goalines.limit(@num_passes)
+    @pass_lefts_remain = @num_passes - @pass_lefts.count
+    @pass_rights = @plays.pass_right_goalines.limit(@num_passes)
+    @pass_rights_remain = @num_passes - @pass_rights.count
   end
 
   def summary_11
     @event = Event.find(params[:event_id])
-    @plays = @event.plays
-    @run_left_coming_outs_remain = 7 - @plays.run_left_coming_outs.count
-    @run_right_coming_outs_remain = 7 - @plays.run_right_coming_outs.count
-    @pass_left_coming_outs_remain = 7 - @plays.pass_left_coming_outs.count
-    @pass_right_coming_outs_remain = 7 - @plays.pass_right_coming_outs.count
+    @plays = @event.plays.run_left_coming_outs
+    @num_runs = if current_user.s_name11_num_run == 14
+                  15
+                else
+                  current_user.s_name11_num_run
+                end
+    @run_lefts = @plays.run_left_coming_outs.limit(@num_runs)
+    @run_lefts_remain = @num_runs - @run_lefts.count
+    @run_rights = @plays.run_right_coming_outs.limit(@num_runs)
+    @run_rights_remain = @num_runs - @run_rights.count
+    @num_passes = if @num_runs == 15
+                    0
+                  elsif @num_runs == 0
+                    15  
+                  else    
+                    14 - @num_runs 
+                  end  
+    @pass_lefts = @plays.pass_left_coming_outs.limit(@num_passes)
+    @pass_lefts_remain = @num_passes - @pass_lefts.count
+    @pass_rights = @plays.pass_right_coming_outs.limit(@num_passes)
+    @pass_rights_remain = @num_passes - @pass_rights.count
   end
 
   def summary_12
     @event = Event.find(params[:event_id])
-    @plays = @event.plays
-    @run_left_custom_ones_remain = 7 - @plays.run_left_custom_ones.count
-    @run_right_custom_ones_remain = 7 - @plays.run_right_custom_ones.count
-    @pass_left_custom_ones_remain = 7 - @plays.pass_left_custom_ones.count
-    @pass_right_custom_ones_remain = 7 - @plays.pass_right_custom_ones.count
+    @plays = @event.plays.custom_ones 
+    @num_runs = if current_user.s_name12_num_run == 14
+                  15
+                else
+                  current_user.s_name12_num_run
+                end
+    @run_lefts = @plays.run_left_custom_ones.limit(@num_runs)
+    @run_lefts_remain = @num_runs - @run_lefts.count
+    @run_rights = @plays.run_right_custom_ones.limit(@num_runs)
+    @run_rights_remain = @num_runs - @run_rights.count
+    @num_passes = if @num_runs == 15
+                    0
+                  elsif @num_runs == 0
+                    15  
+                  else    
+                    14 - @num_runs 
+                  end  
+    @pass_lefts = @plays.pass_left_custom_ones.limit(@num_passes)
+    @pass_lefts_remain = @num_passes - @pass_lefts.count
+    @pass_rights = @plays.pass_right_custom_ones.limit(@num_passes)
+    @pass_rights_remain = @num_passes - @pass_rights.count
   end
 
   def summary_13
     @event = Event.find(params[:event_id])
-    @plays = @event.plays
-    @run_left_custom_twos_remain = 7 - @plays.run_left_custom_twos.count
-    @run_right_custom_twos_remain = 7 - @plays.run_right_custom_twos.count
-    @pass_left_custom_twos_remain = 7 - @plays.pass_left_custom_twos.count
-    @pass_right_custom_twos_remain = 7 - @plays.pass_right_custom_twos.count
+    @plays = @event.plays.custom_twos
+    @num_runs = if current_user.s_name13_num_run == 14
+                  15
+                else
+                  current_user.s_name13_num_run
+                end
+    @run_lefts = @plays.run_left_custom_twos.limit(@num_runs)
+    @run_lefts_remain = @num_runs - @run_lefts.count
+    @run_rights = @plays.run_right_custom_twos.limit(@num_runs)
+    @run_rights_remain = @num_runs - @run_rights.count
+    @num_passes = if @num_runs == 15
+                    0
+                  elsif @num_runs == 0
+                    15  
+                  else    
+                    14 - @num_runs 
+                  end  
+    @pass_lefts = @plays.pass_left_custom_twos.limit(@num_passes)
+    @pass_lefts_remain = @num_passes - @pass_lefts.count
+    @pass_rights = @plays.pass_right_custom_twos.limit(@num_passes)
+    @pass_rights_remain = @num_passes - @pass_rights.count
   end
 
   def summary_14
     @event = Event.find(params[:event_id])
-    @plays = @event.plays
-    @run_left_custom_threes_remain = 7 - @plays.run_left_custom_threes.count
-    @run_right_custom_threes_remain = 7 - @plays.run_right_custom_threes.count
-    @pass_left_custom_threes_remain = 7 - @plays.pass_left_custom_threes.count
-    @pass_right_custom_threes_remain = 7 - @plays.pass_right_custom_threes.count
+    @plays = @event.plays.custom_threes 
+    @num_runs = if current_user.s_name14_num_run == 14
+                  15
+                else
+                  current_user.s_name14_num_run
+                end
+    @run_lefts = @plays.run_left_custom_threes.limit(@num_runs)
+    @run_lefts_remain = @num_runs - @run_lefts.count
+    @run_rights = @plays.run_right_custom_threes.limit(@num_runs)
+    @run_rights_remain = @num_runs - @run_rights.count
+    @num_passes = if @num_runs == 15
+                    0
+                  elsif @num_runs == 0
+                    15  
+                  else    
+                    14 - @num_runs 
+                  end  
+    @pass_lefts = @plays.pass_left_custom_threes.limit(@num_passes)
+    @pass_lefts_remain = @num_passes - @pass_lefts.count
+    @pass_rights = @plays.pass_right_custom_threes.limit(@num_passes)
+    @pass_rights_remain = @num_passes - @pass_rights.count
   end
 
   def index

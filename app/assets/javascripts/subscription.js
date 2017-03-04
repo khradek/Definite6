@@ -14,12 +14,12 @@ $(".subscriptions.new, .registrations.edit").ready(function() {
     return false;
   });
 
-  //Arrow functionality on Account Settings page
-  $("#situation-names-link").click(function(){
-    $(this).find(".right-arrow, .down-arrow").toggle();
-    $("#situation-names-section").toggle("blind");
-  })
+  //Autofocus on Call Sheet Settings modal
+  $('.modal').on('shown.bs.modal', function() {
+    $(this).find('[autofocus]').focus();
+  });
 
+  //Arrow functionality on Account Settings page
   $("#charges-link").click(function(){
     $(this).find(".right-arrow, .down-arrow").toggle();
     $("#charges-section").toggle("blind");
@@ -34,6 +34,105 @@ $(".subscriptions.new, .registrations.edit").ready(function() {
     $(this).find(".right-arrow, .down-arrow").toggle();
     $("#deactivate-account-section").toggle("blind");
   })
+
+  //Changes color of each situation name based on color dropdown
+  var choice = $("#sit1-color option:selected").val(); 
+  $("#user_s_name1").addClass(choice);
+  $("#sit1-color").change(function(){
+    var choice = $("#sit1-color option:selected").val(); 
+    $("#user_s_name1").removeClass('htorange htred lightgreen htblue ulshade htlightwhite htyellow htgold').addClass(choice);
+  });
+
+  var choice = $("#sit2-color option:selected").val(); 
+  $("#user_s_name2").addClass(choice);
+  $("#sit2-color").change(function(){
+    var choice = $("#sit2-color option:selected").val(); 
+    $("#user_s_name2").removeClass('htorange htred lightgreen htblue ulshade htlightwhite htyellow htgold').addClass(choice);
+  });
+
+  var choice = $("#sit3-color option:selected").val(); 
+  $("#user_s_name3").addClass(choice);
+  $("#sit3-color").change(function(){
+    var choice = $("#sit3-color option:selected").val(); 
+    $("#user_s_name3").removeClass('htorange htred lightgreen htblue ulshade htlightwhite htyellow htgold').addClass(choice);
+  });
+
+  var choice = $("#sit4-color option:selected").val(); 
+  $("#user_s_name4").addClass(choice);
+  $("#sit4-color").change(function(){
+    var choice = $("#sit4-color option:selected").val(); 
+    $("#user_s_name4").removeClass('htorange htred lightgreen htblue ulshade htlightwhite htyellow htgold').addClass(choice);
+  });
+
+  var choice = $("#sit5-color option:selected").val(); 
+  $("#user_s_name5").addClass(choice);
+  $("#sit5-color").change(function(){
+    var choice = $("#sit5-color option:selected").val(); 
+    $("#user_s_name5").removeClass('htorange htred lightgreen htblue ulshade htlightwhite htyellow htgold').addClass(choice);
+  });      
+
+  var choice = $("#sit6-color option:selected").val(); 
+  $("#user_s_name6").addClass(choice);
+  $("#sit6-color").change(function(){
+    var choice = $("#sit6-color option:selected").val(); 
+    $("#user_s_name6").removeClass('htorange htred lightgreen htblue ulshade htlightwhite htyellow htgold').addClass(choice);
+  });
+
+  var choice = $("#sit7-color option:selected").val(); 
+  $("#user_s_name7").addClass(choice);
+  $("#sit7-color").change(function(){
+    var choice = $("#sit7-color option:selected").val(); 
+    $("#user_s_name7").removeClass('htorange htred lightgreen htblue ulshade htlightwhite htyellow htgold').addClass(choice);
+  });
+
+  var choice = $("#sit8-color option:selected").val(); 
+  $("#user_s_name8").addClass(choice);
+  $("#sit8-color").change(function(){
+    var choice = $("#sit8-color option:selected").val(); 
+    $("#user_s_name8").removeClass('htorange htred lightgreen htblue ulshade htlightwhite htyellow htgold').addClass(choice);
+  });
+
+  var choice = $("#sit9-color option:selected").val(); 
+  $("#user_s_name9").addClass(choice);
+  $("#sit9-color").change(function(){
+    var choice = $("#sit9-color option:selected").val(); 
+    $("#user_s_name9").removeClass('htorange htred lightgreen htblue ulshade htlightwhite htyellow htgold').addClass(choice);
+  });
+
+  var choice = $("#sit10-color option:selected").val(); 
+  $("#user_s_name10").addClass(choice);
+  $("#sit10-color").change(function(){
+    var choice = $("#sit10-color option:selected").val(); 
+    $("#user_s_name10").removeClass('htorange htred lightgreen htblue ulshade htlightwhite htyellow htgold').addClass(choice);
+  });
+
+  var choice = $("#sit11-color option:selected").val(); 
+  $("#user_s_name11").addClass(choice);
+  $("#sit11-color").change(function(){
+    var choice = $("#sit11-color option:selected").val(); 
+    $("#user_s_name11").removeClass('htorange htred lightgreen htblue ulshade htlightwhite htyellow htgold').addClass(choice);
+  });
+
+  var choice = $("#sit12-color option:selected").val(); 
+  $("#user_s_name12").addClass(choice);
+  $("#sit12-color").change(function(){
+    var choice = $("#sit12-color option:selected").val(); 
+    $("#user_s_name12").removeClass('htorange htred lightgreen htblue ulshade htlightwhite htyellow htgold').addClass(choice);
+  });
+
+  var choice = $("#sit13-color option:selected").val(); 
+  $("#user_s_name13").addClass(choice);
+  $("#sit13-color").change(function(){
+    var choice = $("#sit13-color option:selected").val(); 
+    $("#user_s_name13").removeClass('htorange htred lightgreen htblue ulshade htlightwhite htyellow htgold').addClass(choice);
+  });
+
+  var choice = $("#sit14-color option:selected").val(); 
+  $("#user_s_name14").addClass(choice);
+  $("#sit14-color").change(function(){
+    var choice = $("#sit14-color option:selected").val(); 
+    $("#user_s_name14").removeClass('htorange htred lightgreen htblue ulshade htlightwhite htyellow htgold').addClass(choice);
+  });
 
 
   ////////// Update Situation Sliders //////////

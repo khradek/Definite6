@@ -55,40 +55,83 @@ $(".gamecalls.show").ready(function() {
   var sitTitle13 = $('#gamecall-title13').text();
   var sitTitle14 = $('#gamecall-title14').text();
 
+  var sitColor1 = $('#gamecall-color1').text();
+  var sitColor2 = $('#gamecall-color2').text();
+  var sitColor3 = $('#gamecall-color3').text();
+  var sitColor4 = $('#gamecall-color4').text();
+  var sitColor5 = $('#gamecall-color5').text();
+  var sitColor6 = $('#gamecall-color6').text();
+  var sitColor7 = $('#gamecall-color7').text();
+  var sitColor8 = $('#gamecall-color8').text();
+  var sitColor9 = $('#gamecall-color9').text();
+  var sitColor10 = $('#gamecall-color10').text();
+  var sitColor11 = $('#gamecall-color11').text();
+  var sitColor12 = $('#gamecall-color12').text();
+  var sitColor13 = $('#gamecall-color13').text();
+  var sitColor14 = $('#gamecall-color14').text();
+
   gcCellRenderer = function(instance, td, row, col, prop, value, cellProperties) {
     Handsontable.renderers.TextRenderer.apply(this, arguments);
     if (row === 0 && col === 0){
       td.className = 'ulshade bold fontlarge htMiddle htCenter tallrow';
       td.setAttribute("colspan", 4);
       cellProperties.readOnly = true;
-    } else if (value === sitTitle1 || value === sitTitle5 + " - Run" || value === sitTitle5 + " - Pass" || value ===  sitTitle14 + " - Run" || value === sitTitle14 + " - Pass"){
-      td.className = 'htlightwhite underline bold htCenter hide-next';
+    } else if (value === sitTitle1){
+      td.className = sitColor1 + ' underline bold htCenter hide-next';
       td.setAttribute("colspan", 2);
       cellProperties.readOnly = true;
-    } else if (value ===  sitTitle2 + " - Run" || value === sitTitle2 + " - Pass" || value ===  sitTitle10 + " - Run" || value === sitTitle10 + " - Pass"){
-      td.className = 'lightgreen underline bold htCenter';
+    } else if (value ===  sitTitle2 + " - Run" || value === sitTitle2 + " - Pass"){
+      td.className = sitColor2 + ' underline bold htCenter';
       td.setAttribute("colspan", 2);
       cellProperties.readOnly = true;
-    } else if (value ===  sitTitle3 + " - Run" || value === sitTitle3 + " - Pass" || value ===  sitTitle13 + " - Run" || value === sitTitle13 + " - Pass"){
-      td.className = 'htorange underline bold htCenter hide-next';
+    } else if (value ===  sitTitle3 + " - Run" || value === sitTitle3 + " - Pass"){
+      td.className = sitColor3 + ' underline bold htCenter hide-next';
       td.setAttribute("colspan", 2);
-      cellProperties.readOnly = true;     
-    } else if (value ===  sitTitle6 + " - Run" || value === sitTitle6 + " - Pass" || value ===  sitTitle9 + " - Run" || value === sitTitle9 + " - Pass"){
-      td.className = 'htred underline bold htCenter hide-next';
+      cellProperties.readOnly = true; 
+    } else if (value ===  sitTitle4 + " - Run" || value === sitTitle4 + " - Pass"){
+      td.className = sitColor4 + ' underline bold htCenter hide-next';
+      td.setAttribute("colspan", 2);
+      cellProperties.readOnly = true; 
+    } else if (value ===  sitTitle5 + " - Run" || value === sitTitle5 + " - Pass"){
+      td.className = sitColor5 + ' underline bold htCenter hide-next';
+      td.setAttribute("colspan", 2);
+      cellProperties.readOnly = true;                 
+    } else if (value ===  sitTitle6 + " - Run" || value === sitTitle6 + " - Pass"){
+      td.className = sitColor6 + ' underline bold htCenter hide-next';
       td.setAttribute("colspan", 2);
       cellProperties.readOnly = true;   
-    } else if (value ===  sitTitle4 + " - Run" || value === sitTitle4 + " - Pass" || value ===  sitTitle11 + " - Run" || value === sitTitle11 + " - Pass"){
-      td.className = 'htblue underline bold htCenter hide-next';
+    } else if (value ===  sitTitle7 + " - Run" || value === sitTitle7 + " - Pass"){
+      td.className = sitColor7 + ' underline bold htCenter hide-next';
       td.setAttribute("colspan", 2);
       cellProperties.readOnly = true;    
-    } else if (value ===  sitTitle7 + " - Run" || value === sitTitle7 + " - Pass"){
-      td.className = 'ulshade underline bold htCenter';
+    } else if (value ===  sitTitle8 + " - Run" || value === sitTitle8 + " - Pass"){
+      td.className = sitColor8 + ' underline bold htCenter';
       td.setAttribute("colspan", 2);
       cellProperties.readOnly = true;  
-    } else if (value ===  sitTitle8 + " - Run" || value === sitTitle8 + " - Pass" || value ===  sitTitle12 + " - Run" || value === sitTitle12 + " - Pass"){
-      td.className = 'htyellow underline bold htCenter hide-next';
+    } else if (value ===  sitTitle9 + " - Run" || value === sitTitle9 + " - Pass"){
+      td.className = sitColor9 + ' underline bold htCenter hide-next';
       td.setAttribute("colspan", 2);
-      cellProperties.readOnly = true;              
+      cellProperties.readOnly = true;  
+    } else if (value ===  sitTitle10 + " - Run" || value === sitTitle10 + " - Pass"){
+      td.className = sitColor10 + ' underline bold htCenter hide-next';
+      td.setAttribute("colspan", 2);
+      cellProperties.readOnly = true; 
+    } else if (value ===  sitTitle11 + " - Run" || value === sitTitle11 + " - Pass"){
+      td.className = sitColor11 + ' underline bold htCenter hide-next';
+      td.setAttribute("colspan", 2);
+      cellProperties.readOnly = true; 
+    } else if (value ===  sitTitle12 + " - Run" || value === sitTitle12 + " - Pass"){
+      td.className = sitColor12 + ' underline bold htCenter hide-next';
+      td.setAttribute("colspan", 2);
+      cellProperties.readOnly = true; 
+    } else if (value ===  sitTitle13 + " - Run" || value === sitTitle13 + " - Pass"){
+      td.className = sitColor13 + ' underline bold htCenter hide-next';
+      td.setAttribute("colspan", 2);
+      cellProperties.readOnly = true; 
+    } else if (value ===  sitTitle14 + " - Run" || value === sitTitle14 + " - Pass"){
+      td.className = sitColor14 + ' underline bold htCenter hide-next';
+      td.setAttribute("colspan", 2);
+      cellProperties.readOnly = true;                                           
     } else {
       Handsontable.AutocompleteCell.renderer.apply(this, arguments);
       cellProperties.type = 'dropdown';

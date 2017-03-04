@@ -426,14 +426,6 @@ SPAN.td{
 }
 
 
-.htlightwhite{
-  background: #f2f6f8; /* Old browsers */
-  background: -moz-linear-gradient(top,  #f2f6f8 0%, #d8e1e7 25%, #b5c6d0 51%, #e0eff9 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top,  #f2f6f8 0%,#d8e1e7 25%,#b5c6d0 51%,#e0eff9 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom,  #f2f6f8 0%,#d8e1e7 25%,#b5c6d0 51%,#e0eff9 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f6f8', endColorstr='#e0eff9',GradientType=0 ); /* IE6-9 */
-}
-
 .lightgreen{
   background: #e6f0a3; /* Old browsers */
   background: -moz-linear-gradient(top,  #e6f0a3 0%, #c3d825 30%, #c3d825 30%, #d2e638 50%, #dbf043 100%); /* FF3.6-15 */
@@ -491,6 +483,15 @@ SPAN.td{
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', endColorstr='#fbdf93',GradientType=0 ); /* IE6-9 */
 }
 
+.htgold{
+  background: #d5cea6; /* Old browsers */
+  background: -moz-linear-gradient(top, #d5cea6 0%, #b7ad70 34%, #c9c190 83%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #d5cea6 0%,#b7ad70 34%,#c9c190 83%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #d5cea6 0%,#b7ad70 34%,#c9c190 83%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d5cea6', endColorstr='#c9c190',GradientType=0 ); /* IE6-9 */
+}
+
+
 .gamecall-image{
   display: block;
   margin: auto;
@@ -511,6 +512,16 @@ SPAN.td{
 }
 
 .openers-div{
-  height: 42.7px;
+  height: 65.1px;
 }
 
+#vertcenter {
+    position: relative;
+    top: 50%; 
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+}
+
+.dark-modal-bg{
+  background: #F5F5F5
+}

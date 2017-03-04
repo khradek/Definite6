@@ -39,56 +39,29 @@
           </div>
         </div>  
 
-        <button type="button" class="btn btn-custom3 btn-sm show-saved-plays">Saved Formations & Plays</button>
-
-        <div class="media">
-          <div class="media-body">
-            <table class="table table-hover" id="plays_table">  
-              <thead>
-                <tr>
-                  <th></th>
-                  <th class="new-period-box">1</th>
-                  <th class="new-period-box">2</th>
-                  <th class="new-period-box">3</th>
-                  <th class="new-period-box">4</th>              
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Practice in Segment:</strong></td>
-                  <td>        
-                    <div class="field form-group">
-                      <div class="checkbox-inline">
-                        <%= f.check_box :period1, checked: "checked", class: "segment-check" %>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="field form-group">
-                      <div class="checkbox-inline">
-                        <%= f.check_box :period2, checked: "checked", class: "segment-check" %>
-                      </div>
-                    </div>                    
-                  </td>
-                  <td>
-                    <div class="field form-group">
-                      <div class="checkbox-inline">
-                        <%= f.check_box :period3, checked: "checked", class: "segment-check" %>
-                      </div>
-                    </div>                    
-                  </td>
-                  <td>
-                    <div class="field form-group">
-                      <div class="checkbox-inline">
-                        <%= f.check_box :period4, checked: "checked", class: "segment-check" %>
-                      </div>
-                    </div>                    
-                  </td>
-                </tr>
-              </tbody>
-            </table> 
+        <div class="row">
+          <button type="button" class="btn btn-custom3 btn-sm show-saved-plays">Saved Formations & Plays</button>
+        </div>
+          
+        <br>
+        <hr>
+          
+        <div class="table">
+          <div class="tr">
+            <span class="td script-col1"><strong>Practice in Segment:</strong></span>
+            <span class="td script-col2 center">1</span>
+            <span class="td script-col3 center">2</span>
+            <span class="td script-col3 center">3</span>
+            <span class="td script-col3 center">4</span>
           </div>
-        </div> 
+          <div class="tr">
+            <span class="script-col1 td"></span>
+            <span class="script-col2 td center"><%= f.check_box :period1, checked: "checked", class: "segment-check" %></span>
+            <span class="script-col3 td center"><%= f.check_box :period2, checked: "checked", class: "segment-check" %></span>
+            <span class="script-col3 td center"><%= f.check_box :period3, checked: "checked", class: "segment-check" %></span>
+            <span class="script-col3 td center"><%= f.check_box :period4, checked: "checked", class: "segment-check" %></span>
+          </div>
+        </div>
 
         <hr>
 

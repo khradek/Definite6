@@ -11,37 +11,33 @@
 
   <div class="row row-no-gutter"> 
     <div class="col-xs-2"></div> 
-    <div class="col-xs-8"><div class="center summary-border ulshade"><strong><%= current_user.s_name7 %>- Run</strong></div></div>
+    <div class="col-xs-8"><div class="center summary-border <%= current_user.sit7_color %>"><strong><%= current_user.s_name7 %>- Run</strong></div></div>
     <div class="col-xs-2"></div>
   </div>
   <div class="row row-no-gutter"> 
     <div class="col-xs-2"></div> 
     <div class="col-xs-4">        
-      <% @plays.run_left_third_mediums.each do |play| %>
+      <% @run_lefts.each do |play| %>
         <div class="center summary-border white-bg" ><%= play.fullname %></div>
       <% end %> 
-      <div class="center summary-border white-bg trans <%= 'hidden' if @run_left_third_mediums_remain < 5 %>">11</div>
-      <div class="center summary-border white-bg trans <%= 'hidden' if @run_left_third_mediums_remain < 4 %>">12</div>
-      <div class="center summary-border white-bg trans <%= 'hidden' if @run_left_third_mediums_remain < 3 %>">13</div>
-      <div class="center summary-border white-bg trans <%= 'hidden' if @run_left_third_mediums_remain < 2 %>">14</div>
-      <div class="center summary-border white-bg trans <%= 'hidden' if @run_left_third_mediums_remain < 1 %>">15</div>
+      <% (1..@run_lefts_remain).each do |div| %>
+        <div class="center summary-border white-bg trans">#</div>
+      <% end %>
     </div>  
     <div class="col-xs-4">        
-      <% @plays.run_right_third_mediums.each do |play| %>
+      <% @run_rights.each do |play| %>
         <div class="center summary-border white-bg" ><%= play.fullname %></div>
       <% end %>
-      <div class="center summary-border white-bg trans <%= 'hidden' if @run_right_third_mediums_remain < 5 %>">11</div>
-      <div class="center summary-border white-bg trans <%= 'hidden' if @run_right_third_mediums_remain < 4 %>">12</div>
-      <div class="center summary-border white-bg trans <%= 'hidden' if @run_right_third_mediums_remain < 3 %>">13</div>
-      <div class="center summary-border white-bg trans <%= 'hidden' if @run_right_third_mediums_remain < 2 %>">14</div>
-      <div class="center summary-border white-bg trans <%= 'hidden' if @run_right_third_mediums_remain < 1 %>">15</div>
+      <% (1..@run_rights_remain).each do |div| %>
+        <div class="center summary-border white-bg trans">#</div>
+      <% end %>
     <div class="col-xs-2"></div>
     </div>  
   </div>
   <div class="row">
     <div class="col-xs-2"></div>
-    <div class="col-xs-4 center"><strong>Spaces Remaining: <%= @run_left_third_mediums_remain %></strong></div>
-    <div class="col-xs-4 center"><strong>Spaces Remaining: <%= @run_right_third_mediums_remain %></strong></div>
+    <div class="col-xs-4 center"><strong>Spaces Remaining: <%= @run_lefts_remain %></strong></div>
+    <div class="col-xs-4 center"><strong>Spaces Remaining: <%= @run_rights_remain %></strong></div>
     <div class="col-xs-2"></div>
   </div>
 
@@ -49,37 +45,33 @@
 
   <div class="row row-no-gutter"> 
     <div class="col-xs-2"></div> 
-    <div class="col-xs-8"><div class="center summary-border ulshade"><strong><%= current_user.s_name7 %> - Pass</strong></div></div>
+    <div class="col-xs-8"><div class="center summary-border <%= current_user.sit7_color %>"><strong><%= current_user.s_name7 %> - Pass</strong></div></div>
     <div class="col-xs-2"></div>
   </div>
   <div class="row row-no-gutter"> 
     <div class="col-xs-2"></div> 
     <div class="col-xs-4">        
-      <% @plays.pass_left_third_mediums.each do |play| %>
+      <% @pass_lefts.each do |play| %>
         <div class="center summary-border white-bg" ><%= play.fullname %></div>
       <% end %> 
-      <div class="center summary-border white-bg trans <%= 'hidden' if @pass_left_third_mediums_remain < 5 %>">11</div>
-      <div class="center summary-border white-bg trans <%= 'hidden' if @pass_left_third_mediums_remain < 4 %>">12</div>
-      <div class="center summary-border white-bg trans <%= 'hidden' if @pass_left_third_mediums_remain < 3 %>">13</div>
-      <div class="center summary-border white-bg trans <%= 'hidden' if @pass_left_third_mediums_remain < 2 %>">14</div>
-      <div class="center summary-border white-bg trans <%= 'hidden' if @pass_left_third_mediums_remain < 1 %>">15</div>
+      <% (1..@pass_lefts_remain).each do |div| %>
+        <div class="center summary-border white-bg trans">#</div>
+      <% end %>
     </div>  
     <div class="col-xs-4">        
-      <% @plays.pass_right_third_mediums.each do |play| %>
+      <% @pass_rights.each do |play| %>
         <div class="center summary-border white-bg" ><%= play.fullname %></div>
       <% end %>
-      <div class="center summary-border white-bg trans <%= 'hidden' if @pass_right_third_mediums_remain < 5 %>">11</div>
-      <div class="center summary-border white-bg trans <%= 'hidden' if @pass_right_third_mediums_remain < 4 %>">12</div>
-      <div class="center summary-border white-bg trans <%= 'hidden' if @pass_right_third_mediums_remain < 3 %>">13</div>
-      <div class="center summary-border white-bg trans <%= 'hidden' if @pass_right_third_mediums_remain < 2 %>">14</div>
-      <div class="center summary-border white-bg trans <%= 'hidden' if @pass_right_third_mediums_remain < 1 %>">15</div>
+      <% (1..@pass_rights_remain).each do |div| %>
+        <div class="center summary-border white-bg trans">#</div>
+      <% end %>
     <div class="col-xs-2"></div>
     </div>  
   </div>
   <div class="row">
     <div class="col-xs-2"></div>
-    <div class="col-xs-4 center"><strong>Spaces Remaining: <%= @pass_left_third_mediums_remain %></strong></div>
-    <div class="col-xs-4 center"><strong>Spaces Remaining: <%= @pass_right_third_mediums_remain %></strong></div>
+    <div class="col-xs-4 center"><strong>Spaces Remaining: <%= @pass_lefts_remain %></strong></div>
+    <div class="col-xs-4 center"><strong>Spaces Remaining: <%= @pass_rights_remain %></strong></div>
     <div class="col-xs-2"></div>
   </div>
 

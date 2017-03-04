@@ -5,12 +5,16 @@
 
   <hr class="light-red">
 
+  <h3 class="pointer center blue", data-toggle="modal" data-target="#Sheet1"><u>Call Sheet Settings</u>&nbsp<i class="fa fa-table" aria-hidden="true"></i></h3>
+
+  <br>
+
   <% if current_user.subscribed? && !current_user.cancelled? %>
 
     <h5>Your current billing period ends: <%= current_user.subscription_end.strftime("%m/%d/%Y") %></h5>
 
   <% end %>
-
+  
   <h3>Update Personal Info</h3>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -19,7 +23,7 @@
       <div class="col-xs-12">
         <div class="field">
           <%= f.label :first_name %><br />
-          <%= f.text_field :first_name, autofocus: true, class: "form-control" %>
+          <%= f.text_field :first_name, class: "form-control" %>
         </div>
       </div>
     </div>
@@ -101,229 +105,6 @@
     </div>
 
   <% end %>
-
-  <br>
-  <hr class="light-blue">
-
-  <h3 id="situation-names-link" class="pointer">Update Situations <i class="fa fa-arrow-circle-right right-arrow ht blue" aria-hidden="true"></i><i class="fa fa-arrow-circle-down down-arrow blue" aria-hidden="true"></i></h3>
-
-  <div id="situation-names-section">
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    
-      <hr>  
-
-      <div class="center">
-        <span class="large-font bold-font">First Page</span>
-        <div class="deep-top pointer", data-toggle="modal" data-target="#Sheet1"><u><i>Show Call Sheet</i></u> &nbsp<i class="fa fa-info-circle fa-lg blue" aria-hidden="true"></i></div>
-      </div>
-        
-      <br>
-        
-      <div class="row row-no-gutter">
-        <div class="col-xs-6">
-          <%= f.text_field :s_name1, class: "form-control center summary-border htlightwhite bold-font no-radius" %>
-        </div>
-        <div class="col-xs-6">
-          <%= f.text_field :s_name2, class: "form-control center summary-border lightgreen bold-font no-radius" %>
-        </div>
-      </div>
-
-      <div class="row row-no-gutter">
-        <div class="col-xs-6">
-          <div class="center summary-border white-bg light-it openers-div">
-            15 Plays
-          </div>
-        </div>
-        <div class="col-xs-6">
-          <div class="center summary-border white-bg light-it">
-            <%= f.range_field :s_name2_num_run, {id: "name2-runs", :in => 0..14, :step => '1'} %>
-            <span id="name2-pass-count"></span> Pass / <span id="name2-run-count"><%= current_user.s_name2_num_run%></span> Run
-          </div>
-        </div>
-      </div>
-
-      <br>
-
-      <div class="row row-no-gutter">
-        <div class="col-xs-6">
-          <%= f.text_field :s_name3, class: "form-control center summary-border htorange bold-font no-radius" %>
-        </div>
-
-        <div class="col-xs-6">
-          <%= f.text_field :s_name6, class: "form-control center summary-border htred bold-font no-radius" %>    
-        </div>
-      </div>
-
-      <div class="row row-no-gutter">
-        <div class="col-xs-6">
-          <div class="center summary-border white-bg light-it">
-            <%= f.range_field :s_name3_num_run, {id: "name3-runs", :in => 0..11, :step => '1'} %>
-            <span id="name3-pass-count"></span> Pass / <span id="name3-run-count"><%= current_user.s_name3_num_run%></span> Run  
-          </div>
-        </div>
-
-        <div class="col-xs-6">
-          <div class="center summary-border white-bg light-it">
-            <%= f.range_field :s_name6_num_run, {id: "name6-runs", :in => 0..11, :step => '1'} %>
-            <span id="name6-pass-count"></span> Pass / <span id="name6-run-count"><%= current_user.s_name6_num_run%></span> Run
-          </div>
-        </div>
-      </div>
-
-      <br>
-
-      <div class="row row-no-gutter">
-        <div class="col-xs-6">
-          <%= f.text_field :s_name4, class: "form-control center summary-border htblue bold-font no-radius" %>
-        </div>
-
-        <div class="col-xs-6">
-          <%= f.text_field :s_name7, class: "form-control center summary-border ulshade bold-font no-radius" %>
-        </div>
-      </div>
-
-      <div class="row row-no-gutter">
-        <div class="col-xs-6">
-          <div class="center summary-border white-bg light-it">
-            <%= f.range_field :s_name4_num_run, {id: "name4-runs", :in => 0..10, :step => '1'} %>
-            <span id="name4-pass-count"></span> Pass / <span id="name4-run-count"><%= current_user.s_name4_num_run%></span> Run
-          </div>
-        </div>
-        <div class="col-xs-6">
-          <div class="center summary-border white-bg light-it">
-            <%= f.range_field :s_name7_num_run, {id: "name7-runs", :in => 0..10, :step => '1'} %>
-            <span id="name7-pass-count"></span> Pass / <span id="name7-run-count"><%= current_user.s_name7_num_run%></span> Run           
-          </div>
-        </div>
-      </div>
-
-      <br>
-
-      <div class="row row-no-gutter">
-        <div class="col-xs-6">
-          <%= f.text_field :s_name5, class: "form-control center summary-border htlightwhite bold-font no-radius" %>
-        </div>
-
-        <div class="col-xs-6">
-          <%= f.text_field :s_name8, class: "form-control center summary-border htyellow bold-font no-radius" %>
-        </div>
-      </div>
-
-      <div class="row row-no-gutter">
-        <div class="col-xs-6">
-          <div class="center summary-border white-bg light-it">
-            <%= f.range_field :s_name5_num_run, {id: "name5-runs", :in => 0..10, :step => '1'} %>
-            <span id="name5-pass-count"></span> Pass / <span id="name5-run-count"><%= current_user.s_name5_num_run%></span> Run
-          </div>
-        </div>
-        <div class="col-xs-6">
-          <div class="center summary-border white-bg light-it">
-            <%= f.range_field :s_name8_num_run, {id: "name8-runs", :in => 0..10, :step => '1'} %>
-            <span id="name8-pass-count"></span> Pass / <span id="name8-run-count"><%= current_user.s_name8_num_run%></span> Run
-          </div>
-        </div>
-      </div>
-
-      <br>
-
-      <hr>
-
-      <div class="center">
-        <span class="large-font bold-font">Second Page</span>
-        <div class="deep-top pointer", data-toggle="modal" data-target="#Sheet2"><u><i>Show Call Sheet</i></u> &nbsp<i class="fa fa-info-circle fa-lg blue" aria-hidden="true"></i></div>
-      </div>
-
-      <br>
-
-      <div class="row row-no-gutter">
-        <div class="col-xs-6">
-            <%= f.text_field :s_name9, class: "form-control center summary-border htred bold-font no-radius" %>
-        </div>
-
-        <div class="col-xs-6">
-          <%= f.text_field :s_name10, class: "form-control center summary-border lightgreen bold-font no-radius" %>
-        </div>
-      </div>
-
-      <div class="row row-no-gutter">
-        <div class="col-xs-6">
-          <div class="center summary-border white-bg light-it">            
-            <%= f.range_field :s_name9_num_run, {id: "name9-runs", :in => 0..14, :step => '1'} %>
-            <span id="name9-pass-count"></span> Pass / <span id="name9-run-count"><%= current_user.s_name9_num_run%></span> Run
-          </div>
-        </div>
-        <div class="col-xs-6">
-          <div class="center summary-border white-bg light-it">
-            <%= f.range_field :s_name10_num_run, {id: "name10-runs", :in => 0..14, :step => '1'} %>
-            <span id="name10-pass-count"></span> Pass / <span id="name10-run-count"><%= current_user.s_name10_num_run%></span> Run            
-          </div>
-        </div>
-      </div>
-
-      <br>
-
-      <div class="row row-no-gutter">
-        <div class="col-xs-6">
-          <%= f.text_field :s_name11, class: "form-control center summary-border htblue bold-font no-radius" %>
-        </div>
-
-        <div class="col-xs-6">
-          <%= f.text_field :s_name12, class: "form-control center summary-border htyellow bold-font no-radius" %>
-        </div>
-      </div>
-
-      <div class="row row-no-gutter">
-        <div class="col-xs-6">
-          <div class="center summary-border white-bg light-it">
-            <%= f.range_field :s_name11_num_run, {id: "name11-runs", :in => 0..14, :step => '1'} %>
-            <span id="name11-pass-count"></span> Pass / <span id="name11-run-count"><%= current_user.s_name11_num_run%></span> Run            
-          </div>
-        </div>
-        <div class="col-xs-6">
-          <div class="center summary-border white-bg light-it">
-            <%= f.range_field :s_name12_num_run, {id: "name12-runs", :in => 0..14, :step => '1'} %>
-            <span id="name12-pass-count"></span> Pass / <span id="name12-run-count"><%= current_user.s_name12_num_run%></span> Run            
-          </div>
-        </div>
-      </div>
-
-      <br>
-
-      <div class="row row-no-gutter">
-        <div class="col-xs-6">
-          <%= f.text_field :s_name13, class: "form-control center summary-border htorange bold-font no-radius" %>
-        </div>
-
-        <div class="col-xs-6">
-          <%= f.text_field :s_name14, class: "form-control center summary-border htlightwhite bold-font no-radius" %>
-        </div>
-      </div>                                         
-
-      <div class="row row-no-gutter">
-        <div class="col-xs-6">
-          <div class="center summary-border white-bg light-it">
-            <%= f.range_field :s_name13_num_run, {id: "name13-runs", :in => 0..14, :step => '1'} %>
-            <span id="name13-pass-count"></span> Pass / <span id="name13-run-count"><%= current_user.s_name13_num_run%></span> Run            
-          </div>
-        </div>
-        <div class="col-xs-6">
-          <div class="center summary-border white-bg light-it">
-            <%= f.range_field :s_name14_num_run, {id: "name14-runs", :in => 0..14, :step => '1'} %>
-            <span id="name14-pass-count"></span> Pass / <span id="name14-run-count"><%= current_user.s_name14_num_run%></span> Run            
-          </div>
-        </div>
-      </div>
-
-      <br>
-
-      <div class="actions">
-        <%= f.button "Update Situations", class: "btn btn-custom3 btn-block", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Updating..."} %>
-      </div>
-
-    <% end %>  
-  </div>
-
-
 
   <hr class="light-blue">
 
@@ -472,36 +253,349 @@
 <br>
 <br>
 
-<!-- Modal for Game Call Sheet Page One-->
+<!-- Modal for Call Sheet Settings-->
 <div class="modal fade" id="Sheet1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog custom-larger-class" role="document">
-    <div class="modal-content">
+  <div class="modal-dialog custom-class" role="document">
+    <div class="modal-content dark-modal-bg">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h2 class="modal-title center" id="exampleModalLabel">Game Call Sheet - Page One</h2>
+        <h2 class="modal-title center" id="exampleModalLabel">Game Call Sheet Settings</h2>
       </div>
       <div class="modal-body">
-        <%= image_tag("GameCallP1.png", alt: "Game Call Sheet Page One", class: "gamecall-image") %>
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    
+          <div class="center">
+            <span class="large-font">First Page</span>
+          </div>
+            
+          <br>
+            
+          <div class="row row-no-gutter">
+            <div class="col-xs-6">
+              <%= f.text_field :s_name1, autofocus: true, onfocus: "var temp_value=this.value; this.value=''; this.value=temp_value", class: "form-control center summary-border bold-font no-radius" %>
+            </div>
+            <div class="col-xs-6">
+              <%= f.text_field :s_name2, class: "form-control center summary-border bold-font no-radius" %>
+            </div>
+          </div>
+
+          <div class="row row-no-gutter">
+            <div class="col-xs-6">
+              <div class="center summary-border white-bg">
+                <%= f.label :sit1_color, "Set Color" %>&nbsp
+                <%= f.select( :sit1_color, options_for_select([['None', ' '], ['Orange', 'htorange'], ['Red', 'htred'], ['Green', 'lightgreen'], ['Blue', 'htblue'], ['Yellow', 'htyellow'], ['Gold', 'htgold'], ['Shade', 'ulshade'], ['Ice', 'htlightwhite']], :selected => f.object.sit1_color), {}, {id: "sit1-color", class: "center light-it"}) %>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="center summary-border white-bg">
+                <%= f.label :sit2_color, "Set Color" %>&nbsp
+                <%= f.select( :sit2_color, options_for_select([['None', ' '], ['Orange', 'htorange'], ['Red', 'htred'], ['Green', 'lightgreen'], ['Blue', 'htblue'], ['Yellow', 'htyellow'], ['Gold', 'htgold'], ['Shade', 'ulshade'], ['Ice', 'htlightwhite']], :selected => f.object.sit2_color), {}, {id: "sit2-color", class: "center light-it"}) %>
+              </div>
+            </div>
+          </div>
+
+          <div class="row row-no-gutter">
+            <div class="col-xs-6">
+              <div class="center summary-border white-bg light-it openers-div">
+                <div id="vertcenter" class="light-it">15 Plays (Run/Pass not separated)</div>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="center summary-border white-bg">
+                <%= f.label :s_name2_num_run, "Set Balance" %>
+                <%= f.range_field :s_name2_num_run, {id: "name2-runs", :in => 0..14, :step => '1'} %>
+                <div class="light-it"><span id="name2-pass-count"></span> Pass / <span id="name2-run-count"><%= current_user.s_name2_num_run%></span> Run</div>
+              </div>
+            </div>
+          </div>
+
+          <br>
+
+          <div class="row row-no-gutter">
+            <div class="col-xs-6">
+              <%= f.text_field :s_name3, class: "form-control center summary-border bold-font no-radius" %>
+            </div>
+
+            <div class="col-xs-6">
+              <%= f.text_field :s_name6, class: "form-control center summary-border bold-font no-radius" %>    
+            </div>
+          </div>
+
+          <div class="row row-no-gutter">
+            <div class="col-xs-6">
+              <div class="center summary-border white-bg">
+                <%= f.label :sit3_color, "Set Color" %>&nbsp
+                <%= f.select( :sit3_color, options_for_select([['None', ' '], ['Orange', 'htorange'], ['Red', 'htred'], ['Green', 'lightgreen'], ['Blue', 'htblue'], ['Yellow', 'htyellow'], ['Gold', 'htgold'], ['Shade', 'ulshade'], ['Ice', 'htlightwhite']], :selected => f.object.sit3_color), {}, {id: "sit3-color", class: "center light-it"}) %>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="center summary-border white-bg">
+                <%= f.label :sit6_color, "Set Color" %>&nbsp
+                <%= f.select( :sit6_color, options_for_select([['None', ' '], ['Orange', 'htorange'], ['Red', 'htred'], ['Green', 'lightgreen'], ['Blue', 'htblue'], ['Yellow', 'htyellow'], ['Gold', 'htgold'], ['Shade', 'ulshade'], ['Ice', 'htlightwhite']], :selected => f.object.sit6_color), {}, {id: "sit6-color", class: "center light-it"}) %>
+              </div>
+            </div>
+          </div>
+
+          <div class="row row-no-gutter">
+            <div class="col-xs-6">
+              <div class="center summary-border white-bg">
+                <%= f.label :s_name3_num_run, "Set Balance" %>
+                <%= f.range_field :s_name3_num_run, {id: "name3-runs", :in => 0..11, :step => '1'} %>
+                <div class="light-it"><span id="name3-pass-count"></span> Pass / <span id="name3-run-count"><%= current_user.s_name3_num_run%></span> Run</div>  
+              </div>
+            </div>
+
+            <div class="col-xs-6">
+              <div class="center summary-border white-bg">
+                <%= f.label :s_name6_num_run, "Set Balance" %>
+                <%= f.range_field :s_name6_num_run, {id: "name6-runs", :in => 0..11, :step => '1'} %>
+                <div class="light-it"><span id="name6-pass-count"></span> Pass / <span id="name6-run-count"><%= current_user.s_name6_num_run%></span> Run</div>
+              </div>
+            </div>
+          </div>
+
+          <br>
+
+          <div class="row row-no-gutter">
+            <div class="col-xs-6">
+              <%= f.text_field :s_name4, class: "form-control center summary-border bold-font no-radius" %>
+            </div>
+
+            <div class="col-xs-6">
+              <%= f.text_field :s_name7, class: "form-control center summary-border bold-font no-radius" %>
+            </div>
+          </div>
+
+          <div class="row row-no-gutter">
+            <div class="col-xs-6">
+              <div class="center summary-border white-bg">
+                <%= f.label :sit4_color, "Set Color" %>&nbsp
+                <%= f.select( :sit4_color, options_for_select([['None', ' '], ['Orange', 'htorange'], ['Red', 'htred'], ['Green', 'lightgreen'], ['Blue', 'htblue'], ['Yellow', 'htyellow'], ['Gold', 'htgold'], ['Shade', 'ulshade'], ['Ice', 'htlightwhite']], :selected => f.object.sit4_color), {}, {id: "sit4-color", class: "center light-it"}) %>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="center summary-border white-bg">
+                <%= f.label :sit7_color, "Set Color" %>&nbsp
+                <%= f.select( :sit7_color, options_for_select([['None', ' '], ['Orange', 'htorange'], ['Red', 'htred'], ['Green', 'lightgreen'], ['Blue', 'htblue'], ['Yellow', 'htyellow'], ['Gold', 'htgold'], ['Shade', 'ulshade'], ['Ice', 'htlightwhite']], :selected => f.object.sit7_color), {}, {id: "sit7-color", class: "center light-it"}) %>
+              </div>
+            </div>
+          </div>
+
+          <div class="row row-no-gutter">
+            <div class="col-xs-6">
+              <div class="center summary-border white-bg">
+                <%= f.label :s_name4_num_run, "Set Balance" %>
+                <%= f.range_field :s_name4_num_run, {id: "name4-runs", :in => 0..10, :step => '1'} %>
+                <div class="light-it"><span id="name4-pass-count"></span> Pass / <span id="name4-run-count"><%= current_user.s_name4_num_run%></span> Run</div>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="center summary-border white-bg">
+                <%= f.label :s_name7_num_run, "Set Balance" %>
+                <%= f.range_field :s_name7_num_run, {id: "name7-runs", :in => 0..10, :step => '1'} %>
+                <div class="light-it"><span id="name7-pass-count"></span> Pass / <span id="name7-run-count"><%= current_user.s_name7_num_run%></span> Run</div>           
+              </div>
+            </div>
+          </div>
+
+          <br>
+
+          <div class="row row-no-gutter">
+            <div class="col-xs-6">
+              <%= f.text_field :s_name5, class: "form-control center summary-border bold-font no-radius" %>
+            </div>
+
+            <div class="col-xs-6">
+              <%= f.text_field :s_name8, class: "form-control center summary-border bold-font no-radius" %>
+            </div>
+          </div>
+
+          <div class="row row-no-gutter">
+            <div class="col-xs-6">
+              <div class="center summary-border white-bg">
+                <%= f.label :sit5_color, "Set Color" %>&nbsp
+                <%= f.select( :sit5_color, options_for_select([['None', ' '], ['Orange', 'htorange'], ['Red', 'htred'], ['Green', 'lightgreen'], ['Blue', 'htblue'], ['Yellow', 'htyellow'], ['Gold', 'htgold'], ['Shade', 'ulshade'], ['Ice', 'htlightwhite']], :selected => f.object.sit5_color), {}, {id: "sit5-color", class: "center light-it"}) %>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="center summary-border white-bg">
+                <%= f.label :sit8_color, "Set Color" %>&nbsp
+                <%= f.select( :sit8_color, options_for_select([['None', ' '], ['Orange', 'htorange'], ['Red', 'htred'], ['Green', 'lightgreen'], ['Blue', 'htblue'], ['Yellow', 'htyellow'], ['Gold', 'htgold'], ['Shade', 'ulshade'], ['Ice', 'htlightwhite']], :selected => f.object.sit8_color), {}, {id: "sit8-color", class: "center light-it"}) %>
+              </div>
+            </div>
+          </div>
+
+          <div class="row row-no-gutter">
+            <div class="col-xs-6">
+              <div class="center summary-border white-bg">
+                <%= f.label :s_name5_num_run, "Set Balance" %>
+                <%= f.range_field :s_name5_num_run, {id: "name5-runs", :in => 0..10, :step => '1'} %>
+                <div class="light-it"><span id="name5-pass-count"></span> Pass / <span id="name5-run-count"><%= current_user.s_name5_num_run%></span> Run</div>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="center summary-border white-bg">
+                <%= f.label :s_name8_num_run, "Set Balance" %>
+                <%= f.range_field :s_name8_num_run, {id: "name8-runs", :in => 0..10, :step => '1'} %>
+                <div class="light-it"><span id="name8-pass-count"></span> Pass / <span id="name8-run-count"><%= current_user.s_name8_num_run%></span> Run</div>
+              </div>
+            </div>
+          </div>
+
+          <br>
+
+          <hr>
+
+          <div class="center">
+            <span class="large-font">Second Page</span>
+          </div>
+
+          <br>
+
+          <div class="row row-no-gutter">
+            <div class="col-xs-6">
+                <%= f.text_field :s_name9, class: "form-control center summary-border bold-font no-radius" %>
+            </div>
+
+            <div class="col-xs-6">
+              <%= f.text_field :s_name10, class: "form-control center summary-border bold-font no-radius" %>
+            </div>
+          </div>
+
+          <div class="row row-no-gutter">
+            <div class="col-xs-6">
+              <div class="center summary-border white-bg">
+                <%= f.label :sit9_color, "Set Color" %>&nbsp
+                <%= f.select( :sit9_color, options_for_select([['None', ' '], ['Orange', 'htorange'], ['Red', 'htred'], ['Green', 'lightgreen'], ['Blue', 'htblue'], ['Yellow', 'htyellow'], ['Gold', 'htgold'], ['Shade', 'ulshade'], ['Ice', 'htlightwhite']], :selected => f.object.sit9_color), {}, {id: "sit9-color", class: "center light-it"}) %>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="center summary-border white-bg ">
+                <%= f.label :sit10_color, "Set Color" %>&nbsp
+                <%= f.select( :sit10_color, options_for_select([['None', ' '], ['Orange', 'htorange'], ['Red', 'htred'], ['Green', 'lightgreen'], ['Blue', 'htblue'], ['Yellow', 'htyellow'], ['Gold', 'htgold'], ['Shade', 'ulshade'], ['Ice', 'htlightwhite']], :selected => f.object.sit10_color), {}, {id: "sit10-color", class: "center light-it"}) %>
+              </div>
+            </div>
+          </div>
+
+          <div class="row row-no-gutter">
+            <div class="col-xs-6">
+              <div class="center summary-border white-bg"> 
+                <%= f.label :s_name9_num_run, "Set Balance" %>           
+                <%= f.range_field :s_name9_num_run, {id: "name9-runs", :in => 0..14, :step => '1'} %>
+                <div class="light-it"><span id="name9-pass-count"></span> Pass / <span id="name9-run-count"><%= current_user.s_name9_num_run%></span> Run</div>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="center summary-border white-bg">
+                <%= f.label :s_name10_num_run, "Set Balance" %>
+                <%= f.range_field :s_name10_num_run, {id: "name10-runs", :in => 0..14, :step => '1'} %>
+                <div class="light-it"><span id="name10-pass-count"></span> Pass / <span id="name10-run-count"><%= current_user.s_name10_num_run%></span> Run</div>            
+              </div>
+            </div>
+          </div>
+
+          <br>
+
+          <div class="row row-no-gutter">
+            <div class="col-xs-6">
+              <%= f.text_field :s_name11, class: "form-control center summary-border bold-font no-radius" %>
+            </div>
+
+            <div class="col-xs-6">
+              <%= f.text_field :s_name12, class: "form-control center summary-border bold-font no-radius" %>
+            </div>
+          </div>
+
+          <div class="row row-no-gutter">
+            <div class="col-xs-6">
+              <div class="center summary-border white-bg">
+                <%= f.label :sit11_color, "Set Color" %>&nbsp
+                <%= f.select( :sit11_color, options_for_select([['None', ' '], ['Orange', 'htorange'], ['Red', 'htred'], ['Green', 'lightgreen'], ['Blue', 'htblue'], ['Yellow', 'htyellow'], ['Gold', 'htgold'], ['Shade', 'ulshade'], ['Ice', 'htlightwhite']], :selected => f.object.sit11_color), {}, {id: "sit11-color", class: "center light-it"}) %>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="center summary-border white-bg">
+                <%= f.label :sit12_color, "Set Color" %>&nbsp
+                <%= f.select( :sit12_color, options_for_select([['None', ' '], ['Orange', 'htorange'], ['Red', 'htred'], ['Green', 'lightgreen'], ['Blue', 'htblue'], ['Yellow', 'htyellow'], ['Gold', 'htgold'], ['Shade', 'ulshade'], ['Ice', 'htlightwhite']], :selected => f.object.sit12_color), {}, {id: "sit12-color", class: "center light-it"}) %>
+              </div>
+            </div>
+          </div>
+
+          <div class="row row-no-gutter">
+            <div class="col-xs-6">
+              <div class="center summary-border white-bg">
+                <%= f.label :s_name11_num_run, "Set Balance" %>
+                <%= f.range_field :s_name11_num_run, {id: "name11-runs", :in => 0..14, :step => '1'} %>
+                <div class="light-it"><span id="name11-pass-count"></span> Pass / <span id="name11-run-count"><%= current_user.s_name11_num_run%></span> Run</div>            
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="center summary-border white-bg">
+                <%= f.label :s_name12_num_run, "Set Balance" %>
+                <%= f.range_field :s_name12_num_run, {id: "name12-runs", :in => 0..14, :step => '1'} %>
+                <div class="light-it"><span id="name12-pass-count"></span> Pass / <span id="name12-run-count"><%= current_user.s_name12_num_run%></span> Run</div>            
+              </div>
+            </div>
+          </div>
+
+          <br>
+
+          <div class="row row-no-gutter">
+            <div class="col-xs-6">
+              <%= f.text_field :s_name13, class: "form-control center summary-border bold-font no-radius" %>
+            </div>
+
+            <div class="col-xs-6">
+              <%= f.text_field :s_name14, class: "form-control center summary-border bold-font no-radius" %>
+            </div>
+          </div>                                         
+
+          <div class="row row-no-gutter">
+            <div class="col-xs-6">
+              <div class="center summary-border white-bg">
+                <%= f.label :sit13_color, "Set Color" %>&nbsp
+                <%= f.select( :sit13_color, options_for_select([['None', ' '], ['Orange', 'htorange'], ['Red', 'htred'], ['Green', 'lightgreen'], ['Blue', 'htblue'], ['Yellow', 'htyellow'], ['Gold', 'htgold'], ['Shade', 'ulshade'], ['Ice', 'htlightwhite']], :selected => f.object.sit13_color), {}, {id: "sit13-color", class: "center light-it"}) %>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="center summary-border white-bg">
+                <%= f.label :sit14_color, "Set Color" %>&nbsp
+                <%= f.select( :sit14_color, options_for_select([['None', ' '], ['Orange', 'htorange'], ['Red', 'htred'], ['Green', 'lightgreen'], ['Blue', 'htblue'], ['Yellow', 'htyellow'], ['Gold', 'htgold'], ['Shade', 'ulshade'], ['Ice', 'htlightwhite']], :selected => f.object.sit14_color), {}, {id: "sit14-color", class: "center light-it"}) %>
+              </div>
+            </div>
+          </div>
+
+          <div class="row row-no-gutter">
+            <div class="col-xs-6">
+              <div class="center summary-border white-bg">
+                <%= f.label :s_name13_num_run, "Set Balance" %>
+                <%= f.range_field :s_name13_num_run, {id: "name13-runs", :in => 0..14, :step => '1'} %>
+                <div class="light-it"><span id="name13-pass-count"></span> Pass / <span id="name13-run-count"><%= current_user.s_name13_num_run%></span> Run</div>            
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="center summary-border white-bg">
+                <%= f.label :s_name14_num_run, "Set Balance" %>
+                <%= f.range_field :s_name14_num_run, {id: "name14-runs", :in => 0..14, :step => '1'} %>
+                <div class="light-it"><span id="name14-pass-count"></span> Pass / <span id="name14-run-count"><%= current_user.s_name14_num_run%></span> Run</div>            
+              </div>
+            </div>
+          </div>
+
+          <hr>
+
+          <div class="actions">
+            <%= f.button "Update Settings", class: "btn btn-custom3 btn-block", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Updating..."} %>
+          </div>
+
+        <% end %>  
+
       </div>
     </div>
   </div>
 </div>
 
-<!-- Modal for Game Call Sheet Page Two-->
-<div class="modal fade" id="Sheet2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog custom-larger-class" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h2 class="modal-title center" id="exampleModalLabel">Game Call Sheet - Page Two</h2>
-      </div>
-      <div class="modal-body">
-        <%= image_tag("GameCallP2.png", alt: "Game Call Sheet Page Two", class: "gamecall-image") %>
-      </div>
-    </div>
-  </div>
-</div>
+

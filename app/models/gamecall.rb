@@ -41,7 +41,7 @@ class Gamecall < ActiveRecord::Base
   end
 
   def set_sit_title
-    self.update :sit_title1 => self.user.s_name1, :sit_title2 => self.user.s_name2, :sit_title3 => self.user.s_name3, :sit_title4 => self.user.s_name4, :sit_title5 => self.user.s_name5, :sit_title6 => self.user.s_name6, :sit_title7 => self.user.s_name7, :sit_title8 => self.user.s_name8, :sit_title9 => self.user.s_name9, :sit_title10 => self.user.s_name10, :sit_title11 => self.user.s_name11, :sit_title12 => self.user.s_name12, :sit_title13 => self.user.s_name13, :sit_title14 => self.user.s_name14     
+    self.update :sit_title1 => self.user.s_name1, :sit_title2 => self.user.s_name2, :sit_title3 => self.user.s_name3, :sit_title4 => self.user.s_name4, :sit_title5 => self.user.s_name5, :sit_title6 => self.user.s_name6, :sit_title7 => self.user.s_name7, :sit_title8 => self.user.s_name8, :sit_title9 => self.user.s_name9, :sit_title10 => self.user.s_name10, :sit_title11 => self.user.s_name11, :sit_title12 => self.user.s_name12, :sit_title13 => self.user.s_name13, :sit_title14 => self.user.s_name14, :sit_color1 => self.user.sit1_color, :sit_color2 => self.user.sit2_color, :sit_color3 => self.user.sit3_color, :sit_color4 => self.user.sit4_color, :sit_color5 => self.user.sit5_color, :sit_color6 => self.user.sit6_color, :sit_color7 => self.user.sit7_color, :sit_color8 => self.user.sit8_color, :sit_color9 => self.user.sit9_color, :sit_color10 => self.user.sit10_color, :sit_color11 => self.user.sit11_color, :sit_color12 => self.user.sit12_color, :sit_color13 => self.user.sit13_color, :sit_color14 => self.user.sit14_color     
   end
 
   #Sets the initial game call sheet when created
