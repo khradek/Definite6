@@ -12,6 +12,8 @@
 
   <br>
 
+  <p class="event-id hidden"><%= @event.id%></p>
+
   <p>
   <div class="fake-h4 inline">Dates:&nbsp </div><div class="inline"><%= @event.start_time.strftime("%m-%d-%Y") %> - <%= @event.end_time.strftime("%m-%d-%Y") %></div>
   </p>
@@ -61,11 +63,12 @@
       </div>
     </div>    
 
-    <div id="ph-count-alert" class="red"></div>
+    <div id="ph-count-alert" class="red hidden">
+      <div class="left-margin bottom-margin">Only the first 25 plays in each period will be included in the script when initially created.</div>
+    </div>
 
     <% if @period1_count > 25 || @period2_count > 25 || @period3_count > 25 || @period4_count > 25  %>
-      <div id="count-alert" class="red">Only the first 25 plays in each period will be included in the script when initially created.</div> 
-      <br> 
+      <div id="count-alert" class="red left-margin bottom-margin">Only the first 25 plays in each period will be included in the script when initially created.</div> 
     <% end %>
   </div>
 

@@ -34,13 +34,21 @@ Rails.application.routes.draw do
   	resources :scripts, controller: 'events/scripts' do
       get :print
     end
+
   	resources :plays, controller: 'events/plays' do
       collection do
         delete :destroy_multiple
         put :update_multiple
+        put :sort
       end
-  		put :sort, on: :collection
+      member do
+        post :toggle1
+        post :toggle2
+        post :toggle3
+        post :toggle4
+      end
   	end
+
     resources :gamecalls, controller:'events/gamecalls' do
       get :print
     end

@@ -9,6 +9,7 @@ class EventsController < ApplicationController
   def print
     @event = Event.find(params[:event_id]) 
     @plays = @event.plays
+    @play_count = @plays.count
   end
 
   def sortable
@@ -326,26 +327,8 @@ class EventsController < ApplicationController
   def summary_14
     @event = Event.find(params[:event_id])
     @plays = @event.plays.custom_threes 
-    @num_runs = if current_user.s_name14_num_run == 14
-                  15
-                else
-                  current_user.s_name14_num_run
-                end
-    @run_lefts = @plays.run_left_custom_threes.limit(@num_runs)
-    @run_lefts_remain = @num_runs - @run_lefts.count
-    @run_rights = @plays.run_right_custom_threes.limit(@num_runs)
-    @run_rights_remain = @num_runs - @run_rights.count
-    @num_passes = if @num_runs == 15
-                    0
-                  elsif @num_runs == 0
-                    15  
-                  else    
-                    14 - @num_runs 
-                  end  
-    @pass_lefts = @plays.pass_left_custom_threes.limit(@num_passes)
-    @pass_lefts_remain = @num_passes - @pass_lefts.count
-    @pass_rights = @plays.pass_right_custom_threes.limit(@num_passes)
-    @pass_rights_remain = @num_passes - @pass_rights.count
+    @custom_three_lefts_remain = 15 - @plays.custom_three_lefts.count
+    @custom_three_rights_remain = 15 - @plays.custom_three_rights.count
   end
 
   def index

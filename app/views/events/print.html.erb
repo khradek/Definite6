@@ -20,7 +20,7 @@
 </div>
 
 <div id="idata2" class="hidden">
-  <% if @event.plays.count > 39 %>
+  <% if @play_count > 39 %>
     [["Hash", "Formation", "Play"],
     <% @plays[39..78].each do |play| %> 
       <% if play.hash_mark %> 
@@ -40,7 +40,7 @@
 </div>
 
 <div id="idata3" class="hidden">
-  <% if @event.plays.count > 78 %>
+  <% if @play_count > 78 %>
     [["Hash", "Formation", "Play"],
     <% @plays[79..118].each do |play| %> 
       <% if play.hash_mark %> 
@@ -59,7 +59,7 @@
   <% end %>  
 </div>
 
-<span><%= link_to 'Return to Install', 'javascript:history.go(-1);', class: "btn btn-custom3 btn-sm print-button" %></span>
+<span><%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Return to Install'.html_safe, 'javascript:history.go(-1);', class: "btn btn-custom3 btn-sm print-button" %></span>
 <span><%= link_to 'Print <i class="fa fa-print"></i>'.html_safe, '#', class: "btn btn-custom1 btn-sm print-button", :onclick => 'window.print();return false;'%></span>
 
 <p></p>
@@ -69,13 +69,13 @@
 
   <footer></footer>
 
-  <% if @event.plays.count > 40 %>
+  <% if @play_count > 40 %>
     <div id="installPrint2"></div>
   <% end %>   
 
   <footer></footer>
 
-  <% if @event.plays.count > 80 %>
+  <% if @play_count > 80 %>
     <div id="installPrint3"></div>
     <br>
     <br>

@@ -103,9 +103,88 @@ $(".events.show").ready(function() {
     };
   });
 
+  //Segments checkbox AJAX functionality
+  $("body").on("change", ".period1-check", function(){  
+    var checked; 
+    if ($(this).is(':checked')) {
+      checked = true;
+    } else {
+      checked = false;
+    }
+    $.ajax({
+      type: "POST",
+      url: "/events/" + $(".event-id").text() + "/plays/" + $(this).val() + "/toggle1",
+      data: { 
+        play: { period1: checked }
+      }        
+    });
+  });
+
+  $("body").on("change", ".period2-check", function(){
+    var checked; 
+    if ($(this).is(':checked')) {
+      checked = true;
+    } else {
+      checked = false;
+    }
+    $.ajax({
+      type: "POST",
+      url: "/events/" + $(".event-id").text() + "/plays/" + $(this).val() + "/toggle2",
+      data: { 
+        play: { period2: checked }
+      }        
+    });
+  });
+
+  $("body").on("change", ".period3-check", function(){
+    var checked; 
+    if ($(this).is(':checked')) {
+      checked = true;
+    } else {
+      checked = false;
+    }
+    $.ajax({
+      type: "POST",
+      url: "/events/" + $(".event-id").text() + "/plays/" + $(this).val() + "/toggle3",
+      data: { 
+        play: { period3: checked }
+      }        
+    });
+  });  
+
+  $("body").on("change", ".period4-check", function(){
+    var checked; 
+    if ($(this).is(':checked')) {
+      checked = true;
+    } else {
+      checked = false;
+    }
+    $.ajax({
+      type: "POST",
+      url: "/events/" + $(".event-id").text() + "/plays/" + $(this).val() + "/toggle4",
+      data: { 
+        play: { period4: checked }
+      }        
+    });
+  });
 
 
-
+  //Alert for over 25 plays for a period
+  $("body").on("change", ".period1-check, .period2-check, .period3-check, .period4-check", function(){
+    setTimeout( function(){
+      var period1Count = $("#period1-count").text();
+      var period2Count = $("#period2-count").text();
+      var period3Count = $("#period3-count").text();
+      var period4Count = $("#period4-count").text();
+      if(period1Count > 25 || period2Count > 25 || period3Count > 25 || period4Count > 25) {
+        $("#count-alert").addClass("hidden")
+        $("#ph-count-alert").removeClass("hidden");
+      }else {
+        $("#count-alert").addClass("hidden")
+        $("#ph-count-alert").addClass("hidden");
+      } 
+    }, 100);
+  })  
 
 	
 }); 

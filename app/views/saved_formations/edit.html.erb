@@ -28,7 +28,7 @@
       <hr class="light-smoke">
 
       <div>
-        <%= link_to 'Return to My Formations', saved_formations_path, class: "btn btn-custom3 btn-sm small-block" %>
+        <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Return to My Formations'.html_safe, saved_formations_path, class: "btn btn-custom3 btn-sm small-block" %>
 
         <%= link_to '<i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Delete Formation'.html_safe, [@saved_formation], method: :delete, class: "btn btn-custom2 btn-sm small-block pull-right", data: { confirm: 'Are you sure?' } %>
       </div>

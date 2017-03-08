@@ -33,14 +33,16 @@
 <div id="scriptGrid"></div>
 
 <br>
-<button id="save-button" class="btn btn-custom1">Save Updates to Script</button>
-<br>
-<br>
-<div><%= link_to "Return to Install Page", @event, :class => "btn btn-custom3" %></div>
+
+<button id="save-button" class="btn btn-custom1"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save Updates to Script</button>
 
 <hr>
 
-<%= link_to 'Printer Friendly Script', event_script_print_path(@event, @script), class: "btn btn-custom4" %> 
+<div><%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Return to Install'.html_safe, @event, :class => "btn btn-custom3" %></div>
+
+<br>
+
+<%= link_to '<i class="fa fa-print"></i> Printer Friendly Script'.html_safe, event_script_print_path(@event, @script), class: "btn btn-custom4" %> 
 <% unless browser.chrome? || browser.safari? %>
   Printing works best on Safari and Google Chrome web browswers >> <%= link_to 'Click Here to Download Google Chrome', 'https://www.google.com/chrome/browser/desktop/index.html', target: "_blank" %>
 <% end %>

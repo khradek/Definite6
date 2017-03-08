@@ -103,7 +103,7 @@
 <div class="fake-h4 inline">Dates:&nbsp </div><div class="inline"><%= @event.start_time.strftime("%m-%d-%Y") %> - <%= @event.end_time.strftime("%m-%d-%Y") %></div>
 </p>
 
-<div><%= link_to 'Return to Install', 'javascript:history.go(-1);', class: "btn btn-custom3 btn-sm print-button" %></div>
+<div><%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Return to Install'.html_safe, 'javascript:history.go(-1);', class: "btn btn-custom3 btn-sm print-button" %></div>
 
 <hr class="light-blue">
 

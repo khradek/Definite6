@@ -128,13 +128,8 @@ class Play < ActiveRecord::Base
 
   #----------Custom 3----------
   scope :custom_threes, -> { where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', 'Custom 3', 'Custom 3', 'Custom 3', 'Custom 3', 'Custom 3', 'Custom 3', 'Custom 3', 'Custom 3', 'Custom 3', 'Custom 3')}
-  scope :run_custom_threes, -> { custom_threes.where('play_type = ?', 'Run')}
-  scope :run_left_custom_threes, -> { run_custom_threes.where('hash_mark = ?', 'Left').limit(7)}
-  scope :run_right_custom_threes, -> { run_custom_threes.where('hash_mark = ?', 'Right').limit(7)}
-  scope :pass_custom_threes, -> { custom_threes.where('play_type = ?', 'Pass')}
-  scope :pass_left_custom_threes, -> { pass_custom_threes.where('hash_mark = ?', 'Left').limit(7)}
-  scope :pass_right_custom_threes, -> { pass_custom_threes.where('hash_mark = ?', 'Right').limit(7)}
-
+  scope :custom_three_lefts, -> { custom_threes.where('hash_mark = ?', 'Left').limit(15)}
+  scope :custom_three_rights, -> { custom_threes.where('hash_mark = ?', 'Right').limit(15)}
 
 	def fullname
   	fullname = "#{piece1} #{piece2}"

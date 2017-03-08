@@ -5,6 +5,57 @@ class Events::PlaysController < ApplicationController
 
   respond_to :html
 
+  def toggle1
+    @event = Event.find(params[:event_id])
+    @play = Play.find(params[:id])
+    @play.update_attribute('period1', params[:play][:period1])
+    
+    respond_to do |format|
+      @period1_count = @event.plays.where(:period1 => true).count
+      format.js
+    end
+  end
+
+  def toggle2
+    @event = Event.find(params[:event_id])
+    @play = Play.find(params[:id])
+    @play.update_attribute('period2', params[:play][:period2])
+    
+    respond_to do |format|
+      @period2_count = @event.plays.where(:period2 => true).count
+      format.js
+    end
+  end
+
+  def toggle3
+    @event = Event.find(params[:event_id])
+    @play = Play.find(params[:id])
+    @play.update_attribute('period3', params[:play][:period3])
+    
+    respond_to do |format|
+      @period3_count = @event.plays.where(:period3 => true).count
+      format.js
+    end
+  end
+  
+  def toggle4
+    @event = Event.find(params[:event_id])
+    @play = Play.find(params[:id])
+    @play.update_attribute('period4', params[:play][:period4])
+    
+    respond_to do |format|
+      @period4_count = @event.plays.where(:period4 => true).count
+      format.js
+    end
+  end
+  
+  def sort
+    params[:order].each do |key,value|
+      Play.find(value[:id]).update_attribute(:priority,value[:position])
+    end
+    render :nothing => true
+  end
+
   def destroy_multiple 
     @event = Event.find(params[:event_id])   
 
@@ -180,13 +231,6 @@ class Events::PlaysController < ApplicationController
         format.js
       end
     end  
-  end
-
-  def sort
-    params[:order].each do |key,value|
-      Play.find(value[:id]).update_attribute(:priority,value[:position])
-    end
-    render :nothing => true
   end
 
   private

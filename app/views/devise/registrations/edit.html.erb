@@ -577,10 +577,8 @@
               </div>
             </div>
             <div class="col-xs-6">
-              <div class="center summary-border white-bg">
-                <%= f.label :s_name14_num_run, "Set Balance" %>
-                <%= f.range_field :s_name14_num_run, {id: "name14-runs", :in => 0..14, :step => '1'} %>
-                <div class="light-it"><span id="name14-pass-count"></span> Pass / <span id="name14-run-count"><%= current_user.s_name14_num_run%></span> Run</div>            
+              <div class="center summary-border white-bg light-it openers-div">
+                <div id="vertcenter" class="light-it">15 Plays (Run/Pass not separated)</div>
               </div>
             </div>
           </div>

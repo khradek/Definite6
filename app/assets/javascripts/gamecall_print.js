@@ -10,6 +10,105 @@ $(".gamecalls.print").ready(function() {
   var replaceData2 = setData2.replace(/'/g, '"');
   var gdata2 = JSON.parse(replaceData2);
 
+  //Grabs titles and title colors
+  var sitTitle1 = $('#gamecall-title1').text();
+  var sitTitle2 = $('#gamecall-title2').text();
+  var sitTitle3 = $('#gamecall-title3').text();
+  var sitTitle4 = $('#gamecall-title4').text();
+  var sitTitle5 = $('#gamecall-title5').text();
+  var sitTitle6 = $('#gamecall-title6').text();
+  var sitTitle7 = $('#gamecall-title7').text();
+  var sitTitle8 = $('#gamecall-title8').text();
+  var sitTitle9 = $('#gamecall-title9').text();
+  var sitTitle10 = $('#gamecall-title10').text();
+  var sitTitle11 = $('#gamecall-title11').text();
+  var sitTitle12 = $('#gamecall-title12').text();
+  var sitTitle13 = $('#gamecall-title13').text();
+  var sitTitle14 = $('#gamecall-title14').text();
+
+  var sitColor1 = $('#gamecall-color1').text();
+  var sitColor2 = $('#gamecall-color2').text();
+  var sitColor3 = $('#gamecall-color3').text();
+  var sitColor4 = $('#gamecall-color4').text();
+  var sitColor5 = $('#gamecall-color5').text();
+  var sitColor6 = $('#gamecall-color6').text();
+  var sitColor7 = $('#gamecall-color7').text();
+  var sitColor8 = $('#gamecall-color8').text();
+  var sitColor9 = $('#gamecall-color9').text();
+  var sitColor10 = $('#gamecall-color10').text();
+  var sitColor11 = $('#gamecall-color11').text();
+  var sitColor12 = $('#gamecall-color12').text();
+  var sitColor13 = $('#gamecall-color13').text();
+  var sitColor14 = $('#gamecall-color14').text();
+
+  gcCellRenderer = function(instance, td, row, col, prop, value, cellProperties) {
+    Handsontable.renderers.TextRenderer.apply(this, arguments);
+    if (row === 0 && col === 0){
+      td.className = 'ulshade bold fontlarge htMiddle htCenter tallrow';
+      td.setAttribute("colspan", 4);
+      cellProperties.readOnly = true;
+    } else if (value === sitTitle1){
+      td.className = sitColor1 + ' underline bold htCenter hide-next';
+      td.setAttribute("colspan", 2);
+      cellProperties.readOnly = true;
+    } else if (value ===  sitTitle2 + " - Run" || value === sitTitle2 + " - Pass"){
+      td.className = sitColor2 + ' underline bold htCenter';
+      td.setAttribute("colspan", 2);
+      cellProperties.readOnly = true;
+    } else if (value ===  sitTitle3 + " - Run" || value === sitTitle3 + " - Pass"){
+      td.className = sitColor3 + ' underline bold htCenter hide-next';
+      td.setAttribute("colspan", 2);
+      cellProperties.readOnly = true; 
+    } else if (value ===  sitTitle4 + " - Run" || value === sitTitle4 + " - Pass"){
+      td.className = sitColor4 + ' underline bold htCenter hide-next';
+      td.setAttribute("colspan", 2);
+      cellProperties.readOnly = true; 
+    } else if (value ===  sitTitle5 + " - Run" || value === sitTitle5 + " - Pass"){
+      td.className = sitColor5 + ' underline bold htCenter hide-next';
+      td.setAttribute("colspan", 2);
+      cellProperties.readOnly = true;                 
+    } else if (value ===  sitTitle6 + " - Run" || value === sitTitle6 + " - Pass"){
+      td.className = sitColor6 + ' underline bold htCenter hide-next';
+      td.setAttribute("colspan", 2);
+      cellProperties.readOnly = true;   
+    } else if (value ===  sitTitle7 + " - Run" || value === sitTitle7 + " - Pass"){
+      td.className = sitColor7 + ' underline bold htCenter hide-next';
+      td.setAttribute("colspan", 2);
+      cellProperties.readOnly = true;    
+    } else if (value ===  sitTitle8 + " - Run" || value === sitTitle8 + " - Pass"){
+      td.className = sitColor8 + ' underline bold htCenter';
+      td.setAttribute("colspan", 2);
+      cellProperties.readOnly = true;  
+    } else if (value ===  sitTitle9 + " - Run" || value === sitTitle9 + " - Pass"){
+      td.className = sitColor9 + ' underline bold htCenter hide-next';
+      td.setAttribute("colspan", 2);
+      cellProperties.readOnly = true;  
+    } else if (value ===  sitTitle10 + " - Run" || value === sitTitle10 + " - Pass"){
+      td.className = sitColor10 + ' underline bold htCenter hide-next';
+      td.setAttribute("colspan", 2);
+      cellProperties.readOnly = true; 
+    } else if (value ===  sitTitle11 + " - Run" || value === sitTitle11 + " - Pass"){
+      td.className = sitColor11 + ' underline bold htCenter hide-next';
+      td.setAttribute("colspan", 2);
+      cellProperties.readOnly = true; 
+    } else if (value ===  sitTitle12 + " - Run" || value === sitTitle12 + " - Pass"){
+      td.className = sitColor12 + ' underline bold htCenter hide-next';
+      td.setAttribute("colspan", 2);
+      cellProperties.readOnly = true; 
+    } else if (value ===  sitTitle13 + " - Run" || value === sitTitle13 + " - Pass"){
+      td.className = sitColor13 + ' underline bold htCenter hide-next';
+      td.setAttribute("colspan", 2);
+      cellProperties.readOnly = true; 
+    } else if (value ===  sitTitle14){
+      td.className = sitColor14 + ' underline bold htCenter hide-next';
+      td.setAttribute("colspan", 2);
+      cellProperties.readOnly = true;                                           
+    }
+    $(".hide-next").closest('td').next().addClass('hidden');
+    return td;
+  };
+
+  Handsontable.renderers.registerRenderer('gcCellRenderer', gcCellRenderer);
 
   $("#gamecallPrint1").handsontable({
     data: gdata,
@@ -25,42 +124,11 @@ $(".gamecalls.print").ready(function() {
     fillHandle: false,
     className: "htCenter",
     readOnly: true,
-    mergeCells: [
-      {row: 0, col: 0, rowspan: 1, colspan: 4},
-      {row: 1, col: 0, rowspan: 1, colspan: 2},
-      {row: 1, col: 2, rowspan: 1, colspan: 2},    
-      {row: 9, col: 2, rowspan: 1, colspan: 2},
-      {row: 17, col: 0, rowspan: 1, colspan: 2},    
-      {row: 17, col: 2, rowspan: 1, colspan: 2},
-      {row: 21, col: 2, rowspan: 1, colspan: 2},
-      {row: 23, col: 0, rowspan: 1, colspan: 2},    
-      {row: 30, col: 0, rowspan: 1, colspan: 2},    
-      {row: 30, col: 2, rowspan: 1, colspan: 2},
-      {row: 36, col: 0, rowspan: 1, colspan: 2},    
-      {row: 36, col: 2, rowspan: 1, colspan: 2},
-      {row: 42, col: 0, rowspan: 1, colspan: 2},    
-      {row: 42, col: 2, rowspan: 1, colspan: 2},
-      {row: 48, col: 0, rowspan: 1, colspan: 2},    
-      {row: 50, col: 2, rowspan: 1, colspan: 2}                                              
-    ],
-    cell: [
-      {row: 0, col: 0, className: "ulshade bold fontlarge htMiddle htCenter tallrow"},
-      {row: 1, col: 0, className: "htlightwhite underline bold htCenter"},
-      {row: 1, col: 2, className: "lightgreen underline bold htCenter"},                                                                 
-      {row: 9, col: 2, className: "lightgreen underline bold htCenter"},
-      {row: 17, col: 0, className: "htorange underline bold htCenter"}, 
-      {row: 17, col: 2, className: "htred underline bold htCenter"},
-      {row: 21, col: 2, className: "htred underline bold htCenter"},
-      {row: 23, col: 0, className: "htorange underline bold htCenter"}, 
-      {row: 30, col: 0, className: "htblue underline bold htCenter"}, 
-      {row: 30, col: 2, className: "ulshade underline bold htCenter"},
-      {row: 36, col: 0, className: "htblue underline bold htCenter"}, 
-      {row: 36, col: 2, className: "ulshade underline bold htCenter"},
-      {row: 42, col: 0, className: "htlightwhite underline bold htCenter"}, 
-      {row: 42, col: 2, className: "htyellow underline bold htCenter"},
-      {row: 48, col: 0, className: "htlightwhite underline bold htCenter"},
-      {row: 50, col: 2, className: "htyellow underline bold htCenter"}                                                
-    ],
+    cells: function (row, col, prop) {
+      var cellProperties = {};  
+      cellProperties.renderer = "gcCellRenderer";
+      return cellProperties;
+    }
   });
 
 
@@ -77,44 +145,11 @@ $(".gamecalls.print").ready(function() {
     manualRowResize: false,
     fillHandle: false,
     className: "htCenter",
-    mergeCells: [
-      {row: 0, col: 0, rowspan: 1, colspan: 4},
-      {row: 1, col: 0, rowspan: 1, colspan: 2},
-      {row: 1, col: 2, rowspan: 1, colspan: 2},
-      {row: 9, col: 0, rowspan: 1, colspan: 2},    
-      {row: 9, col: 2, rowspan: 1, colspan: 2},
-      {row: 17, col: 0, rowspan: 1, colspan: 2},    
-      {row: 17, col: 2, rowspan: 1, colspan: 2},
-      {row: 25, col: 0, rowspan: 1, colspan: 2},    
-      {row: 25, col: 2, rowspan: 1, colspan: 2},
-      {row: 33, col: 0, rowspan: 1, colspan: 2},    
-      {row: 33, col: 2, rowspan: 1, colspan: 2},
-      {row: 41, col: 0, rowspan: 1, colspan: 2},          
-      {row: 41, col: 2, rowspan: 1, colspan: 2},
-      {row: 49, col: 2, rowspan: 1, colspan: 2},
-      {row: 49, col: 0, rowspan: 1, colspan: 2},
-      {row: 54, col: 0, rowspan: 1, colspan: 2},          
-      {row: 54, col: 2, rowspan: 1, colspan: 2}                                              
-    ],
-    cell: [
-      {row: 0, col: 0, className: "ulshade bold fontlarge htMiddle htCenter mediumrow"},
-      {row: 1, col: 0, className: "htred underline bold htCenter"},
-      {row: 1, col: 2, className: "lightgreen underline bold htCenter"},
-      {row: 9, col: 0, className: "htred underline bold htCenter"}, 
-      {row: 9, col: 2, className: "lightgreen underline bold htCenter"},
-      {row: 17, col: 0, className: "htblue underline bold htCenter"}, 
-      {row: 17, col: 2, className: "htyellow underline bold htCenter"},
-      {row: 25, col: 0, className: "htblue underline bold htCenter"}, 
-      {row: 25, col: 2, className: "htyellow underline bold htCenter"},
-      {row: 33, col: 0, className: "htorange underline bold htCenter"}, 
-      {row: 33, col: 2, className: "htlightwhite underline bold htCenter"},
-      {row: 41, col: 0, className: "htorange underline bold htCenter"}, 
-      {row: 41, col: 2, className: "htlightwhite underline bold htCenter"},
-      {row: 49, col: 0, className: "ulshade underline bold htCenter"}, 
-      {row: 49, col: 2, className: "lightgreen underline bold htCenter"},
-      {row: 54, col: 0, className: "ulshade underline bold htCenter"}, 
-      {row: 54, col: 2, className: "lightgreen underline bold htCenter"}                                                                                                    
-    ],
+    cells: function (row, col, prop) {
+      var cellProperties = {};  
+      cellProperties.renderer = "gcCellRenderer";
+      return cellProperties;
+    }
   });
 
 });

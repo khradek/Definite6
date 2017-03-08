@@ -6379,611 +6379,102 @@ class Gamecall < ActiveRecord::Base
 
     #----------Custom 3----------
     customThrees = event.plays.where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', 'Custom 3', 'Custom 3', 'Custom 3', 'Custom 3', 'Custom 3', 'Custom 3', 'Custom 3', 'Custom 3', 'Custom 3', 'Custom 3')
+    customThreesLeft = customThrees.where('hash_mark = ?', 'Left')
+    customThreesRight = customThrees.where('hash_mark = ?', 'Right')
      
-    runCustomThrees = customThrees.where('play_type = ?', 'Run')
-    runCustomThreesLeft = runCustomThrees.where('hash_mark = ?', 'Left')
-    runCustomThreesRight = runCustomThrees.where('hash_mark = ?', 'Right')
-     
-    passCustomThrees = customThrees.where('play_type = ?', 'Pass')
-    passCustomThreesLeft = passCustomThrees.where('hash_mark = ?', 'Left')
-    passCustomThreesRight = passCustomThrees.where('hash_mark = ?', 'Right')
-
-    #Run Left Hash
-    unless runCustomThreesLeft[0].nil?  
-      rcuthl1 = runCustomThreesLeft[0].fullname 
-    end
-    unless runCustomThreesLeft[1].nil?  
-      rcuthl2 = runCustomThreesLeft[1].fullname 
-    end
-    unless runCustomThreesLeft[2].nil?  
-      rcuthl3 = runCustomThreesLeft[2].fullname 
-    end
-    unless runCustomThreesLeft[3].nil?  
-      rcuthl4 = runCustomThreesLeft[3].fullname 
-    end
-    unless runCustomThreesLeft[4].nil?  
-      rcuthl5 = runCustomThreesLeft[4].fullname
-    end
-    unless runCustomThreesLeft[5].nil?  
-      rcuthl6 = runCustomThreesLeft[5].fullname 
-    end
-    unless runCustomThreesLeft[6].nil?  
-      rcuthl7 = runCustomThreesLeft[6].fullname
-    end    
-    unless runCustomThreesLeft[7].nil?  
-      rcuthl8 = runCustomThreesLeft[7].fullname 
-    end
-    unless runCustomThreesLeft[8].nil?  
-      rcuthl9 = runCustomThreesLeft[8].fullname 
-    end
-    unless runCustomThreesLeft[9].nil?  
-      rcuthl10 = runCustomThreesLeft[9].fullname 
-    end
-    unless runCustomThreesLeft[10].nil?  
-      rcuthl11 = runCustomThreesLeft[10].fullname 
-    end
-    unless runCustomThreesLeft[11].nil?  
-      rcuthl12 = runCustomThreesLeft[11].fullname
-    end
-    unless runCustomThreesLeft[12].nil?  
-      rcuthl13 = runCustomThreesLeft[12].fullname 
-    end
-    unless runCustomThreesLeft[13].nil?  
-      rcuthl14 = runCustomThreesLeft[13].fullname
-    end   
-    unless runCustomThreesLeft[14].nil?  
-      rcuthl15 = runCustomThreesLeft[14].fullname
-    end 
-
-    #Run Right Hash
-    unless runCustomThreesRight[0].nil?  
-      rcuthr1 = runCustomThreesRight[0].fullname 
-    end
-    unless runCustomThreesRight[1].nil?  
-      rcuthr2 = runCustomThreesRight[1].fullname 
-    end
-    unless runCustomThreesRight[2].nil?  
-      rcuthr3 = runCustomThreesRight[2].fullname 
-    end
-    unless runCustomThreesRight[3].nil?  
-      rcuthr4 = runCustomThreesRight[3].fullname 
-    end
-    unless runCustomThreesRight[4].nil?  
-      rcuthr5 = runCustomThreesRight[4].fullname
-    end
-    unless runCustomThreesRight[5].nil?  
-      rcuthr6 = runCustomThreesRight[5].fullname 
-    end
-    unless runCustomThreesRight[6].nil?  
-      rcuthr7 = runCustomThreesRight[6].fullname
-    end    
-    unless runCustomThreesRight[7].nil?  
-      rcuthr8 = runCustomThreesRight[7].fullname 
-    end
-    unless runCustomThreesRight[8].nil?  
-      rcuthr9 = runCustomThreesRight[8].fullname 
-    end
-    unless runCustomThreesRight[9].nil?  
-      rcuthr10 = runCustomThreesRight[9].fullname 
-    end
-    unless runCustomThreesRight[10].nil?  
-      rcuthr11 = runCustomThreesRight[10].fullname 
-    end
-    unless runCustomThreesRight[11].nil?  
-      rcuthr12 = runCustomThreesRight[11].fullname
-    end
-    unless runCustomThreesRight[12].nil?  
-      rcuthr13 = runCustomThreesRight[12].fullname 
-    end
-    unless runCustomThreesRight[13].nil?  
-      rcuthr14 = runCustomThreesRight[13].fullname
-    end 
-    unless runCustomThreesRight[14].nil?  
-      rcuthr15 = runCustomThreesRight[14].fullname
-    end 
-
-    #Pass Left Hash
-    unless passCustomThreesLeft[0].nil?  
-      pcuthl1 = passCustomThreesLeft[0].fullname 
-    end
-    unless passCustomThreesLeft[1].nil?  
-      pcuthl2 = passCustomThreesLeft[1].fullname 
-    end
-    unless passCustomThreesLeft[2].nil?  
-      pcuthl3 = passCustomThreesLeft[2].fullname 
-    end
-    unless passCustomThreesLeft[3].nil?  
-      pcuthl4 = passCustomThreesLeft[3].fullname 
-    end
-    unless passCustomThreesLeft[4].nil?  
-      pcuthl5 = passCustomThreesLeft[4].fullname 
-    end
-    unless passCustomThreesLeft[5].nil?  
-      pcuthl6 = passCustomThreesLeft[5].fullname 
-    end 
-    unless passCustomThreesLeft[6].nil?  
-      pcuthl7 = passCustomThreesLeft[6].fullname 
-    end       
-    unless passCustomThreesLeft[7].nil?  
-      pcuthl8 = passCustomThreesLeft[7].fullname 
-    end
-    unless passCustomThreesLeft[8].nil?  
-      pcuthl9 = passCustomThreesLeft[8].fullname 
-    end
-    unless passCustomThreesLeft[9].nil?  
-      pcuthl10 = passCustomThreesLeft[9].fullname 
-    end
-    unless passCustomThreesLeft[10].nil?  
-      pcuthl11 = passCustomThreesLeft[10].fullname 
-    end
-    unless passCustomThreesLeft[11].nil?  
-      pcuthl12 = passCustomThreesLeft[11].fullname 
-    end
-    unless passCustomThreesLeft[12].nil?  
-      pcuthl13 = passCustomThreesLeft[12].fullname 
-    end 
-    unless passCustomThreesLeft[13].nil?  
-      pcuthl14 = passCustomThreesLeft[13].fullname 
-    end
-    unless passCustomThreesLeft[14].nil?  
-      pcuthl15 = passCustomThreesLeft[14].fullname 
-    end
-
-    #Pass Right Hash
-    unless passCustomThreesRight[0].nil?  
-      pcuthr1 = passCustomThreesRight[0].fullname 
-    end
-    unless passCustomThreesRight[1].nil?  
-      pcuthr2 = passCustomThreesRight[1].fullname 
-    end
-    unless passCustomThreesRight[2].nil?  
-      pcuthr3 = passCustomThreesRight[2].fullname 
-    end
-    unless passCustomThreesRight[3].nil?  
-      pcuthr4 = passCustomThreesRight[3].fullname 
-    end
-    unless passCustomThreesRight[4].nil?  
-      pcuthr5 = passCustomThreesRight[4].fullname 
-    end
-    unless passCustomThreesRight[5].nil?  
-      pcuthr6 = passCustomThreesRight[5].fullname 
-    end
-    unless passCustomThreesRight[6].nil?  
-      pcuthr7 = passCustomThreesRight[6].fullname 
-    end    
-    unless passCustomThreesRight[7].nil?  
-      pcuthr8 = passCustomThreesRight[7].fullname 
-    end
-    unless passCustomThreesRight[8].nil?  
-      pcuthr9 = passCustomThreesRight[8].fullname 
-    end
-    unless passCustomThreesRight[9].nil?  
-      pcuthr10 = passCustomThreesRight[9].fullname 
-    end
-    unless passCustomThreesRight[10].nil?  
-      pcuthr11 = passCustomThreesRight[10].fullname 
-    end
-    unless passCustomThreesRight[11].nil?  
-      pcuthr12 = passCustomThreesRight[11].fullname 
-    end
-    unless passCustomThreesRight[12].nil?  
-      pcuthr13 = passCustomThreesRight[12].fullname 
-    end
-    unless passCustomThreesRight[13].nil?  
-      pcuthr14 = passCustomThreesRight[13].fullname 
-    end    
-    unless passCustomThreesRight[14].nil?  
-      pcuthr15 = passCustomThreesRight[14].fullname 
-    end    
-
-    #Number of user's run plays in situation 14
-    num_cus3r = self.user.s_name14_num_run
-
     #Left Hash
-    # cus3l_s0 
-    if num_cus3r > 0
-      cus3l_s0 = self.user.s_name14 + ' - Run'
-    else
-      cus3l_s0 = self.user.s_name14 + ' - Pass'
+    unless customThreesLeft[0].nil?  
+      cuthl1 = customThreesLeft[0].fullname 
     end
-
-    #cus3l_s1 
-    if num_cus3r > 0
-      cus3l_s1 = rcuthl1
-    else
-      cus3l_s1 = pcuthl1
+    unless customThreesLeft[1].nil?  
+      cuthl2 = customThreesLeft[1].fullname 
     end
-
-    #cus3l_s2
-    if num_cus3r == 0
-      cus3l_s2 = pcuthl2
-    elsif num_cus3r == 1
-      cus3l_s2 = self.user.s_name14 + ' - Pass'
-    else num_cus3r > 1
-      cus3l_s2 = rcuthl2
+    unless customThreesLeft[2].nil?  
+      cuthl3 = customThreesLeft[2].fullname 
     end
-
-    #cus3l_s3
-    case num_cus3r
-      when 0 then cus3l_s3 = pcuthl3       
-      when 1 then cus3l_s3 = pcuthl1
-      when 2 then cus3l_s3 = self.user.s_name14 + ' - Pass'
-      when 3..100 then cus3l_s3 = rcuthl3
+    unless customThreesLeft[3].nil?  
+      cuthl4 = customThreesLeft[3].fullname 
     end
-
-    #cus3l_s4
-    case num_cus3r
-      when 0 then cus3l_s4 = pcuthl4       
-      when 1 then cus3l_s4 = pcuthl2
-      when 2 then cus3l_s4 = pcuthl1
-      when 3 then cus3l_s4 = self.user.s_name14 + ' - Pass'
-      when 4..100 then cus3l_s4 = rcuthl4
+    unless customThreesLeft[4].nil?  
+      cuthl5 = customThreesLeft[4].fullname
     end
-
-    #cus3l_s5
-    case num_cus3r
-      when 0 then cus3l_s5 = pcuthl5       
-      when 1 then cus3l_s5 = pcuthl3
-      when 2 then cus3l_s5 = pcuthl2
-      when 3 then cus3l_s5 = pcuthl1
-      when 4 then cus3l_s5 = self.user.s_name14 + ' - Pass'
-      when 5..100 then cus3l_s5 = rcuthl5
+    unless customThreesLeft[5].nil?  
+      cuthl6 = customThreesLeft[5].fullname 
     end
-
-    #cus3l_s6
-    case num_cus3r
-      when 0 then cus3l_s6 = pcuthl6      
-      when 1 then cus3l_s6 = pcuthl4
-      when 2 then cus3l_s6 = pcuthl3
-      when 3 then cus3l_s6 = pcuthl2
-      when 4 then cus3l_s6 = pcuthl1
-      when 5 then cus3l_s6 = self.user.s_name14 + ' - Pass'
-      when 6..100 then cus3l_s6 = rcuthl6
-    end
-
-    #cus3l_s7
-    case num_cus3r
-      when 0 then cus3l_s7 = pcuthl7      
-      when 1 then cus3l_s7 = pcuthl5
-      when 2 then cus3l_s7 = pcuthl4
-      when 3 then cus3l_s7 = pcuthl3
-      when 4 then cus3l_s7 = pcuthl2
-      when 5 then cus3l_s7 = pcuthl1
-      when 6 then cus3l_s7 = self.user.s_name14 + ' - Pass'
-      when 7..100 then cus3l_s7 = rcuthl7
-    end
-
-    #cus3l_s8
-    case num_cus3r
-      when 0 then cus3l_s8 = pcuthl8      
-      when 1 then cus3l_s8 = pcuthl6
-      when 2 then cus3l_s8 = pcuthl5
-      when 3 then cus3l_s8 = pcuthl4
-      when 4 then cus3l_s8 = pcuthl3
-      when 5 then cus3l_s8 = pcuthl2
-      when 6 then cus3l_s8 = pcuthl1
-      when 7 then cus3l_s8 = self.user.s_name14 + ' - Pass'
-      when 8..100 then cus3l_s8 = rcuthl8
-    end
-
-    #cus3l_s9
-    case num_cus3r
-      when 0 then cus3l_s9 = pcuthl9      
-      when 1 then cus3l_s9 = pcuthl7
-      when 2 then cus3l_s9 = pcuthl6
-      when 3 then cus3l_s9 = pcuthl5
-      when 4 then cus3l_s9 = pcuthl4
-      when 5 then cus3l_s9 = pcuthl3
-      when 6 then cus3l_s9 = pcuthl2
-      when 7 then cus3l_s9 = pcuthl1
-      when 8 then cus3l_s9 = self.user.s_name14 + ' - Pass'
-      when 9..100 then cus3l_s9 = rcuthl9
-    end
-
-    #cus3l_s10
-    case num_cus3r
-      when 0 then cus3l_s10 = pcuthl10     
-      when 1 then cus3l_s10 = pcuthl8
-      when 2 then cus3l_s10 = pcuthl7
-      when 3 then cus3l_s10 = pcuthl6
-      when 4 then cus3l_s10 = pcuthl5
-      when 5 then cus3l_s10 = pcuthl4
-      when 6 then cus3l_s10 = pcuthl3
-      when 7 then cus3l_s10 = pcuthl2
-      when 8 then cus3l_s10 = pcuthl1
-      when 9 then cus3l_s10 = self.user.s_name14 + ' - Pass'
-      when 10..100 then cus3l_s10 = rcuthl10
-    end
-
-    #cus3l_s11
-    case num_cus3r
-      when 0 then cus3l_s11 = pcuthl11     
-      when 1 then cus3l_s11 = pcuthl9
-      when 2 then cus3l_s11 = pcuthl8
-      when 3 then cus3l_s11 = pcuthl7
-      when 4 then cus3l_s11 = pcuthl6
-      when 5 then cus3l_s11 = pcuthl5
-      when 6 then cus3l_s11 = pcuthl4
-      when 7 then cus3l_s11 = pcuthl3
-      when 8 then cus3l_s11 = pcuthl2
-      when 9 then cus3l_s11 = pcuthl1
-      when 10 then cus3l_s11 = self.user.s_name14 + ' - Pass'
-      when 11..100 then cus3l_s11 = rcuthl11
-    end
-
-    #cus3l_s12
-    case num_cus3r
-      when 0 then cus3l_s12 = pcuthl12    
-      when 1 then cus3l_s12 = pcuthl10
-      when 2 then cus3l_s12 = pcuthl9
-      when 3 then cus3l_s12 = pcuthl8
-      when 4 then cus3l_s12 = pcuthl7
-      when 5 then cus3l_s12 = pcuthl6
-      when 6 then cus3l_s12 = pcuthl5
-      when 7 then cus3l_s12 = pcuthl4
-      when 8 then cus3l_s12 = pcuthl3
-      when 9 then cus3l_s12 = pcuthl2
-      when 10 then cus3l_s12 = pcuthl1
-      when 11 then cus3l_s12 = self.user.s_name14 + ' - Pass'
-      when 12..100 then cus3l_s12 = rcuthl12
-    end
-
-    #cus3l_s13
-    case num_cus3r
-      when 0 then cus3l_s13 = pcuthl13    
-      when 1 then cus3l_s13 = pcuthl11
-      when 2 then cus3l_s13 = pcuthl10
-      when 3 then cus3l_s13 = pcuthl9
-      when 4 then cus3l_s13 = pcuthl8
-      when 5 then cus3l_s13 = pcuthl7
-      when 6 then cus3l_s13 = pcuthl6
-      when 7 then cus3l_s13 = pcuthl5
-      when 8 then cus3l_s13 = pcuthl4
-      when 9 then cus3l_s13 = pcuthl3
-      when 10 then cus3l_s13 = pcuthl2
-      when 11 then cus3l_s13 = pcuthl1
-      when 12 then cus3l_s13 = self.user.s_name14 + ' - Pass'
-      when 13..100 then cus3l_s13 = rcuthl13
-    end
-
-    #cus3l_s14
-    case num_cus3r
-      when 0 then cus3l_s14 = pcuthl14    
-      when 1 then cus3l_s14 = pcuthl12
-      when 2 then cus3l_s14 = pcuthl11
-      when 3 then cus3l_s14 = pcuthl10
-      when 4 then cus3l_s14 = pcuthl9
-      when 5 then cus3l_s14 = pcuthl8
-      when 6 then cus3l_s14 = pcuthl7
-      when 7 then cus3l_s14 = pcuthl6
-      when 8 then cus3l_s14 = pcuthl5
-      when 9 then cus3l_s14 = pcuthl4
-      when 10 then cus3l_s14 = pcuthl3
-      when 11 then cus3l_s14 = pcuthl2
-      when 12 then cus3l_s14 = pcuthl1  
-      when 13 then cus3l_s14 = self.user.s_name14 + ' - Pass'
-      when 14..100 then cus3l_s14 = rcuthl14
-    end
-
-    #cus3l_s15
-    case num_cus3r
-      when 0 then cus3l_s15 = pcuthl15    
-      when 1 then cus3l_s15 = pcuthl13
-      when 2 then cus3l_s15 = pcuthl12
-      when 3 then cus3l_s15 = pcuthl11
-      when 4 then cus3l_s15 = pcuthl10
-      when 5 then cus3l_s15 = pcuthl9
-      when 6 then cus3l_s15 = pcuthl8
-      when 7 then cus3l_s15 = pcuthl7
-      when 8 then cus3l_s15 = pcuthl6
-      when 9 then cus3l_s15 = pcuthl5
-      when 10 then cus3l_s15 = pcuthl4
-      when 11 then cus3l_s15 = pcuthl3
-      when 12 then cus3l_s15 = pcuthl2
-      when 13 then cus3l_s15 = pcuthl1  
-      when 14..100 then cus3l_s15 = rcuthl15
+    unless customThreesLeft[6].nil?  
+      cuthl7 = customThreesLeft[6].fullname
     end    
-
+    unless customThreesLeft[7].nil?  
+      cuthl8 = customThreesLeft[7].fullname 
+    end
+    unless customThreesLeft[8].nil?  
+      cuthl9 = customThreesLeft[8].fullname 
+    end
+    unless customThreesLeft[9].nil?  
+      cuthl10 = customThreesLeft[9].fullname 
+    end
+    unless customThreesLeft[10].nil?  
+      cuthl11 = customThreesLeft[10].fullname 
+    end
+    unless customThreesLeft[11].nil?  
+      cuthl12 = customThreesLeft[11].fullname
+    end
+    unless customThreesLeft[12].nil?  
+      cuthl13 = customThreesLeft[12].fullname 
+    end
+    unless customThreesLeft[13].nil?  
+      cuthl14 = customThreesLeft[13].fullname
+    end   
+    unless customThreesLeft[14].nil?  
+      cuthl15 = customThreesLeft[14].fullname
+    end 
 
     #Right Hash
-    #cus3r_s0 would always be blank
-
-    #cus3r_s1 
-    if num_cus3r > 0
-      cus3r_s1 = rcuthr1
-    else
-      cus3r_s1 = pcuthr1
+    unless customThreesRight[0].nil?  
+      cuthr1 = customThreesRight[0].fullname 
     end
-
-    #cus3r_s2
-    if num_cus3r == 0
-      cus3r_s2 = pcuthr2
-    elsif num_cus3r == 1
-      cus3r_s2 = ''
-    else num_cus3r > 1
-      cus3r_s2 = rcuthr2
+    unless customThreesRight[1].nil?  
+      cuthr2 = customThreesRight[1].fullname 
     end
-
-    #cus3r_s3
-    case num_cus3r
-      when 0 then cus3r_s3 = pcuthr3       
-      when 1 then cus3r_s3 = pcuthr1
-      when 2 then cus3r_s3 = ''
-      when 3..100 then cus3r_s3 = rcuthr3
+    unless customThreesRight[2].nil?  
+      cuthr3 = customThreesRight[2].fullname 
     end
-
-    #cus3r_s4
-    case num_cus3r
-      when 0 then cus3r_s4 = pcuthr4       
-      when 1 then cus3r_s4 = pcuthr2
-      when 2 then cus3r_s4 = pcuthr1
-      when 3 then ''
-      when 4..100 then cus3r_s4 = rcuthr4
+    unless customThreesRight[3].nil?  
+      cuthr4 = customThreesRight[3].fullname 
     end
-
-    #cus3r_s5
-    case num_cus3r
-      when 0 then cus3r_s5 = pcuthr5       
-      when 1 then cus3r_s5 = pcuthr3
-      when 2 then cus3r_s5 = pcuthr2
-      when 3 then cus3r_s5 = pcuthr1
-      when 4 then cus3r_s5 = ''
-      when 5..100 then cus3r_s5 = rcuthr5
+    unless customThreesRight[4].nil?  
+      cuthr5 = customThreesRight[4].fullname
     end
-
-    #cus3r_s6
-    case num_cus3r
-      when 0 then cus3r_s6 = pcuthr6      
-      when 1 then cus3r_s6 = pcuthr4
-      when 2 then cus3r_s6 = pcuthr3
-      when 3 then cus3r_s6 = pcuthr2
-      when 4 then cus3r_s6 = pcuthr1
-      when 5 then cus3r_s6 = ''
-      when 6..100 then cus3r_s6 = rcuthr6
+    unless customThreesRight[5].nil?  
+      cuthr6 = customThreesRight[5].fullname 
     end
-
-    #cus3r_s7
-    case num_cus3r
-      when 0 then cus3r_s7 = pcuthr7      
-      when 1 then cus3r_s7 = pcuthr5
-      when 2 then cus3r_s7 = pcuthr4
-      when 3 then cus3r_s7 = pcuthr3
-      when 4 then cus3r_s7 = pcuthr2
-      when 5 then cus3r_s7 = pcuthr1
-      when 6 then cus3r_s7 = ''
-      when 7..100 then cus3r_s7 = rcuthr7
+    unless customThreesRight[6].nil?  
+      cuthr7 = customThreesRight[6].fullname
+    end    
+    unless customThreesRight[7].nil?  
+      cuthr8 = customThreesRight[7].fullname 
     end
-
-    #cus3r_s8
-    case num_cus3r
-      when 0 then cus3r_s8 = pcuthr8      
-      when 1 then cus3r_s8 = pcuthr6
-      when 2 then cus3r_s8 = pcuthr5
-      when 3 then cus3r_s8 = pcuthr4
-      when 4 then cus3r_s8 = pcuthr3
-      when 5 then cus3r_s8 = pcuthr2
-      when 6 then cus3r_s8 = pcuthr1
-      when 7 then cus3r_s8 = ''
-      when 8..100 then cus3r_s8 = rcuthr8
+    unless customThreesRight[8].nil?  
+      cuthr9 = customThreesRight[8].fullname 
     end
-
-    #cus3r_s9
-    case num_cus3r
-      when 0 then cus3r_s9 = pcuthr9      
-      when 1 then cus3r_s9 = pcuthr7
-      when 2 then cus3r_s9 = pcuthr6
-      when 3 then cus3r_s9 = pcuthr5
-      when 4 then cus3r_s9 = pcuthr4
-      when 5 then cus3r_s9 = pcuthr3
-      when 6 then cus3r_s9 = pcuthr2
-      when 7 then cus3r_s9 = pcuthr1
-      when 8 then cus3r_s9 = ''
-      when 9..100 then cus3r_s9 = rcuthr9
+    unless customThreesRight[9].nil?  
+      cuthr10 = customThreesRight[9].fullname 
     end
-
-    #cus3r_s10
-    case num_cus3r
-      when 0 then cus3r_s10 = pcuthr10     
-      when 1 then cus3r_s10 = pcuthr8
-      when 2 then cus3r_s10 = pcuthr7
-      when 3 then cus3r_s10 = pcuthr6
-      when 4 then cus3r_s10 = pcuthr5
-      when 5 then cus3r_s10 = pcuthr4
-      when 6 then cus3r_s10 = pcuthr3
-      when 7 then cus3r_s10 = pcuthr2
-      when 8 then cus3r_s10 = pcuthr1
-      when 9 then cus3r_s10 = ''
-      when 10..100 then cus3r_s10 = rcuthr10
+    unless customThreesRight[10].nil?  
+      cuthr11 = customThreesRight[10].fullname 
     end
-
-    #cus3r_s11
-    case num_cus3r
-      when 0 then cus3r_s11 = pcuthr11     
-      when 1 then cus3r_s11 = pcuthr9
-      when 2 then cus3r_s11 = pcuthr8
-      when 3 then cus3r_s11 = pcuthr7
-      when 4 then cus3r_s11 = pcuthr6
-      when 5 then cus3r_s11 = pcuthr5
-      when 6 then cus3r_s11 = pcuthr4
-      when 7 then cus3r_s11 = pcuthr3
-      when 8 then cus3r_s11 = pcuthr2
-      when 9 then cus3r_s11 = pcuthr1
-      when 10 then cus3r_s11 = ''
-      when 11..100 then cus3r_s11 = rcuthr11
+    unless customThreesRight[11].nil?  
+      cuthr12 = customThreesRight[11].fullname
     end
-
-    #cus3r_s12
-    case num_cus3r
-      when 0 then cus3r_s12 = pcuthr12    
-      when 1 then cus3r_s12 = pcuthr10
-      when 2 then cus3r_s12 = pcuthr9
-      when 3 then cus3r_s12 = pcuthr8
-      when 4 then cus3r_s12 = pcuthr7
-      when 5 then cus3r_s12 = pcuthr6
-      when 6 then cus3r_s12 = pcuthr5
-      when 7 then cus3r_s12 = pcuthr4
-      when 8 then cus3r_s12 = pcuthr3
-      when 9 then cus3r_s12 = pcuthr2
-      when 10 then cus3r_s12 = pcuthr1
-      when 11 then cus3r_s12 = ''
-      when 12..100 then cus3r_s12 = rcuthr12
+    unless customThreesRight[12].nil?  
+      cuthr13 = customThreesRight[12].fullname 
     end
-
-    #cus3r_s13
-    case num_cus3r
-      when 0 then cus3r_s13 = pcuthr13    
-      when 1 then cus3r_s13 = pcuthr11
-      when 2 then cus3r_s13 = pcuthr10
-      when 3 then cus3r_s13 = pcuthr9
-      when 4 then cus3r_s13 = pcuthr8
-      when 5 then cus3r_s13 = pcuthr7
-      when 6 then cus3r_s13 = pcuthr6
-      when 7 then cus3r_s13 = pcuthr5
-      when 8 then cus3r_s13 = pcuthr4
-      when 9 then cus3r_s13 = pcuthr3
-      when 10 then cus3r_s13 = pcuthr2
-      when 11 then cus3r_s13 = pcuthr1
-      when 12 then cus3r_s13 = ''
-      when 13..100 then cus3r_s13 = rcuthr13
-    end
-
-    #cus3r_s14
-    case num_cus3r
-      when 0 then cus3r_s14 = pcuthr14    
-      when 1 then cus3r_s14 = pcuthr12
-      when 2 then cus3r_s14 = pcuthr11
-      when 3 then cus3r_s14 = pcuthr10
-      when 4 then cus3r_s14 = pcuthr9
-      when 5 then cus3r_s14 = pcuthr8
-      when 6 then cus3r_s14 = pcuthr7
-      when 7 then cus3r_s14 = pcuthr6
-      when 8 then cus3r_s14 = pcuthr5
-      when 9 then cus3r_s14 = pcuthr4
-      when 10 then cus3r_s14 = pcuthr3
-      when 11 then cus3r_s14 = pcuthr2
-      when 12 then cus3r_s14 = pcuthr1  
-      when 13 then cus3r_s14 = ''
-      when 14..100 then cus3r_s14 = rcuthr14
-    end
-
-    #cus3r_s15
-    case num_cus3r
-      when 0 then cus3r_s15 = pcuthr15    
-      when 1 then cus3r_s15 = pcuthr13
-      when 2 then cus3r_s15 = pcuthr12
-      when 3 then cus3r_s15 = pcuthr11
-      when 4 then cus3r_s15 = pcuthr10
-      when 5 then cus3r_s15 = pcuthr9
-      when 6 then cus3r_s15 = pcuthr8
-      when 7 then cus3r_s15 = pcuthr7
-      when 8 then cus3r_s15 = pcuthr6
-      when 9 then cus3r_s15 = pcuthr5
-      when 10 then cus3r_s15 = pcuthr4
-      when 11 then cus3r_s15 = pcuthr3
-      when 12 then cus3r_s15 = pcuthr2
-      when 13 then cus3r_s15 = pcuthr1  
-      when 14..100 then cus3r_s15 = rcuthr15
-    end       
+    unless customThreesRight[13].nil?  
+      cuthr14 = customThreesRight[13].fullname
+    end 
+    unless customThreesRight[14].nil?  
+      cuthr15 = customThreesRight[14].fullname
+    end 
     #----------End Custom 3----------                 
 
     self.update :gdata => "[
@@ -7077,22 +6568,22 @@ class Gamecall < ActiveRecord::Base
     ['#{coutl_s13}', '#{coutr_s13}', '#{cus1l_s13}', '#{cus1r_s13}'],
     ['#{coutl_s14}', '#{coutr_s14}', '#{cus1l_s14}', '#{cus1r_s14}'],
     ['#{coutl_s15}', '#{coutr_s15}', '#{cus1l_s15}', '#{cus1r_s15}'],
-    ['#{cus2l_s0}', '', '#{cus3l_s0}', ''],
-    ['#{cus2l_s1}', '#{cus2r_s1}', '#{cus3l_s1}', '#{cus3r_s1}'],
-    ['#{cus2l_s2}', '#{cus2r_s2}', '#{cus3l_s2}', '#{cus3r_s2}'],
-    ['#{cus2l_s3}', '#{cus2r_s3}', '#{cus3l_s3}', '#{cus3r_s3}'],
-    ['#{cus2l_s4}', '#{cus2r_s4}', '#{cus3l_s4}', '#{cus3r_s4}'],
-    ['#{cus2l_s5}', '#{cus2r_s5}', '#{cus3l_s5}', '#{cus3r_s5}'],
-    ['#{cus2l_s6}', '#{cus2r_s6}', '#{cus3l_s6}', '#{cus3r_s6}'],
-    ['#{cus2l_s7}', '#{cus2r_s7}', '#{cus3l_s7}', '#{cus3r_s7}'],
-    ['#{cus2l_s8}', '#{cus2r_s8}', '#{cus3l_s8}', '#{cus3r_s8}'],
-    ['#{cus2l_s9}', '#{cus2r_s9}', '#{cus3l_s9}', '#{cus3r_s9}'],
-    ['#{cus2l_s10}', '#{cus2r_s10}', '#{cus3l_s10}', '#{cus3r_s10}'],
-    ['#{cus2l_s11}', '#{cus2r_s11}', '#{cus3l_s11}', '#{cus3r_s11}'],
-    ['#{cus2l_s12}', '#{cus2r_s12}', '#{cus3l_s12}', '#{cus3r_s12}'],
-    ['#{cus2l_s13}', '#{cus2r_s13}', '#{cus3l_s13}', '#{cus3r_s13}'],
-    ['#{cus2l_s14}', '#{cus2r_s14}', '#{cus3l_s14}', '#{cus3r_s14}'],
-    ['#{cus2l_s15}', '#{cus2r_s15}', '#{cus3l_s15}', '#{cus3r_s15}']
+    ['#{cus2l_s0}', '', '#{self.user.s_name14}', ''],
+    ['#{cus2l_s1}', '#{cus2r_s1}', '#{cuthl1}', '#{cuthr1}'],
+    ['#{cus2l_s2}', '#{cus2r_s2}', '#{cuthl2}', '#{cuthr2}'],
+    ['#{cus2l_s3}', '#{cus2r_s3}', '#{cuthl3}', '#{cuthr3}'],
+    ['#{cus2l_s4}', '#{cus2r_s4}', '#{cuthl4}', '#{cuthr4}'],
+    ['#{cus2l_s5}', '#{cus2r_s5}', '#{cuthl5}', '#{cuthr5}'],
+    ['#{cus2l_s6}', '#{cus2r_s6}', '#{cuthl6}', '#{cuthr6}'],
+    ['#{cus2l_s7}', '#{cus2r_s7}', '#{cuthl7}', '#{cuthr7}'],
+    ['#{cus2l_s8}', '#{cus2r_s8}', '#{cuthl8}', '#{cuthr8}'],
+    ['#{cus2l_s9}', '#{cus2r_s9}', '#{cuthl9}', '#{cuthr9}'],
+    ['#{cus2l_s10}', '#{cus2r_s10}', '#{cuthl10}', '#{cuthr10}'],
+    ['#{cus2l_s11}', '#{cus2r_s11}', '#{cuthl11}', '#{cuthr11}'],
+    ['#{cus2l_s12}', '#{cus2r_s12}', '#{cuthl12}', '#{cuthr12}'],
+    ['#{cus2l_s13}', '#{cus2r_s13}', '#{cuthl13}', '#{cuthr13}'],
+    ['#{cus2l_s14}', '#{cus2r_s14}', '#{cuthl14}', '#{cuthr14}'],
+    ['#{cus2l_s15}', '#{cus2r_s15}', '#{cuthl15}', '#{cuthr15}']
     ]"   
   end
 
