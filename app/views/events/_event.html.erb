@@ -7,7 +7,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><strong><%= event.title %></strong></h4>
+        <h4 class="modal-title center" id="myModalLabel"><strong><%= event.title %></strong></h4>
       </div>
       <div class="modal-body">
 
@@ -63,14 +63,35 @@
         <% end %>    
 
         <% if event.event_type == "Install" %> 
-          <div class="field">
-            <%= f.label :start_time, "Start Date" %><br>
-            <%= f.datetime_select_no_time :start_time, class: "form-control event_start_time" %>
-          </div>
-          <div class="field">
-            <%= f.label :end_time, "End Date" %><br>
-            <%= f.datetime_select_no_time :end_time, class: "form-control event_end_time", id: "end-date" %>  
+
+          <div>
+            <span class="bold-font">Start Date: </span><span id="start-date-<%=event.id%>"><%= event.start_time.strftime("%m-%d-%Y") %></span>
+            &nbsp&nbsp|&nbsp&nbsp<span class="pointer blue underline italic change-date-check" id="start-<%= event.id %>">Change Date</span>
           </div>  
+                                                         
+          <br>
+
+          <div class="event-start-change-date", id="event-start-<%= event.id%>">
+            <div class="field">
+              <%= f.datetime_select_install1 :start_time, class: "form-control event_start_time" %>
+            </div>
+            <hr>
+          </div>
+
+          <div>
+            <span class="bold-font">End Date: &nbsp&nbsp</span><span id="end-date-<%=event.id%>"><%= event.end_time.strftime("%m-%d-%Y") %></span>
+            &nbsp&nbsp|&nbsp&nbsp<span class="pointer blue underline italic change-date-check2" id="end-<%= event.id %>">Change Date</span>
+          </div>  
+                                                         
+          <br>
+
+          <div class="event-end-change-date", id="event-end-<%= event.id%>">
+            <div class="field">
+            <%= f.datetime_select_install2 :end_time, class: "form-control event_end_time", id: "end-date" %>  
+            </div> 
+            <hr> 
+          </div>
+
         <% end %>  
 
         <% if event.event_type == "Script" || event.event_type == "Gamecall" %>
@@ -79,14 +100,13 @@
             <%= f.datetime_select_no_time :start_time, class: "form-control event_start_time" %>
           </div>
         <% end %>  
-
+        
+        <%= link_to '<i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Delete'.html_safe, event, method: :delete, class: "btn btn-custom2", remote: true, data: { confirm: 'Are you sure?', dismiss: "modal", backdrop: "false" } %> 
+      
       </div>
+
       <div class="modal-footer">
-        <span data-dismiss="modal" data-backdrop="false" class="pull-left"> 
-          <%= link_to 'Delete', event, method: :delete, class: "btn btn-custom2 small-block", remote: true, data: { confirm: 'Are you sure?' } %>  
-        </span>  
-        <button type="button" id="myupdatebutton_<%= event.id %>" class="btn btn-default close-button-hide" data-dismiss="modal">Close</button>
-        <%= submit_tag "Update Calendar", class: "btn btn-custom1 small-block" %>
+        <button type="button" class="btn btn-custom1 btn-block update-event-button" id="sub<%= event.id%>">Update Calendar</button>
       </div>
     </div>
   </div>

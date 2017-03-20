@@ -1,13 +1,14 @@
          
 <tr id="play_<%= play.id %>" class="play-table" data-id="<%= play.id %>">
-  <td class="play-box"><%= play.fullname %></td>
-  <td class="table-center small-screen-hide"><%= play.play_type %></td>
-  <td class="table-center small-screen-hide"><%= play.hash_mark %></td>
-  <td class="table-center small-screen-hide period-box"><%= check_box_tag "period1", play.id, play.period1, class: "period1-check" %></td>
-  <td class="table-center small-screen-hide period-box"><%= check_box_tag "period2", play.id, play.period2, class: "period2-check" %></td>
-  <td class="table-center small-screen-hide period-box"><%= check_box_tag "period3", play.id, play.period3, class: "period3-check" %></td>
-  <td class="table-center small-screen-hide period-box"><%= check_box_tag "period4", play.id, play.period4, class: "period4-check" %></td>
-  <td class="no-sort"><%= link_to 'Update or Delete', edit_event_play_path(@event, play), class: "btn btn-custom4 btn-xs update-play-button" %></td>
+  <td class="play-box"><div class="install-table-row"><%= link_to play.fullname, edit_event_play_path(@event, play), class: "grey-font bold-font" %></div></td>
+  <td class="small-screen-hide"><div class="install-table-row type-td no-sort"><%= select_tag "play_type#{play.id}", options_for_select([[' ', ' '], ['Run', 'Run'], ['Pass', 'Pass']], play.play_type), class: "styled-select" %></div></td>
+  <td class="table-center small-screen-hide"><div class="install-table-row hash-td no-sort"><%= select_tag "play_hash_mark#{play.id}", options_for_select([[' ', ' '], ['Left', 'Left'], ['Right', 'Right']], play.hash_mark), class: "styled-select2" %></div></div></td>
+  
+  <td class="table-center small-screen-hide period-box"><div class="install-table-row install-table-width"><%= check_box_tag "period1", play.id, play.period1, class: "period1-check" %></div></td>
+  
+  <td class="table-center small-screen-hide period-box"><div class="install-table-row install-table-width"><%= check_box_tag "period2", play.id, play.period2, class: "period2-check" %></div></td>
+  <td class="table-center small-screen-hide period-box"><div class="install-table-row install-table-width"><%= check_box_tag "period3", play.id, play.period3, class: "period3-check" %></div></td>
+  <td class="table-center small-screen-hide period-box"><div class="install-table-row install-table-width"><%= check_box_tag "period4", play.id, play.period4, class: "period4-check" %></div></td>
 </tr>
 
 

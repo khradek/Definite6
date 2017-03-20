@@ -2,6 +2,7 @@ class Events::ScriptsController < ApplicationController
   before_action :set_script, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
   before_action :correct_user, only: [:show, :edit, :update, :destroy]
+  skip_before_filter :verify_authenticity_token
 
   respond_to :html
 
@@ -94,7 +95,7 @@ class Events::ScriptsController < ApplicationController
     end
 
     def script_params
-      params.require(:script).permit(:title, :sdata, :event_id, :user_id, :start_time, :end_time)
+      params.require(:script).permit(:title, :sdata, :event_id, :user_id, :start_time, :end_time, :bad_format_date)
     end
 
     def correct_user

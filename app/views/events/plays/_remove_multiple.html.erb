@@ -2,7 +2,7 @@
 <tr>
   <td><%= check_box_tag "play_ids[]", remove_play.id, false, {:class => "delete-checkbox"} %></td>
   <td><%= remove_play.fullname %></td>
-  <td class="table-center"><%= remove_play.play_type %></td>
-  <td class="table-center"><%= remove_play.hash_mark %></td>
+  <td class="table-center" id="remove-type-<%= remove_play.id %>"><%= remove_play.play_type %></td>
+  <td class="table-center" id="remove-hash-<%= remove_play.id %>"><%= remove_play.hash_mark %></td>
 </tr>
 

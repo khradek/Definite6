@@ -1,7 +1,6 @@
 
-<tr id="saved_formation_<%= saved_formation.id %>" class="formation-table" data-id="<%= saved_formation.id %>">
-  <td><%= saved_formation.title %></td>
-  <td class="table-right"><%= link_to 'Update or Delete', edit_saved_formation_path(saved_formation), class: "btn btn-custom4 btn-xs no-sort" %></td>
+<tr id="saved_formation_<%= saved_formation.id %>" class="formation-table center" data-id="<%= saved_formation.id %>">
+  <td><%= link_to saved_formation.title, edit_saved_formation_path(saved_formation), class: "grey-font bold-font" %></td>
 </tr>
 
 

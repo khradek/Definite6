@@ -31,7 +31,7 @@
 
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Add a New Event</h4>
+            <h4 class="modal-title center" id="myModalLabel">Add a New Event</h4>
           </div>
           
           <div class="modal-body" id="create-modal">
@@ -44,7 +44,7 @@
             <div id="select-install-select">
               <div class="form-group">
                 <%= label_tag :chose_install, 'Chose Install' %>
-                <%= select_tag 'ievent', options_from_collection_for_select(@ievents, 'id', 'title'), class: "form-control", id: "install-dropdown", size: 3 %>
+                <%= select_tag 'ievent', options_from_collection_for_select(@ievents, 'id', 'title'), class: "form-control", id: "event-install-dropdown", size: 3 %>
               </div>
               <br>
               <button type="button" class="btn btn-custom1 btn-sm btn-block" id="install-button">Go to Install</button>
@@ -80,19 +80,13 @@
                     <%= f.datetime_select_install2 :end_time, class: "form-control event_end_time" %>  
                   </div>  
                 </div> 
-              </div>      
-              <div id="non-script-footer">
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal" id="myneweventclose">Close</button>
-                  <%= submit_tag "Create", class: "btn btn-custom1 create-event-button" %>
-                </div>
-              </div>
+              </div>  
+
+              <hr>
+
+              <button type="button" class="btn btn-custom1 btn-block" id="create-event-button">Create </button>
+              
             </div> 
-            <div id="script-footer">
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" id="script-close">Close</button>
-              </div>            
-            </div>  
           </div>
         </div>
       </div>

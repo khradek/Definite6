@@ -1,9 +1,7 @@
-
 <!-- Button trigger modal -->
   <button type="button" class="btn btn-custom1 btn-block" data-toggle="modal" data-target="#mynewsaved_formation">
     Add a New Formation
   </button>
-
 
 <!-- Modal  create action -->
   <%= form_for(@saved_formation, remote: true) do |f| %>
@@ -17,17 +15,14 @@
           </div>
           
           <div class="modal-body">
-
             <div class="field">
               <%= f.label :title, "Formation Name" %><br>
               <%= f.text_field :title, class: "form-control saved_formation_title" %>
             </div>
-
           </div>  
           
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal" id="mynewsaved_formationclose">Close</button>
-            <%= submit_tag "Create", class: "btn btn-custom1" %>
+            <%= submit_tag "Add Formation", class: "btn btn-custom1 btn-block" %>
           </div>
         </div>
       </div>

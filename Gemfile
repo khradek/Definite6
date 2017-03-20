@@ -27,7 +27,6 @@ gem 'sidekiq'
 gem 'newrelic_rpm'
 gem 'devise_masquerade', '~> 0.1.7'
 
-
 group :production do
 	gem 'pg'
 	gem 'rails_12factor'

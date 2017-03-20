@@ -488,7 +488,7 @@ $(".scripts.show").ready(function() {
   });
   
 
-  $("#save-button").click(function() {
+  $(".save-button").click(function() {
     var JSONData = JSON.stringify(sdata);
     $.ajax({
       type: "PATCH",

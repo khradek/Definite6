@@ -7,39 +7,45 @@
   </button></span>
 </div>
 
-
 <div id="script<%= script.id %>">
   <!-- Modal - update scripts -->
   <%= form_for [@event, script], :method => :put, remote: true do |f| %>
-  <div class="modal fade" id="myupdatescript_<%= script.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title" id="myModalLabel"><strong><%= script.title %></strong></h4>
-	      </div>
+    <div class="modal fade" id="myupdatescript_<%= script.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  	  <div class="modal-dialog">
+  	    <div class="modal-content">
+  	      <div class="modal-header">
+  	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  	        <h4 class="modal-title center" id="myModalLabel"><strong><%= script.title %></strong></h4>
+  	      </div>
 
-	      <div class="modal-body">
-		      <div class="field">
-		        <%= f.label :title %><br>
-		        <%= f.text_field :title, class: "form-control play_piece1" %>
-		      </div>
-		      <div class="field">
-		        <%= f.label :start_time, "Date" %><br>
-		        <%= f.datetime_select_no_time :start_time, class: "form-control event_start_time" %>
-		      </div>      	
-	      </div>
+  	      <div class="modal-body">
+  		      <div class="field">
+  		        <%= f.label :title %><br>
+  		        <%= f.text_field :title, class: "form-control play_piece1" %>
+  		      </div>
 
-	      <div class="modal-footer">
-	      	<span class="pull-left" data-dismiss="modal" data-backdrop="false"> 
-	          <%= link_to 'Delete Script', [@event, script], method: :delete, class: "btn btn-custom2 small-block", remote: true, data: { confirm: 'Are you sure?' } %>  
-	        </span> 
-	        <button type="button" class="btn btn-default close-button-hide" data-dismiss="modal">Close</button>
-	        <%= submit_tag "Update Script", class: "btn btn-custom1 small-block", id: "script-update-button" %>
-	      </div>
-	    </div>
-	  </div>
-	</div>
+            <div>
+              <span class="bold-font">Date: </span><span id="date-<%=script.id%>"><%= script.start_time.strftime("%m-%d-%Y") %></span>
+              &nbsp&nbsp|&nbsp&nbsp<span class="pointer blue underline italic change-date-check" id="<%= script.id %>">Change Date</span>
+            </div>  
+                                                         
+            <br>
+
+            <div class="script-change-date", id="script-<%= script.id%>">
+    		      <div class="field">
+    		        <%= f.datetime_select_no_time :start_time, class: "form-control event_start_time", id: "script.id" %>
+    		      </div>      	
+            </div>
+
+            <%= link_to '<i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Delete Script'.html_safe, [@event, script], method: :delete, class: "btn btn-custom2", remote: true, data: { confirm: 'Are you sure?', dismiss: "modal", backdrop: "false" } %>  
+          </div>
+          
+  	      <div class="modal-footer">
+            <button type="button" class="btn btn-custom1 btn-block update-script-button" id="sub<%= script.id%>">Update Script</button>
+  	      </div>
+  	    </div>
+  	  </div>
+  	</div>
   <% end %>
   <!-- Modal -->
 </div>

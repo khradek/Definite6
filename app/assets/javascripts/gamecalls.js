@@ -19,7 +19,7 @@ $(".gamecalls.show").ready(function() {
   var char_validator = /^[a-zA-Z\d\s-_@&#$/]*$/;
 
   //Save button functionality
-  $("#save-button").click(function() {
+  $(".save-button").click(function() {
     var JSONData = JSON.stringify(gdata);
     var JSONData2 = JSON.stringify(gdata2);
     $.ajax({

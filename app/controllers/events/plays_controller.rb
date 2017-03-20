@@ -3,7 +3,26 @@ class Events::PlaysController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :correct_user, only: [:show, :edit, :update, :destroy] 
 
+
   respond_to :html
+
+  def type_update
+    @event = Event.find(params[:event_id])
+    @play = Play.find(params[:id])
+    @play.update_attribute('play_type', params[:play][:play_type])
+    respond_to do |format|
+      format.js    
+    end  
+  end
+
+  def hash_update
+    @event = Event.find(params[:event_id])
+    @play = Play.find(params[:id])
+    @play.update_attribute('hash_mark', params[:play][:hash_mark])
+    respond_to do |format|
+      format.js    
+    end 
+  end
 
   def toggle1
     @event = Event.find(params[:event_id])
@@ -207,7 +226,7 @@ class Events::PlaysController < ApplicationController
     
     respond_to do |format|
       if @play.update(play_params)
-        format.html { redirect_to @event, info: 'The play was successfully updated.' }
+        format.html { redirect_to edit_event_play_path(@event, @play), info: 'The play was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
         format.js 
       else

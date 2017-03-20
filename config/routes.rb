@@ -42,10 +42,12 @@ Rails.application.routes.draw do
         put :sort
       end
       member do
-        post :toggle1
-        post :toggle2
-        post :toggle3
-        post :toggle4
+        put :type_update
+        put :hash_update
+        put :toggle1
+        put :toggle2
+        put :toggle3
+        put :toggle4
       end
   	end
 

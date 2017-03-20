@@ -8,6 +8,7 @@ set_positions = function(){
   });
 }
 
+//Function to mark duplicate plays in install table red
 function highlightDuplicateRows(selector) {
   var index = {},
   getText = function () {
@@ -55,6 +56,114 @@ $(".events.show").ready(function() {
       });	    
 	 });
 
+
+  //////////Date format for scripts//////////
+  //Changes date format before save on new script modal
+  $("body").on("click", "#create-script-button", function(){
+    var form = $('#new_script');
+    var dateText = form.find($(".install-picker1")).val();
+    var date = new Date(dateText);
+    var d = date.getDate();
+    var m =  date.getMonth();
+    m += 1;  // JavaScript months are 0-11
+    var y = date.getFullYear();
+    var newDate = y + "-" + m + "-" + d
+    form.find($(".install-picker1")).val(newDate);
+    form.trigger('submit.rails');
+  });
+
+  //Shows the change date section on the update Script modals and clears the date when the section is hidden
+  $("body").on("click", ".change-date-check", function(){
+    var id = $(this).attr('id');
+    var section = "script-" + id;
+    var form = $("#edit_script_" + id);
+    form.find($(".datetimepicker")).val('');
+    $("#" + section).toggle(); 
+  });
+
+  //Changes date format before save on update script modal
+  $("body").on("click", ".update-script-button", function(){
+    var i = $(this).attr('id');
+    var script = i.substr(3);
+    var formID = "edit_script_" + script;
+    var form = $("#" + formID);
+    var dateText = form.find($(".datetimepicker")).val();
+    if (dateText.length > 0) {
+      var date = new Date(dateText);
+      var d = date.getDate();
+      var m =  date.getMonth();
+      m += 1;  // JavaScript months are 0-11
+      var y = date.getFullYear();
+      var newDate = y + "-" + m + "-" + d
+      form.find($(".datetimepicker")).val(newDate);
+      form.trigger('submit.rails');
+    } else {
+      var oldDate = $("#date-" + script).text();
+      var date = new Date(oldDate);
+      var d = date.getDate();
+      var m =  date.getMonth();
+      m += 1;  // JavaScript months are 0-11
+      var y = date.getFullYear();
+      var newDate = y + "-" + m + "-" + d
+      form.find($(".datetimepicker")).val(newDate);
+      form.trigger('submit.rails');
+    }
+  }); 
+
+  
+  //////////Date format for call sheets//////////
+  //Changes date format before save on new gamecall sheet modal
+  $("body").on("click", "#create-gamecall-button", function(){
+    var form = $('#new_gamecall');
+    var dateText = form.find($(".install-picker2")).val();
+    var date = new Date(dateText);
+    var d = date.getDate();
+    var m =  date.getMonth();
+    m += 1;  // JavaScript months are 0-11
+    var y = date.getFullYear();
+    var newDate = y + "-" + m + "-" + d
+    form.find($(".install-picker2")).val(newDate);
+    form.trigger('submit.rails');
+  });
+
+  //Shows the change date section on the update Gamecall modals and clears the date when the section is hidden
+  $("body").on("click", ".change-date-check", function(){
+    var id = $(this).attr('id');
+    var section = "gamecall-" + id;
+    var form = $("#edit_gamecall_" + id);
+    form.find($(".datetimepicker")).val('');
+    $("#" + section).toggle(); 
+  });
+
+  //Changes date format before save on update gamecall modal
+  $("body").on("click", ".update-call-button", function(){
+    var i = $(this).attr('id');
+    var gamecall = i.substr(8);
+    var formID = "edit_gamecall_" + gamecall;
+    var form = $("#" + formID);
+    var dateText = form.find($(".datetimepicker")).val();
+    if (dateText.length > 0) {
+      var date = new Date(dateText);
+      var d = date.getDate();
+      var m =  date.getMonth();
+      m += 1;  // Javascript months are 0-11
+      var y = date.getFullYear();
+      var newDate = y + "-" + m + "-" + d
+      form.find($(".datetimepicker")).val(newDate);
+      form.trigger('submit.rails');
+    } else {
+      var oldDate = $("#date-" + gamecall).text();
+      var date = new Date(oldDate);
+      var d = date.getDate();
+      var m =  date.getMonth();
+      m += 1;  // JavaScript months are 0-11
+      var y = date.getFullYear();
+      var newDate = y + "-" + m + "-" + d
+      form.find($(".datetimepicker")).val(newDate);
+      form.trigger('submit.rails');
+    }
+  });
+
 	//Hides blank play table row on show page  
 	$("#play_").hide();
 
@@ -66,9 +175,6 @@ $(".events.show").ready(function() {
 
   //Makes the create game call modal draggable 
   $("#mynewgamecall").draggable({ handle: ".modal-content" });
-
-  //Makes the import plays modal draggable 
-  $("#importPlaysModal").draggable({ handle: ".modal-content" });
 
   //Marks duplicate plays in red
   highlightDuplicateRows("#plays-body");
@@ -103,6 +209,34 @@ $(".events.show").ready(function() {
     };
   });
 
+  //Run/Pass dropdown AJAX functionality
+  $("body").on("change", ".styled-select", function(){
+    var choice = $(this).val();
+    var playID = $(this).attr('id');
+    var numID = playID.substr(9);
+    $.ajax({
+      type: "PUT",
+      url: "/events/" + $(".event-id").text() + "/plays/" + numID + "/type_update",
+      data: { 
+        play: { play_type: choice }
+      }        
+    });
+  });
+
+  //Hash dropdown AJAX functionality
+  $("body").on("change", ".styled-select2", function(){
+    var choice = $(this).val();
+    var playID = $(this).attr('id');
+    var numID = playID.substr(14);
+    $.ajax({
+      type: "PUT",
+      url: "/events/" + $(".event-id").text() + "/plays/" + numID + "/hash_update",
+      data: { 
+        play: { hash_mark: choice }
+      }        
+    });
+  });
+
   //Segments checkbox AJAX functionality
   $("body").on("change", ".period1-check", function(){  
     var checked; 
@@ -112,7 +246,7 @@ $(".events.show").ready(function() {
       checked = false;
     }
     $.ajax({
-      type: "POST",
+      type: "PUT",
       url: "/events/" + $(".event-id").text() + "/plays/" + $(this).val() + "/toggle1",
       data: { 
         play: { period1: checked }
@@ -128,7 +262,7 @@ $(".events.show").ready(function() {
       checked = false;
     }
     $.ajax({
-      type: "POST",
+      type: "PUT",
       url: "/events/" + $(".event-id").text() + "/plays/" + $(this).val() + "/toggle2",
       data: { 
         play: { period2: checked }
@@ -144,7 +278,7 @@ $(".events.show").ready(function() {
       checked = false;
     }
     $.ajax({
-      type: "POST",
+      type: "PUT",
       url: "/events/" + $(".event-id").text() + "/plays/" + $(this).val() + "/toggle3",
       data: { 
         play: { period3: checked }
@@ -160,7 +294,7 @@ $(".events.show").ready(function() {
       checked = false;
     }
     $.ajax({
-      type: "POST",
+      type: "PUT",
       url: "/events/" + $(".event-id").text() + "/plays/" + $(this).val() + "/toggle4",
       data: { 
         play: { period4: checked }

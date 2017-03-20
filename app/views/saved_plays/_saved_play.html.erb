@@ -1,7 +1,6 @@
 
-<tr id="saved_play_<%= saved_play.id %>" class="saved-play-table" data-id="<%= saved_play.id %>">
-  <td><%= saved_play.title %></td>
-  <td class="table-right"><%= link_to 'Update or Delete', edit_saved_play_path(saved_play), class: "btn btn-custom4 btn-xs no-sort" %></td>
+<tr id="saved_play_<%= saved_play.id %>" class="saved-play-table center" data-id="<%= saved_play.id %>">
+  <td><%= link_to saved_play.title, edit_saved_play_path(saved_play), class: "grey-font bold-font" %></td>
 </tr>
 
 

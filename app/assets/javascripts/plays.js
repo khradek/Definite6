@@ -128,6 +128,25 @@ $(document).on('page:change', function() {
     }
   });
 
+  
+  /////////Import Plays Modal/////////
+  //Makes the import plays modal draggable 
+  $("#importPlaysModal").draggable({ handle: ".modal-content" });
+  
+  //Disables the import plays button unless an install is chosen
+  if($("#install-dropdown").val() == null){
+    $('#import-plays-button').prop('disabled', true);      
+  }else{ 
+    $('#import-plays-button').prop('disabled', false);
+  };
+
+  $(document).on("change", "#install-dropdown", function(){
+    if($("#install-dropdown").val() == null){
+      $('#import-plays-button').prop('disabled', true);      
+    }else{ 
+      $('#import-plays-button').prop('disabled', false);
+    };
+  });
 
 
   /////////Update Multiple Modal/////////
@@ -272,13 +291,16 @@ $(document).on('page:change', function() {
   $(".play-drop").change(function(){
     var choice = $(this).find('option:selected').text();
     var id = $(this).attr("id").slice(19);
-    console.log(id);
     if (choice == "Saved plays"){
       $("#play-text-" + id).val('');
     }else{
       $("#play-text-" + id).val(choice);
     };
   });
+
+  //Sets iframe size
+  //$("iframe").width(625);
+  //$("iframe").height(360);
 
 });
 

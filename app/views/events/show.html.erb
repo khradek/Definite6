@@ -35,13 +35,12 @@
           <thead id="plays-thead">
             <tr>
               <th class="fake-h4">Play Name</th>
-              <th class="small-screen-hide">Run/Pass</th>
-              <th class="small-screen-hide">Hash</th>
-              <th class="table-center small-screen-hide small-font">Segment 1</th>
+              <th class="small-screen-hide type-td">Run/Pass&nbsp&nbsp</th>
+              <th class="small-screen-hide hash-td">Hash&nbsp&nbsp</th>
+              <th class="table-center small-screen-hide small-font"><div class="install-table-check">Segment 1</div></th>
               <th class="table-center small-screen-hide small-font">Segment 2</th>
               <th class="table-center small-screen-hide small-font">Segment 3</th>
               <th class="table-center small-screen-hide small-font">Segment 4</th>
-              <th></th>
             </tr>   
           </thead>
           <tbody class="sortable" id="plays-body">
@@ -51,7 +50,7 @@
           </tbody>
           <tfoot id="plays-tfoot">
             <tr>
-              <td class="table-footer">Total Plays per Segment</td>
+              <td class="table-footer small-screen-hide">Total Plays per Segment</td>
               <td colspan=2></td>
               <td class="table-footer table-center small-screen-hide" id="period1-count"><%= @period1_count %></td>
               <td class="table-footer table-center small-screen-hide" id="period2-count"><%= @period2_count %></td>
@@ -88,20 +87,20 @@
     <span class="dropdown">
       <button class="btn btn-custom3 btn-sm small-block dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Call Sheet Summaries <b class="caret"></b></button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <li class="dropdown-item"><%= link_to "#{current_user.s_name1}", event_summary_1_path(@event) %></li>
-        <li class="dropdown-item"><%= link_to "#{current_user.s_name2}", event_summary_2_path(@event) %></li>
-        <li class="dropdown-item"><%= link_to "#{current_user.s_name3}", event_summary_3_path(@event) %></li>
-        <li class="dropdown-item"><%= link_to "#{current_user.s_name4}", event_summary_4_path(@event) %></li>
-        <li class="dropdown-item"><%= link_to "#{current_user.s_name5}", event_summary_5_path(@event) %></li>
-        <li class="dropdown-item"><%= link_to "#{current_user.s_name6}", event_summary_6_path(@event) %></li>
-        <li class="dropdown-item"><%= link_to "#{current_user.s_name7}", event_summary_7_path(@event) %></li>
-        <li class="dropdown-item"><%= link_to "#{current_user.s_name8}", event_summary_8_path(@event) %></li>
-        <li class="dropdown-item"><%= link_to "#{current_user.s_name9}", event_summary_9_path(@event) %></li>
-        <li class="dropdown-item"><%= link_to "#{current_user.s_name10}", event_summary_10_path(@event) %></li>
-        <li class="dropdown-item"><%= link_to "#{current_user.s_name11}", event_summary_11_path(@event) %></li>
-        <li class="dropdown-item"><%= link_to "#{current_user.s_name12}", event_summary_12_path(@event) %></li>
-        <li class="dropdown-item"><%= link_to "#{current_user.s_name13}", event_summary_13_path(@event) %></li>
-        <li class="dropdown-item"><%= link_to "#{current_user.s_name14}", event_summary_14_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to current_user.s_name1, event_summary_1_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to current_user.s_name2, event_summary_2_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to current_user.s_name3, event_summary_3_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to current_user.s_name4, event_summary_4_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to current_user.s_name5, event_summary_5_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to current_user.s_name6, event_summary_6_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to current_user.s_name7, event_summary_7_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to current_user.s_name8, event_summary_8_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to current_user.s_name9, event_summary_9_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to current_user.s_name10, event_summary_10_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to current_user.s_name11, event_summary_11_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to current_user.s_name12, event_summary_12_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to current_user.s_name13, event_summary_13_path(@event) %></li>
+        <li class="dropdown-item"><%= link_to current_user.s_name14, event_summary_14_path(@event) %></li>
       </ul>
     </span>
 
@@ -122,7 +121,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Update Multiple Plays</h4>
+          <h4 class="modal-title center" id="myModalLabel">Update Multiple Plays</h4>
         </div>
         <%= form_tag update_multiple_event_plays_path(@event), method: :put do  %>
           <div class="modal-body">  
@@ -309,8 +308,7 @@
             <% end %>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <%= button_tag "Update Plays", class: "btn btn-custom1 update-multi-button", data: {disable_with: '<i class="fa fa-spinner fa-spin"></i> Updating Plays...'} %>
+            <%= button_tag "Update Plays", class: "btn btn-custom1 update-multi-button btn-block", data: {disable_with: '<i class="fa fa-spinner fa-spin"></i> Updating Plays...'} %>
           </div> 
         <% end %>   
       </div>
@@ -324,7 +322,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Remove Multiple Plays from Install</h4>
+          <h4 class="modal-title center" id="myModalLabel">Remove Multiple Plays from Install</h4>
         </div>
         <%= form_tag destroy_multiple_event_plays_path(@event), method: :delete do %>
           <div class="modal-body">
@@ -343,8 +341,7 @@
             </table>
           </div>  
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <%= button_tag "Remove Selected", class: "btn btn-custom2 remove-multi-button", data: {disable_with: '<i class="fa fa-spinner fa-spin"></i> Removing Plays...'} %>
+            <%= button_tag "Remove Selected", class: "btn btn-custom2 remove-multi-button btn-block", data: {disable_with: '<i class="fa fa-spinner fa-spin"></i> Removing Plays...'} %>
           </div>
         <% end %>  
       </div>
@@ -359,19 +356,18 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Import Plays from Existing Install</h4>
+            <h4 class="modal-title center" id="myModalLabel">Import Plays from Existing Install</h4>
           </div>
           <div class="modal-body">
             
             <div class="form-group">
               <%= label_tag :chose_install, 'Chose Install' %>
-              <%= select_tag 'ievent', options_from_collection_for_select(@ievents, 'id', 'title'), class: "form-control", id: "install-dropdown", size: 3%>
+              <%= select_tag 'ievent', options_from_collection_for_select(@ievents, 'id', 'title'), class: "form-control", id: "install-dropdown", size: 3 %>
             </div>
 
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <%= submit_tag "Import Plays", class: "btn btn-custom1" %>
+            <%= submit_tag "Import Plays", class: "btn btn-custom1 btn-block", id:"import-plays-button" %>
           </div>
         </div>
       </div>
