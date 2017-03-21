@@ -14,9 +14,9 @@
         <div class="form-group">
           <div class="event-type">
             <% if event.event_type == "Gamecall" %> 
-              <div><strong>Type: </strong>Game Call Sheet</div>
+              <div><strong>Type: </strong><span id="event-<%= event.id%>-type-lookup">Game Call Sheet</span></div>
             <% else %>
-              <div><strong>Type: </strong><%= event.event_type %></div>  
+              <div><strong>Type: </strong><span id="event-<%= event.id%>-type-lookup"><%= event.event_type %></span></div>  
             <% end %>
             <% if event.event_type == "Install" %>
               <br>
@@ -95,11 +95,22 @@
         <% end %>  
 
         <% if event.event_type == "Script" || event.event_type == "Gamecall" %>
-          <div class="field">
-            <%= f.label :start_time, "Start Date" %><br>
-            <%= f.datetime_select_no_time :start_time, class: "form-control event_start_time" %>
+          
+          <div>
+            <span class="bold-font">Date: </span><span id="date-<%=event.id%>"><%= event.start_time.strftime("%m-%d-%Y") %></span>
+              &nbsp&nbsp|&nbsp&nbsp<span class="pointer blue underline italic change-date-check-gcs" id="<%= event.id %>">Change Date</span>
+          </div> 
+          
+          <br>
+
+          <div class="event-change-date", id="event-<%= event.id%>"> 
+            <div class="field">
+              <%= f.datetime_select_no_time :start_time, class: "form-control event_start_time" %>
+            </div>
           </div>
+
         <% end %>  
+
         
         <%= link_to '<i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Delete'.html_safe, event, method: :delete, class: "btn btn-custom2", remote: true, data: { confirm: 'Are you sure?', dismiss: "modal", backdrop: "false" } %> 
       
