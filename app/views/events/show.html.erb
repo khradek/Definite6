@@ -108,7 +108,7 @@
     <button type="button" class="btn btn-custom2 btn-sm small-block pull-right margin-left" data-toggle="modal" data-target="#removePlaysModal">Remove Multiple</button>
 
     <!-- Button trigger update plays modal -->
-    <button type="button" class="btn btn-custom4 btn-sm small-block pull-right margin-left" data-toggle="modal" data-target="#updatePlaysModal">Update Multiple</button>
+    <button type="button" class="btn btn-custom4 btn-sm small-block pull-right margin-left" id="update-multi-open" data-toggle="modal" data-target="#updatePlaysModal">Update Multiple</button>
 
     <!-- Button trigger import plays modal -->
     <button type="button" class="btn btn-custom3 btn-sm small-block pull-right" data-toggle="modal" data-target="#importPlaysModal">Import Plays from Existing Install</button>
@@ -117,7 +117,7 @@
 
   <!-- Update multiple plays modal -->
   <div class="modal fade list-modal" id="updatePlaysModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog custom-class" role="document">
+    <div class="modal-dialog custom-larger-class" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -125,11 +125,12 @@
         </div>
         <%= form_tag update_multiple_event_plays_path(@event), method: :put do  %>
           <div class="modal-body">  
+            <%= select_tag "run_pass_all", options_for_select([['Run', 'Run'], ['Pass', 'Pass'], ['Left', 'Left'], ['Right', 'Right'], ['Run Left', 'Run Left'], ['Run Right', 'Run Right'], ['Pass Left', 'Pass Left'], ['Pass Right', 'Pass Right'], ['- Clear -', '- Clear -']]), prompt: "Select all...", id: "all-type" %>    
             <table class="table table-hover">
               <thead>
                 <tr>
                   <th><%= check_box_tag "check-all" %></th>
-                  <th>Select Plays to Update</th>
+                  <th>Plays</th>
                   <th class="table-center">Availability</th>
                   <th class="table-center xs-screen-hide">Run/Pass</th>
                   <th class="table-center xs-screen-hide">Hash</th>

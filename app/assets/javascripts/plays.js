@@ -162,7 +162,7 @@ $(document).on('page:change', function() {
     } else { checkBoxes.prop("checked", false);
     };
   });
-  $(document).on("change", ".play-checkbox", function(){
+  $(document).on("change", ".play-checkbox, #all-type", function(){
     if ($('#multiples-body :input[type="checkbox"]:checked').length < $('#multiples-body :input[type="checkbox"]').length){
       $('#check-all').prop("checked", false);
     }
@@ -171,13 +171,38 @@ $(document).on('page:change', function() {
     }
   });
   
+  //Select all dropdown functionality
+  var selectAll = function(){
+    var choice = $("#all-type").find('option:selected').text()
+    var checkBoxes = $(".play-checkbox");
+    if (choice == "- Clear -"){
+      checkBoxes.prop("checked", false);
+      $(".play-checkbox").trigger("change");
+    } else if (choice == "Run" || choice == "Pass" || choice == "Right" || choice == "Left") {
+      var chosenCheckBoxes = $("." + choice);
+      checkBoxes.prop("checked", false) 
+      chosenCheckBoxes.prop("checked", true);
+      $(".play-checkbox").trigger("change");
+    } else if (choice == "Run Left" || choice == "Run Right" || choice == "Pass Left" || choice == "Pass Right") {
+      var type = choice.substring(0, 4).trim();
+      var hash = choice.substring(4).trim();
+      var chosenCheckBoxes = $("." + type + "." + hash);
+      checkBoxes.prop("checked", false)
+      chosenCheckBoxes.prop("checked", true);
+      $(".play-checkbox").trigger("change");
+    };
+  };
+  //Call select all dropdown function when dropdown is changed & when Update Multiple botton is clicked on install page
+  $("#all-type").on('change', selectAll);
+  $("#update-multi-open").on('click', selectAll);
+
   //Ensures the submit button is disabled unless at least one play is checked
   if ($('#multiples-body :input[type="checkbox"]:checked').length > 0){
     $('.update-multi-button').prop('disabled', false);
   } else {
     $('.update-multi-button').prop('disabled', true); 
   };
-  $(document).on("change", ".play-checkbox, #check-all", function(){
+  $(document).on("change", ".play-checkbox, #check-all, .all-type", function(){
     if ($('#multiples-body :input[type="checkbox"]:checked').length > 0){
       $('.update-multi-button').prop('disabled', false);
     } else {
@@ -298,9 +323,6 @@ $(document).on('page:change', function() {
     };
   });
 
-  //Sets iframe size
-  //$("iframe").width(625);
-  //$("iframe").height(360);
 
 });
 

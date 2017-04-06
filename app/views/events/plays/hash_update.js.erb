@@ -1,5 +1,9 @@
 //Updates the hash in the Update Multiple modal
 $("#hash-<%= @play.id %>").html('<%= @play.hash_mark %>');
 
+//Updates the checkbox class in the Update Multiple modal
+$("#box-<%= @play.id %>").removeClass('Left Right')
+$("#box-<%= @play.id %>").addClass('<%= @play.hash_mark %>')
+
 //Updates the hash in the Remove Multiple modal
 $("#remove-hash-<%= @play.id %>").html('<%= @play.hash_mark %>');

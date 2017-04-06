@@ -1,5 +1,9 @@
 //Updates the type in the Update Multiple modal
 $("#type-<%= @play.id %>").html('<%= @play.play_type %>');
 
+//Updates the checkbox class in the Update Multiple modal
+$("#box-<%= @play.id %>").removeClass('Run Pass')
+$("#box-<%= @play.id %>").addClass('<%= @play.play_type %>')
+
 //Updates the type in the Remove Multiple modal
 $("#remove-type-<%= @play.id %>").html('<%= @play.play_type %>');

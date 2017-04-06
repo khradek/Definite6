@@ -331,7 +331,7 @@ hr.no-margin {
       width: 50%; /* either % (e.g. 60%) or px (400px) */
   }
   .custom-larger-class {
-      width: 60%; /* either % (e.g. 60%) or px (400px) */
+      width: 65%; /* either % (e.g. 60%) or px (400px) */
   }
 }
 
@@ -581,4 +581,8 @@ SPAN.td{
 
 .styled-select2:hover{
   background: url(black_arrow.png) no-repeat 97% 75% transparent;
+}
+
+body .modal-wide{
+  width: 90%;
 }

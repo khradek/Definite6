@@ -31,6 +31,10 @@ $("#plays-body").append('<%= j render @play %>');
 //Adds new play to the Update Multiple modal
 $("#multiples-body").append('<%= j render "multiple", multiple_play: @play %>');
 
+//Adds play type and hash mark class to checkbox in the Update Multiple modal
+$("#box-<%= @play.id %>").addClass('<%= @play.play_type %>')
+$("#box-<%= @play.id %>").addClass('<%= @play.hash_mark %>')
+
 //Adds new play to the Remove Multiple modal
 $("#remove-multiple-body").append('<%= j render "remove_multiple", remove_play: @play %>');
 

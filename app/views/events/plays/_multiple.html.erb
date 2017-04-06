@@ -1,6 +1,6 @@
   
 <tr>
-  <td><%= check_box_tag "play_ids[]", multiple_play.id, false, {:class => "play-checkbox"} %></td>
+  <td><%= check_box_tag "play_ids[]", multiple_play.id, false, {:class => "play-checkbox #{multiple_play.play_type} #{multiple_play.hash_mark}", :id => "box-#{multiple_play.id}"} %></td>
   <td><%= multiple_play.fullname %></td>
   <td class="table-center">
     <% if multiple_play.situation1.blank? %>
