@@ -1,0 +1,51 @@
+<div class="tr" id="practice_schedule_<%= practice_schedule.id %>">
+  <span class="script-col1 td"><%= practice_schedule.title %></span>
+  <span class="script-col2 table-center td"><%= practice_schedule.start_time.strftime("%m-%d-%Y") if practice_schedule.start_time? %></span>
+  <span class="script-col3 td"><%= link_to 'Open Schedule', [@event, practice_schedule], class: "btn btn-custom3 btn-sm pull-right" %></span>
+  <span class="script-col3 td"><button type="button" id="update-practice_schedule_<%= practice_schedule.id %>" class="btn btn-custom4 btn-sm pull-right small-screen-hide" data-toggle="modal" data-target="#myupdatepractice_schedule_<%= practice_schedule.id %>">
+    Update or Delete Schedule
+  </button></span>
+</div>
+
+<div id="practice_schedule<%= practice_schedule.id %>">
+  <!-- Modal - update practice_schedules -->
+  <%= form_for [@event, practice_schedule], :method => :put, remote: true do |f| %>
+    <div class="modal fade" id="myupdatepractice_schedule_<%= practice_schedule.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title center" id="myModalLabel"><strong><%= practice_schedule.title %></strong></h4>
+          </div>
+
+          <div class="modal-body">
+            <div class="field">
+              <%= f.label :title %><br>
+              <%= f.text_field :title, class: "form-control play_piece1" %>
+            </div>
+
+            <div>
+              <span class="bold-font">Date: </span><span id="date-<%=practice_schedule.id%>"><%= practice_schedule.start_time.strftime("%m-%d-%Y") %></span>
+              &nbsp&nbsp|&nbsp&nbsp<span class="pointer blue underline italic change-date-check" id="<%= practice_schedule.id %>">Change Date</span>
+            </div>  
+                                                         
+            <br>
+
+            <div class="practice_schedule-change-date", id="practice_schedule-<%= practice_schedule.id%>">
+              <div class="field">
+                <%= f.datetime_select_no_time :start_time, class: "form-control event_start_time", id: "practice_schedule.id" %>
+              </div>        
+            </div>
+
+            <%= link_to '<i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Delete Practice Schedule'.html_safe, [@event, practice_schedule], method: :delete, class: "btn btn-custom2", remote: true, data: { confirm: 'Are you sure?', dismiss: "modal", backdrop: "false" } %>  
+          </div>
+          
+          <div class="modal-footer">
+            <button type="button" class="btn btn-custom1 btn-block update-practice_schedule-button" id="practice_sub<%= practice_schedule.id%>">Update Schedule</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <!-- Modal -->
+</div>

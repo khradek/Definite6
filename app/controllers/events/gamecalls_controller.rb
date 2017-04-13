@@ -52,7 +52,6 @@ class Events::GamecallsController < ApplicationController
         format.js
       end
     end
-
   end
 
   def update
@@ -70,7 +69,6 @@ class Events::GamecallsController < ApplicationController
         format.js
       end
     end
-
   end
 
   def destroy

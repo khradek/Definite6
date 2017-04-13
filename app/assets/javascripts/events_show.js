@@ -57,6 +57,60 @@ $(".events.show").ready(function() {
 	 });
 
 
+  //////////Date format for practice schedule//////////
+  //Changes date format before save on new practice schedule modal
+  $("body").on("click", "#create-practice_schedule-button", function(){
+    var form = $('#new_practice_schedule');
+    var dateText = form.find($(".install-picker3")).val();
+    var date = new Date(dateText);
+    var d = date.getDate();
+    var m =  date.getMonth();
+    m += 1;  // JavaScript months are 0-11
+    var y = date.getFullYear();
+    var newDate = y + "-" + m + "-" + d
+    form.find($(".install-picker3")).val(newDate);
+    form.trigger('submit.rails');
+  });
+
+  //Shows the change date section on the Update Practice Schedule modals and clears the date when the section is hidden
+  $("body").on("click", ".change-date-check", function(){
+    var id = $(this).attr('id');
+    var section = "practice_schedule-" + id;
+    var form = $("#edit_practice_schedule_" + id);
+    form.find($(".datetimepicker")).val('');
+    $("#" + section).toggle(); 
+  });
+
+  //Changes date format before save on Update Practice Schedule modal
+  $("body").on("click", ".update-practice_schedule-button", function(){
+    var i = $(this).attr('id');
+    var schedule = i.substr(12);
+    var formID = "edit_practice_schedule_" + schedule;
+    var form = $("#" + formID);
+    var dateText = form.find($(".datetimepicker")).val();
+    if (dateText.length > 0) {
+      var date = new Date(dateText);
+      var d = date.getDate();
+      var m =  date.getMonth();
+      m += 1;  // Javascript months are 0-11
+      var y = date.getFullYear();
+      var newDate = y + "-" + m + "-" + d
+      form.find($(".datetimepicker")).val(newDate);
+      form.trigger('submit.rails');
+    } else {
+      var oldDate = $("#date-" + schedule).text();
+      var date = new Date(oldDate);
+      var d = date.getDate();
+      var m =  date.getMonth();
+      m += 1;  // JavaScript months are 0-11
+      var y = date.getFullYear();
+      var newDate = y + "-" + m + "-" + d
+      form.find($(".datetimepicker")).val(newDate);
+      form.trigger('submit.rails');
+    }
+  });
+
+
   //////////Date format for scripts//////////
   //Changes date format before save on new script modal
   $("body").on("click", "#create-script-button", function(){
@@ -178,6 +232,22 @@ $(".events.show").ready(function() {
 
   //Marks duplicate plays in red
   highlightDuplicateRows("#plays-body");
+
+
+  //Disables the create button until the title and date fields are completed on the create practice script modal
+  if($(".practice_schedule-title").val().length == 0 || $(".install-picker3").val().length == 0){
+    $('#create-practice_schedule-button').prop('disabled', true);      
+  }else{ 
+    $('#create-practice_schedule-button').prop('disabled', false);
+  };
+
+  $("body").on("change dp.change keyup", ".practice_schedule-title, .install-picker3", function(){
+    if($(".practice_schedule-title").val().length == 0 || $(".install-picker3").val().length == 0){
+      $('#create-practice_schedule-button').prop('disabled', true);      
+    }else{ 
+      $('#create-practice_schedule-button').prop('disabled', false);
+    };
+  });
 
   //Disables the create button until the title and date fields are completed on the create script modal
   if($(".script-title").val().length == 0 || $(".install-picker1").val().length == 0){

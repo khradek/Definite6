@@ -341,12 +341,14 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @gamecalls = @event.gamecalls.order(:start_time => :asc)    
-    @scripts = @event.scripts.order(:start_time => :asc)  
+    @scripts = @event.scripts.order(:start_time => :asc) 
+    @practice_schedules = @event.practice_schedules.order(:start_time => :asc)      
     @gamecall_count = @event.gamecalls.count
     @plays = @event.plays.order(:priority => :asc, :created_at => :asc)
     @new_play = @event.plays.build
     @new_script = @event.scripts.build
     @new_gamecall = @event.gamecalls.build
+    @new_practice_schedule = @event.practice_schedules.build
     @period1_count = @plays.where(:period1 => true).count
     @period2_count = @plays.where(:period2 => true).count
     @period3_count = @plays.where(:period3 => true).count

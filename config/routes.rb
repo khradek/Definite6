@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resource :default_practice
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   mount StripeEvent::Engine, at: '/stripe/webhook'
@@ -52,6 +54,10 @@ Rails.application.routes.draw do
   	end
 
     resources :gamecalls, controller:'events/gamecalls' do
+      get :print
+    end
+
+    resources :practice_schedules, controller:'events/practice_schedules' do
       get :print
     end
   end

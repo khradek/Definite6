@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170302004305) do
+ActiveRecord::Schema.define(version: 20170409220802) do
 
   create_table "charges", force: true do |t|
     t.integer  "user_id"
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(version: 20170302004305) do
 
   add_index "charges", ["stripe_id"], name: "index_charges_on_stripe_id", unique: true
 
+  create_table "default_practices", force: true do |t|
+    t.text     "up_data"
+    t.text     "up_format"
+    t.text     "up_class"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "events", force: true do |t|
     t.integer  "user_id"
     t.string   "title"
@@ -41,6 +50,8 @@ ActiveRecord::Schema.define(version: 20170302004305) do
     t.integer  "gamecall_tag"
     t.integer  "install_event_id"
     t.integer  "installgc_event_id"
+    t.integer  "practice_tag"
+    t.integer  "installps_event_id"
   end
 
   add_index "events", ["user_id"], name: "index_events_on_user_id"
@@ -113,6 +124,21 @@ ActiveRecord::Schema.define(version: 20170302004305) do
 
   add_index "plays", ["event_id"], name: "index_plays_on_event_id"
   add_index "plays", ["user_id"], name: "index_plays_on_user_id"
+
+  create_table "practice_schedules", force: true do |t|
+    t.string   "title"
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.datetime "start_time"
+    t.text     "p_data"
+    t.text     "p_format"
+    t.text     "p_class"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "practice_schedules", ["event_id"], name: "index_practice_schedules_on_event_id"
+  add_index "practice_schedules", ["user_id"], name: "index_practice_schedules_on_user_id"
 
   create_table "saved_formations", force: true do |t|
     t.string   "title"

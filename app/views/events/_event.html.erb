@@ -22,6 +22,13 @@
               <br>
               <div class="event-type"><%= link_to "Go to Install Page", event, :class => "btn btn-custom1 btn-sm" %></div>
             <% end %>  
+            <% if event.event_type == "Practice Schedule" %>
+              <br>
+              <div>
+                <button type="button" class="btn btn-custom1 btn-sm practice_schedule-button">Go to Practice Schedule's Install Page</button>
+                <div class="linked-psevent"><%= event.installps_event_id %></div>
+              </div>
+            <% end %>
             <% if event.event_type == "Script" %>
               <br>
               <div>
@@ -38,7 +45,9 @@
             <% end %> 
           </div>  
         </div>
+
         <hr>
+
         <div class="field">
           <%= f.label :title %><br>
           <%= f.text_field :title, class: "form-control event_title" %>
@@ -94,7 +103,7 @@
 
         <% end %>  
 
-        <% if event.event_type == "Script" || event.event_type == "Gamecall" %>
+        <% if event.event_type == "Script" || event.event_type == "Gamecall" || event.event_type == "Practice Schedule" %>
           
           <div>
             <span class="bold-font">Date: </span><span id="date-<%=event.id%>"><%= event.start_time.strftime("%m-%d-%Y") %></span>

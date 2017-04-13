@@ -5,7 +5,9 @@
 
   <hr class="light-red">
 
-  <h3 class="pointer center blue", data-toggle="modal" data-target="#Sheet1"><u>Call Sheet Settings</u>&nbsp<i class="fa fa-table" aria-hidden="true"></i></h3>
+  <h3 class="center"><%= link_to '<u>Default Practice Schedule</u> <i class="fa fa-table" aria-hidden="true"></i>'.html_safe, default_practice_path, class: "blue" %></h3>
+
+  <h3 class="center"><%= link_to '<u>Call Sheet Settings</u>&nbsp<i class="fa fa-table" aria-hidden="true"></i>'.html_safe, "#", class: "blue", "data-toggle" => "modal", "data-target" => "#Sheet1" %></h3>
 
   <br>
 

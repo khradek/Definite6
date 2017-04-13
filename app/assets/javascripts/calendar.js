@@ -58,9 +58,10 @@ ready = function(){
           $(element).height(200);
         };
       };   
-      if (event.event_type == "Practice") {
+      if (event.event_type == "Practice Schedule") {
         $(element).css("backgroundColor", "#b5b5b7");
         $(element).css("borderColor", "#b5b5b7");
+        element.find('.fc-time').hide();
         $(element).css('height', 25);
         if(view.name === 'basicWeek') {
           $(element).height(200);

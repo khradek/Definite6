@@ -1,0 +1,77 @@
+
+<% @title = @practice_schedule.title + " - Definite6.com"%>
+
+<p id="notice"><%= notice %></p>
+
+
+<div class="hidden" id="event-id"><%= @practice_schedule.event_id %></div>
+
+
+
+<div class="hidden" id="practice_schedule-id"><%= @practice_schedule.id %></div>
+
+
+<p class="hidden">
+  <strong>Data:</strong>
+  <span id="data"><%= @practice_schedule.p_data %></span>
+</p>
+
+<p class="hidden">
+  <strong>Format:</strong>
+  <span id="cell-format"><%= @practice_schedule.p_format %></span>
+</p>
+
+<p class="hidden">
+  <strong>Cell Class:</strong>
+  <span id="cell-class"><%= @practice_schedule.p_class %></span>
+</p>
+
+<div>
+  <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Return to Install'.html_safe, @event, :class => "btn btn-custom3 btn-sm" %>
+
+  <%= link_to '<i class="fa fa-print"></i> Printer Friendly Schedule'.html_safe, event_practice_schedule_print_path(@event, @practice_schedule), class: "btn btn-custom4 btn-sm" %> 
+
+  <% unless browser.chrome? || browser.safari? %>
+    Printing works best on Safari and Google Chrome web browswers >> <%= link_to 'Click Here to Download Google Chrome', 'https://www.google.com/chrome/browser/desktop/index.html', target: "_blank" %>
+  <% end %>
+</div>
+
+<hr>
+
+<button class="btn btn-custom1 btn-sm save-button"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save Updates to Schedule</button>
+
+<br>
+<br>
+
+<div id="myTable"></div>
+
+<br>
+
+<button class="btn btn-custom1 save-button"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save Updates to Schedule</button>
+
+<hr>
+
+<div><%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Return to Install'.html_safe, @event, :class => "btn btn-custom3" %></div>
+
+<br>
+
+<%= link_to '<i class="fa fa-print"></i> Printer Friendly Schedule'.html_safe, event_practice_schedule_print_path(@event, @practice_schedule), class: "btn btn-custom4" %>
+
+<% unless browser.chrome? || browser.safari? %>
+  Printing works best on Safari and Google Chrome web browswers >> <%= link_to 'Click Here to Download Google Chrome', 'https://www.google.com/chrome/browser/desktop/index.html', target: "_blank" %>
+<% end %>
+<br>
+<br>
+<br>
+
+<p class="hidden">
+  <strong>Cell Format:</strong>
+  <span id="cell-format2"></span>
+</p>
+
+<br>
+
+<p class="hidden">
+  <strong>Cell Class:</strong>
+  <span id="cell-class2"></span>
+</p>

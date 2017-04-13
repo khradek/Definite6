@@ -1,0 +1,6 @@
+$("#myupdatepractice_schedule_<%= @practice_schedule.id %>").modal('hide');
+
+$("#practice_schedule_<%= @practice_schedule.id %>").replaceWith('<%= j render @practice_schedule %>');
+
+//Initializes datetimepicker on dynamically added content
+$(".datetimepicker").datetimepicker();

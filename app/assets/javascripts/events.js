@@ -5,7 +5,7 @@ $(".events.index").ready(function() {
 	var timeShowing = $(".time-showing");
 	$("#event-select").change(function(){
 		var choice = $("#event-select option:selected").text();	
-		if (choice == "Script" || choice == "Game Call Sheet") {
+		if (choice == "Script" || choice == "Game Call Sheet" || choice == "Practice Schedule") {
   		$("#non-script-body").append(noTime);
   		(noTime).show();
   		(timeShowing).detach();
@@ -162,9 +162,6 @@ $(".events.index").ready(function() {
   };
 
   $(newForm).on("change dp.change keyup", changeEvents, function(){
-    console.log($("#title-id").val());
-    console.log($(dateOne).val());
-    console.log($(dateTwo).val());
     if(newTitle.val().length == 0 || dateOne.val().length == 0 || dateTwo.val().length == 0){
       $('#create-event-button').prop('disabled', true);      
     }else{ 
@@ -194,6 +191,12 @@ $(".events.index").ready(function() {
 		var url = "events/" + $("#event-install-dropdown").val();
 		window.location.href = url;
 	});
+
+  //Opens corresponding install page when practice schedule button is clicked in practice schedule update modal
+  $(document).on("click", ".practice_schedule-button", function(){
+    var url = "events/" + $(this).next().text();
+    window.location.href = url;
+  });
 
 	//Opens corresponding install page when script button is clicked in script update modal
   $(document).on("click", ".script-button", function(){

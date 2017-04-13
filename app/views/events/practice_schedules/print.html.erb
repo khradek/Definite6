@@ -1,0 +1,25 @@
+<p class="hidden">
+  <strong>Data:</strong>
+  <span id="data"><%= @practice_schedule.p_data %></span>
+</p>
+
+<p class="hidden">
+  <strong>Format:</strong>
+  <span id="cell-format"><%= @practice_schedule.p_format %></span>
+</p>
+
+<p class="hidden">
+  <strong>Cell Class:</strong>
+  <span id="cell-class"><%= @practice_schedule.p_class %></span>
+</p>
+
+<%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Return to Schedule'.html_safe, [@event, @practice_schedule], class: "btn btn-custom3 btn-sm print-button" %>
+<%= link_to 'Print <i class="fa fa-print"></i>'.html_safe, '#', class: "btn btn-custom1 btn-sm print-button", :onclick => 'window.print();return false;'%>
+
+<p></p>
+
+<div id="myPrintTable"></div>
+
+
+<%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Return to Schedule'.html_safe, [@event, @practice_schedule], class: "btn btn-custom3 btn-sm print-button" %>
+<%= link_to 'Print <i class="fa fa-print"></i>'.html_safe, '#', class: "btn btn-custom1 btn-sm print-button", :onclick => 'window.print();return false;'%>

@@ -1,0 +1,2 @@
+module DefaultPracticesHelper
+end

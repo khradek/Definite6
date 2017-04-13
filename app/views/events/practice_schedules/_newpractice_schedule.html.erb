@@ -1,0 +1,33 @@
+<button type="button" class="btn btn-custom1 btn-block" data-toggle="modal" data-target="#mynewpractice_schedule">
+  Create New Practice Schedule   
+</button>
+
+<!-- Modal - new practice_schedule -->
+<%= form_for [@event, @new_practice_schedule], remote: true do |f| %>
+<div class="modal fade" id="mynewpractice_schedule" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title center" id="myModalLabel"><strong>Create New Practice Schedule</strong></h4>
+      </div>
+      <div class="modal-body">
+      
+      <div class="field">
+        <%= f.label :title %><br>
+        <%= f.text_field :title, class: "form-control practice_schedule-title" %>
+      </div>
+      <div class="field">
+        <%= f.label :start_time, "Date" %><br>
+        <%= f.datetime_select_install3 :start_time, class: "form-control practice_schedule-start-time" %>
+      </div>
+      *Both fields must be completed in order for the Practice Schedule to be generated
+      </div>    
+      <div class="modal-footer">
+        <button type="button" class="btn btn-custom1 btn-block" id="create-practice_schedule-button">Create Practice Schedule</button>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+<!-- Modal -->

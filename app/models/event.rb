@@ -5,13 +5,33 @@ class Event < ActiveRecord::Base
 
 	has_many :scripts, dependent: :destroy
   has_many :gamecalls, dependent: :destroy
+  has_many :practice_schedules, dependent: :destroy  
 	has_many :plays, dependent: :destroy
 	belongs_to :user
 
   before_validation :strip_whitespace, :end_time_check
-	after_update :update_script, :update_gamecall
-	after_destroy :delete_script, :delete_gamecall
+	after_update :update_practice_schedule, :update_script, :update_gamecall
+	after_destroy :delete_practice_schedule, :delete_script, :delete_gamecall
   before_save :add_time
+
+
+  #------Practice Schedule------
+  #Updates actual practice schedule when calendar event is updated
+  def update_practice_schedule
+    if self.event_type == "Practice Schedule"
+      update_practice_schedule = PracticeSchedule.find_by(id: self.practice_tag)
+      if update_practice_schedule.title != self.title || update_practice_schedule.start_time != self.start_time 
+        update_practice_schedule.update :title => self.title, :start_time => self.start_time
+      end 
+    end
+  end
+
+  #Deletes the actual practice_schedule when the calendar event is deleted
+  def delete_practice_schedule
+    update_practice_schedule = PracticeSchedule.find_by(id: self.practice_tag)
+    update_practice_schedule.destroy if update_practice_schedule
+  end
+  #------End Practice Schedule------
 
 
   #------Script------

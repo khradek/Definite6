@@ -380,6 +380,26 @@
 
   <hr class="light-smoke">
 
+  <p class="center fake-h4">Practice Schedules</p>
+
+  <div class="table" id="practice_schedules-table">
+    <div class="tr">
+      <span class="td script-col1"><strong>Practice Schedules for <%= @event.title %></strong></span>
+      <span class="td script-col2 center"><strong>Date</strong></span>
+      <span class="td script-col3"></span>
+      <span class="td script-col3"></span>
+    </div>
+      <%= render partial: "events/practice_schedules/practice_schedule", collection: @practice_schedules %>
+  </div>
+
+  <div>
+    <%= render partial: "events/practice_schedules/newpractice_schedule" %>
+  </div>
+
+  <br>  
+
+  <hr class="light-smoke">
+
   <p class="center fake-h4">Scripts</p>
 
   <div class="table" id="scripts-table">

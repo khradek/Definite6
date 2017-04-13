@@ -1,0 +1,49 @@
+<% @title = "Default Practice Schedule - Definite6.com" %>
+
+<p class="hidden">
+  <strong>Data:</strong>
+  <span id="data"><%= @user.default_practice.up_data %></span>
+</p>
+
+<p class="hidden">
+  <strong>Format:</strong>
+  <span id="cell-format"><%= @user.default_practice.up_format %></span>
+</p>
+
+<p class="hidden">
+  <strong>Cell Class:</strong>
+  <span id="cell-class"><%= @user.default_practice.up_class %></span>
+</p>
+
+<div>
+  <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Return to Account Settings'.html_safe, edit_user_registration_path, :class => "btn btn-custom3 btn-sm" %>
+</div>
+
+<hr>
+
+<button class="btn btn-custom1 btn-sm save-button"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save Updates</button>
+
+<h2 class="center">Set Default Practice Schedule Format</h2>
+<div class="center">Set the default practice schedule format. Each practice schedule created will match this format initially. Right click anywhere in the sheet below to bring up the customization menu. To type multiline text, press alt + Enter when ready to move to the next line. Remember to save any updates before leaving this page.</div>
+
+<br>
+
+<div id="myTable"></div>
+
+<br>
+<button class="btn btn-custom1 save-button"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save Updates</button>
+
+<br>
+<br>
+
+<p class="hidden">
+  <strong>Cell Format:</strong>
+  <span id="cell-format2"></span>
+</p>
+
+<br>
+
+<p class="hidden">
+  <strong>Cell Class:</strong>
+  <span id="cell-class2"></span>
+</p>
