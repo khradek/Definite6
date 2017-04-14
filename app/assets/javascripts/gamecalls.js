@@ -15,13 +15,12 @@ $(".gamecalls.show").ready(function() {
   var collection = splays.substring(0, splays.length-1);
   var jCollection = JSON.parse(collection);
 
-  //Validates no special characters
-  var char_validator = /^[a-zA-Z\d\s-_@&#$/]*$/;
-
   //Save button functionality
   $(".save-button").click(function() {
-    var JSONData = JSON.stringify(gdata);
-    var JSONData2 = JSON.stringify(gdata2);
+    var aposCheck = JSON.stringify(gdata);
+    var JSONData = aposCheck.replace(/'/g, ' ');
+    var aposCheck2 = JSON.stringify(gdata2);
+    var JSONData2 = aposCheck.replace(/'/g, ' ');
     $.ajax({
       type: "PATCH",
       url: "/events/" + $("#event-id").text() + "/gamecalls/" + $("#gamecall-id").text(),
@@ -76,7 +75,6 @@ $(".gamecalls.show").ready(function() {
     if (row === 0 && col === 0){
       td.className = 'ulshade bold fontlarge htMiddle htCenter tallrow';
       td.setAttribute("colspan", 4);
-      cellProperties.readOnly = true;
     } else if (value === sitTitle1){
       td.className = sitColor1 + ' underline bold htCenter hide-next';
       td.setAttribute("colspan", 2);
@@ -152,15 +150,13 @@ $(".gamecalls.show").ready(function() {
     renderAllRows: true,
     rowHeaders: false,
     colHeaders: false,
-    contextMenu: ['undo', 'redo', 'alignment'],
+    contextMenu: ['undo', 'redo'],
     colWidths: [274, 274, 274, 274],   
     manualColumnResize: false,
     manualRowResize: false,
     fillHandle: true,
     className: "htCenter",
-    allowInvalid: false,
     allowEmpty: true,
-    validator: char_validator,
     cells: function (row, col, prop) {
       var cellProperties = {};
       cellProperties.renderer = "gcCellRenderer";
@@ -181,9 +177,7 @@ $(".gamecalls.show").ready(function() {
     manualColumnResize: false,
     manualRowResize: false,
     fillHandle: true,
-    allowInvalid: false,
     allowEmpty: true,
-    validator: char_validator,
     className: "htCenter",
     cells: function (row, col, prop) {
       var cellProperties = {};

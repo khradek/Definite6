@@ -11,7 +11,7 @@ $(".practice_schedules.show").ready(function() {
   var cClass = $("#cell-class").text();
   var replaceClass = cClass.replace(/'/g, '"');
   var formatClass = JSON.parse(replaceClass);
-
+  
   var container = document.getElementById('myTable'),
     hot;
 
@@ -236,7 +236,7 @@ $(".practice_schedules.show").ready(function() {
     },
     //Ensures there is a space between class names
     afterContextMenuHide: function(){
-      var separators = ['htShade', 'htDShade', 'htBold', 'htLeft', 'htCenter', 'htLeft', 'htRight', 'htJustify', 'htTop', 'htMiddle', 'htBottom', 'myTable', 'htAutocomplete'];
+      var separators = ['htLargeText', 'htShade', 'htDShade', 'htBold', 'htLeft', 'htCenter', 'htLeft', 'htRight', 'htJustify', 'htTop', 'htMiddle', 'htBottom', 'myTable', 'htAutocomplete', 'htInvalid'];
       var cClass = this.getCellsMeta().filter(function(meta) {
         return meta.className;
       }).map(function(meta) {
@@ -275,7 +275,8 @@ $(".practice_schedules.show").ready(function() {
   });
 
   $(".save-button").click(function() {
-    var JSONData = JSON.stringify(gdata);
+    var aposCheck = JSON.stringify(gdata);
+    var JSONData = aposCheck.replace(/'/g, ' ');
     var JSONData2 = JSON.stringify(hot.mergeCells.mergedCellInfoCollection);
     var cellClass = hot.getCellsMeta().filter(function(meta) {
       return meta.className;

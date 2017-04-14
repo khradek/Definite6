@@ -10,10 +10,12 @@ $(".scripts.show").ready(function() {
   var collection = splays.substring(0, splays.length-1);
   var jCollection = JSON.parse(collection);
 
-  //Validates no special characters
-  var char_validator = /^[a-zA-Z\d\s-_@&#$/]*$/;
 
-  $("#scriptGrid").handsontable({
+  var container = document.getElementById('scriptGrid'),
+    hot;
+
+    
+  hot = new Handsontable(container, {
     data: sdata,
     minSpareCols: 0,
     minSpareRows: 0,
@@ -21,15 +23,13 @@ $(".scripts.show").ready(function() {
     renderAllRows: true,
     rowHeaders: false,
     colHeaders: false,
-    contextMenu: ["undo"],
+    contextMenu: ['undo', 'redo'],
     colWidths: [30, 40, 40, 170, 160, 90, 30, 40, 40, 170, 160, 90],
     manualColumnResize: false,
     manualRowResize: false,
     fillHandle: true,
     className: "htCenter",
-    allowInvalid: true,
     allowEmpty: true,
-    validator: char_validator,
     mergeCells: [
       {row: 0, col: 0, rowspan: 1, colspan: 12},
       {row: 1, col: 0, rowspan: 1, colspan: 6},
@@ -489,7 +489,8 @@ $(".scripts.show").ready(function() {
   
 
   $(".save-button").click(function() {
-    var JSONData = JSON.stringify(sdata);
+    var aposCheck = JSON.stringify(sdata);
+    var JSONData = aposCheck.replace(/'/g, ' ');
     $.ajax({
       type: "PATCH",
       url: "/events/" + $("#event-id").text() + "/scripts/" + $("#script-id").text(),

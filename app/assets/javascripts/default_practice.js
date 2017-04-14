@@ -236,7 +236,7 @@ $(".default_practices.show").ready(function() {
     },
     //Ensures there is a space between class names
     afterContextMenuHide: function(){
-      var separators = ['htLargeText', 'htShade', 'htDShade', 'htBold', 'htLeft', 'htCenter', 'htLeft', 'htRight', 'htJustify', 'htTop', 'htMiddle', 'htBottom', 'myTable', 'htAutocomplete'];
+      var separators = ['htLargeText', 'htShade', 'htDShade', 'htBold', 'htLeft', 'htCenter', 'htLeft', 'htRight', 'htJustify', 'htTop', 'htMiddle', 'htBottom', 'myTable', 'htAutocomplete', 'htInvalid'];
       var cClass = this.getCellsMeta().filter(function(meta) {
         return meta.className;
       }).map(function(meta) {
@@ -275,7 +275,8 @@ $(".default_practices.show").ready(function() {
   });
 
   $(".save-button").click(function() {
-    var JSONData = JSON.stringify(gdata);
+    var aposCheck = JSON.stringify(gdata);
+    var JSONData = aposCheck.replace(/'/g, ' ');
     var JSONData2 = JSON.stringify(hot.mergeCells.mergedCellInfoCollection);
     var cellClass = hot.getCellsMeta().filter(function(meta) {
       return meta.className;
