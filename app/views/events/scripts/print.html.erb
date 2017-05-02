@@ -4,6 +4,21 @@
   <div id="sdata" class="hidden"><%= @script.sdata %></div>
 </p>
 
+<p class="hidden">
+  <strong>Format:</strong>
+  <span id="cell-format"><%= @script.s_format %></span>
+</p>
+
+<p class="hidden">
+  <strong>Cell Class:</strong>
+  <span id="cell-class"><%= @script.s_class %></span>
+</p>
+
+<p class="hidden">
+  <strong>Col Widths:</strong>
+  <span id="col-widths"><%= @script.col_widths %></span>
+</p>
+
 <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Return to Script'.html_safe, [@event, @script], class: "btn btn-custom3 btn-sm print-button" %>
 <%= link_to 'Print <i class="fa fa-print"></i>'.html_safe, '#', class: "btn btn-custom1 btn-sm print-button", :onclick => 'window.print();return false;'%>
 

@@ -1,3 +1,6 @@
+<div class="overlay">
+  <div class="loader center"><i class='fa fa-spinner fa-spin fa-5x'></i></div>
+</div>
 
 <% @title = @practice_schedule.title + " - Definite6.com"%>
 
@@ -26,6 +29,16 @@
   <span id="cell-class"><%= @practice_schedule.p_class %></span>
 </p>
 
+<p class="hidden">
+  <strong>Col Widths:</strong>
+  <span id="col-widths"><%= @practice_schedule.col_widths %></span>
+</p>
+
+<p class="hidden">
+  <strong>Original Col Widths:</strong>
+  <span id="orig-col-widths"><%= @practice_schedule.orig_col_widths %></span>
+</p>
+
 <div>
   <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Return to Install'.html_safe, @event, :class => "btn btn-custom3 btn-sm" %>
 
@@ -39,6 +52,8 @@
 <hr>
 
 <button class="btn btn-custom1 btn-sm save-button"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save Updates to Schedule</button>
+
+<button class="btn btn-custom3 btn-sm pull-right" id="reset-widths-button">Reset Column Widths</button>
 
 <br>
 <br>

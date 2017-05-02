@@ -2,26 +2,26 @@
   <div class="loader center"><i class='fa fa-spinner fa-spin fa-5x'></i></div>
 </div>
 
-<% @title = "Default Practice Schedule - Definite6.com" %>
+<% @title = "Custom Script Template - Definite6.com" %>
 
 <p class="hidden">
   <strong>Data:</strong>
-  <span id="data"><%= @user.default_practice.up_data %></span>
+  <span id="data"><%= @user.default_script2.us_data2 %></span>
 </p>
 
 <p class="hidden">
   <strong>Format:</strong>
-  <span id="cell-format"><%= @user.default_practice.up_format %></span>
+  <span id="cell-format"><%= @user.default_script2.us_format2 %></span>
 </p>
 
 <p class="hidden">
   <strong>Cell Class:</strong>
-  <span id="cell-class"><%= @user.default_practice.up_class %></span>
+  <span id="cell-class"><%= @user.default_script2.us_class2 %></span>
 </p>
 
 <p class="hidden">
   <strong>Col Widths:</strong>
-  <span id="col-widths"><%= @user.default_practice.col_widths %></span>
+  <span id="col-widths"><%= @user.default_script2.col_widths %></span>
 </p>
 
 <div>
@@ -36,13 +36,26 @@
 
 <button class="btn btn-custom3 btn-sm pull-right" id="reset-widths-button">Reset Column Widths</button>
 
-<h2 class="center">Set Default Practice Schedule Format</h2>
-<div class="center">Set the default practice schedule format. Each practice schedule created will match this format initially. Right click anywhere in the sheet below to bring up the customization menu. To type multiline text, press ALT + ENTER when ready to move to the next line. Remember to save any updates before leaving this page.</div>
+<br>
+<br>
+<br>
+
+<div class="row">
+  <div class="col-xs-1">
+    <%= label_tag 'title', 'Template Name:' %>
+  </div> 
+  <div class="col-xs-3">
+    <%= text_field_tag :title, @user.default_script2.title, class: "form-control bold-font", id: "title" %>
+  </div>
+</div>
+
+<h2 class="center">Set Script Template</h2>
+
+<div class="center">Set your custom script template here. Right click anywhere in the sheet below to bring up the customization menu. Remember to save any updates before leaving this page.</div>
 
 <br>
 
-<div id="myTable"></div>
-
+<div id="myTable"></div>  
 
 <br>
 <button class="btn btn-custom1 save-button"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save Updates</button>

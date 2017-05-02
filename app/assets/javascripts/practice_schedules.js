@@ -12,6 +12,9 @@ $(".practice_schedules.show").ready(function() {
   var replaceClass = cClass.replace(/'/g, '"');
   var formatClass = JSON.parse(replaceClass);
   
+  var widths = $("#col-widths").text();
+  var colWidths = JSON.parse(widths);
+
   var container = document.getElementById('myTable'),
     hot;
 
@@ -25,8 +28,8 @@ $(".practice_schedules.show").ready(function() {
 
   hot = new Handsontable(container, {
     data: gdata,
-    colWidths: [44, 202, 202, 202, 202, 202],
-    manualColumnResize: false,
+    colWidths: colWidths,
+    manualColumnResize: true,
     manualRowResize: false,
     rowHeaders: true,
     colHeaders: true,
@@ -45,6 +48,9 @@ $(".practice_schedules.show").ready(function() {
         "row_above" : {},
         "row_below" : {},
         "remove_row" : {},
+        "col_left" : {},
+        "col_right" : {},
+        "remove_col" : {},
         "hsep3": "---------",        
         "alignment" : {},
         "mergeCells" : {},
@@ -290,6 +296,14 @@ $(".practice_schedules.show").ready(function() {
       }
     });
     var JSONData3 = JSON.stringify(cellClass);
+    var num_cols = hot.countCols();
+    var widths = [];
+    var x = 0;
+    for (var i = 0; i < num_cols; i++){
+      widths.push(hot.getColWidth(x));
+      x++;
+    }
+    var JSONData4 = JSON.stringify(widths); 
     var event = $("#event-id").text();
     var pracSched = $("#practice_schedule-id").text();
     $.ajax({
@@ -299,7 +313,8 @@ $(".practice_schedules.show").ready(function() {
         practice_schedule: {
           p_data: JSONData,
           p_format: JSONData2,
-          p_class: JSONData3
+          p_class: JSONData3,
+          col_widths: JSONData4
         }
       },
       dataType: "json",
@@ -310,8 +325,31 @@ $(".practice_schedules.show").ready(function() {
     $("#data").text(JSONData); 
     $("#cell-format").text(JSONData2);
     $("#cell-class").text(JSONData3);
+    $("#col-widths").text(JSONData4);
   });
 
 
+  //Reset Colum Widths button
+  var resetWidths = $("#orig-col-widths").text();
+  $("#reset-widths-button").click(function() {
+    if (confirm('------------------------------------------------------------\nAre you sure? This will restore the width of each column to its initial size.\n------------------------------------------------------------\nIf the column sizes do not revert after clicking OK, please refresh the page.\n------------------------------------------------------------')) {
+      var event = $("#event-id").text();
+      var pracSched = $("#practice_schedule-id").text();
+      $.ajax({
+        type: "PATCH",
+        url: "/events/" + event + "/practice_schedules/" + pracSched,
+        data: {
+          practice_schedule: {
+            col_widths: resetWidths
+          }
+        },
+        dataType: "json",
+      });
+      setTimeout(function(){
+        $(".overlay").show();
+        location.reload();
+      }, 100);
+    }
+  });
 
 });

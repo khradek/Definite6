@@ -7,12 +7,10 @@ class DefaultPracticesController < ApplicationController
 
   def update
     @user = current_user
-    #@user.default_practice.update(default_practice_params)
-    #render :nothing => true
 
     respond_to do |format|
       if @user.default_practice.update(default_practice_params)
-        format.html { redirect_to @user.default_practice, notice: 'Script was successfully updated.' }
+        format.html { redirect_to @user.default_practice, notice: 'Default Practice was successfully updated.' }
         format.json { render :show, status: :created, location: @user.default_practice }
         format.js
       else
@@ -25,7 +23,7 @@ class DefaultPracticesController < ApplicationController
 
   private
     def default_practice_params
-      params.require(:default_practice).permit(:user_id, :up_data, :up_format, :up_class)
+      params.require(:default_practice).permit(:user_id, :up_data, :up_format, :up_class, :col_widths)
     end
 
 end

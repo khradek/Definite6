@@ -91,7 +91,7 @@ class Events::PracticeSchedulesController < ApplicationController
     end
 
     def practice_schedule_params
-      params.require(:practice_schedule).permit(:title, :event_id, :user_id, :start_time, :p_data, :p_format, :p_class)
+      params.require(:practice_schedule).permit(:title, :event_id, :user_id, :start_time, :p_data, :p_format, :p_class, :orig_col_widths, :col_widths)
     end
 
     def correct_user

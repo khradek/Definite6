@@ -1,0 +1,1 @@
+json.extract! @user.default_script3, :id, :us_data3, :us_format3, :us_class3, :user_id, :created_at, :updated_at, :title, :col_widths

@@ -35,9 +35,11 @@ class PracticeSchedule < ActiveRecord::Base
   #Initial practice schedule
   def set_initial_schedule
     default_practice = DefaultPractice.find_by(user_id: self.user_id)
-    self.update :p_data => default_practice.up_data
-    self.update :p_format => default_practice.up_format
-    self.update :p_class => default_practice.up_class
+    self.update :p_data => default_practice.up_data,
+                :p_format => default_practice.up_format,
+                :p_class => default_practice.up_class,
+                :col_widths => default_practice.col_widths,
+                :orig_col_widths => default_practice.col_widths
   end  
 
 end

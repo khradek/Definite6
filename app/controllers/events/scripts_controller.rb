@@ -22,6 +22,8 @@ class Events::ScriptsController < ApplicationController
     @event = Event.find(params[:event_id])
     @scripts = Script.all
     @plays = @event.plays
+    @pass_plays = @event.plays.where(:play_type => "Pass")
+    @run_plays = @event.plays.where(:play_type => "Run")
     respond_with(@script)
   end
 
@@ -95,7 +97,7 @@ class Events::ScriptsController < ApplicationController
     end
 
     def script_params
-      params.require(:script).permit(:title, :sdata, :event_id, :user_id, :start_time, :end_time, :bad_format_date)
+      params.require(:script).permit(:title, :sdata, :event_id, :user_id, :start_time, :end_time, :bad_format_date, :s_format, :s_class, :script_template, :col_widths, :orig_col_widths)
     end
 
     def correct_user

@@ -1,1 +1,1 @@
-json.extract! @user.default_practice, :id, :up_data, :up_format, :up_class, :user_id, :created_at, :updated_at
+json.extract! @user.default_practice, :id, :up_data, :up_format, :up_class, :user_id, :created_at, :updated_at, :col_widths

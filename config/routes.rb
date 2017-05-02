@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
 
-  resource :default_practice
-
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   mount StripeEvent::Engine, at: '/stripe/webhook'
+
+  resource :default_practice
+  resource :default_script
+  resource :default_script2
+  resource :default_script3
   
   resources :saved_plays do
     put :sort, on: :collection

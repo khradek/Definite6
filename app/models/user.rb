@@ -4,19 +4,22 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :masqueradable
 
-  has_many :events  
-  has_many :scripts 
+  has_many :events, dependent: :destroy  
+  has_many :scripts
   has_many :gamecalls
   has_many :practice_schedules
   has_many :plays  
-  has_many :saved_formations
-  has_many :saved_plays
+  has_many :saved_formations, dependent: :destroy
+  has_many :saved_plays, dependent: :destroy
   has_many :charges
-  has_one :default_practice
+  has_one :default_practice, dependent: :destroy
+  has_one :default_script, dependent: :destroy
+  has_one :default_script2, dependent: :destroy
+  has_one :default_script3, dependent: :destroy
 
   validates :first_name, :last_name, :team, :presence => true
 
-  after_create :set_default_s_names, :create_default_practice
+  after_create :set_default_s_names, :create_default_practice, :create_default_script, :create_default_script2, :create_default_script3
 
   #Sets default situation names and number of run plays
   def set_default_s_names
@@ -26,6 +29,18 @@ class User < ActiveRecord::Base
   #Create default_practice for user
   def create_default_practice
     DefaultPractice.create :user_id => self.id
+  end
+
+  def create_default_script
+    DefaultScript.create :user_id => self.id
+  end 
+
+  def create_default_script2
+    DefaultScript2.create :user_id => self.id
+  end
+
+  def create_default_script3
+    DefaultScript3.create :user_id => self.id
   end
 
   def subscribed?

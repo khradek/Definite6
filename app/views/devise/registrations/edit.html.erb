@@ -5,11 +5,21 @@
 
   <hr class="light-red">
 
-  <h3 class="center"><%= link_to '<u>Default Practice Schedule</u> <i class="fa fa-table" aria-hidden="true"></i>'.html_safe, default_practice_path, class: "blue" %></h3>
+  <h2 class="center">Sheet Settings&nbsp<i class="fa fa-table" aria-hidden="true"></i></h2>
 
-  <h3 class="center"><%= link_to '<u>Call Sheet Settings</u>&nbsp<i class="fa fa-table" aria-hidden="true"></i>'.html_safe, "#", class: "blue", "data-toggle" => "modal", "data-target" => "#Sheet1" %></h3>
+  <h4 class="center"><%= link_to '<u>Call Sheet Settings</u>'.html_safe, "#", class: "blue", "data-toggle" => "modal", "data-target" => "#Sheet1" %></h4>
 
-  <br>
+  <h4 class="center"><%= link_to '<u>Default Practice Schedule Template</u>'.html_safe, default_practice_path, class: "blue" %></h4> 
+
+  <h3 class="center">Practice Script Templates</h3>
+
+  <h4 class="center"><%= link_to "<u>#{current_user.default_script.title}</u>".html_safe, default_script_path, class: "blue" %></h4> 
+
+  <h4 class="center"><%= link_to "<u>#{current_user.default_script2.title}</u>".html_safe, default_script2_path, class: "blue" %></h4> 
+
+  <h4 class="center"><%= link_to "<u>#{current_user.default_script3.title}</u>".html_safe, default_script3_path, class: "blue" %></h4> 
+  
+  <hr class="light-blue">
 
   <% if current_user.subscribed? && !current_user.cancelled? %>
 

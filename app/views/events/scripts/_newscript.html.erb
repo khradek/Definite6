@@ -17,11 +17,17 @@
         <%= f.label :title %><br>
         <%= f.text_field :title, class: "form-control script-title" %>
       </div>
+      <div class="form-group">
+        <%= f.label :script_template, "Template" %> 
+        <div>
+          <%= f.select(:script_template, options_for_select([['Standard', 'Standard'], [current_user.default_script.title, 'Custom'], [current_user.default_script2.title, 'Custom2'], [current_user.default_script3.title, 'Custom3']]), {}, {class: "form-control"}) %>
+        </div>  
+      </div>      
       <div class="field">
         <%= f.label :start_time, "Date" %><br>
         <%= f.datetime_select_install1 :start_time, class: "form-control script-start-time" %>
       </div>
-      *Both fields must be completed in order for the script to be generated
+      *All fields must be completed in order for the script to be generated
       </div>    
       <div class="modal-footer">
         <button type="button" class="btn btn-custom1 btn-block" id="create-script-button">Create Script</button>

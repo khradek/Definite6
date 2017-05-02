@@ -1,3 +1,6 @@
+<div class="overlay">
+  <div class="loader center"><i class='fa fa-spinner fa-spin fa-5x'></i></div>
+</div>
 
 <% @title = @script.title + " - Definite6.com"%>
 
@@ -15,6 +18,16 @@
   <div id="script-id" class="hidden"><%= @script.id %></div>
 </p>
 
+<p class="hidden">
+  <strong>Col Widths:</strong>
+  <span id="col-widths"><%= @script.col_widths %></span>
+</p>
+
+<p class="hidden">
+  <strong>Original Col Widths:</strong>
+  <span id="orig-col-widths"><%= @script.orig_col_widths %></span>
+</p>
+
 <p>
   <div id="script-plays" class="hidden">
     [<% @plays.each do |play| %> 
@@ -22,6 +35,31 @@
     <% end %>]
   </div>
 </p>
+
+
+<p>
+  <div id="script-pass-plays" class="hidden">
+    [<% @pass_plays.each do |play| %> 
+      <%= '" ", ' if play == @pass_plays.first %>"<%= play.fullname %>"<%= "," unless play == @pass_plays.last %>
+    <% end %>]
+  </div>
+</p>
+
+<p>
+  <div id="script-run-plays" class="hidden">
+    [<% @run_plays.each do |play| %> 
+      <%= '" ", ' if play == @run_plays.first %>"<%= play.fullname %>"<%= "," unless play == @run_plays.last %>
+    <% end %>]
+  </div>
+</p>
+
+<div id="cell-format" class="hidden"><%= @script.s_format %></div>
+
+<div id="cell-class" class="hidden"><%= @script.s_class %></div>
+
+<div id="cell-format2" class="hidden"></div>
+<br>
+<div id="cell-class2" class="hidden"></div>
 
 <div>
   <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Return to Install'.html_safe, @event, :class => "btn btn-custom3 btn-sm" %>
@@ -36,6 +74,8 @@
 <hr>
 
 <button class="btn btn-custom1 btn-sm save-button"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save Updates to Script</button>
+
+<button class="btn btn-custom3 btn-sm pull-right" id="reset-widths-button">Reset Column Widths</button>
 
 <br>
 <br>

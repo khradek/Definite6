@@ -12,6 +12,9 @@ $(".practice_schedules.print").ready(function() {
   var replaceClass = cClass.replace(/'/g, '"');
   var formatClass = JSON.parse(replaceClass);
 
+  var widths = $("#col-widths").text();
+  var colWidths = JSON.parse(widths);
+
   textCellRenderer = function(instance, td, row, col, prop, value, cellProperties) {
     Handsontable.renderers.TextRenderer.apply(this, arguments);
   };
@@ -24,7 +27,7 @@ $(".practice_schedules.print").ready(function() {
 
   hot = new Handsontable(container, {
     data: gdata,
-    colWidths: [44, 202, 202, 202, 202, 202],
+    colWidths: colWidths,
     renderAllRows: true,
     readOnly: true,
     fillHandle: false,

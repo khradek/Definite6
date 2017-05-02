@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170409220802) do
+ActiveRecord::Schema.define(version: 20170501235143) do
 
   create_table "charges", force: true do |t|
     t.integer  "user_id"
@@ -35,6 +35,40 @@ ActiveRecord::Schema.define(version: 20170409220802) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text     "col_widths"
+  end
+
+  create_table "default_script2s", force: true do |t|
+    t.integer  "user_id"
+    t.text     "us_data2"
+    t.text     "us_format2"
+    t.text     "us_class2"
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text     "col_widths"
+  end
+
+  create_table "default_script3s", force: true do |t|
+    t.integer  "user_id"
+    t.text     "us_data3"
+    t.text     "us_format3"
+    t.text     "us_class3"
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text     "col_widths"
+  end
+
+  create_table "default_scripts", force: true do |t|
+    t.integer  "user_id"
+    t.text     "us_data"
+    t.text     "us_format"
+    t.text     "us_class"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "title"
+    t.text     "col_widths"
   end
 
   create_table "events", force: true do |t|
@@ -133,8 +167,10 @@ ActiveRecord::Schema.define(version: 20170409220802) do
     t.text     "p_data"
     t.text     "p_format"
     t.text     "p_class"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.text     "col_widths"
+    t.text     "orig_col_widths"
   end
 
   add_index "practice_schedules", ["event_id"], name: "index_practice_schedules_on_event_id"
@@ -161,10 +197,15 @@ ActiveRecord::Schema.define(version: 20170409220802) do
     t.text     "sdata"
     t.integer  "event_id"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.datetime "start_time"
     t.datetime "end_time"
+    t.text     "s_format"
+    t.text     "s_class"
+    t.string   "script_template"
+    t.text     "col_widths"
+    t.text     "orig_col_widths"
   end
 
   add_index "scripts", ["event_id"], name: "index_scripts_on_event_id"
