@@ -175,24 +175,6 @@ class Events::PlaysController < ApplicationController
     end
   end
 
-  def index
-    @event = Event.find(params[:event_id]) 
-    @plays = Play.all
-    respond_with(@plays)
-  end
-
-  def show
-    @event = Event.find(params[:event_id])
-    @plays = Play.all
-    respond_with(@play)
-  end
-
-  def new
-    @event = Event.find(params[:event_id])
-    @play = current_user.plays.build
-    respond_with(@play)
-  end
-
   def edit
     @event = Event.includes(:scripts).find(params[:event_id])
   end

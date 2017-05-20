@@ -372,23 +372,5 @@ $(".events.show").ready(function() {
     });
   });
 
-
-  //Alert for over 25 plays for a period
-  $("body").on("change", ".period1-check, .period2-check, .period3-check, .period4-check", function(){
-    setTimeout( function(){
-      var period1Count = $("#period1-count").text();
-      var period2Count = $("#period2-count").text();
-      var period3Count = $("#period3-count").text();
-      var period4Count = $("#period4-count").text();
-      if(period1Count > 25 || period2Count > 25 || period3Count > 25 || period4Count > 25) {
-        $("#count-alert").addClass("hidden")
-        $("#ph-count-alert").removeClass("hidden");
-      }else {
-        $("#count-alert").addClass("hidden")
-        $("#ph-count-alert").addClass("hidden");
-      } 
-    }, 100);
-  })  
-
 	
 }); 

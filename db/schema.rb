@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170501235143) do
+ActiveRecord::Schema.define(version: 20170507192500) do
 
   create_table "charges", force: true do |t|
     t.integer  "user_id"
@@ -27,6 +27,21 @@ ActiveRecord::Schema.define(version: 20170501235143) do
   end
 
   add_index "charges", ["stripe_id"], name: "index_charges_on_stripe_id", unique: true
+
+  create_table "default_gamecalls", force: true do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.text     "gc_data1"
+    t.text     "gc_format1"
+    t.text     "gc_class1"
+    t.text     "gc_data2"
+    t.text     "gc_format2"
+    t.text     "gc_class2"
+    t.text     "col_widths1"
+    t.text     "col_widths2"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "default_practices", force: true do |t|
     t.text     "up_data"
@@ -97,8 +112,8 @@ ActiveRecord::Schema.define(version: 20170501235143) do
     t.integer  "user_id"
     t.datetime "start_time"
     t.datetime "end_time"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.text     "gdata2"
     t.string   "sit_title1"
     t.string   "sit_title2"
@@ -128,6 +143,15 @@ ActiveRecord::Schema.define(version: 20170501235143) do
     t.string   "sit_color12"
     t.string   "sit_color13"
     t.string   "sit_color14"
+    t.string   "gamecall_template"
+    t.text     "col_widths1"
+    t.text     "col_widths2"
+    t.text     "orig_col_widths1"
+    t.text     "orig_col_widths2"
+    t.text     "g_format1"
+    t.text     "g_format2"
+    t.text     "g_class1"
+    t.text     "g_class2"
   end
 
   create_table "plays", force: true do |t|

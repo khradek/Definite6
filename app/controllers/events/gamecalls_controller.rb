@@ -5,6 +5,31 @@ class Events::GamecallsController < ApplicationController
 
   respond_to :html
 
+  def custom_print
+    @gamecall = Gamecall.find(params[:gamecall_id]) 
+    @event = Event.find(params[:event_id]) 
+  end
+
+  def custom
+    @gamecall = Gamecall.find(params[:gamecall_id]) 
+    @event = Event.find(params[:event_id]) 
+    @plays = @event.plays
+    @sit1_plays = @event.plays.openers
+    @sit2_plays = @event.plays.first_tens
+    @sit3_plays = @event.plays.second_longs
+    @sit4_plays = @event.plays.third_longs
+    @sit5_plays = @event.plays.second_mediums
+    @sit6_plays = @event.plays.third_mediums
+    @sit7_plays = @event.plays.second_shorts
+    @sit8_plays = @event.plays.third_shorts
+    @sit9_plays = @event.plays.redzones
+    @sit10_plays = @event.plays.goalines
+    @sit11_plays = @event.plays.coming_outs
+    @sit12_plays = @event.plays.custom_ones
+    @sit13_plays = @event.plays.custom_twos
+    @sit14_plays = @event.plays.custom_threes
+  end
+
   def print
     @gamecall = Gamecall.find(params[:gamecall_id]) 
     @event = Event.find(params[:event_id]) 
@@ -92,7 +117,7 @@ class Events::GamecallsController < ApplicationController
     end
 
     def gamecall_params
-      params.require(:gamecall).permit(:title, :gdata, :gdata2, :event_id, :user_id, :start_time, :end_time)
+      params.require(:gamecall).permit(:title, :gdata, :gdata2, :event_id, :user_id, :start_time, :end_time, :gamecall_template, :col_widths1, :g_format1, :g_class1, :col_widths2, :g_format2, :g_class2)
     end
 
     def correct_user

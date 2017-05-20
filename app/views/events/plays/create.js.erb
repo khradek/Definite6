@@ -44,13 +44,6 @@ $("#period2-count").html('<%= @period2_count %>');
 $("#period3-count").html('<%= @period3_count %>');
 $("#period4-count").html('<%= @period4_count %>');
 
-//Shows warning message if a segment goes over 25 plays
-<% if @period1_count > 25 || @period2_count > 25 || @period3_count > 25 || @period4_count > 25  %>
-  if ($("#count-alert").length == 0){
-    $("#ph-count-alert").removeClass("hidden");
-  }
-<% end %>
-
 //Highlights plays in install list if duplicate 
 highlightDuplicateRows("#plays-body");
 

@@ -56,270 +56,604 @@ $(".default_script2s.show").ready(function() {
         "col_right" : {},
         "remove_col" : {},
         "hsep3": "---------",        
-        "alignment" : {},
         "mergeCells" : {},
         "hsep4": "---------",
-        "undo": {},
-        "redo": {},
+        "alignment" : {},
         "hsep5": "---------",        
-        "make_bold": {
-          name: 'Bold Text',
-          callback: function(key, options) {
-            var selection = this.getSelectedRange();
-            var fromRow = Math.min(selection.from.row, selection.to.row);
-            var toRow = Math.max(selection.from.row, selection.to.row);
-            var fromCol = Math.min(selection.from.col, selection.to.col);
-            var toCol = Math.max(selection.from.col, selection.to.col);
-            
-            for (var row = fromRow; row <= toRow; row++) {
-              for (var col = fromCol; col <= toCol; col++) {
-                var cellMeta = this.getCellMeta(row, col);
-                
-                if (!cellMeta.className) {
-                  this.setCellMeta(row, col, 'className', 'htBold');
-                } else if (cellMeta.className && cellMeta.className.indexOf('htBold') < 0) {
-                  this.setCellMeta(row, col, 'className', 'htBold' + cellMeta.className);
-                }
+        "text_options":{
+          name: "Text Options",
+          submenu: {
+            items: [
+              {                
+                name: 'Bold Text',
+                callback: function(key, options) {
+                  var selection = this.getSelectedRange();
+                  var fromRow = Math.min(selection.from.row, selection.to.row);
+                  var toRow = Math.max(selection.from.row, selection.to.row);
+                  var fromCol = Math.min(selection.from.col, selection.to.col);
+                  var toCol = Math.max(selection.from.col, selection.to.col);
+                  
+                  for (var row = fromRow; row <= toRow; row++) {
+                    for (var col = fromCol; col <= toCol; col++) {
+                      var cellMeta = this.getCellMeta(row, col);
+                      
+                      if (!cellMeta.className) {
+                        this.setCellMeta(row, col, 'className', 'htBold');
+                      } else if (cellMeta.className && cellMeta.className.indexOf('htBold') < 0) {
+                        this.setCellMeta(row, col, 'className', 'htBold' + cellMeta.className);
+                      }
+                    }
+                  }   
+                  this.render();
+                },
+                key: "text_options:1"
+              },
+              {  
+                name: 'Remove Bold',
+                callback: function(key, options) {
+                  var selection = this.getSelectedRange();
+                  var fromRow = Math.min(selection.from.row, selection.to.row);
+                  var toRow = Math.max(selection.from.row, selection.to.row);
+                  var fromCol = Math.min(selection.from.col, selection.to.col);
+                  var toCol = Math.max(selection.from.col, selection.to.col);
+                  
+                  for (var row = fromRow; row <= toRow; row++) {
+                    for (var col = fromCol; col <= toCol; col++) {
+                      var cellMeta = this.getCellMeta(row, col);
+                      var newClass = removeClass(cellMeta.className, 'htBold');
+                      this.setCellMeta(row, col, 'className', newClass);
+                    }
+                  }
+                  this.render();
+                },
+                key: "text_options:2"
+              },
+              {
+                name: 'Unerline Text',
+                callback: function(key, options) {
+                  var selection = this.getSelectedRange();
+                  var fromRow = Math.min(selection.from.row, selection.to.row);
+                  var toRow = Math.max(selection.from.row, selection.to.row);
+                  var fromCol = Math.min(selection.from.col, selection.to.col);
+                  var toCol = Math.max(selection.from.col, selection.to.col);
+                  
+                  for (var row = fromRow; row <= toRow; row++) {
+                    for (var col = fromCol; col <= toCol; col++) {
+                      var cellMeta = this.getCellMeta(row, col);
+                      
+                      if (!cellMeta.className) {
+                        this.setCellMeta(row, col, 'className', 'underline');
+                      } else if (cellMeta.className && cellMeta.className.indexOf('underline') < 0) {
+                        this.setCellMeta(row, col, 'className', 'underline' + cellMeta.className);
+                      }
+                    }
+                  }   
+                  this.render();
+                },
+                key: "text_options:3"
+              },
+              {
+                name: 'Remove Underline',
+                callback: function(key, options) {
+                  var selection = this.getSelectedRange();
+                  var fromRow = Math.min(selection.from.row, selection.to.row);
+                  var toRow = Math.max(selection.from.row, selection.to.row);
+                  var fromCol = Math.min(selection.from.col, selection.to.col);
+                  var toCol = Math.max(selection.from.col, selection.to.col);
+                  
+                  for (var row = fromRow; row <= toRow; row++) {
+                    for (var col = fromCol; col <= toCol; col++) {
+                      var cellMeta = this.getCellMeta(row, col);
+                      var newClass = removeClass(cellMeta.className, 'underline');
+                      this.setCellMeta(row, col, 'className', newClass);
+                    }
+                  }
+                  this.render();
+                },
+                key: "text_options:4"
+              },
+              {
+                name: 'Large Text',
+                callback: function(key, options) {
+                  var selection = this.getSelectedRange();
+                  var fromRow = Math.min(selection.from.row, selection.to.row);
+                  var toRow = Math.max(selection.from.row, selection.to.row);
+                  var fromCol = Math.min(selection.from.col, selection.to.col);
+                  var toCol = Math.max(selection.from.col, selection.to.col);
+                  
+                  for (var row = fromRow; row <= toRow; row++) {
+                    for (var col = fromCol; col <= toCol; col++) {
+                      var cellMeta = this.getCellMeta(row, col);
+                      
+                      if (!cellMeta.className) {
+                        this.setCellMeta(row, col, 'className', 'htLargeText');
+                      } else if (cellMeta.className && cellMeta.className.indexOf('htLargeText') < 0) {
+                        this.setCellMeta(row, col, 'className', 'htLargeText' + cellMeta.className);
+                      }
+                    }
+                  }   
+                  this.render();
+                },
+                key: "text_options:5"
+              },
+              {
+                name: 'Normal Text',
+                callback: function(key, options) {
+                  var selection = this.getSelectedRange();
+                  var fromRow = Math.min(selection.from.row, selection.to.row);
+                  var toRow = Math.max(selection.from.row, selection.to.row);
+                  var fromCol = Math.min(selection.from.col, selection.to.col);
+                  var toCol = Math.max(selection.from.col, selection.to.col);
+                  
+                  for (var row = fromRow; row <= toRow; row++) {
+                    for (var col = fromCol; col <= toCol; col++) {
+                      var cellMeta = this.getCellMeta(row, col);
+                      var newClass = removeClass(cellMeta.className, 'htLargeText');
+                      this.setCellMeta(row, col, 'className', newClass);
+                    }
+                  }
+                  this.render();
+                },
+                key: "text_options:6"
               }
-            }   
-            this.render();
-          }
-        },       
-        "remove_bold": {
-          name: 'Remove Bold',
-          callback: function(key, options) {
-            var selection = this.getSelectedRange();
-            var fromRow = Math.min(selection.from.row, selection.to.row);
-            var toRow = Math.max(selection.from.row, selection.to.row);
-            var fromCol = Math.min(selection.from.col, selection.to.col);
-            var toCol = Math.max(selection.from.col, selection.to.col);
-            
-            for (var row = fromRow; row <= toRow; row++) {
-              for (var col = fromCol; col <= toCol; col++) {
-                var cellMeta = this.getCellMeta(row, col);
-                var newClass = removeClass(cellMeta.className, 'htBold');
-                this.setCellMeta(row, col, 'className', newClass);
-              }
-            }
-            this.render();
+            ]
           }
         },
-        "make_large": {
-          name: 'Large Text',
-          callback: function(key, options) {
-            var selection = this.getSelectedRange();
-            var fromRow = Math.min(selection.from.row, selection.to.row);
-            var toRow = Math.max(selection.from.row, selection.to.row);
-            var fromCol = Math.min(selection.from.col, selection.to.col);
-            var toCol = Math.max(selection.from.col, selection.to.col);
-            
-            for (var row = fromRow; row <= toRow; row++) {
-              for (var col = fromCol; col <= toCol; col++) {
-                var cellMeta = this.getCellMeta(row, col);
-                
-                if (!cellMeta.className) {
-                  this.setCellMeta(row, col, 'className', 'htLargeText');
-                } else if (cellMeta.className && cellMeta.className.indexOf('htLargeText') < 0) {
-                  this.setCellMeta(row, col, 'className', 'htLargeText' + cellMeta.className);
-                }
-              }
-            }   
-            this.render();
-          }
-        },   
-        "normal_size": {
-          name: 'Normal Text',
-          callback: function(key, options) {
-            var selection = this.getSelectedRange();
-            var fromRow = Math.min(selection.from.row, selection.to.row);
-            var toRow = Math.max(selection.from.row, selection.to.row);
-            var fromCol = Math.min(selection.from.col, selection.to.col);
-            var toCol = Math.max(selection.from.col, selection.to.col);
-            
-            for (var row = fromRow; row <= toRow; row++) {
-              for (var col = fromCol; col <= toCol; col++) {
-                var cellMeta = this.getCellMeta(row, col);
-                var newClass = removeClass(cellMeta.className, 'htLargeText');
-                this.setCellMeta(row, col, 'className', newClass);
-              }
-            }
-            this.render();
-          }
-        },              
         "hsep6": "---------",
-        "add_light_shade": {
-          name: 'Light Shade',
-          callback: function(key, options) {
-            var selection = this.getSelectedRange();
-            var fromRow = Math.min(selection.from.row, selection.to.row);
-            var toRow = Math.max(selection.from.row, selection.to.row);
-            var fromCol = Math.min(selection.from.col, selection.to.col);
-            var toCol = Math.max(selection.from.col, selection.to.col);
-            
-            for (var row = fromRow; row <= toRow; row++) {
-              for (var col = fromCol; col <= toCol; col++) {
-                var cellMeta = this.getCellMeta(row, col);
-                var newClass = removeClass(cellMeta.className, 'htDShade');
-                this.setCellMeta(row, col, 'className', newClass);
-                
-                if (!cellMeta.className) {
-                  this.setCellMeta(row, col, 'className', 'htShade');
-                } else if (cellMeta.className && cellMeta.className.indexOf('htShade') < 0) {
-                  this.setCellMeta(row, col, 'className', 'htShade' + cellMeta.className);
-                }
+        "colors":{
+          name: "Cell Colors",
+          submenu: {
+            items: [
+              {                
+                name: 'Dark Shade',
+                callback: function(key, options) {
+                  var selection = this.getSelectedRange();
+                  var fromRow = Math.min(selection.from.row, selection.to.row);
+                  var toRow = Math.max(selection.from.row, selection.to.row);
+                  var fromCol = Math.min(selection.from.col, selection.to.col);
+                  var toCol = Math.max(selection.from.col, selection.to.col);
+                  
+                  for (var row = fromRow; row <= toRow; row++) {
+                    for (var col = fromCol; col <= toCol; col++) {
+                      var cellMeta = this.getCellMeta(row, col);
+                      var newClass = removeClass(cellMeta.className, 'htShade');
+                      this.setCellMeta(row, col, 'className', newClass);
+                      var newClass1 = removeClass(cellMeta.className, 'lightgreen');
+                      this.setCellMeta(row, col, 'className', newClass1);
+                      var newClass2 = removeClass(cellMeta.className, 'htyellow');
+                      this.setCellMeta(row, col, 'className', newClass2);
+                      var newClass3 = removeClass(cellMeta.className, 'htred');
+                      this.setCellMeta(row, col, 'className', newClass3);
+                      var newClass4 = removeClass(cellMeta.className, 'htblue');
+                      this.setCellMeta(row, col, 'className', newClass4);
+                      var newClass5 = removeClass(cellMeta.className, 'htgold');
+                      this.setCellMeta(row, col, 'className', newClass5);
+                      var newClass6 = removeClass(cellMeta.className, 'htorange');
+                      this.setCellMeta(row, col, 'className', newClass6);                
+                      
+                      if (!cellMeta.className) {
+                        this.setCellMeta(row, col, 'className', 'htDShade');
+                      } else if (cellMeta.className && cellMeta.className.indexOf('htDShade') < 0) {
+                        this.setCellMeta(row, col, 'className', 'htDShade' + cellMeta.className);
+                      }
+                    }
+                  }   
+                  this.render();
+                },
+                key: "colors:1"
+              },
+              {  
+                name: 'Light Shade',
+                callback: function(key, options) {
+                  var selection = this.getSelectedRange();
+                  var fromRow = Math.min(selection.from.row, selection.to.row);
+                  var toRow = Math.max(selection.from.row, selection.to.row);
+                  var fromCol = Math.min(selection.from.col, selection.to.col);
+                  var toCol = Math.max(selection.from.col, selection.to.col);
+                  
+                  for (var row = fromRow; row <= toRow; row++) {
+                    for (var col = fromCol; col <= toCol; col++) {
+                      var cellMeta = this.getCellMeta(row, col);
+                      var newClass = removeClass(cellMeta.className, 'htDShade');
+                      this.setCellMeta(row, col, 'className', newClass);
+                      var newClass1 = removeClass(cellMeta.className, 'lightgreen');
+                      this.setCellMeta(row, col, 'className', newClass1);
+                      var newClass2 = removeClass(cellMeta.className, 'htyellow');
+                      this.setCellMeta(row, col, 'className', newClass2);
+                      var newClass3 = removeClass(cellMeta.className, 'htred');
+                      this.setCellMeta(row, col, 'className', newClass3);
+                      var newClass4 = removeClass(cellMeta.className, 'htblue');
+                      this.setCellMeta(row, col, 'className', newClass4);
+                      var newClass5 = removeClass(cellMeta.className, 'htgold');
+                      this.setCellMeta(row, col, 'className', newClass5);
+                      var newClass6 = removeClass(cellMeta.className, 'htorange');
+                      this.setCellMeta(row, col, 'className', newClass6);                
+                      
+                      if (!cellMeta.className) {
+                        this.setCellMeta(row, col, 'className', 'htShade');
+                      } else if (cellMeta.className && cellMeta.className.indexOf('htShade') < 0) {
+                        this.setCellMeta(row, col, 'className', 'htShade' + cellMeta.className);
+                      }
+                    }
+                  }   
+                  this.render();
+                },
+                key: "colors:2"
+              },
+              {
+                name: 'Gold',
+                callback: function(key, options) {
+                  var selection = this.getSelectedRange();
+                  var fromRow = Math.min(selection.from.row, selection.to.row);
+                  var toRow = Math.max(selection.from.row, selection.to.row);
+                  var fromCol = Math.min(selection.from.col, selection.to.col);
+                  var toCol = Math.max(selection.from.col, selection.to.col);
+                  
+                  for (var row = fromRow; row <= toRow; row++) {
+                    for (var col = fromCol; col <= toCol; col++) {
+                      var cellMeta = this.getCellMeta(row, col);
+                      var newClass = removeClass(cellMeta.className, 'htShade');
+                      this.setCellMeta(row, col, 'className', newClass);
+                      var newClass1 = removeClass(cellMeta.className, 'htDShade');
+                      this.setCellMeta(row, col, 'className', newClass1);
+                      var newClass2 = removeClass(cellMeta.className, 'lightgreen');
+                      this.setCellMeta(row, col, 'className', newClass2);
+                      var newClass3 = removeClass(cellMeta.className, 'htred');
+                      this.setCellMeta(row, col, 'className', newClass3);
+                      var newClass4 = removeClass(cellMeta.className, 'htblue');
+                      this.setCellMeta(row, col, 'className', newClass4);
+                      var newClass5 = removeClass(cellMeta.className, 'htyellow');
+                      this.setCellMeta(row, col, 'className', newClass5);
+                      var newClass6 = removeClass(cellMeta.className, 'htorange');
+                      this.setCellMeta(row, col, 'className', newClass6);
+
+                      if (!cellMeta.className) {
+                        this.setCellMeta(row, col, 'className', 'htgold');
+                      } else if (cellMeta.className && cellMeta.className.indexOf('htgold') < 0) {
+                        this.setCellMeta(row, col, 'className', 'htgold' + cellMeta.className);
+                      }
+                    }
+                  }   
+                  this.render();
+                },
+                key: "colors:3"
+              },
+              {
+                name: 'Yellow',
+                callback: function(key, options) {
+                  var selection = this.getSelectedRange();
+                  var fromRow = Math.min(selection.from.row, selection.to.row);
+                  var toRow = Math.max(selection.from.row, selection.to.row);
+                  var fromCol = Math.min(selection.from.col, selection.to.col);
+                  var toCol = Math.max(selection.from.col, selection.to.col);
+                  
+                  for (var row = fromRow; row <= toRow; row++) {
+                    for (var col = fromCol; col <= toCol; col++) {
+                      var cellMeta = this.getCellMeta(row, col);
+                      var newClass = removeClass(cellMeta.className, 'htShade');
+                      this.setCellMeta(row, col, 'className', newClass);
+                      var newClass1 = removeClass(cellMeta.className, 'htDShade');
+                      this.setCellMeta(row, col, 'className', newClass1);
+                      var newClass2 = removeClass(cellMeta.className, 'lightgreen');
+                      this.setCellMeta(row, col, 'className', newClass2);
+                      var newClass3 = removeClass(cellMeta.className, 'htred');
+                      this.setCellMeta(row, col, 'className', newClass3);
+                      var newClass4 = removeClass(cellMeta.className, 'htblue');
+                      this.setCellMeta(row, col, 'className', newClass4);
+                      var newClass5 = removeClass(cellMeta.className, 'htgold');
+                      this.setCellMeta(row, col, 'className', newClass5);
+                      var newClass6 = removeClass(cellMeta.className, 'htorange');
+                      this.setCellMeta(row, col, 'className', newClass6);
+
+                      if (!cellMeta.className) {
+                        this.setCellMeta(row, col, 'className', 'htyellow');
+                      } else if (cellMeta.className && cellMeta.className.indexOf('htyellow') < 0) {
+                        this.setCellMeta(row, col, 'className', 'htyellow' + cellMeta.className);
+                      }
+                    }
+                  }   
+                  this.render();
+                },
+                key: "colors:4"
+              },
+              {
+                name: 'Green',
+                callback: function(key, options) {
+                  var selection = this.getSelectedRange();
+                  var fromRow = Math.min(selection.from.row, selection.to.row);
+                  var toRow = Math.max(selection.from.row, selection.to.row);
+                  var fromCol = Math.min(selection.from.col, selection.to.col);
+                  var toCol = Math.max(selection.from.col, selection.to.col);
+                  
+                  for (var row = fromRow; row <= toRow; row++) {
+                    for (var col = fromCol; col <= toCol; col++) {
+                      var cellMeta = this.getCellMeta(row, col);
+                      var newClass = removeClass(cellMeta.className, 'htShade');
+                      this.setCellMeta(row, col, 'className', newClass);
+                      var newClass1 = removeClass(cellMeta.className, 'htDShade');
+                      this.setCellMeta(row, col, 'className', newClass1);
+                      var newClass2 = removeClass(cellMeta.className, 'htyellow');
+                      this.setCellMeta(row, col, 'className', newClass2);
+                      var newClass3 = removeClass(cellMeta.className, 'htred');
+                      this.setCellMeta(row, col, 'className', newClass3);
+                      var newClass4 = removeClass(cellMeta.className, 'htblue');
+                      this.setCellMeta(row, col, 'className', newClass4);
+                      var newClass5 = removeClass(cellMeta.className, 'htgold');
+                      this.setCellMeta(row, col, 'className', newClass5);
+                      var newClass6 = removeClass(cellMeta.className, 'htorange');
+                      this.setCellMeta(row, col, 'className', newClass6);
+
+                      if (!cellMeta.className) {
+                        this.setCellMeta(row, col, 'className', 'lightgreen');
+                      } else if (cellMeta.className && cellMeta.className.indexOf('lightgreen') < 0) {
+                        this.setCellMeta(row, col, 'className', 'lightgreen' + cellMeta.className);
+                      }
+                    }
+                  }   
+                  this.render();
+                },
+                key: "colors:5"
+              },
+              {
+                name: 'Orange',
+                callback: function(key, options) {
+                  var selection = this.getSelectedRange();
+                  var fromRow = Math.min(selection.from.row, selection.to.row);
+                  var toRow = Math.max(selection.from.row, selection.to.row);
+                  var fromCol = Math.min(selection.from.col, selection.to.col);
+                  var toCol = Math.max(selection.from.col, selection.to.col);
+                  
+                  for (var row = fromRow; row <= toRow; row++) {
+                    for (var col = fromCol; col <= toCol; col++) {
+                      var cellMeta = this.getCellMeta(row, col);
+                      var newClass = removeClass(cellMeta.className, 'htShade');
+                      this.setCellMeta(row, col, 'className', newClass);
+                      var newClass1 = removeClass(cellMeta.className, 'htDShade');
+                      this.setCellMeta(row, col, 'className', newClass1);
+                      var newClass2 = removeClass(cellMeta.className, 'lightgreen');
+                      this.setCellMeta(row, col, 'className', newClass2);
+                      var newClass3 = removeClass(cellMeta.className, 'htred');
+                      this.setCellMeta(row, col, 'className', newClass3);
+                      var newClass4 = removeClass(cellMeta.className, 'htblue');
+                      this.setCellMeta(row, col, 'className', newClass4);
+                      var newClass5 = removeClass(cellMeta.className, 'htgold');
+                      this.setCellMeta(row, col, 'className', newClass5);
+                      var newClass6 = removeClass(cellMeta.className, 'htyellow');
+                      this.setCellMeta(row, col, 'className', newClass6);
+
+                      if (!cellMeta.className) {
+                        this.setCellMeta(row, col, 'className', 'htorange');
+                      } else if (cellMeta.className && cellMeta.className.indexOf('htorange') < 0) {
+                        this.setCellMeta(row, col, 'className', 'htorange' + cellMeta.className);
+                      }
+                    }
+                  }   
+                  this.render();
+                },
+                key: "colors:6"
+              },
+              {
+                name: 'Red',
+                callback: function(key, options) {
+                  var selection = this.getSelectedRange();
+                  var fromRow = Math.min(selection.from.row, selection.to.row);
+                  var toRow = Math.max(selection.from.row, selection.to.row);
+                  var fromCol = Math.min(selection.from.col, selection.to.col);
+                  var toCol = Math.max(selection.from.col, selection.to.col);
+                  
+                  for (var row = fromRow; row <= toRow; row++) {
+                    for (var col = fromCol; col <= toCol; col++) {
+                      var cellMeta = this.getCellMeta(row, col);
+                      var newClass = removeClass(cellMeta.className, 'htShade');
+                      this.setCellMeta(row, col, 'className', newClass);
+                      var newClass1 = removeClass(cellMeta.className, 'htDShade');
+                      this.setCellMeta(row, col, 'className', newClass1);
+                      var newClass2 = removeClass(cellMeta.className, 'lightgreen');
+                      this.setCellMeta(row, col, 'className', newClass2);
+                      var newClass3 = removeClass(cellMeta.className, 'htyellow');
+                      this.setCellMeta(row, col, 'className', newClass3);
+                      var newClass4 = removeClass(cellMeta.className, 'htblue');
+                      this.setCellMeta(row, col, 'className', newClass4);
+                      var newClass5 = removeClass(cellMeta.className, 'htgold');
+                      this.setCellMeta(row, col, 'className', newClass5);
+                      var newClass6 = removeClass(cellMeta.className, 'htorange');
+                      this.setCellMeta(row, col, 'className', newClass6);
+
+                      if (!cellMeta.className) {
+                        this.setCellMeta(row, col, 'className', 'htred');
+                      } else if (cellMeta.className && cellMeta.className.indexOf('htred') < 0) {
+                        this.setCellMeta(row, col, 'className', 'htred' + cellMeta.className);
+                      }
+                    }
+                  }   
+                  this.render();
+                },
+                key: "colors:7"
+              },
+              {
+                name: 'Blue',
+                callback: function(key, options) {
+                  var selection = this.getSelectedRange();
+                  var fromRow = Math.min(selection.from.row, selection.to.row);
+                  var toRow = Math.max(selection.from.row, selection.to.row);
+                  var fromCol = Math.min(selection.from.col, selection.to.col);
+                  var toCol = Math.max(selection.from.col, selection.to.col);
+                  
+                  for (var row = fromRow; row <= toRow; row++) {
+                    for (var col = fromCol; col <= toCol; col++) {
+                      var cellMeta = this.getCellMeta(row, col);
+                      var newClass = removeClass(cellMeta.className, 'htShade');
+                      this.setCellMeta(row, col, 'className', newClass);
+                      var newClass1 = removeClass(cellMeta.className, 'htDShade');
+                      this.setCellMeta(row, col, 'className', newClass1);
+                      var newClass2 = removeClass(cellMeta.className, 'lightgreen');
+                      this.setCellMeta(row, col, 'className', newClass2);
+                      var newClass3 = removeClass(cellMeta.className, 'htred');
+                      this.setCellMeta(row, col, 'className', newClass3);
+                      var newClass4 = removeClass(cellMeta.className, 'htyellow');
+                      this.setCellMeta(row, col, 'className', newClass4);
+                      var newClass5 = removeClass(cellMeta.className, 'htgold');
+                      this.setCellMeta(row, col, 'className', newClass5);
+                      var newClass6 = removeClass(cellMeta.className, 'htorange');
+                      this.setCellMeta(row, col, 'className', newClass6);
+
+                      if (!cellMeta.className) {
+                        this.setCellMeta(row, col, 'className', 'htblue');
+                      } else if (cellMeta.className && cellMeta.className.indexOf('htblue') < 0) {
+                        this.setCellMeta(row, col, 'className', 'htblue' + cellMeta.className);
+                      }
+                    }
+                  }   
+                  this.render();
+                },
+                key: "colors:8"
+              },
+              {
+                name: 'Clear Color',
+                callback: function(key, options) {
+                  var selection = this.getSelectedRange();
+                  var fromRow = Math.min(selection.from.row, selection.to.row);
+                  var toRow = Math.max(selection.from.row, selection.to.row);
+                  var fromCol = Math.min(selection.from.col, selection.to.col);
+                  var toCol = Math.max(selection.from.col, selection.to.col);
+                  
+                  for (var row = fromRow; row <= toRow; row++) {
+                    for (var col = fromCol; col <= toCol; col++) {
+                      var cellMeta = this.getCellMeta(row, col);
+                      var newClass = removeClass(cellMeta.className, 'htShade');
+                      this.setCellMeta(row, col, 'className', newClass);
+                      var newClass1 = removeClass(cellMeta.className, 'htDShade');
+                      this.setCellMeta(row, col, 'className', newClass1);
+                      var newClass2 = removeClass(cellMeta.className, 'lightgreen');
+                      this.setCellMeta(row, col, 'className', newClass2);
+                      var newClass3 = removeClass(cellMeta.className, 'htred');
+                      this.setCellMeta(row, col, 'className', newClass3);
+                      var newClass4 = removeClass(cellMeta.className, 'htblue');
+                      this.setCellMeta(row, col, 'className', newClass4);
+                      var newClass5 = removeClass(cellMeta.className, 'htgold');
+                      this.setCellMeta(row, col, 'className', newClass5);
+                      var newClass6 = removeClass(cellMeta.className, 'htyellow');
+                      this.setCellMeta(row, col, 'className', newClass6); 
+                      var newClass6 = removeClass(cellMeta.className, 'htorange');
+                      this.setCellMeta(row, col, 'className', newClass6);                                
+                    }
+                  }
+                  this.render();
+                },
+                key: "colors:9"
               }
-            }   
-            this.render();
-          }
-        },
-        "add_dark_shade": {
-          name: 'Dark Shade',
-          callback: function(key, options) {
-            var selection = this.getSelectedRange();
-            var fromRow = Math.min(selection.from.row, selection.to.row);
-            var toRow = Math.max(selection.from.row, selection.to.row);
-            var fromCol = Math.min(selection.from.col, selection.to.col);
-            var toCol = Math.max(selection.from.col, selection.to.col);
-            
-            for (var row = fromRow; row <= toRow; row++) {
-              for (var col = fromCol; col <= toCol; col++) {
-                var cellMeta = this.getCellMeta(row, col);
-                var newClass = removeClass(cellMeta.className, 'htShade');
-                this.setCellMeta(row, col, 'className', newClass);
-                
-                if (!cellMeta.className) {
-                  this.setCellMeta(row, col, 'className', 'htDShade');
-                } else if (cellMeta.className && cellMeta.className.indexOf('htDShade') < 0) {
-                  this.setCellMeta(row, col, 'className', 'htDShade' + cellMeta.className);
-                }
-              }
-            }   
-            this.render();
-          }
-        },
-        "clear_color": {
-          name: 'Clear Color',
-          callback: function(key, options) {
-            var selection = this.getSelectedRange();
-            var fromRow = Math.min(selection.from.row, selection.to.row);
-            var toRow = Math.max(selection.from.row, selection.to.row);
-            var fromCol = Math.min(selection.from.col, selection.to.col);
-            var toCol = Math.max(selection.from.col, selection.to.col);
-            
-            for (var row = fromRow; row <= toRow; row++) {
-              for (var col = fromCol; col <= toCol; col++) {
-                var cellMeta = this.getCellMeta(row, col);
-                var newClass = removeClass(cellMeta.className, 'htShade');
-                this.setCellMeta(row, col, 'className', newClass);
-              }
-            }
-            for (var row = fromRow; row <= toRow; row++) {
-              for (var col = fromCol; col <= toCol; col++) {
-                var cellMeta = this.getCellMeta(row, col);
-                var newClass = removeClass(cellMeta.className, 'htDShade');
-                this.setCellMeta(row, col, 'className', newClass);
-              }
-            }
-            this.render();
-          }
-        },
-        "hsep7": "---------",
-        "add_hash_dropdown": {
-          name: "Add Hash Dropdown",
-          callback: function(key, options) {
-            var selection = this.getSelectedRange();
-            var fromRow = Math.min(selection.from.row, selection.to.row);
-            var toRow = Math.max(selection.from.row, selection.to.row);
-            var fromCol = Math.min(selection.from.col, selection.to.col);
-            var toCol = Math.max(selection.from.col, selection.to.col);
-            
-            for (var row = fromRow; row <= toRow; row++) {
-              for (var col = fromCol; col <= toCol; col++) {
-                var cellMeta = this.getCellMeta(row, col);
-                this.setCellMeta(row, col, 'type', 'dropdown');
-                this.setCellMeta(row, col, 'source', hCollection);
-              }
-            }   
-            this.render();
-          }
-        },
-        "add_all_plays_dropdown": {
-          name: 'Add All Plays Dropdown',
-          callback: function(key, options) {
-            var selection = this.getSelectedRange();
-            var fromRow = Math.min(selection.from.row, selection.to.row);
-            var toRow = Math.max(selection.from.row, selection.to.row);
-            var fromCol = Math.min(selection.from.col, selection.to.col);
-            var toCol = Math.max(selection.from.col, selection.to.col);
-            
-            for (var row = fromRow; row <= toRow; row++) {
-              for (var col = fromCol; col <= toCol; col++) {
-                var cellMeta = this.getCellMeta(row, col);
-                this.setCellMeta(row, col, 'type', 'dropdown');
-                this.setCellMeta(row, col, 'source', pCollection);
-              }
-            }   
-            this.render();
-          }
-        },    
-        "add_pass_plays_dropdown": {
-          name: 'Add Pass Plays Dropdown',
-          callback: function(key, options) {
-            var selection = this.getSelectedRange();
-            var fromRow = Math.min(selection.from.row, selection.to.row);
-            var toRow = Math.max(selection.from.row, selection.to.row);
-            var fromCol = Math.min(selection.from.col, selection.to.col);
-            var toCol = Math.max(selection.from.col, selection.to.col);
-            
-            for (var row = fromRow; row <= toRow; row++) {
-              for (var col = fromCol; col <= toCol; col++) {
-                var cellMeta = this.getCellMeta(row, col);
-                this.setCellMeta(row, col, 'type', 'dropdown');
-                this.setCellMeta(row, col, 'source', passCollection);
-              }
-            }   
-            this.render();
-          }
-        },  
-        "add_run_plays_dropdown": {
-          name: 'Add Run Plays Dropdown',
-          callback: function(key, options) {
-            var selection = this.getSelectedRange();
-            var fromRow = Math.min(selection.from.row, selection.to.row);
-            var toRow = Math.max(selection.from.row, selection.to.row);
-            var fromCol = Math.min(selection.from.col, selection.to.col);
-            var toCol = Math.max(selection.from.col, selection.to.col);
-            
-            for (var row = fromRow; row <= toRow; row++) {
-              for (var col = fromCol; col <= toCol; col++) {
-                var cellMeta = this.getCellMeta(row, col);
-                this.setCellMeta(row, col, 'type', 'dropdown');
-                this.setCellMeta(row, col, 'source', runCollection);
-              }
-            }   
-            this.render();
-          }
-        },                    
-        "remove_dropdown": {
-          name: 'Remove Dropdown',
-          callback: function(key, options) {
-            var selection = this.getSelectedRange();
-            var fromRow = Math.min(selection.from.row, selection.to.row);
-            var toRow = Math.max(selection.from.row, selection.to.row);
-            var fromCol = Math.min(selection.from.col, selection.to.col);
-            var toCol = Math.max(selection.from.col, selection.to.col);
-            
-            for (var row = fromRow; row <= toRow; row++) {
-              for (var col = fromCol; col <= toCol; col++) {
-                var cellMeta = this.getCellMeta(row, col);
-                this.setCellMeta(row, col, 'type', 'text');
-                var newClass = removeClass(cellMeta.className, 'htAutocomplete');
-                this.setCellMeta(row, col, 'className', newClass);
-              }
-            }
-            this.render();
+            ]
           }
         },        
+        "hsep7": "---------",
+        "dropdowns":{
+          name: "Dropdowns",
+          submenu: {
+            items: [
+              {
+                name: "Add Hash Dropdown",
+                callback: function(key, options) {
+                  var selection = this.getSelectedRange();
+                  var fromRow = Math.min(selection.from.row, selection.to.row);
+                  var toRow = Math.max(selection.from.row, selection.to.row);
+                  var fromCol = Math.min(selection.from.col, selection.to.col);
+                  var toCol = Math.max(selection.from.col, selection.to.col);
+                  
+                  for (var row = fromRow; row <= toRow; row++) {
+                    for (var col = fromCol; col <= toCol; col++) {
+                      var cellMeta = this.getCellMeta(row, col);
+                      this.setCellMeta(row, col, 'type', 'dropdown');
+                      this.setCellMeta(row, col, 'source', hCollection);
+                    }
+                  }   
+                  this.render();
+                },
+                key: "dropdowns:1"
+              },
+              {
+                name: 'Add All Plays Dropdown',
+                callback: function(key, options) {
+                  var selection = this.getSelectedRange();
+                  var fromRow = Math.min(selection.from.row, selection.to.row);
+                  var toRow = Math.max(selection.from.row, selection.to.row);
+                  var fromCol = Math.min(selection.from.col, selection.to.col);
+                  var toCol = Math.max(selection.from.col, selection.to.col);
+                  
+                  for (var row = fromRow; row <= toRow; row++) {
+                    for (var col = fromCol; col <= toCol; col++) {
+                      var cellMeta = this.getCellMeta(row, col);
+                      this.setCellMeta(row, col, 'type', 'dropdown');
+                      this.setCellMeta(row, col, 'source', pCollection);
+                    }
+                  }   
+                  this.render();
+                },
+                key: "dropdowns:2"
+              },    
+              {
+                name: 'Add Pass Plays Dropdown',
+                callback: function(key, options) {
+                  var selection = this.getSelectedRange();
+                  var fromRow = Math.min(selection.from.row, selection.to.row);
+                  var toRow = Math.max(selection.from.row, selection.to.row);
+                  var fromCol = Math.min(selection.from.col, selection.to.col);
+                  var toCol = Math.max(selection.from.col, selection.to.col);
+                  
+                  for (var row = fromRow; row <= toRow; row++) {
+                    for (var col = fromCol; col <= toCol; col++) {
+                      var cellMeta = this.getCellMeta(row, col);
+                      this.setCellMeta(row, col, 'type', 'dropdown');
+                      this.setCellMeta(row, col, 'source', passCollection);
+                    }
+                  }   
+                  this.render();
+                },
+                key: "dropdowns:3"
+              },  
+              {
+                name: 'Add Run Plays Dropdown',
+                callback: function(key, options) {
+                  var selection = this.getSelectedRange();
+                  var fromRow = Math.min(selection.from.row, selection.to.row);
+                  var toRow = Math.max(selection.from.row, selection.to.row);
+                  var fromCol = Math.min(selection.from.col, selection.to.col);
+                  var toCol = Math.max(selection.from.col, selection.to.col);
+                  
+                  for (var row = fromRow; row <= toRow; row++) {
+                    for (var col = fromCol; col <= toCol; col++) {
+                      var cellMeta = this.getCellMeta(row, col);
+                      this.setCellMeta(row, col, 'type', 'dropdown');
+                      this.setCellMeta(row, col, 'source', runCollection);
+                    }
+                  }   
+                  this.render();
+                },
+                key: "dropdowns:4"
+              },                    
+              {
+                name: 'Remove Dropdown',
+                callback: function(key, options) {
+                  var selection = this.getSelectedRange();
+                  var fromRow = Math.min(selection.from.row, selection.to.row);
+                  var toRow = Math.max(selection.from.row, selection.to.row);
+                  var fromCol = Math.min(selection.from.col, selection.to.col);
+                  var toCol = Math.max(selection.from.col, selection.to.col);
+                  
+                  for (var row = fromRow; row <= toRow; row++) {
+                    for (var col = fromCol; col <= toCol; col++) {
+                      var cellMeta = this.getCellMeta(row, col);
+                      this.setCellMeta(row, col, 'type', 'text');
+                      var newClass = removeClass(cellMeta.className, 'htAutocomplete');
+                      this.setCellMeta(row, col, 'className', newClass);
+                    }
+                  }
+                  this.render();
+                },
+                key: "dropdowns:5"
+              }
+            ]
+          }
+        },   
         "hsep8": "---------",
         "clear_format": {
           name: 'Clear All Formatting',
@@ -343,7 +677,7 @@ $(".default_script2s.show").ready(function() {
     },
     //Ensures there is a space between class names
     afterContextMenuHide: function(){
-      var separators = ['htLargeText', 'htShade', 'htDShade', 'htBold', 'htLeft', 'htCenter', 'htLeft', 'htRight', 'htJustify', 'htTop', 'htMiddle', 'htBottom', 'myTable', 'htAutocomplete', 'htInvalid'];
+      var separators = ['htLargeText', 'htShade', 'htDShade', 'lightgreen', 'htyellow', 'htred', 'htblue', 'htgold', 'htorange', 'htBold', 'htLeft', 'htCenter', 'htLeft', 'htRight', 'htJustify', 'htTop', 'htMiddle', 'htBottom', 'myTable', 'htAutocomplete', 'htInvalid', 'underline'];
       var cClass = this.getCellsMeta().filter(function(meta) {
         return meta.className;
       }).map(function(meta) {
@@ -461,7 +795,7 @@ $(".default_script2s.show").ready(function() {
 
   //Reset Table button
   $("#reset-table-button").click(function() {
-    if (confirm('-----------------------------------------------------------\nAre you sure? This will reset the entire script template and erase all changes.\n-----------------------------------------------------------')) {
+    if (confirm('-----------------------------------------------------------\nAre you sure? This will reset the entire script template and erase all changes.\n-----------------------------------------------------------\nIf the template does not reset after clicking OK, please refresh the page.\n------------------------------------------------------------')) {
       $.ajax({
         type: "PATCH",
         url: "/default_script2",
@@ -478,7 +812,7 @@ $(".default_script2s.show").ready(function() {
       setTimeout(function(){
         $(".overlay").show();
         location.reload();
-      }, 100);
+      }, 500);
     }
   });
 

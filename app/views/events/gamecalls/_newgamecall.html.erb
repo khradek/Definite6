@@ -17,6 +17,12 @@
         <%= f.label :title %><br>
         <%= f.text_field :title, class: "form-control gamecall-title" %>
       </div>
+      <div class="form-group">
+        <%= f.label :gamecall_template, "Template" %> 
+        <div>
+          <%= f.select(:gamecall_template, options_for_select([['Standard', 'Standard'], ['Custom', 'Custom']]), {}, {class: "form-control"}) %>
+        </div>  
+      </div>        
       <div class="field">
         <%= f.label :start_time, "Date" %><br>
         <%= f.datetime_select_install2 :start_time, class: "form-control gamecall-start-time" %>

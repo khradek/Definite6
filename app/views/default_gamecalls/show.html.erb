@@ -1,0 +1,152 @@
+<div class="overlay">
+  <div class="loader center"><i class='fa fa-spinner fa-spin fa-5x'></i></div>
+</div>
+
+<% @title = "Custom Call Sheet Template Schedule - Definite6.com" %>
+
+<p class="hidden">
+  <strong>Data1:</strong>
+  <span id="data1"><%= @user.default_gamecall.gc_data1 %></span>
+</p>
+
+<p class="hidden">
+  <strong>Format1:</strong>
+  <span id="cell-format1"><%= @user.default_gamecall.gc_format1 %></span>
+</p>
+
+<p class="hidden">
+  <strong>Cell Class1:</strong>
+  <span id="cell-class1"><%= @user.default_gamecall.gc_class1 %></span>
+</p>
+
+<p class="hidden">
+  <strong>Col Widths1:</strong>
+  <span id="col-widths1"><%= @user.default_gamecall.col_widths1 %></span>
+</p>
+
+<p class="hidden">
+  <strong>Data2:</strong>
+  <span id="data2"><%= @user.default_gamecall.gc_data2 %></span>
+</p>
+
+<p class="hidden">
+  <strong>Format2:</strong>
+  <span id="cell-format2"><%= @user.default_gamecall.gc_format2 %></span>
+</p>
+
+<p class="hidden">
+  <strong>Cell Class2:</strong>
+  <span id="cell-class2"><%= @user.default_gamecall.gc_class2 %></span>
+</p>
+
+<p  class="hidden">
+  <strong>Col Widths2:</strong>
+  <span id="col-widths2"><%= @user.default_gamecall.col_widths2 %></span>
+</p>
+
+<div>
+  <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Return to Account Settings'.html_safe, edit_user_registration_path, :class => "btn btn-custom3 btn-sm" %>
+</div>
+
+<hr>
+
+<h2 class="center">Set Default Call Sheet Format</h2>
+<div class="center">Set the default game call sheet format. Each call sheet created will match this format initially. Right click anywhere in the sheet below to bring up the customization menu. To type multiline text, press ALT + ENTER when ready to move to the next line. Remember to save any updates before leaving this page.</div>
+
+<br>
+
+<div class="custom-sit-container">
+  <div class="table">
+    <div class="tr">
+      <span class="td call_sit_tag center"><%= label_tag 'sit1', 'Situation 1:'%></span>
+      <span class="td call_sit_input"><%= text_field_tag :sit1, current_user.s_name1, class: "form-control center summary-border bold-font", id: "sit1" %></span>
+      <span class="td call_sit_tag center"><%= label_tag 'sit2', 'Situation 2:'%></span>
+      <span class="td call_sit_input"><%= text_field_tag :sit2, current_user.s_name2, class: "form-control center summary-border bold-font", id: "sit2" %></span>
+    </div>
+    <div class="tr">
+      <span class="td call_sit_tag center"><%= label_tag 'sit3', 'Situation 3:'%></span>
+      <span class="td call_sit_input"><%= text_field_tag :sit3, current_user.s_name3, class: "form-control center summary-border bold-font", id: "sit3" %></span>
+      <span class="td call_sit_tag center"><%= label_tag 'sit6', 'Situation 4:'%></span>
+      <span class="td call_sit_input"><%= text_field_tag :sit6, current_user.s_name6, class: "form-control center summary-border bold-font", id: "sit6" %></span>
+    </div>     
+    <div class="tr">
+      <span class="td call_sit_tag center"><%= label_tag 'sit4', 'Situation 5:'%></span>
+      <span class="td call_sit_input"><%= text_field_tag :sit4, current_user.s_name4, class: "form-control center summary-border bold-font", id: "sit4" %></span>
+      <span class="td call_sit_tag center"><%= label_tag 'sit7', 'Situation 6:'%></span>
+      <span class="td call_sit_input"><%= text_field_tag :sit7, current_user.s_name7, class: "form-control center summary-border bold-font", id: "sit7" %></span>
+    </div> 
+    <div class="tr">
+      <span class="td call_sit_tag center"><%= label_tag 'sit5', 'Situation 7:'%></span>
+      <span class="td call_sit_input"><%= text_field_tag :sit5, current_user.s_name5, class: "form-control center summary-border bold-font", id: "sit5" %></span>
+      <span class="td call_sit_tag center"><%= label_tag 'sit8', 'Situation 8:'%></span>
+      <span class="td call_sit_input"><%= text_field_tag :sit8, current_user.s_name8, class: "form-control center summary-border bold-font", id: "sit8" %></span>
+    </div> 
+    <div class="tr">
+      <span class="td call_sit_tag center"><%= label_tag 'sit9', 'Situation 9:'%></span>
+      <span class="td call_sit_input"><%= text_field_tag :sit9, current_user.s_name9, class: "form-control center summary-border bold-font", id: "sit9" %></span>
+      <span class="td call_sit_tag center"><%= label_tag 'sit10', 'Situation 10:'%></span>
+      <span class="td call_sit_input"><%= text_field_tag :sit10, current_user.s_name10, class: "form-control center summary-border bold-font", id: "sit10" %></span>
+    </div>  
+    <div class="tr">
+      <span class="td call_sit_tag center"><%= label_tag 'sit11', 'Situation 11:'%></span>
+      <span class="td call_sit_input"><%= text_field_tag :sit11, current_user.s_name11, class: "form-control center summary-border bold-font", id: "sit11" %></span>
+      <span class="td call_sit_tag center"><%= label_tag 'sit12', 'Situation 12:'%></span>
+      <span class="td call_sit_input"><%= text_field_tag :sit12, current_user.s_name12, class: "form-control center summary-border bold-font", id: "sit12" %></span>
+    </div>  
+    <div class="tr">
+      <span class="td call_sit_tag center"><%= label_tag 'sit13', 'Situation 13:'%></span>
+      <span class="td call_sit_input"><%= text_field_tag :sit13, current_user.s_name13, class: "form-control center summary-border bold-font", id: "sit13" %></span>
+      <span class="td call_sit_tag center"><%= label_tag 'sit14', 'Situation 14:'%></span>
+      <span class="td call_sit_input"><%= text_field_tag :sit14, current_user.s_name14, class: "form-control center summary-border bold-font", id: "sit14" %></span>
+    </div>               
+  </div>    
+</div>
+
+<br>
+
+<button class="btn btn-custom1 save-button"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save All Updates</button>
+
+<button class="btn btn-custom2 btn-sm pull-right margin-left" id="reset-table1-button">Reset Page One Template</button>
+
+<button class="btn btn-custom3 btn-sm pull-right" id="reset-widths1-button">Reset Page One Column Widths</button>
+
+<br>
+<br>
+
+<div id=custom-gamecall1></div>
+
+<p class="hidden">
+  <strong>Cell Format 3:</strong>
+  <span id="cell-format3"></span>
+</p>
+
+<br>
+
+<p class="hidden">
+  <strong>Cell Class 3:</strong>
+  <span id="cell-class3"></span>
+</p>
+
+<button class="btn btn-custom2 btn-sm pull-right margin-left" id="reset-table2-button">Reset Page Two Template</button>
+
+<button class="btn btn-custom3 btn-sm pull-right" id="reset-widths2-button">Reset Page Two Column Widths</button>
+
+<br>
+<br>
+<br>
+
+<div id=custom-gamecall2></div>
+
+<button class="btn btn-custom1 save-button"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save All Updates</button>
+
+<p  class="hidden">
+  <strong>Cell Format 4:</strong>
+  <span id="cell-format4"></span>
+</p>
+
+<br>
+
+<p  class="hidden">
+  <strong>Cell Class 4:</strong>
+  <span id="cell-class4"></span>
+</p>

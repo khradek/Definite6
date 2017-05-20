@@ -251,7 +251,7 @@ class EventsController < ApplicationController
 
   def summary_11
     @event = Event.find(params[:event_id])
-    @plays = @event.plays.run_left_coming_outs
+    @plays = @event.plays.coming_outs
     @num_runs = if current_user.s_name11_num_run == 14
                   15
                 else

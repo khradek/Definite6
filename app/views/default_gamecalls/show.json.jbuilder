@@ -1,0 +1,1 @@
+json.extract! @user.default_gamecall, :id, :gc_data1, :gc_format1, :gc_class1, :gc_data2, :gc_format2, :gc_class2, :user_id, :created_at, :updated_at, :col_widths1, :col_widths2

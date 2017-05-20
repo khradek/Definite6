@@ -1,0 +1,296 @@
+<div class="overlay">
+  <div class="loader center"><i class='fa fa-spinner fa-spin fa-5x'></i></div>
+</div>
+
+<% @title = @gamecall.title + " - Definite6.com"%>
+
+<p class="hidden">
+  <span id="event-id"><%= @gamecall.event_id %></span>
+</p>
+
+<p class="hidden">
+  <span id="gamecall-id"><%= @gamecall.id %></span>
+</p>
+
+<p class="hidden">
+  <span id="sit1_name"><%= @current_user.s_name1 %></span>
+</p>
+<p class="hidden">
+  <span id="sit2_name"><%= @current_user.s_name2 %></span>
+</p>
+<p class="hidden">
+  <span id="sit3_name"><%= @current_user.s_name3 %></span>
+</p>
+<p class="hidden">
+  <span id="sit4_name"><%= @current_user.s_name6 %></span>
+</p>
+<p class="hidden">
+  <span id="sit5_name"><%= @current_user.s_name4 %></span>
+</p>
+<p class="hidden">
+  <span id="sit6_name"><%= @current_user.s_name7 %></span>
+</p>
+<p class="hidden">
+  <span id="sit7_name"><%= @current_user.s_name5 %></span>
+</p>
+<p class="hidden">
+  <span id="sit8_name"><%= @current_user.s_name8 %></span>
+</p>
+<p class="hidden">
+  <span id="sit9_name"><%= @current_user.s_name9 %></span>
+</p>
+<p class="hidden">
+  <span id="sit10_name"><%= @current_user.s_name10 %></span>
+</p>
+<p class="hidden">
+  <span id="sit11_name"><%= @current_user.s_name11 %></span>
+</p>
+<p class="hidden">
+  <span id="sit12_name"><%= @current_user.s_name12 %></span>
+</p>
+<p class="hidden">
+  <span id="sit13_name"><%= @current_user.s_name13 %></span>
+</p>
+<p class="hidden">
+  <span id="sit14_name"><%= @current_user.s_name14 %></span>
+</p>
+
+<p class="hidden">
+  <strong>Data1:</strong>
+  <span id="data1"><%= @gamecall.gdata %></span>
+</p>
+
+<p class="hidden">
+  <strong>Format1:</strong>
+  <span id="cell-format1"><%= @gamecall.g_format1 %></span>
+</p>
+
+<p class="hidden">
+  <strong>Class1:</strong>
+  <span id="cell-class1"><%= @gamecall.g_class1 %></span>
+</p>
+
+<p class="hidden">
+  <strong>Widths1:</strong>
+  <span id="col-widths1"><%= @gamecall.col_widths1 %></span>
+</p>
+
+<p class="hidden">
+  <strong>Original Widths1:</strong>
+  <span id="orig-col-widths1"><%= @gamecall.orig_col_widths1 %></span>
+</p>
+
+<p class="hidden">
+  <strong>Data2:</strong>
+  <span id="data2"><%= @gamecall.gdata2 %></span>
+</p>
+
+<p class="hidden">
+  <strong>Format2:</strong>
+  <span id="cell-format2"><%= @gamecall.g_format2 %></span>
+</p>
+
+<p class="hidden">
+  <strong>Class2:</strong>
+  <span id="cell-class2"><%= @gamecall.g_class2 %></span>
+</p>
+
+<p class="hidden">
+  <strong>Widths2:</strong>
+  <span id="col-widths2"><%= @gamecall.col_widths2 %></span>
+</p>
+
+<p class="hidden">
+  <strong>Original Widths2:</strong>
+  <span id="orig-col-widths2"><%= @gamecall.orig_col_widths2 %></span>
+</p>
+
+<p class="hidden">
+  <strong>All Plays:</strong>
+  <span id="gamecall-plays">
+    [<% @plays.each do |play| %> 
+      <%= '" ", ' if play == @event.plays.first %>"<%= play.fullname %>"<%= "," unless play == @event.plays.last %>
+    <% end %>]
+  </span>
+</p>
+
+<p class="hidden">
+  <strong>Sit 1:</strong>
+  <span id="gamecall-plays-sit1">
+    [<% @sit1_plays.each do |play| %> 
+      <%= '" ", ' if play == @sit1_plays.first %>"<%= play.fullname %>"<%= "," unless play == @sit1_plays.last %>
+    <% end %>]
+  </span>
+</p>
+
+<p class="hidden">
+  <strong>Sit 2:</strong>
+  <span id="gamecall-plays-sit2">
+    [<% @sit2_plays.each do |play| %> 
+      <%= '" ", ' if play == @sit2_plays.first %>"<%= play.fullname %>"<%= "," unless play == @sit2_plays.last %>
+    <% end %>]
+  </span>
+</p>
+
+<p class="hidden">
+  <strong>Sit 3:</strong>
+  <span id="gamecall-plays-sit3">
+    [<% @sit3_plays.each do |play| %> 
+      <%= '" ", ' if play == @sit3_plays.first %>"<%= play.fullname %>"<%= "," unless play == @sit3_plays.last %>
+    <% end %>]
+  </span>
+</p>
+
+<p class="hidden">
+  <strong>Sit 4:</strong>
+  <span id="gamecall-plays-sit4">
+    [<% @sit4_plays.each do |play| %> 
+      <%= '" ", ' if play == @sit4_plays.first %>"<%= play.fullname %>"<%= "," unless play == @sit4_plays.last %>
+    <% end %>]
+  </span>
+</p>
+
+<p class="hidden">
+  <strong>Sit 5:</strong>
+  <span id="gamecall-plays-sit5">
+    [<% @sit5_plays.each do |play| %> 
+      <%= '" ", ' if play == @sit5_plays.first %>"<%= play.fullname %>"<%= "," unless play == @sit5_plays.last %>
+    <% end %>]
+  </span>
+</p>
+
+<p class="hidden">
+  <strong>Sit 6:</strong>
+  <span id="gamecall-plays-sit6">
+    [<% @sit6_plays.each do |play| %> 
+      <%= '" ", ' if play == @sit6_plays.first %>"<%= play.fullname %>"<%= "," unless play == @sit6_plays.last %>
+    <% end %>]
+  </span>
+</p>
+
+<p class="hidden">
+  <strong>Sit 7:</strong>
+  <span id="gamecall-plays-sit7">
+    [<% @sit7_plays.each do |play| %> 
+      <%= '" ", ' if play == @sit7_plays.first %>"<%= play.fullname %>"<%= "," unless play == @sit7_plays.last %>
+    <% end %>]
+  </span>
+</p>
+
+<p class="hidden">
+  <strong>Sit 8:</strong>
+  <span id="gamecall-plays-sit8">
+    [<% @sit8_plays.each do |play| %> 
+      <%= '" ", ' if play == @sit8_plays.first %>"<%= play.fullname %>"<%= "," unless play == @sit8_plays.last %>
+    <% end %>]
+  </span>
+</p>
+
+<p class="hidden">
+  <strong>Sit 9:</strong>
+  <span id="gamecall-plays-sit9">
+    [<% @sit9_plays.each do |play| %> 
+      <%= '" ", ' if play == @sit9_plays.first %>"<%= play.fullname %>"<%= "," unless play == @sit9_plays.last %>
+    <% end %>]
+  </span>
+</p>
+
+<p class="hidden">
+  <strong>Sit 10:</strong>
+  <span id="gamecall-plays-sit10">
+    [<% @sit10_plays.each do |play| %> 
+      <%= '" ", ' if play == @sit10_plays.first %>"<%= play.fullname %>"<%= "," unless play == @sit10_plays.last %>
+    <% end %>]
+  </span>
+</p>
+
+<p class="hidden">
+  <strong>Sit 11:</strong>
+  <span id="gamecall-plays-sit11">
+    [<% @sit11_plays.each do |play| %> 
+      <%= '" ", ' if play == @sit11_plays.first %>"<%= play.fullname %>"<%= "," unless play == @sit11_plays.last %>
+    <% end %>]
+  </span>
+</p>
+
+<p class="hidden">
+  <strong>Sit 12:</strong>
+  <span id="gamecall-plays-sit12">
+    [<% @sit12_plays.each do |play| %> 
+      <%= '" ", ' if play == @sit12_plays.first %>"<%= play.fullname %>"<%= "," unless play == @sit12_plays.last %>
+    <% end %>]
+  </span>
+</p>
+
+<p class="hidden">
+  <strong>Sit 13:</strong>
+  <span id="gamecall-plays-sit13">
+    [<% @sit13_plays.each do |play| %> 
+      <%= '" ", ' if play == @sit13_plays.first %>"<%= play.fullname %>"<%= "," unless play == @sit13_plays.last %>
+    <% end %>]
+  </span>
+</p>
+
+<p class="hidden">
+  <strong>Sit 14:</strong>
+  <span id="gamecall-plays-sit14">
+    [<% @sit14_plays.each do |play| %> 
+      <%= '" ", ' if play == @sit14_plays.first %>"<%= play.fullname %>"<%= "," unless play == @sit14_plays.last %>
+    <% end %>]
+  </span>
+</p>
+
+<div>
+  <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Return to Install'.html_safe, @event, :class => "btn btn-custom3 btn-sm" %>
+
+
+  <%= link_to '<i class="fa fa-print"></i> Printer Friendly Sheet'.html_safe, event_gamecall_custom_print_path(@event, @gamecall), class: "btn btn-custom4 btn-sm" %> 
+  
+  <% unless browser.chrome? || browser.safari? %>
+    Printing works best on Safari and Google Chrome web browswers >> <%= link_to 'Click Here to Download Google Chrome', 'https://www.google.com/chrome/browser/desktop/index.html', target: "_blank" %>
+  <% end %>
+</div>
+
+<hr>
+
+<button class="btn btn-custom1 save-button"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save All Updates</button>
+
+<button class="btn btn-custom3 btn-sm pull-right" id="reset-widths1-button">Reset Page One Column Widths</button>
+
+<br>
+<br>
+
+<div id=custom-gamecall1></div>
+
+<p class="hidden">
+  <strong>Cell Format 3:</strong>
+  <span id="cell-format3"></span>
+</p>
+
+<p class="hidden">
+  <strong>Cell Class 3:</strong>
+  <span id="cell-class3"></span>
+</p>
+
+<br>
+<br>
+
+<button class="btn btn-custom3 btn-sm pull-right" id="reset-widths2-button">Reset Page Two Column Widths</button>
+
+<br>
+<br>
+<br>
+
+<div id=custom-gamecall2></div>
+
+<button class="btn btn-custom1 save-button"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save All Updates</button>
+
+<p class="hidden">
+  <strong>Cell Format 4:</strong>
+  <span id="cell-format4"></span>
+</p>
+
+<p class="hidden">
+  <strong>Cell Class 4:</strong>
+  <span id="cell-class4"></span>
+</p>

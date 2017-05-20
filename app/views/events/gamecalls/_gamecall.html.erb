@@ -1,7 +1,11 @@
 <div class="tr" id="gamecall_<%= gamecall.id %>">
   <span class="script-col1 td"><%= gamecall.title %></span>
   <span class="script-col2 td table-center"><%= gamecall.start_time.strftime("%m-%d-%Y") if gamecall.start_time? %></span>
-  <span class="script-col3 td"><%= link_to 'Open Sheet', [@event, gamecall], class: "btn btn-custom3 btn-sm pull-right" %></span>
+  <% if gamecall.gamecall_template == "Custom" %>
+    <span class="script-col3 td"><%= link_to 'Open Sheet', event_gamecall_custom_path(@event, gamecall), class: "btn btn-custom3 btn-sm pull-right" %></span>
+  <% else %>
+    <span class="script-col3 td"><%= link_to 'Open Sheet', [@event, gamecall], class: "btn btn-custom3 btn-sm pull-right" %></span>
+  <% end %>
   <span class="script-col3 td"><button type="button" id="update-gamecall_<%= gamecall.id %>" class="btn btn-custom4 btn-sm pull-right  update-gamecall-button small-screen-hide" data-toggle="modal" data-target="#myupdategamecall_<%= gamecall.id %>">
     Update or Delete Sheet
   </button></span>

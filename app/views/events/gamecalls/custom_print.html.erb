@@ -1,0 +1,61 @@
+<% @title = "Printable " + @gamecall.title + " - Definite6.com"%>
+
+<p class="hidden">
+  <strong>Data1:</strong>
+  <span id="data1"><%= @gamecall.gdata %></span>
+</p>
+
+<p class="hidden">
+  <strong>Format1:</strong>
+  <span id="cell-format1"><%= @gamecall.g_format1 %></span>
+</p>
+
+<p class="hidden">
+  <strong>Class1:</strong>
+  <span id="cell-class1"><%= @gamecall.g_class1 %></span>
+</p>
+
+<p class="hidden">
+  <strong>Widths1:</strong>
+  <span id="col-widths1"><%= @gamecall.col_widths1 %></span>
+</p>
+
+<p class="hidden">
+  <strong>Data2:</strong>
+  <span id="data2"><%= @gamecall.gdata2 %></span>
+</p>
+
+<p class="hidden">
+  <strong>Format2:</strong>
+  <span id="cell-format2"><%= @gamecall.g_format2 %></span>
+</p>
+
+<p class="hidden">
+  <strong>Class2:</strong>
+  <span id="cell-class2"><%= @gamecall.g_class2 %></span>
+</p>
+
+<p class="hidden">
+  <strong>Widths2:</strong>
+  <span id="col-widths2"><%= @gamecall.col_widths2 %></span>
+</p>
+
+<%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Return to Call Sheet'.html_safe, event_gamecall_custom_path(@event, @gamecall), class: "btn btn-custom3 btn-sm print-button" %>
+<%= link_to 'Print <i class="fa fa-print"></i>'.html_safe, '#', class: "btn btn-custom1 btn-sm print-button", :onclick => 'window.print();return false;'%>
+
+<br>
+<br>
+
+<div id="myPrintTable1"></div>
+
+<footer></footer>
+
+<br>
+<br>
+
+<div id="myPrintTable2"></div>
+
+<br>
+
+<%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Return to Call Sheet'.html_safe, event_gamecall_custom_path(@event, @gamecall), class: "btn btn-custom3 btn-sm print-button" %>
+<%= link_to 'Print <i class="fa fa-print"></i>'.html_safe, '#', class: "btn btn-custom1 btn-sm print-button", :onclick => 'window.print();return false;'%>

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   mount StripeEvent::Engine, at: '/stripe/webhook'
 
   resource :default_practice
+  resource :default_gamecall
   resource :default_script
   resource :default_script2
   resource :default_script3
@@ -58,6 +59,8 @@ Rails.application.routes.draw do
 
     resources :gamecalls, controller:'events/gamecalls' do
       get :print
+      get :custom
+      get :custom_print      
     end
 
     resources :practice_schedules, controller:'events/practice_schedules' do

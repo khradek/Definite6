@@ -20,7 +20,7 @@ $(".gamecalls.show").ready(function() {
     var aposCheck = JSON.stringify(gdata);
     var JSONData = aposCheck.replace(/'/g, ' ');
     var aposCheck2 = JSON.stringify(gdata2);
-    var JSONData2 = aposCheck.replace(/'/g, ' ');
+    var JSONData2 = aposCheck2.replace(/'/g, ' ');
     $.ajax({
       type: "PATCH",
       url: "/events/" + $("#event-id").text() + "/gamecalls/" + $("#gamecall-id").text(),
@@ -154,7 +154,7 @@ $(".gamecalls.show").ready(function() {
     colWidths: [274, 274, 274, 274],   
     manualColumnResize: false,
     manualRowResize: false,
-    fillHandle: true,
+    fillHandle: false,
     className: "htCenter",
     allowEmpty: true,
     cells: function (row, col, prop) {
@@ -176,7 +176,7 @@ $(".gamecalls.show").ready(function() {
     colWidths: [274, 274, 274, 274],
     manualColumnResize: false,
     manualRowResize: false,
-    fillHandle: true,
+    fillHandle: false,
     allowEmpty: true,
     className: "htCenter",
     cells: function (row, col, prop) {

@@ -1,5 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
-  
+
+  respond_to :html, :json
+
   def create
     super
     #Sends email to me when new user is created - change to deliver_later when worker dyno is active
