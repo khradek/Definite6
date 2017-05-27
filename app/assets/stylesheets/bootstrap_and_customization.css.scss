@@ -290,6 +290,40 @@ $grid-float-breakpoint: 915px;
   border-color: #b6b6b6;
 }
 
+.quick-assign-pseudo{
+  border-style: ridge;
+  border-width: 4px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  background-color: #fff;
+  border-color: #b6b6b6;
+  overflow-y : scroll;
+  display: none;  
+}
+
+.quick-assign-box{
+  border-style: ridge;
+  border-width: 4px;
+  padding-bottom: 0px;
+  background-color: #fff;
+  border-color: #b6b6b6;
+  height: 575px;   
+  overflow-y : scroll;
+}
+
+.quick-assign-play{
+  width: 325px;
+}
+
+.quick-assign-check{
+  width: 50px;
+}
+
+.no-margin-bottom{
+  margin-bottom: 0px;
+}
+
+
 
 body { background: #F5F5F5 !important;}
 
@@ -342,6 +376,9 @@ hr.no-margin {
   .custom-larger-class {
       width: 65%; /* either % (e.g. 60%) or px (400px) */
   }
+  .custom-smaller-class {
+      width: 40%; /* either % (e.g. 60%) or px (400px) */
+  }
 }
 
 @media (max-width: 460px){
@@ -393,6 +430,25 @@ SPAN.td{
   border: #f0f0f0 1px solid;
 }
 
+.fixed-tr{
+  display: table-row;
+  //position: fixed;
+}
+
+.add-play-sit-table{
+  width: 90%;
+  margin: 0 auto;
+  background-color: #FFFFFF;
+}
+
+.tr-hover:hover{
+  background-color: #D3D3D3;
+}
+
+.update-multi-sit-table{
+  width: 90%;
+  margin: 0 auto;
+}
 
 .lightgreen{
   background: #e6f0a3; /* Old browsers */

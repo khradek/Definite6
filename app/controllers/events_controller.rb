@@ -12,9 +12,9 @@ class EventsController < ApplicationController
     @play_count = @plays.count
   end
 
-  def sortable
-    @event = Event.includes(:scripts).find(params[:event_id])
-    @plays = @event.plays.includes(:user)
+  def quick_assign
+    @event = Event.find(params[:event_id])
+    @plays = @event.plays
   end
 
   def summary_1

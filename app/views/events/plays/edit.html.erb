@@ -70,7 +70,7 @@
             <span class="td script-col3 center">4</span>
           </div>
           <div class="tr">
-            <span class="script-col1 td"></span>
+            <span class="script-col1 grey-font td"><i>For use with standard practice script</i></span>
             <span class="script-col2 td center"><%= f.check_box :period1 %></span>
             <span class="script-col3 td center"><%= f.check_box :period2 %></span>
             <span class="script-col3 td center"><%= f.check_box :period3 %></span>
@@ -109,69 +109,83 @@
 
         <h4>Situations</h4>
 
-        <div class="form-group">
-          <%= f.label :situation1, "First Assigned Situation" %>
-          <%= f.select(:situation1, options_for_select([[' ', ' '], ["#{current_user.s_name1}", 'Opener'], ["#{current_user.s_name2}", '1st/2nd & 10'], ["#{current_user.s_name3}", '2nd & Long'], ["#{current_user.s_name4}", '2nd & Medium'], ["#{current_user.s_name5}", '2nd & Short'], ["#{current_user.s_name6}", '3rd & Long'],["#{current_user.s_name7}", '3rd & Medium'], ["#{current_user.s_name8}", '3rd & Short'], ["#{current_user.s_name9}", 'Redzone'], ["#{current_user.s_name10}", 'Goal Line'], ["#{current_user.s_name11}", 'Coming Out'], ["#{current_user.s_name12}", 'Custom 1'], ["#{current_user.s_name13}", 'Custom 2'], ["#{current_user.s_name14}", 'Custom 3'],], :selected => f.object.situation1), {}, {class: "form-control"}) %>
-        </div> 
-
-        <div class="form-group">
-          <%= f.label :situation2, "Second Assigned Situation" %>
-          <%= f.select(:situation2, options_for_select([[' ', ' '], ["#{current_user.s_name1}", 'Opener'], ["#{current_user.s_name2}", '1st/2nd & 10'], ["#{current_user.s_name3}", '2nd & Long'], ["#{current_user.s_name4}", '2nd & Medium'], ["#{current_user.s_name5}", '2nd & Short'], ["#{current_user.s_name6}", '3rd & Long'],["#{current_user.s_name7}", '3rd & Medium'], ["#{current_user.s_name8}", '3rd & Short'], ["#{current_user.s_name9}", 'Redzone'], ["#{current_user.s_name10}", 'Goal Line'], ["#{current_user.s_name11}", 'Coming Out'], ["#{current_user.s_name12}", 'Custom 1'], ["#{current_user.s_name13}", 'Custom 2'], ["#{current_user.s_name14}", 'Custom 3'],], :selected => f.object.situation2), {}, {class: "form-control"}) %>
-        </div> 
-
-        <div class="form-group">
-          <%= f.label :situation3, "Third Assigned Situation" %>                
-          <%= f.select(:situation3, options_for_select([[' ', ' '], ["#{current_user.s_name1}", 'Opener'], ["#{current_user.s_name2}", '1st/2nd & 10'], ["#{current_user.s_name3}", '2nd & Long'], ["#{current_user.s_name4}", '2nd & Medium'], ["#{current_user.s_name5}", '2nd & Short'], ["#{current_user.s_name6}", '3rd & Long'],["#{current_user.s_name7}", '3rd & Medium'], ["#{current_user.s_name8}", '3rd & Short'], ["#{current_user.s_name9}", 'Redzone'], ["#{current_user.s_name10}", 'Goal Line'], ["#{current_user.s_name11}", 'Coming Out'], ["#{current_user.s_name12}", 'Custom 1'], ["#{current_user.s_name13}", 'Custom 2'], ["#{current_user.s_name14}", 'Custom 3'],], :selected => f.object.situation3), {}, {class: "form-control"}) %>
-        </div> 
-
-        <div class="form-group">
-          <%= f.label :situation4, "Fourth Assigned Situation" %>
-          <%= f.select(:situation4, options_for_select([[' ', ' '], ["#{current_user.s_name1}", 'Opener'], ["#{current_user.s_name2}", '1st/2nd & 10'], ["#{current_user.s_name3}", '2nd & Long'], ["#{current_user.s_name4}", '2nd & Medium'], ["#{current_user.s_name5}", '2nd & Short'], ["#{current_user.s_name6}", '3rd & Long'],["#{current_user.s_name7}", '3rd & Medium'], ["#{current_user.s_name8}", '3rd & Short'], ["#{current_user.s_name9}", 'Redzone'], ["#{current_user.s_name10}", 'Goal Line'], ["#{current_user.s_name11}", 'Coming Out'], ["#{current_user.s_name12}", 'Custom 1'], ["#{current_user.s_name13}", 'Custom 2'], ["#{current_user.s_name14}", 'Custom 3'],], :selected => f.object.situation4), {}, {class: "form-control"}) %>            
-        </div> 
-
-        <div class="form-group">
-          <%= f.label :situation5, "Fifth Assigned Situation" %>
-          <%= f.select(:situation5, options_for_select([[' ', ' '], ["#{current_user.s_name1}", 'Opener'], ["#{current_user.s_name2}", '1st/2nd & 10'], ["#{current_user.s_name3}", '2nd & Long'], ["#{current_user.s_name4}", '2nd & Medium'], ["#{current_user.s_name5}", '2nd & Short'], ["#{current_user.s_name6}", '3rd & Long'],["#{current_user.s_name7}", '3rd & Medium'], ["#{current_user.s_name8}", '3rd & Short'], ["#{current_user.s_name9}", 'Redzone'], ["#{current_user.s_name10}", 'Goal Line'], ["#{current_user.s_name11}", 'Coming Out'], ["#{current_user.s_name12}", 'Custom 1'], ["#{current_user.s_name13}", 'Custom 2'], ["#{current_user.s_name14}", 'Custom 3'],], :selected => f.object.situation5), {}, {class: "form-control"}) %>
-        </div> 
-
-
-        <div class="form-group">
-          <%= f.label :situation6, "Sixth Assigned Situation" %>
-          <%= f.select(:situation6, options_for_select([[' ', ' '], ["#{current_user.s_name1}", 'Opener'], ["#{current_user.s_name2}", '1st/2nd & 10'], ["#{current_user.s_name3}", '2nd & Long'], ["#{current_user.s_name4}", '2nd & Medium'], ["#{current_user.s_name5}", '2nd & Short'], ["#{current_user.s_name6}", '3rd & Long'],["#{current_user.s_name7}", '3rd & Medium'], ["#{current_user.s_name8}", '3rd & Short'], ["#{current_user.s_name9}", 'Redzone'], ["#{current_user.s_name10}", 'Goal Line'], ["#{current_user.s_name11}", 'Coming Out'], ["#{current_user.s_name12}", 'Custom 1'], ["#{current_user.s_name13}", 'Custom 2'], ["#{current_user.s_name14}", 'Custom 3'],], :selected => f.object.situation6), {}, {class: "form-control"}) %>
-        </div> 
-
-        <div class="form-group">
-          <%= f.label :situation7, "Seventh Assigned Situation" %> 
-          <%= f.select(:situation7, options_for_select([[' ', ' '], ["#{current_user.s_name1}", 'Opener'], ["#{current_user.s_name2}", '1st/2nd & 10'], ["#{current_user.s_name3}", '2nd & Long'], ["#{current_user.s_name4}", '2nd & Medium'], ["#{current_user.s_name5}", '2nd & Short'], ["#{current_user.s_name6}", '3rd & Long'],["#{current_user.s_name7}", '3rd & Medium'], ["#{current_user.s_name8}", '3rd & Short'], ["#{current_user.s_name9}", 'Redzone'], ["#{current_user.s_name10}", 'Goal Line'], ["#{current_user.s_name11}", 'Coming Out'], ["#{current_user.s_name12}", 'Custom 1'], ["#{current_user.s_name13}", 'Custom 2'], ["#{current_user.s_name14}", 'Custom 3'],], :selected => f.object.situation7), {}, {class: "form-control"}) %>
-        </div> 
-
-        <div class="form-group">
-          <%= f.label :situation8, "Eighth Assigned Situation" %>
-          <%= f.select(:situation8, options_for_select([[' ', ' '], ["#{current_user.s_name1}", 'Opener'], ["#{current_user.s_name2}", '1st/2nd & 10'], ["#{current_user.s_name3}", '2nd & Long'], ["#{current_user.s_name4}", '2nd & Medium'], ["#{current_user.s_name5}", '2nd & Short'], ["#{current_user.s_name6}", '3rd & Long'],["#{current_user.s_name7}", '3rd & Medium'], ["#{current_user.s_name8}", '3rd & Short'], ["#{current_user.s_name9}", 'Redzone'], ["#{current_user.s_name10}", 'Goal Line'], ["#{current_user.s_name11}", 'Coming Out'], ["#{current_user.s_name12}", 'Custom 1'], ["#{current_user.s_name13}", 'Custom 2'], ["#{current_user.s_name14}", 'Custom 3'],], :selected => f.object.situation8), {}, {class: "form-control"}) %>
-        </div> 
-
-        <div class="form-group">
-          <%= f.label :situation9, "Ninth Assigned Situation" %>
-          <%= f.select(:situation9, options_for_select([[' ', ' '], ["#{current_user.s_name1}", 'Opener'], ["#{current_user.s_name2}", '1st/2nd & 10'], ["#{current_user.s_name3}", '2nd & Long'], ["#{current_user.s_name4}", '2nd & Medium'], ["#{current_user.s_name5}", '2nd & Short'], ["#{current_user.s_name6}", '3rd & Long'],["#{current_user.s_name7}", '3rd & Medium'], ["#{current_user.s_name8}", '3rd & Short'], ["#{current_user.s_name9}", 'Redzone'], ["#{current_user.s_name10}", 'Goal Line'], ["#{current_user.s_name11}", 'Coming Out'], ["#{current_user.s_name12}", 'Custom 1'], ["#{current_user.s_name13}", 'Custom 2'], ["#{current_user.s_name14}", 'Custom 3'],], :selected => f.object.situation9), {}, {class: "form-control"}) %>
-        </div> 
-
-        <div class="form-group">
-          <%= f.label :situation10, "Tenth Assigned Situation" %>
-          <%= f.select(:situation10, options_for_select([[' ', ' '], ["#{current_user.s_name1}", 'Opener'], ["#{current_user.s_name2}", '1st/2nd & 10'], ["#{current_user.s_name3}", '2nd & Long'], ["#{current_user.s_name4}", '2nd & Medium'], ["#{current_user.s_name5}", '2nd & Short'], ["#{current_user.s_name6}", '3rd & Long'],["#{current_user.s_name7}", '3rd & Medium'], ["#{current_user.s_name8}", '3rd & Short'], ["#{current_user.s_name9}", 'Redzone'], ["#{current_user.s_name10}", 'Goal Line'], ["#{current_user.s_name11}", 'Coming Out'], ["#{current_user.s_name12}", 'Custom 1'], ["#{current_user.s_name13}", 'Custom 2'], ["#{current_user.s_name14}", 'Custom 3'],], :selected => f.object.situation10), {}, {class: "form-control"}) %>
-        </div>         
+        <div class="table add-play-sit-table">
+          <div class="tr tr-hover">
+            <span class="td"><%= current_user.s_name1 %></span>
+            <span class="td center"><%= f.check_box :situation1 %></span>
+          </div>
+          <div class="tr tr-hover">
+            <span class="td"><%= current_user.s_name2 %></span>
+            <span class="td center"><%= f.check_box :situation2 %></span>
+          </div>
+          <div class="tr tr-hover">
+            <span class="td"><%= current_user.s_name3 %></span>
+            <span class="td center"><%= f.check_box :situation3 %></span>
+          </div>
+          <div class="tr tr-hover">
+            <span class="td"><%= current_user.s_name4 %></span>
+            <span class="td center"><%= f.check_box :situation4 %></span>
+          </div>
+          <div class="tr tr-hover">
+            <span class="td"><%= current_user.s_name5 %></span>
+            <span class="td center"><%= f.check_box :situation5 %></span>
+          </div>
+          <div class="tr tr-hover">
+            <span class="td"><%= current_user.s_name6 %></span>
+            <span class="td center"><%= f.check_box :situation6 %></span>
+          </div>
+          <div class="tr tr-hover">
+            <span class="td"><%= current_user.s_name7 %></span>
+            <span class="td center"><%= f.check_box :situation7 %></span>
+          </div>
+          <div class="tr tr-hover">
+            <span class="td"><%= current_user.s_name8 %></span>
+            <span class="td center"><%= f.check_box :situation8 %></span>
+          </div>
+          <div class="tr tr-hover">
+            <span class="td"><%= current_user.s_name9 %></span>
+            <span class="td center"><%= f.check_box :situation9 %></span>
+          </div> 
+          <div class="tr tr-hover">
+            <span class="td"><%= current_user.s_name10 %></span>
+            <span class="td center"><%= f.check_box :situation10 %></span>
+          </div> 
+          <div class="tr tr-hover">
+            <span class="td"><%= current_user.s_name11 %></span>
+            <span class="td center"><%= f.check_box :situation11 %></span>
+          </div> 
+          <div class="tr tr-hover">
+            <span class="td"><%= current_user.s_name12 %></span>
+            <span class="td center"><%= f.check_box :situation12 %></span>
+          </div> 
+          <div class="tr tr-hover">
+            <span class="td"><%= current_user.s_name13 %></span>
+            <span class="td center"><%= f.check_box :situation13 %></span>
+          </div> 
+          <div class="tr tr-hover">
+            <span class="td"><%= current_user.s_name14 %></span>
+            <span class="td center"><%= f.check_box :situation14 %></span>
+          </div>                                    
+        </div>
+       
       </div>
 
       <hr class="light-smoke">
       
       <div>
-        <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Return to Install'.html_safe, @event, class: "btn btn-custom3 btn-sm small-block" %>
+        <%= submit_tag "Update Play", class: "btn btn-custom1 btn-block" %>
 
-        <%= link_to '<i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Remove from Install'.html_safe, [@event, @play], method: :delete, class: "btn btn-custom2 btn-sm small-block pull-right", data: { confirm: 'Are you sure?' } %>
+        <hr>
+
+        <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Install Page'.html_safe, @event, class: "btn btn-custom3 btn-sm small-block" %>
+        <br>
+        <br>
+        <div>
+          <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Quick Situation Assignment'.html_safe, event_quick_assign_path(@event), class: "btn btn-custom3 btn-sm small-block" %>
+
+          <%= link_to '<i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> Remove from Install'.html_safe, [@event, @play], method: :delete, class: "btn btn-custom2 btn-sm small-block pull-right", data: { confirm: 'Are you sure?' } %>
+        </div>
       </div>
-
-      <br>
-
-      <%= submit_tag "Update Play", class: "btn btn-custom1 btn-block" %>
       
     <% end %>
   </div>

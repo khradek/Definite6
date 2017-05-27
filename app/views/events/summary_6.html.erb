@@ -62,7 +62,7 @@
       <% @pass_rights.each do |play| %>
         <div class="center summary-border white-bg" ><%= play.fullname %></div>
       <% end %>
-      <% (1..@pass_lefts_remain).each do |div| %>
+      <% (1..@pass_rights_remain).each do |div| %>
         <div class="center summary-border white-bg trans">#</div>
       <% end %>
     <div class="col-xs-2"></div>

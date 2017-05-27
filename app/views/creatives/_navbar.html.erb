@@ -58,7 +58,15 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Free Coaching Articles", articles_index_path %></li>
         <% if user_signed_in? %>
-          <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-lg" aria-hidden="true"></i> <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li class="nav-underline"><%= link_to "Account Settings", edit_user_registration_path %></li>
+              <li class=nav-top-padding><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li></li>
+            </ul>
+          </li>
+
         <% else %>
           <li><%= link_to "Sign Up", new_user_registration_path %></li>
           <li><%= link_to "Sign In", new_user_session_path %></li>  

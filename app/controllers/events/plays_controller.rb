@@ -68,6 +68,118 @@ class Events::PlaysController < ApplicationController
     end
   end
   
+  def situation1_toggle
+    @event = Event.find(params[:event_id])
+    @play = Play.find(params[:id])
+    @play.update_attribute('situation1', params[:play][:situation1])
+    
+    render :nothing => true
+  end
+
+  def situation2_toggle
+    @event = Event.find(params[:event_id])
+    @play = Play.find(params[:id])
+    @play.update_attribute('situation2', params[:play][:situation2])
+    
+    render :nothing => true
+  end
+
+  def situation3_toggle
+    @event = Event.find(params[:event_id])
+    @play = Play.find(params[:id])
+    @play.update_attribute('situation3', params[:play][:situation3])
+    
+    render :nothing => true
+  end
+
+  def situation4_toggle
+    @event = Event.find(params[:event_id])
+    @play = Play.find(params[:id])
+    @play.update_attribute('situation4', params[:play][:situation4])
+    
+    render :nothing => true
+  end
+
+  def situation5_toggle
+    @event = Event.find(params[:event_id])
+    @play = Play.find(params[:id])
+    @play.update_attribute('situation5', params[:play][:situation5])
+    
+    render :nothing => true
+  end
+
+  def situation6_toggle
+    @event = Event.find(params[:event_id])
+    @play = Play.find(params[:id])
+    @play.update_attribute('situation6', params[:play][:situation6])
+    
+    render :nothing => true
+  end
+
+  def situation7_toggle
+    @event = Event.find(params[:event_id])
+    @play = Play.find(params[:id])
+    @play.update_attribute('situation7', params[:play][:situation7])
+    
+    render :nothing => true
+  end
+
+  def situation8_toggle
+    @event = Event.find(params[:event_id])
+    @play = Play.find(params[:id])
+    @play.update_attribute('situation8', params[:play][:situation8])
+    
+    render :nothing => true
+  end
+
+  def situation9_toggle
+    @event = Event.find(params[:event_id])
+    @play = Play.find(params[:id])
+    @play.update_attribute('situation9', params[:play][:situation9])
+    
+    render :nothing => true
+  end
+
+  def situation10_toggle
+    @event = Event.find(params[:event_id])
+    @play = Play.find(params[:id])
+    @play.update_attribute('situation10', params[:play][:situation10])
+    
+    render :nothing => true
+  end
+
+  def situation11_toggle
+    @event = Event.find(params[:event_id])
+    @play = Play.find(params[:id])
+    @play.update_attribute('situation11', params[:play][:situation11])
+    
+    render :nothing => true
+  end  
+
+  def situation12_toggle
+    @event = Event.find(params[:event_id])
+    @play = Play.find(params[:id])
+    @play.update_attribute('situation12', params[:play][:situation12])
+    
+    render :nothing => true
+  end
+
+  def situation13_toggle
+    @event = Event.find(params[:event_id])
+    @play = Play.find(params[:id])
+    @play.update_attribute('situation13', params[:play][:situation13])
+    
+    render :nothing => true
+  end
+
+  def situation14_toggle
+    @event = Event.find(params[:event_id])
+    @play = Play.find(params[:id])
+    @play.update_attribute('situation14', params[:play][:situation14])
+    
+    render :nothing => true
+  end
+
   def sort
     params[:order].each do |key,value|
       Play.find(value[:id]).update_attribute(:priority,value[:position])
@@ -170,6 +282,30 @@ class Events::PlaysController < ApplicationController
       end
     end                
 
+    if params[:situation_11] == '1'
+      @plays.each do |play|
+        play.update_attribute('situation11', params[:play][:situation11])
+      end
+    end 
+    
+    if params[:situation_12] == '1'
+      @plays.each do |play|
+        play.update_attribute('situation12', params[:play][:situation12])
+      end
+    end 
+    
+    if params[:situation_13] == '1'
+      @plays.each do |play|
+        play.update_attribute('situation13', params[:play][:situation13])
+      end
+    end 
+
+    if params[:situation_14] == '1'
+      @plays.each do |play|
+        play.update_attribute('situation14', params[:play][:situation14])
+      end
+    end 
+    
     respond_to do |format|
       format.html { redirect_to @event }
     end
@@ -240,7 +376,7 @@ class Events::PlaysController < ApplicationController
     end
 
     def play_params
-      params.require(:play).permit(:piece1, :piece2, :priority, :event_id, :user_id, :period1, :period2, :period3, :period4, :situation1, :situation2, :situation3, :situation4, :situation5, :situation6, :situation7, :situation8, :situation9, :situation10, :play_type, :hash_mark)
+      params.require(:play).permit(:piece1, :piece2, :priority, :event_id, :user_id, :period1, :period2, :period3, :period4, :situation1, :situation2, :situation3, :situation4, :situation5, :situation6, :situation7, :situation8, :situation9, :situation10, :situation11, :situation12, :situation13, :situation14, :play_type, :hash_mark)
     end
 
     def correct_user

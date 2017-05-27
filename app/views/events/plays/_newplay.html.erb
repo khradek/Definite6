@@ -55,7 +55,7 @@
             <span class="td script-col3 center">4</span>
           </div>
           <div class="tr">
-            <span class="script-col1 td"></span>
+            <span class="script-col1 grey-font td"><i>For use with standard practice script</i></span>
             <span class="script-col2 td center"><%= f.check_box :period1, checked: "checked", class: "segment-check" %></span>
             <span class="script-col3 td center"><%= f.check_box :period2, checked: "checked", class: "segment-check" %></span>
             <span class="script-col3 td center"><%= f.check_box :period3, checked: "checked", class: "segment-check" %></span>
@@ -66,10 +66,9 @@
         <hr>
 
         <button type="button" class="btn btn-custom1 btn-sm", id="assign-situation-button">Assign Situation Info</button>
-        <br>
-        <br>
-
+    
         <div id="situations">
+        <hr>
           <div class="form-group">
             <%= f.label :play_type, "Run/Pass" %> 
             <div>
@@ -83,136 +82,72 @@
               <%= f.select(:hash_mark, options_for_select([[' ', ' '], ['Left', 'Left'], ['Right', 'Right']]), {}, {class: "form-control"}) %>
             </div>  
           </div>
+          
+          <br>
 
-          <div class="media">
-            <div class="media-body">
-              <table class="table table-hover">  
-                <thead>
-                  <tr>
-                    <th>Situation</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="wide-td">
-                      <div class="form-group">                        
-                        <%= f.select(:situation1, options_for_select([[' ', ' '], ["#{current_user.s_name1}", 'Opener'], ["#{current_user.s_name2}", '1st/2nd & 10'], ["#{current_user.s_name3}", '2nd & Long'], ["#{current_user.s_name4}", '2nd & Medium'], ["#{current_user.s_name5}", '2nd & Short'], ["#{current_user.s_name6}", '3rd & Long'],["#{current_user.s_name7}", '3rd & Medium'], ["#{current_user.s_name8}", '3rd & Short'], ["#{current_user.s_name9}", 'Redzone'], ["#{current_user.s_name10}", 'Goal Line'], ["#{current_user.s_name11}", 'Coming Out'], ["#{current_user.s_name12}", 'Custom 1'], ["#{current_user.s_name13}", 'Custom 2'], ["#{current_user.s_name14}", 'Custom 3'],]), {}, {class: "form-control"}) %>
-                      </div> 
-                    </td>
-                    <td class="slim-td">
-                      <button type="button" class="btn btn-custom3 btn-sm pull-right", id="situation-button1">Add Another Situation</button>
-                    </td>
-                  </tr>
-                  <tr id="situation2">
-                    <td>
-                      <div class="form-group">
-                        <%= f.select(:situation2, options_for_select([[' ', ' '], ["#{current_user.s_name1}", 'Opener'], ["#{current_user.s_name2}", '1st/2nd & 10'], ["#{current_user.s_name3}", '2nd & Long'], ["#{current_user.s_name4}", '2nd & Medium'], ["#{current_user.s_name5}", '2nd & Short'], ["#{current_user.s_name6}", '3rd & Long'],["#{current_user.s_name7}", '3rd & Medium'], ["#{current_user.s_name8}", '3rd & Short'], ["#{current_user.s_name9}", 'Redzone'], ["#{current_user.s_name10}", 'Goal Line'], ["#{current_user.s_name11}", 'Coming Out'], ["#{current_user.s_name12}", 'Custom 1'], ["#{current_user.s_name13}", 'Custom 2'], ["#{current_user.s_name14}", 'Custom 3'],]), {}, {class: "form-control"}) %>
-                      </div> 
-                    </td>
-                    <td>
-                      <button type="button" class="btn btn-custom3 btn-sm pull-right", id="situation-button2">Add Another Situation</button>
-                    </td>                  
-                  </tr>  
-                  <tr id="situation3">
-                    <td>
-                      <div class="form-group">
-                        <div id="event-select">
-                        <%= f.select(:situation3, options_for_select([[' ', ' '], ["#{current_user.s_name1}", 'Opener'], ["#{current_user.s_name2}", '1st/2nd & 10'], ["#{current_user.s_name3}", '2nd & Long'], ["#{current_user.s_name4}", '2nd & Medium'], ["#{current_user.s_name5}", '2nd & Short'], ["#{current_user.s_name6}", '3rd & Long'],["#{current_user.s_name7}", '3rd & Medium'], ["#{current_user.s_name8}", '3rd & Short'], ["#{current_user.s_name9}", 'Redzone'], ["#{current_user.s_name10}", 'Goal Line'], ["#{current_user.s_name11}", 'Coming Out'], ["#{current_user.s_name12}", 'Custom 1'], ["#{current_user.s_name13}", 'Custom 2'], ["#{current_user.s_name14}", 'Custom 3'],]), {}, {class: "form-control"}) %>
-                        </div>
-                      </div> 
-                    </td>
-                    <td>
-                      <button type="button" class="btn btn-custom3 btn-sm pull-right", id="situation-button3">Add Another Situation</button>
-                    </td>                  
-                  </tr>  
-                  <tr id="situation4">
-                    <td>
-                      <div class="form-group">
-                        <div id="event-select">
-                        <%= f.select(:situation4, options_for_select([[' ', ' '], ["#{current_user.s_name1}", 'Opener'], ["#{current_user.s_name2}", '1st/2nd & 10'], ["#{current_user.s_name3}", '2nd & Long'], ["#{current_user.s_name4}", '2nd & Medium'], ["#{current_user.s_name5}", '2nd & Short'], ["#{current_user.s_name6}", '3rd & Long'],["#{current_user.s_name7}", '3rd & Medium'], ["#{current_user.s_name8}", '3rd & Short'], ["#{current_user.s_name9}", 'Redzone'], ["#{current_user.s_name10}", 'Goal Line'], ["#{current_user.s_name11}", 'Coming Out'], ["#{current_user.s_name12}", 'Custom 1'], ["#{current_user.s_name13}", 'Custom 2'], ["#{current_user.s_name14}", 'Custom 3'],]), {}, {class: "form-control"}) %>
-                        </div>
-                      </div> 
-                    </td>
-                    <td>
-                      <button type="button" class="btn btn-custom3 btn-sm pull-right", id="situation-button4">Add Another Situation</button>
-                    </td>                  
-                  </tr> 
-                  <tr id="situation5">
-                    <td>
-                      <div class="form-group">
-                        <div id="event-select">
-                        <%= f.select(:situation5, options_for_select([[' ', ' '], ["#{current_user.s_name1}", 'Opener'], ["#{current_user.s_name2}", '1st/2nd & 10'], ["#{current_user.s_name3}", '2nd & Long'], ["#{current_user.s_name4}", '2nd & Medium'], ["#{current_user.s_name5}", '2nd & Short'], ["#{current_user.s_name6}", '3rd & Long'],["#{current_user.s_name7}", '3rd & Medium'], ["#{current_user.s_name8}", '3rd & Short'], ["#{current_user.s_name9}", 'Redzone'], ["#{current_user.s_name10}", 'Goal Line'], ["#{current_user.s_name11}", 'Coming Out'], ["#{current_user.s_name12}", 'Custom 1'], ["#{current_user.s_name13}", 'Custom 2'], ["#{current_user.s_name14}", 'Custom 3'],]), {}, {class: "form-control"}) %>
-                        </div>
-                      </div> 
-                    </td>
-                    <td>
-                      <button type="button" class="btn btn-custom3 btn-sm pull-right", id="situation-button5">Add Another Situation</button>
-                    </td>                  
-                  </tr> 
-                  <tr id="situation6">
-                    <td>
-                      <div class="form-group">
-                        <div id="event-select">
-                        <%= f.select(:situation6, options_for_select([[' ', ' '], ["#{current_user.s_name1}", 'Opener'], ["#{current_user.s_name2}", '1st/2nd & 10'], ["#{current_user.s_name3}", '2nd & Long'], ["#{current_user.s_name4}", '2nd & Medium'], ["#{current_user.s_name5}", '2nd & Short'], ["#{current_user.s_name6}", '3rd & Long'],["#{current_user.s_name7}", '3rd & Medium'], ["#{current_user.s_name8}", '3rd & Short'], ["#{current_user.s_name9}", 'Redzone'], ["#{current_user.s_name10}", 'Goal Line'], ["#{current_user.s_name11}", 'Coming Out'], ["#{current_user.s_name12}", 'Custom 1'], ["#{current_user.s_name13}", 'Custom 2'], ["#{current_user.s_name14}", 'Custom 3'],]), {}, {class: "form-control"}) %>
-                        </div>
-                      </div> 
-                    </td>
-                    <td>
-                      <button type="button" class="btn btn-custom3 btn-sm pull-right", id="situation-button6">Add Another Situation</button>
-                    </td>                  
-                  </tr> 
-                  <tr id="situation7">
-                    <td>
-                      <div class="form-group">
-                        <div id="event-select">
-                        <%= f.select(:situation7, options_for_select([[' ', ' '], ["#{current_user.s_name1}", 'Opener'], ["#{current_user.s_name2}", '1st/2nd & 10'], ["#{current_user.s_name3}", '2nd & Long'], ["#{current_user.s_name4}", '2nd & Medium'], ["#{current_user.s_name5}", '2nd & Short'], ["#{current_user.s_name6}", '3rd & Long'],["#{current_user.s_name7}", '3rd & Medium'], ["#{current_user.s_name8}", '3rd & Short'], ["#{current_user.s_name9}", 'Redzone'], ["#{current_user.s_name10}", 'Goal Line'], ["#{current_user.s_name11}", 'Coming Out'], ["#{current_user.s_name12}", 'Custom 1'], ["#{current_user.s_name13}", 'Custom 2'], ["#{current_user.s_name14}", 'Custom 3'],]), {}, {class: "form-control"}) %>
-                        </div>
-                      </div> 
-                    </td>
-                    <td>
-                      <button type="button" class="btn btn-custom3 btn-sm pull-right", id="situation-button7">Add Another Situation</button>
-                    </td>                  
-                  </tr> 
-                  <tr id="situation8">
-                    <td>
-                      <div class="form-group">
-                        <div id="event-select">
-                        <%= f.select(:situation8, options_for_select([[' ', ' '], ["#{current_user.s_name1}", 'Opener'], ["#{current_user.s_name2}", '1st/2nd & 10'], ["#{current_user.s_name3}", '2nd & Long'], ["#{current_user.s_name4}", '2nd & Medium'], ["#{current_user.s_name5}", '2nd & Short'], ["#{current_user.s_name6}", '3rd & Long'],["#{current_user.s_name7}", '3rd & Medium'], ["#{current_user.s_name8}", '3rd & Short'], ["#{current_user.s_name9}", 'Redzone'], ["#{current_user.s_name10}", 'Goal Line'], ["#{current_user.s_name11}", 'Coming Out'], ["#{current_user.s_name12}", 'Custom 1'], ["#{current_user.s_name13}", 'Custom 2'], ["#{current_user.s_name14}", 'Custom 3'],]), {}, {class: "form-control"}) %>
-                        </div>
-                      </div> 
-                    </td>
-                    <td>
-                      <button type="button" class="btn btn-custom3 btn-sm pull-right", id="situation-button8">Add Another Situation</button>
-                    </td>                  
-                  </tr> 
-                  <tr id="situation9">
-                    <td>
-                      <div class="form-group">
-                        <div id="event-select">
-                        <%= f.select(:situation9, options_for_select([[' ', ' '], ["#{current_user.s_name1}", 'Opener'], ["#{current_user.s_name2}", '1st/2nd & 10'], ["#{current_user.s_name3}", '2nd & Long'], ["#{current_user.s_name4}", '2nd & Medium'], ["#{current_user.s_name5}", '2nd & Short'], ["#{current_user.s_name6}", '3rd & Long'],["#{current_user.s_name7}", '3rd & Medium'], ["#{current_user.s_name8}", '3rd & Short'], ["#{current_user.s_name9}", 'Redzone'], ["#{current_user.s_name10}", 'Goal Line'], ["#{current_user.s_name11}", 'Coming Out'], ["#{current_user.s_name12}", 'Custom 1'], ["#{current_user.s_name13}", 'Custom 2'], ["#{current_user.s_name14}", 'Custom 3'],]), {}, {class: "form-control"}) %>
-                        </div>
-                      </div> 
-                    </td>
-                    <td>
-                      <button type="button" class="btn btn-custom3 btn-sm pull-right", id="situation-button9">Add Another Situation</button>
-                    </td>                  
-                  </tr> 
-                  <tr id="situation10">
-                    <td>
-                      <div class="form-group">
-                        <div id="event-select">
-                        <%= f.select(:situation10, options_for_select([[' ', ' '], ["#{current_user.s_name1}", 'Opener'], ["#{current_user.s_name2}", '1st/2nd & 10'], ["#{current_user.s_name3}", '2nd & Long'], ["#{current_user.s_name4}", '2nd & Medium'], ["#{current_user.s_name5}", '2nd & Short'], ["#{current_user.s_name6}", '3rd & Long'],["#{current_user.s_name7}", '3rd & Medium'], ["#{current_user.s_name8}", '3rd & Short'], ["#{current_user.s_name9}", 'Redzone'], ["#{current_user.s_name10}", 'Goal Line'], ["#{current_user.s_name11}", 'Coming Out'], ["#{current_user.s_name12}", 'Custom 1'], ["#{current_user.s_name13}", 'Custom 2'], ["#{current_user.s_name14}", 'Custom 3'],]), {}, {class: "form-control"}) %>
-                        </div>
-                      </div> 
-                    </td>
-                    <td>
-                      <button type="button" disabled class="btn btn-custom2 btn-sm pull-right", id="situation-button10">All Spaces Used</button>
-                    </td>                  
-                  </tr>                                                                            
-                </tbody>
-              </table>  
+          <div class="table add-play-sit-table">
+            <div class="tr">
+              <span class="td"><strong>Situation:</strong></span>
+              <span class="td center"></span>
             </div>
+            <div class="tr tr-hover">
+              <span class="td"><%= current_user.s_name1 %></span>
+              <span class="td center"><%= f.check_box :situation1 %></span>
+            </div>
+            <div class="tr tr-hover">
+              <span class="td"><%= current_user.s_name2 %></span>
+              <span class="td center"><%= f.check_box :situation2 %></span>
+            </div>
+            <div class="tr tr-hover">
+              <span class="td"><%= current_user.s_name3 %></span>
+              <span class="td center"><%= f.check_box :situation3 %></span>
+            </div>
+            <div class="tr tr-hover">
+              <span class="td"><%= current_user.s_name4 %></span>
+              <span class="td center"><%= f.check_box :situation4 %></span>
+            </div>
+            <div class="tr tr-hover">
+              <span class="td"><%= current_user.s_name5 %></span>
+              <span class="td center"><%= f.check_box :situation5 %></span>
+            </div>
+            <div class="tr tr-hover">
+              <span class="td"><%= current_user.s_name6 %></span>
+              <span class="td center"><%= f.check_box :situation6 %></span>
+            </div>
+            <div class="tr tr-hover">
+              <span class="td"><%= current_user.s_name7 %></span>
+              <span class="td center"><%= f.check_box :situation7 %></span>
+            </div>
+            <div class="tr tr-hover">
+              <span class="td"><%= current_user.s_name8 %></span>
+              <span class="td center"><%= f.check_box :situation8 %></span>
+            </div>
+            <div class="tr tr-hover">
+              <span class="td"><%= current_user.s_name9 %></span>
+              <span class="td center"><%= f.check_box :situation9 %></span>
+            </div> 
+            <div class="tr tr-hover">
+              <span class="td"><%= current_user.s_name10 %></span>
+              <span class="td center"><%= f.check_box :situation10 %></span>
+            </div> 
+            <div class="tr tr-hover">
+              <span class="td"><%= current_user.s_name11 %></span>
+              <span class="td center"><%= f.check_box :situation11 %></span>
+            </div> 
+            <div class="tr tr-hover">
+              <span class="td"><%= current_user.s_name12 %></span>
+              <span class="td center"><%= f.check_box :situation12 %></span>
+            </div> 
+            <div class="tr tr-hover">
+              <span class="td"><%= current_user.s_name13 %></span>
+              <span class="td center"><%= f.check_box :situation13 %></span>
+            </div> 
+            <div class="tr tr-hover">
+              <span class="td"><%= current_user.s_name14 %></span>
+              <span class="td center"><%= f.check_box :situation14 %></span>
+            </div>                                    
           </div>
+
         </div>  
 
 

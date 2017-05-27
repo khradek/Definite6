@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   resources :events do
     get :import_plays, on: :member
     get :print
-    get :sortable
+    get :quick_assign
     get :summary_1
     get :summary_2
     get :summary_3
@@ -54,6 +54,20 @@ Rails.application.routes.draw do
         put :toggle2
         put :toggle3
         put :toggle4
+        put :situation1_toggle
+        put :situation2_toggle
+        put :situation3_toggle 
+        put :situation4_toggle 
+        put :situation5_toggle 
+        put :situation6_toggle 
+        put :situation7_toggle 
+        put :situation8_toggle 
+        put :situation9_toggle 
+        put :situation10_toggle 
+        put :situation11_toggle 
+        put :situation12_toggle 
+        put :situation13_toggle 
+        put :situation14_toggle                
       end
   	end
 

@@ -11,6 +11,7 @@ $(document).on('page:change', function() {
 	  $('#situations').toggle();
 	});
 
+/*
   $('#situation-button1').off();
 	$('#situation-button1').click(function() {
 	  $('#situation2').toggle();
@@ -64,6 +65,7 @@ $(document).on('page:change', function() {
 	  $('#situation10').toggle();
 	  $(this).hide();
 	});
+*/
 
   //Shows/hides the saved formation & play dropdowns in the add play modal 
   $('.show-saved-plays').off();
@@ -279,6 +281,25 @@ $(document).on('page:change', function() {
     $(".multi-situation10").toggle();
   });
 
+  $("#situation_11").off();
+  $("#situation_11").change(function(){
+    $(".multi-situation11").toggle();
+  });
+
+  $("#situation_12").off();
+  $("#situation_12").change(function(){
+    $(".multi-situation12").toggle();
+  });
+
+  $("#situation_13").off();
+  $("#situation_13").change(function(){
+    $(".multi-situation13").toggle();
+  });
+
+  $("#situation_14").off();
+  $("#situation_14").change(function(){
+    $(".multi-situation14").toggle();
+  });
 
 
   /////////Edit Play Page/////////

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170507192500) do
+ActiveRecord::Schema.define(version: 20170525223718) do
 
   create_table "charges", force: true do |t|
     t.integer  "user_id"
@@ -165,19 +165,23 @@ ActiveRecord::Schema.define(version: 20170507192500) do
     t.boolean  "period3",     default: false, null: false
     t.boolean  "period4",     default: false, null: false
     t.integer  "priority"
-    t.string   "situation1"
-    t.string   "situation2"
-    t.string   "situation3"
-    t.string   "situation4"
-    t.string   "situation5"
-    t.string   "situation6"
-    t.string   "situation7"
-    t.string   "situation8"
-    t.string   "situation9"
-    t.string   "situation10"
     t.string   "play_type"
     t.string   "hash_mark"
     t.string   "piece2"
+    t.boolean  "situation1",  default: false, null: false
+    t.boolean  "situation2",  default: false, null: false
+    t.boolean  "situation3",  default: false, null: false
+    t.boolean  "situation4",  default: false, null: false
+    t.boolean  "situation5",  default: false, null: false
+    t.boolean  "situation6",  default: false, null: false
+    t.boolean  "situation7",  default: false, null: false
+    t.boolean  "situation8",  default: false, null: false
+    t.boolean  "situation9",  default: false, null: false
+    t.boolean  "situation10", default: false, null: false
+    t.boolean  "situation11", default: false, null: false
+    t.boolean  "situation12", default: false, null: false
+    t.boolean  "situation13", default: false, null: false
+    t.boolean  "situation14", default: false, null: false
   end
 
   add_index "plays", ["event_id"], name: "index_plays_on_event_id"

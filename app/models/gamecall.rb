@@ -62,7 +62,7 @@ class Gamecall < ActiveRecord::Base
     new_data2 = default_gamecall.gc_data2
 
     #----------Openers----------
-    openers = event.plays.where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', 'Opener', 'Opener', 'Opener', 'Opener', 'Opener', 'Opener', 'Opener', 'Opener', 'Opener', 'Opener')
+    openers = event.plays.where('situation1 = ?', true)
     openersLeft = openers.where('hash_mark = ?', 'Left')
     openersRight = openers.where('hash_mark = ?', 'Right')
 
@@ -646,7 +646,7 @@ class Gamecall < ActiveRecord::Base
     #----------End Openers---------- 
 
     #----------1st/2nd & 10----------
-    firstTens = event.plays.where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', '1st/2nd & 10', '1st/2nd & 10', '1st/2nd & 10', '1st/2nd & 10', '1st/2nd & 10', '1st/2nd & 10', '1st/2nd & 10', '1st/2nd & 10', '1st/2nd & 10', '1st/2nd & 10')
+    firstTens = event.plays.where('situation2 = ?', true)
      
     runFirstTens = firstTens.where('play_type = ?', 'Run')
     runFirstTensLeft = runFirstTens.where('hash_mark = ?', 'Left')
@@ -1454,7 +1454,7 @@ class Gamecall < ActiveRecord::Base
     #----------End 1st/2nd & 10----------
 
     #----------2nd & Long----------
-    secondLongs = event.plays.where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', '2nd & Long', '2nd & Long', '2nd & Long', '2nd & Long', '2nd & Long', '2nd & Long', '2nd & Long', '2nd & Long', '2nd & Long', '2nd & Long')
+    secondLongs = event.plays.where('situation3 = ?', true)
      
     runSecondLongs = secondLongs.where('play_type = ?', 'Run')
     runSecondLongsLeft = runSecondLongs.where('hash_mark = ?', 'Left')
@@ -2262,7 +2262,7 @@ class Gamecall < ActiveRecord::Base
     #----------End 2nd & Long -----------
 
     #----------3rd & Long ----------
-    thirdLongs = event.plays.where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', '3rd & Long', '3rd & Long', '3rd & Long', '3rd & Long', '3rd & Long', '3rd & Long', '3rd & Long', '3rd & Long', '3rd & Long', '3rd & Long')
+    thirdLongs = event.plays.where('situation6 = ?', true)
      
     runThirdLongs = thirdLongs.where('play_type = ?', 'Run')
     runThirdLongsLeft = runThirdLongs.where('hash_mark = ?', 'Left')
@@ -3070,7 +3070,7 @@ class Gamecall < ActiveRecord::Base
     #----------End 3rd & Long----------
 
     #----------2nd & Medium----------
-    secondMediums = event.plays.where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', '2nd & Medium', '2nd & Medium', '2nd & Medium', '2nd & Medium', '2nd & Medium', '2nd & Medium', '2nd & Medium', '2nd & Medium', '2nd & Medium', '2nd & Medium')
+    secondMediums = event.plays.where('situation4 = ?', true)
      
     runSecondMediums = secondMediums.where('play_type = ?', 'Run')
     runSecondMediumsLeft = runSecondMediums.where('hash_mark = ?', 'Left')
@@ -3878,7 +3878,7 @@ class Gamecall < ActiveRecord::Base
     #----------End 2nd & Medium--------
 
     #----------3rd & Medium----------
-    thirdMediums = event.plays.where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', '3rd & Medium', '3rd & Medium', '3rd & Medium', '3rd & Medium', '3rd & Medium', '3rd & Medium', '3rd & Medium', '3rd & Medium', '3rd & Medium', '3rd & Medium')
+    thirdMediums = event.plays.where('situation7 = ?', true)
      
     runThirdMediums = thirdMediums.where('play_type = ?', 'Run')
     runThirdMediumsLeft = runThirdMediums.where('hash_mark = ?', 'Left')
@@ -4686,7 +4686,7 @@ class Gamecall < ActiveRecord::Base
     #----------End 3rd & Medium---------
 
     #----------2nd & Short----------
-    secondShorts = event.plays.where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', '2nd & Short', '2nd & Short', '2nd & Short', '2nd & Short', '2nd & Short', '2nd & Short', '2nd & Short', '2nd & Short', '2nd & Short', '2nd & Short')
+    secondShorts = event.plays.where('situation5 = ?', true)
      
     runSecondShorts = secondShorts.where('play_type = ?', 'Run')
     runSecondShortsLeft = runSecondShorts.where('hash_mark = ?', 'Left')
@@ -5494,7 +5494,7 @@ class Gamecall < ActiveRecord::Base
     #----------End 2nd & Short----------
 
     #----------3rd & Short----------
-    thirdShorts = event.plays.where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', '3rd & Short', '3rd & Short', '3rd & Short', '3rd & Short', '3rd & Short', '3rd & Short', '3rd & Short', '3rd & Short', '3rd & Short', '3rd & Short')
+    thirdShorts = event.plays.where('situation8 = ?', true)
      
     runThirdShorts = thirdShorts.where('play_type = ?', 'Run')
     runThirdShortsLeft = runThirdShorts.where('hash_mark = ?', 'Left')
@@ -6302,7 +6302,7 @@ class Gamecall < ActiveRecord::Base
     #----------End 3rd & Short----------
 
     #----------Redzone----------
-    redzones = event.plays.where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', 'Redzone', 'Redzone', 'Redzone', 'Redzone', 'Redzone', 'Redzone', 'Redzone', 'Redzone', 'Redzone', 'Redzone')
+    redzones = event.plays.where('situation9 = ?', true)
      
     runredzones = redzones.where('play_type = ?', 'Run')
     runredzonesLeft = runredzones.where('hash_mark = ?', 'Left')
@@ -7110,7 +7110,7 @@ class Gamecall < ActiveRecord::Base
     #----------End Red Zone-------------
 
     #----------Goal Line----------
-    goalines = event.plays.where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', 'Goal Line', 'Goal Line', 'Goal Line', 'Goal Line', 'Goal Line', 'Goal Line', 'Goal Line', 'Goal Line', 'Goal Line', 'Goal Line')
+    goalines = event.plays.where('situation10 = ?', true)
      
     rungoalines = goalines.where('play_type = ?', 'Run')
     rungoalinesLeft = rungoalines.where('hash_mark = ?', 'Left')
@@ -7918,7 +7918,7 @@ class Gamecall < ActiveRecord::Base
     #----------End Goal Line------------
 
     #----------Coming Out----------
-    comingOuts = event.plays.where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', 'Coming Out', 'Coming Out', 'Coming Out', 'Coming Out', 'Coming Out', 'Coming Out', 'Coming Out', 'Coming Out', 'Coming Out', 'Coming Out')
+    comingOuts = event.plays.where('situation11 = ?', true)
      
     runComingOuts = comingOuts.where('play_type = ?', 'Run')
     runComingOutsLeft = runComingOuts.where('hash_mark = ?', 'Left')
@@ -8726,7 +8726,7 @@ class Gamecall < ActiveRecord::Base
     #----------End Coming Out-----------
 
     #----------Custom 1----------
-    customOnes = event.plays.where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', 'Custom 1', 'Custom 1', 'Custom 1', 'Custom 1', 'Custom 1', 'Custom 1', 'Custom 1', 'Custom 1', 'Custom 1', 'Custom 1')
+    customOnes = event.plays.where('situation12 = ?', true)
      
     runCustomOnes = customOnes.where('play_type = ?', 'Run')
     runCustomOnesLeft = runCustomOnes.where('hash_mark = ?', 'Left')
@@ -9534,7 +9534,7 @@ class Gamecall < ActiveRecord::Base
     #----------End Custom 1-------------
 
     #----------Custom 2----------
-    customTwos = event.plays.where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', 'Custom 2', 'Custom 2', 'Custom 2', 'Custom 2', 'Custom 2', 'Custom 2', 'Custom 2', 'Custom 2', 'Custom 2', 'Custom 2')
+    customTwos = event.plays.where('situation13 = ?', true)
      
     runCustomTwos = customTwos.where('play_type = ?', 'Run')
     runCustomTwosLeft = runCustomTwos.where('hash_mark = ?', 'Left')
@@ -10342,7 +10342,7 @@ class Gamecall < ActiveRecord::Base
     #----------End Custom 2-------------
 
     #----------Custom 3----------
-    customThrees = event.plays.where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', 'Custom 3', 'Custom 3', 'Custom 3', 'Custom 3', 'Custom 3', 'Custom 3', 'Custom 3', 'Custom 3', 'Custom 3', 'Custom 3')
+    customThrees = event.plays.where('situation14 = ?', true)
     customThreesLeft = customThrees.where('hash_mark = ?', 'Left')
     customThreesRight = customThrees.where('hash_mark = ?', 'Right')
      
@@ -10910,7 +10910,7 @@ class Gamecall < ActiveRecord::Base
     title = self.title
 
     #----------Openers----------
-    openers = event.plays.where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', 'Opener', 'Opener', 'Opener', 'Opener', 'Opener', 'Opener', 'Opener', 'Opener', 'Opener', 'Opener')
+    openers = event.plays.where('situation1 = ?', true)
     openersLeft = openers.where('hash_mark = ?', 'Left')
     openersRight = openers.where('hash_mark = ?', 'Right')
 
@@ -11010,7 +11010,7 @@ class Gamecall < ActiveRecord::Base
     #----------End Openers----------
 
     #----------1st/2nd & 10----------
-    firstTens = event.plays.where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', '1st/2nd & 10', '1st/2nd & 10', '1st/2nd & 10', '1st/2nd & 10', '1st/2nd & 10', '1st/2nd & 10', '1st/2nd & 10', '1st/2nd & 10', '1st/2nd & 10', '1st/2nd & 10')
+    firstTens = event.plays.where('situation2 = ?', true)
      
     runFirstTens = firstTens.where('play_type = ?', 'Run')
     runFirstTensLeft = runFirstTens.where('hash_mark = ?', 'Left')
@@ -11621,7 +11621,7 @@ class Gamecall < ActiveRecord::Base
     #----------End 1st/2nd & 10----------
 
     #----------2nd & Long----------
-    secondLongs = event.plays.where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', '2nd & Long', '2nd & Long', '2nd & Long', '2nd & Long', '2nd & Long', '2nd & Long', '2nd & Long', '2nd & Long', '2nd & Long', '2nd & Long')
+    secondLongs = event.plays.where('situation3 = ?', true)
      
     runSecondLongs = secondLongs.where('play_type = ?', 'Run')
     runSecondLongsLeft = runSecondLongs.where('hash_mark = ?', 'Left')
@@ -12082,7 +12082,7 @@ class Gamecall < ActiveRecord::Base
     #----------End 2nd & Long ----------
 
     #----------3rd & Long ----------
-    thirdLongs = event.plays.where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', '3rd & Long', '3rd & Long', '3rd & Long', '3rd & Long', '3rd & Long', '3rd & Long', '3rd & Long', '3rd & Long', '3rd & Long', '3rd & Long')
+    thirdLongs = event.plays.where('situation6 = ?', true)
      
     runThirdLongs = thirdLongs.where('play_type = ?', 'Run')
     runThirdLongsLeft = runThirdLongs.where('hash_mark = ?', 'Left')
@@ -12541,7 +12541,7 @@ class Gamecall < ActiveRecord::Base
     #----------End 3rd & Long----------    
 
     #----------2nd & Medium----------
-    secondMediums = event.plays.where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', '2nd & Medium', '2nd & Medium', '2nd & Medium', '2nd & Medium', '2nd & Medium', '2nd & Medium', '2nd & Medium', '2nd & Medium', '2nd & Medium', '2nd & Medium')
+    secondMediums = event.plays.where('situation4 = ?', true)
      
     runSecondMediums = secondMediums.where('play_type = ?', 'Run')
     runSecondMediumsLeft = runSecondMediums.where('hash_mark = ?', 'Left')
@@ -12954,7 +12954,7 @@ class Gamecall < ActiveRecord::Base
     #----------End 2nd & Medium----------
 
     #----------3rd & Medium----------
-    thirdMediums = event.plays.where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', '3rd & Medium', '3rd & Medium', '3rd & Medium', '3rd & Medium', '3rd & Medium', '3rd & Medium', '3rd & Medium', '3rd & Medium', '3rd & Medium', '3rd & Medium')
+    thirdMediums = event.plays.where('situation7 = ?', true)
      
     runThirdMediums = thirdMediums.where('play_type = ?', 'Run')
     runThirdMediumsLeft = runThirdMediums.where('hash_mark = ?', 'Left')
@@ -13368,7 +13368,7 @@ class Gamecall < ActiveRecord::Base
     #----------End 3rd & Medium----------
 
     #----------2nd & Short----------
-    secondShorts = event.plays.where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', '2nd & Short', '2nd & Short', '2nd & Short', '2nd & Short', '2nd & Short', '2nd & Short', '2nd & Short', '2nd & Short', '2nd & Short', '2nd & Short')
+    secondShorts = event.plays.where('situation5 = ?', true)
      
     runSecondShorts = secondShorts.where('play_type = ?', 'Run')
     runSecondShortsLeft = runSecondShorts.where('hash_mark = ?', 'Left')
@@ -13780,7 +13780,7 @@ class Gamecall < ActiveRecord::Base
     #----------End 2nd & Short----------
 
     #----------3rd & Short----------
-    thirdShorts = event.plays.where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', '3rd & Short', '3rd & Short', '3rd & Short', '3rd & Short', '3rd & Short', '3rd & Short', '3rd & Short', '3rd & Short', '3rd & Short', '3rd & Short')
+    thirdShorts = event.plays.where('situation8 = ?', true)
      
     runThirdShorts = thirdShorts.where('play_type = ?', 'Run')
     runThirdShortsLeft = runThirdShorts.where('hash_mark = ?', 'Left')
@@ -14192,7 +14192,7 @@ class Gamecall < ActiveRecord::Base
     #----------End 3rd & Short----------    
 
     #----------Redzone----------
-    redzones = event.plays.where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', 'Redzone', 'Redzone', 'Redzone', 'Redzone', 'Redzone', 'Redzone', 'Redzone', 'Redzone', 'Redzone', 'Redzone')
+    redzones = event.plays.where('situation9 = ?', true)
      
     runredzones = redzones.where('play_type = ?', 'Run')
     runredzonesLeft = runredzones.where('hash_mark = ?', 'Left')
@@ -14802,7 +14802,7 @@ class Gamecall < ActiveRecord::Base
     #----------End Redzone---------- 
 
     #----------Goal Line----------
-    goalines = event.plays.where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', 'Goal Line', 'Goal Line', 'Goal Line', 'Goal Line', 'Goal Line', 'Goal Line', 'Goal Line', 'Goal Line', 'Goal Line', 'Goal Line')
+    goalines = event.plays.where('situation10 = ?', true)
      
     rungoalines = goalines.where('play_type = ?', 'Run')
     rungoalinesLeft = rungoalines.where('hash_mark = ?', 'Left')
@@ -15411,7 +15411,7 @@ class Gamecall < ActiveRecord::Base
     #----------End Goaline----------  
 
     #----------Coming Out----------
-    comingOuts = event.plays.where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', 'Coming Out', 'Coming Out', 'Coming Out', 'Coming Out', 'Coming Out', 'Coming Out', 'Coming Out', 'Coming Out', 'Coming Out', 'Coming Out')
+    comingOuts = event.plays.where('situation11 = ?', true)
      
     runComingOuts = comingOuts.where('play_type = ?', 'Run')
     runComingOutsLeft = runComingOuts.where('hash_mark = ?', 'Left')
@@ -16020,7 +16020,7 @@ class Gamecall < ActiveRecord::Base
     #----------End Coming Out---------- 
 
     #----------Custom 1----------
-    customOnes = event.plays.where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', 'Custom 1', 'Custom 1', 'Custom 1', 'Custom 1', 'Custom 1', 'Custom 1', 'Custom 1', 'Custom 1', 'Custom 1', 'Custom 1')
+    customOnes = event.plays.where('situation12 = ?', true)
      
     runCustomOnes = customOnes.where('play_type = ?', 'Run')
     runCustomOnesLeft = runCustomOnes.where('hash_mark = ?', 'Left')
@@ -16629,7 +16629,7 @@ class Gamecall < ActiveRecord::Base
     #----------End Custom 1----------   
 
     #----------Custom 2----------
-    customTwos = event.plays.where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', 'Custom 2', 'Custom 2', 'Custom 2', 'Custom 2', 'Custom 2', 'Custom 2', 'Custom 2', 'Custom 2', 'Custom 2', 'Custom 2')
+    customTwos = event.plays.where('situation13 = ?', true)
      
     runCustomTwos = customTwos.where('play_type = ?', 'Run')
     runCustomTwosLeft = runCustomTwos.where('hash_mark = ?', 'Left')
@@ -17238,7 +17238,7 @@ class Gamecall < ActiveRecord::Base
     #----------End Custom 2---------- 
 
     #----------Custom 3----------
-    customThrees = event.plays.where('situation1 = ? or situation2 = ? or situation3 = ? or situation4 = ? or situation5 = ? or situation6 = ? or situation7 = ? or situation8 = ? or situation9 = ? or situation10 = ?', 'Custom 3', 'Custom 3', 'Custom 3', 'Custom 3', 'Custom 3', 'Custom 3', 'Custom 3', 'Custom 3', 'Custom 3', 'Custom 3')
+    customThrees = event.plays.where('situation14 = ?', true)
     customThreesLeft = customThrees.where('hash_mark = ?', 'Left')
     customThreesRight = customThrees.where('hash_mark = ?', 'Right')
      

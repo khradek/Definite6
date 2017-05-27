@@ -1,0 +1,77 @@
+<% @title = "Quick Situation Assignment - Definite6.com"%>
+
+<br>
+
+<p class="large-text center">Quick Situation Assignment</p>
+
+<br>
+
+<div class="hidden event-id"><%= @event.id %></div>
+
+<div class="quick-assign-pseudo">
+  <div class="table no-margin-bottom">
+    <div class="tr">
+      <span class="td fake-h4 quick-assign-play"><strong>Play Name</strong></span>
+      <span class="td small-font center quick-assign-check"><strong><%= current_user.s_name1 %></strong></span>
+      <span class="td small-font center quick-assign-check"><strong><%= current_user.s_name2 %></strong></span>
+      <span class="td small-font center quick-assign-check"><strong><%= current_user.s_name3 %></strong></span>
+      <span class="td small-font center quick-assign-check"><strong><%= current_user.s_name4 %></strong></span>
+      <span class="td small-font center quick-assign-check"><strong><%= current_user.s_name5 %></strong></span>
+      <span class="td small-font center quick-assign-check"><strong><%= current_user.s_name6 %></strong></span>
+      <span class="td small-font center quick-assign-check"><strong><%= current_user.s_name7 %></strong></span>
+      <span class="td small-font center quick-assign-check"><strong><%= current_user.s_name8 %></strong></span>
+      <span class="td small-font center quick-assign-check"><strong><%= current_user.s_name9 %></strong></span>
+      <span class="td small-font center quick-assign-check"><strong><%= current_user.s_name10 %></strong></span>
+      <span class="td small-font center quick-assign-check"><strong><%= current_user.s_name11 %></strong></span>
+      <span class="td small-font center quick-assign-check"><strong><%= current_user.s_name12 %></strong></span>
+      <span class="td small-font center quick-assign-check"><strong><%= current_user.s_name13 %></strong></span>
+      <span class="td small-font center quick-assign-check"><strong><%= current_user.s_name14 %></strong></span>
+    </div> 
+  </div>
+</div>
+
+<div class="quick-assign-box">
+  <div class="table">
+      <div class="tr quick-assign-header">
+        <span class="td fake-h4 quick-assign-play"><strong>Play Name</strong></span>
+        <span class="td small-font center quick-assign-check"><strong><%= current_user.s_name1 %></strong></span>
+        <span class="td small-font center quick-assign-check"><strong><%= current_user.s_name2 %></strong></span>
+        <span class="td small-font center quick-assign-check"><strong><%= current_user.s_name3 %></strong></span>
+        <span class="td small-font center quick-assign-check"><strong><%= current_user.s_name4 %></strong></span>
+        <span class="td small-font center quick-assign-check"><strong><%= current_user.s_name5 %></strong></span>
+        <span class="td small-font center quick-assign-check"><strong><%= current_user.s_name6 %></strong></span>
+        <span class="td small-font center quick-assign-check"><strong><%= current_user.s_name7 %></strong></span>
+        <span class="td small-font center quick-assign-check"><strong><%= current_user.s_name8 %></strong></span>
+        <span class="td small-font center quick-assign-check"><strong><%= current_user.s_name9 %></strong></span>
+        <span class="td small-font center quick-assign-check"><strong><%= current_user.s_name10 %></strong></span>
+        <span class="td small-font center quick-assign-check"><strong><%= current_user.s_name11 %></strong></span>
+        <span class="td small-font center quick-assign-check"><strong><%= current_user.s_name12 %></strong></span>
+        <span class="td small-font center quick-assign-check"><strong><%= current_user.s_name13 %></strong></span>
+        <span class="td small-font center quick-assign-check"><strong><%= current_user.s_name14 %></strong></span>
+      </div>      
+    <% @plays.each do |play| %>  
+      <div class="tr">
+        <span class="td grey-font bold-font quick-assign-play"><%= link_to play.fullname, edit_event_play_path(@event, play), class: "grey-font bold-font" %></span>
+        <span class="td center quick-assign-check"><%= check_box_tag "situation1", play.id, play.situation1, class: "situation1-check" %></span>
+        <span class="td center quick-assign-check"><%= check_box_tag "situation2", play.id, play.situation2, class: "situation2-check" %></span>
+        <span class="td center quick-assign-check"><%= check_box_tag "situation3", play.id, play.situation3, class: "situation3-check" %></span>
+        <span class="td center quick-assign-check"><%= check_box_tag "situation4", play.id, play.situation4, class: "situation4-check" %></span>
+        <span class="td center quick-assign-check"><%= check_box_tag "situation5", play.id, play.situation5, class: "situation5-check" %></span>
+        <span class="td center quick-assign-check"><%= check_box_tag "situation6", play.id, play.situation6, class: "situation6-check" %></span>
+        <span class="td center quick-assign-check"><%= check_box_tag "situation7", play.id, play.situation7, class: "situation7-check" %></span>
+        <span class="td center quick-assign-check"><%= check_box_tag "situation8", play.id, play.situation8, class: "situation8-check" %></span>
+        <span class="td center quick-assign-check"><%= check_box_tag "situation9", play.id, play.situation9, class: "situation9-check" %></span>
+        <span class="td center quick-assign-check"><%= check_box_tag "situation10", play.id, play.situation10, class: "situation10-check" %></span>
+        <span class="td center quick-assign-check"><%= check_box_tag "situation11", play.id, play.situation11, class: "situation11-check" %></span>
+        <span class="td center quick-assign-check"><%= check_box_tag "situation12", play.id, play.situation12, class: "situation12-check" %></span>
+        <span class="td center quick-assign-check"><%= check_box_tag "situation13", play.id, play.situation13, class: "situation13-check" %></span>
+        <span class="td center quick-assign-check"><%= check_box_tag "situation14", play.id, play.situation14, class: "situation14-check" %></span>  
+      </div>  
+    <% end %>
+  </div>
+</div>
+
+
+<br>
+
+<%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Install Page'.html_safe, @event, class: "btn btn-custom3 btn-sm small-block" %>
