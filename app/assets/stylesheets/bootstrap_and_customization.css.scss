@@ -288,6 +288,8 @@ $grid-float-breakpoint: 915px;
   padding-bottom: 0px;
   background-color: #fff;
   border-color: #b6b6b6;
+  max-height: 600px;   
+  overflow-y : scroll;  
 }
 
 .quick-assign-pseudo{
@@ -307,7 +309,7 @@ $grid-float-breakpoint: 915px;
   padding-bottom: 0px;
   background-color: #fff;
   border-color: #b6b6b6;
-  height: 575px;   
+  max-height: 575px;   
   overflow-y : scroll;
 }
 
@@ -323,6 +325,9 @@ $grid-float-breakpoint: 915px;
   margin-bottom: 0px;
 }
 
+.invisible-text{
+  color:rgba(0,0,0,0);
+}
 
 
 body { background: #F5F5F5 !important;}

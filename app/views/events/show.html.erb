@@ -389,7 +389,7 @@
             </table>
           </div>  
           <div class="modal-footer">
-            <%= button_tag "Remove Selected", class: "btn btn-custom2 remove-multi-button btn-block", data: {disable_with: '<i class="fa fa-spinner fa-spin"></i> Removing Plays...'} %>
+            <%= button_tag "Remove Selected", class: "btn btn-custom2 remove-multi-button btn-block", data: {confirm: 'Are you sure?', disable_with: '<i class="fa fa-spinner fa-spin"></i> Removing Plays...'} %>
           </div>
         <% end %>  
       </div>

@@ -50,7 +50,7 @@
         <span class="td small-font center quick-assign-check"><strong><%= current_user.s_name14 %></strong></span>
       </div>      
     <% @plays.each do |play| %>  
-      <div class="tr">
+      <div class="tr tr-hover">
         <span class="td grey-font bold-font quick-assign-play"><%= link_to play.fullname, edit_event_play_path(@event, play), class: "grey-font bold-font" %></span>
         <span class="td center quick-assign-check"><%= check_box_tag "situation1", play.id, play.situation1, class: "situation1-check" %></span>
         <span class="td center quick-assign-check"><%= check_box_tag "situation2", play.id, play.situation2, class: "situation2-check" %></span>

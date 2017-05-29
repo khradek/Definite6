@@ -2,13 +2,15 @@ $(".events.quick_assign").ready(function() {
 
   //Shows/hides pseudo header when user scrolls down quick-assign-box
   $('.quick-assign-box').scroll(function() {
-    if ($('.quick-assign-box').scrollTop() > 50) {
-      // > 50px from top - show div
+    if ($('.quick-assign-box').scrollTop() > 15) {
+      // > 15px from top - show div
       $('.quick-assign-pseudo').show();
+      $('.quick-assign-header').children().addClass("invisible-text");
     }
     else {
-      // <= 50px from top - hide div
+      // <= 15px from top - hide div
       $('.quick-assign-pseudo').hide();
+      $('.quick-assign-header').children().removeClass("invisible-text")
     }
   });
 

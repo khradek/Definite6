@@ -52,7 +52,7 @@
         <div class="field">
           <%= f.label :password %>
           <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <em>(<%= @minimum_password_length %> characters minimum - must contain at least one lowercase letter, one uppercase letter, and one number)</em>
           <% end %><br />
           <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
         </div>
