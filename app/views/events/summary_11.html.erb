@@ -11,7 +11,7 @@
 
   <div class="row row-no-gutter"> 
     <div class="col-xs-2"></div> 
-    <div class="col-xs-8"><div class="center summary-border <%= current_user.sit11_color %>"><strong><%= current_user.s_name11 %> - Run</strong></div></div>
+    <div class="col-xs-8"><div class="center summary-border header-bg"><strong><%= current_user.s_name11 %> - Run</strong></div></div>
     <div class="col-xs-2"></div>
   </div>
   <div class="row row-no-gutter"> 
@@ -23,57 +23,115 @@
       <% (1..@run_lefts_remain).each do |div| %>
         <div class="center summary-border white-bg trans">#</div>
       <% end %>
+      <% @run_lefts_overflow.each do |play| %>
+        <div class="center summary-border red-text white-bg"><%= play.fullname %></div>
+      <% end %>
+      <div class="center summary-border white-bg bold-font header-bg"># of Plays Selected: <%= @plays.run_left_coming_outs.count %></div>
     </div>  
     <div class="col-xs-4">        
       <% @run_rights.each do |play| %>
-        <div class="center summary-border white-bg" ><%= play.fullname %></div>
+        <div class="center summary-border white-bg"><%= play.fullname %></div>
       <% end %>
       <% (1..@run_rights_remain).each do |div| %>
         <div class="center summary-border white-bg trans">#</div>
       <% end %>
+      <% @run_rights_overflow.each do |play| %>
+        <div class="center summary-border red-text white-bg"><%= play.fullname %></div>
+      <% end %>
+      <div class="center summary-border white-bg bold-font header-bg"># of Plays Selected: <%= @plays.run_right_coming_outs.count %></div>
     <div class="col-xs-2"></div>
     </div>  
   </div>
-  <div class="row">
+ 
+  <div class="row row-no-gutter">
     <div class="col-xs-2"></div>
-    <div class="col-xs-4 center"><strong>Spaces Remaining: <%= @run_lefts_remain %></strong></div>
-    <div class="col-xs-4 center"><strong>Spaces Remaining: <%= @run_rights_remain %></strong></div>
+      <div class="col-xs-8">
+        <div class="center underline bold-font">For use with the standard call sheet template</div>
+      </div>
     <div class="col-xs-2"></div>
   </div>
 
-  <br>
+  <div class="row row-no-gutter">
+    <div class="col-xs-2"></div>
+    <div class="col-xs-4">
+      <div class="center summary-border white-bg bold-font">Spaces Remaining: <%= @run_lefts_remain %></div>
+    </div>
+    <div class="col-xs-4">
+      <div class="center summary-border white-bg bold-font">Spaces Remaining: <%= @run_rights_remain %></div>
+    </div>
+    <div class="col-xs-2"></div>
+  </div>
+
+  <% if @run_lefts_overflow_num < 0 || @run_rights_overflow_num < 0 %>
+    <div class="row row-no-gutter">
+      <div class="col-xs-2"></div>
+        <div class="col-xs-8 center summary-border white-bg red-text">The plays in red text were selected, but there is not enough space</div>
+      <div class="col-xs-2"></div>
+    </div>    
+  <% end %>
+
+  <hr>
 
   <div class="row row-no-gutter"> 
     <div class="col-xs-2"></div> 
-    <div class="col-xs-8"><div class="center summary-border <%= current_user.sit11_color %>"><strong><%= current_user.s_name11 %> - Pass</strong></div></div>
+    <div class="col-xs-8"><div class="center summary-border header-bg"><strong><%= current_user.s_name11 %> - Pass</strong></div></div>
     <div class="col-xs-2"></div>
   </div>
   <div class="row row-no-gutter"> 
     <div class="col-xs-2"></div> 
     <div class="col-xs-4">        
       <% @pass_lefts.each do |play| %>
-        <div class="center summary-border white-bg" ><%= play.fullname %></div>
+        <div class="center summary-border white-bg"><%= play.fullname %></div>
       <% end %> 
       <% (1..@pass_lefts_remain).each do |div| %>
         <div class="center summary-border white-bg trans">#</div>
       <% end %>
+      <% @pass_lefts_overflow.each do |play| %>
+        <div class="center summary-border white-bg red-text"><%= play.fullname %></div>
+      <% end %>  
+      <div class="center summary-border white-bg bold-font header-bg"># of Plays Selected: <%= @plays.pass_left_coming_outs.count %></div>
     </div>  
     <div class="col-xs-4">        
       <% @pass_rights.each do |play| %>
-        <div class="center summary-border white-bg" ><%= play.fullname %></div>
+        <div class="center summary-border white-bg"><%= play.fullname %></div>
       <% end %>
       <% (1..@pass_rights_remain).each do |div| %>
         <div class="center summary-border white-bg trans">#</div>
       <% end %>
+      <% @pass_rights_overflow.each do |play| %>
+        <div class="center summary-border white-bg red-text"><%= play.fullname %></div>
+      <% end %>    
+      <div class="center summary-border white-bg bold-font header-bg"># of Plays Selected: <%= @plays.pass_right_coming_outs.count %></div>
     <div class="col-xs-2"></div>
     </div>  
   </div>
-  <div class="row">
+   
+  <div class="row row-no-gutter">
     <div class="col-xs-2"></div>
-    <div class="col-xs-4 center"><strong>Spaces Remaining: <%= @pass_lefts_remain %></strong></div>
-    <div class="col-xs-4 center"><strong>Spaces Remaining: <%= @pass_rights_remain %></strong></div>
+      <div class="col-xs-8">
+        <div class="center underline bold-font">For use with the standard call sheet template</div>
+      </div>
     <div class="col-xs-2"></div>
   </div>
+
+  <div class="row row-no-gutter">
+    <div class="col-xs-2"></div>
+    <div class="col-xs-4">
+      <div class="center summary-border white-bg bold-font">Spaces Remaining: <%= @pass_lefts_remain %></div>
+    </div>
+    <div class="col-xs-4">
+      <div class="center summary-border white-bg bold-font">Spaces Remaining: <%= @pass_rights_remain %></div>
+    </div>
+    <div class="col-xs-2"></div>
+  </div>
+
+  <% if @pass_lefts_overflow_num < 0 || @pass_rights_overflow_num < 0 %>
+    <div class="row row-no-gutter">
+      <div class="col-xs-2"></div>
+        <div class="col-xs-8 center summary-border white-bg red-text">The highlighted plays were selected, but there is not enough space</div>
+      <div class="col-xs-2"></div>
+    </div>    
+  <% end %>
 
   <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Return to Install'.html_safe, 'javascript:history.go(-1);', class: "btn btn-custom3 btn-sm small-block" %>
 

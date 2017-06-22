@@ -7,7 +7,7 @@ $(".pages.example_gamecall").ready(function() {
     ["Pro RT Iso RT","Pro LT Iso LT","Flex RT Counter LT","Flex LT Counter RT"],[
     "Doubles RT Mesh","Doubles LT Mesh","Spread RT Zoom Trap LT","Spread LT Zoom Trap RT"],
     ["Spread RT Zoom Trap LT","Spread LT Zoom Trap RT","Wing Over RT Toss RT","Wing Over LT Toss LT"],
-    ["Flex RT Fake LT Post","Flex LT Counter RT","Trips RT Zone LT","Trips LT Zone RT"],
+    ["Flex RT Fake LT Post","Flex LT Fake RT Post","Trips RT Zone LT","Trips LT Zone RT"],
     ["Flex RT Counter LT","Flex LT Counter RT","Doubles RT Zip Jet Sweep RT","Doubles LT Zip Jet Sweep LT"],
     ["Pro RT Fake RT Dig","Pro LT Fake LT Dig","",""],
     ["Wing Over RT Toss RT","Wing Over LT Toss LT","1st/2nd & 10 - Pass",""],

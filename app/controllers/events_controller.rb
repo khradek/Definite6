@@ -20,8 +20,32 @@ class EventsController < ApplicationController
   def summary_1
     @event = Event.find(params[:event_id])
     @plays = @event.plays
-    @openers_left_remain = 15 - @plays.openers_left.count 
-    @openers_right_remain = 15 - @plays.openers_right.count
+    @lefts = @plays.openers_left
+    @lefts_limit = @plays.openers_left.limit(15)
+    @openers_left_remain = if 15 - @lefts_limit.count < 1
+                            0
+                           else
+                            15 - @lefts_limit.count
+                           end
+    @lefts_overflow_num = 15 - @lefts.count 
+    @lefts_overflow = if @lefts_overflow_num < 0
+                        @lefts.last(@lefts_overflow_num.abs)
+                      else
+                        []
+                      end
+    @rights = @plays.openers_right                  
+    @rights_limit = @plays.openers_right.limit(15)
+    @openers_right_remain = if 15 - @rights_limit.count < 1
+                              0
+                            else
+                              15 - @rights_limit.count
+                            end
+    @rights_overflow_num = 15 - @plays.openers_right.count 
+    @rights_overflow = if @rights_overflow_num < 0
+                        @rights.last(@rights_overflow_num.abs)
+                      else
+                        []
+                      end
   end
 
   def summary_2
@@ -36,6 +60,20 @@ class EventsController < ApplicationController
     @run_lefts_remain = @num_runs - @run_lefts.count
     @run_rights = @plays.run_right_first_tens.limit(@num_runs)
     @run_rights_remain = @num_runs - @run_rights.count
+
+    @run_lefts_overflow_num = @num_runs - @plays.run_left_first_tens.count
+    @run_lefts_overflow = if @run_lefts_overflow_num < 0
+                            @plays.run_left_first_tens.last(@run_lefts_overflow_num.abs)
+                          else
+                            []
+                          end
+    @run_rights_overflow_num = @num_runs - @plays.run_right_first_tens.count
+    @run_rights_overflow = if @run_rights_overflow_num < 0
+                            @plays.run_right_first_tens.last(@run_rights_overflow_num.abs)
+                          else
+                            []
+                          end
+
     @num_passes = if @num_runs == 15
                     0
                   elsif @num_runs == 0
@@ -47,6 +85,19 @@ class EventsController < ApplicationController
     @pass_lefts_remain = @num_passes - @pass_lefts.count
     @pass_rights = @plays.pass_right_first_tens.limit(@num_passes)
     @pass_rights_remain = @num_passes - @pass_rights.count
+
+    @pass_lefts_overflow_num = @num_passes - @plays.pass_left_first_tens.count
+    @pass_lefts_overflow = if @pass_lefts_overflow_num < 0
+                            @plays.pass_left_first_tens.last(@pass_lefts_overflow_num.abs)
+                          else
+                            []
+                          end
+    @pass_rights_overflow_num = @num_passes - @plays.pass_right_first_tens.count
+    @pass_rights_overflow = if @pass_rights_overflow_num < 0
+                            @plays.pass_right_first_tens.last(@pass_rights_overflow_num.abs)
+                          else
+                            []
+                          end 
   end
 
   def summary_3
@@ -61,6 +112,20 @@ class EventsController < ApplicationController
     @run_lefts_remain = @num_runs - @run_lefts.count
     @run_rights = @plays.run_right_second_longs.limit(@num_runs)
     @run_rights_remain = @num_runs - @run_rights.count
+
+    @run_lefts_overflow_num = @num_runs - @plays.run_left_second_longs.count
+    @run_lefts_overflow = if @run_lefts_overflow_num < 0
+                            @plays.run_left_second_longs.last(@run_lefts_overflow_num.abs)
+                          else
+                            []
+                          end
+    @run_rights_overflow_num = @num_runs - @plays.run_right_second_longs.count
+    @run_rights_overflow = if @run_rights_overflow_num < 0
+                            @plays.run_right_second_longs.last(@run_rights_overflow_num.abs)
+                          else
+                            []
+                          end
+
     @num_passes = if @num_runs == 12
                     0
                   elsif @num_runs == 0
@@ -72,6 +137,19 @@ class EventsController < ApplicationController
     @pass_lefts_remain = @num_passes - @pass_lefts.count
     @pass_rights = @plays.pass_right_second_longs.limit(@num_passes)
     @pass_rights_remain = @num_passes - @pass_rights.count
+
+    @pass_lefts_overflow_num = @num_passes - @plays.pass_left_second_longs.count
+    @pass_lefts_overflow = if @pass_lefts_overflow_num < 0
+                            @plays.pass_left_second_longs.last(@pass_lefts_overflow_num.abs)
+                          else
+                            []
+                          end
+    @pass_rights_overflow_num = @num_passes - @plays.pass_right_second_longs.count
+    @pass_rights_overflow = if @pass_rights_overflow_num < 0
+                            @plays.pass_right_second_longs.last(@pass_rights_overflow_num.abs)
+                          else
+                            []
+                          end  
   end
 
   def summary_4
@@ -86,6 +164,20 @@ class EventsController < ApplicationController
     @run_lefts_remain = @num_runs - @run_lefts.count
     @run_rights = @plays.run_right_second_mediums.limit(@num_runs)
     @run_rights_remain = @num_runs - @run_rights.count
+
+    @run_lefts_overflow_num = @num_runs - @plays.run_left_second_mediums.count
+    @run_lefts_overflow = if @run_lefts_overflow_num < 0
+                            @plays.run_left_second_mediums.last(@run_lefts_overflow_num.abs)
+                          else
+                            []
+                          end
+    @run_rights_overflow_num = @num_runs - @plays.run_right_second_mediums.count
+    @run_rights_overflow = if @run_rights_overflow_num < 0
+                            @plays.run_right_second_mediums.last(@run_rights_overflow_num.abs)
+                          else
+                            []
+                          end
+
     @num_passes = if @num_runs == 11
                     0
                   elsif @num_runs == 0
@@ -97,6 +189,19 @@ class EventsController < ApplicationController
     @pass_lefts_remain = @num_passes - @pass_lefts.count
     @pass_rights = @plays.pass_right_second_mediums.limit(@num_passes)
     @pass_rights_remain = @num_passes - @pass_rights.count
+
+    @pass_lefts_overflow_num = @num_passes - @plays.pass_left_second_mediums.count
+    @pass_lefts_overflow = if @pass_lefts_overflow_num < 0
+                            @plays.pass_left_second_mediums.last(@pass_lefts_overflow_num.abs)
+                          else
+                            []
+                          end
+    @pass_rights_overflow_num = @num_passes - @plays.pass_right_second_mediums.count
+    @pass_rights_overflow = if @pass_rights_overflow_num < 0
+                            @plays.pass_right_second_mediums.last(@pass_rights_overflow_num.abs)
+                          else
+                            []
+                          end  
   end
 
   def summary_5
@@ -111,6 +216,20 @@ class EventsController < ApplicationController
     @run_lefts_remain = @num_runs - @run_lefts.count
     @run_rights = @plays.run_right_second_shorts.limit(@num_runs)
     @run_rights_remain = @num_runs - @run_rights.count
+
+    @run_lefts_overflow_num = @num_runs - @plays.run_left_second_shorts.count
+    @run_lefts_overflow = if @run_lefts_overflow_num < 0
+                            @plays.run_left_second_shorts.last(@run_lefts_overflow_num.abs)
+                          else
+                            []
+                          end
+    @run_rights_overflow_num = @num_runs - @plays.run_right_second_shorts.count
+    @run_rights_overflow = if @run_rights_overflow_num < 0
+                            @plays.run_right_second_shorts.last(@run_rights_overflow_num.abs)
+                          else
+                            []
+                          end
+
     @num_passes = if @num_runs == 11
                     0
                   elsif @num_runs == 0
@@ -122,6 +241,19 @@ class EventsController < ApplicationController
     @pass_lefts_remain = @num_passes - @pass_lefts.count
     @pass_rights = @plays.pass_right_second_shorts.limit(@num_passes)
     @pass_rights_remain = @num_passes - @pass_rights.count
+
+    @pass_lefts_overflow_num = @num_passes - @plays.pass_left_second_shorts.count
+    @pass_lefts_overflow = if @pass_lefts_overflow_num < 0
+                            @plays.pass_left_second_shorts.last(@pass_lefts_overflow_num.abs)
+                          else
+                            []
+                          end
+    @pass_rights_overflow_num = @num_passes - @plays.pass_right_second_shorts.count
+    @pass_rights_overflow = if @pass_rights_overflow_num < 0
+                            @plays.pass_right_second_shorts.last(@pass_rights_overflow_num.abs)
+                          else
+                            []
+                          end  
   end
 
   def summary_6
@@ -136,6 +268,20 @@ class EventsController < ApplicationController
     @run_lefts_remain = @num_runs - @run_lefts.count
     @run_rights = @plays.run_right_third_longs.limit(@num_runs)
     @run_rights_remain = @num_runs - @run_rights.count
+
+    @run_lefts_overflow_num = @num_runs - @plays.run_left_third_longs.count
+    @run_lefts_overflow = if @run_lefts_overflow_num < 0
+                            @plays.run_left_third_longs.last(@run_lefts_overflow_num.abs)
+                          else
+                            []
+                          end
+    @run_rights_overflow_num = @num_runs - @plays.run_right_third_longs.count
+    @run_rights_overflow = if @run_rights_overflow_num < 0
+                            @plays.run_right_third_longs.last(@run_rights_overflow_num.abs)
+                          else
+                            []
+                          end
+                          
     @num_passes = if @num_runs == 12
                     0
                   elsif @num_runs == 0
@@ -147,6 +293,19 @@ class EventsController < ApplicationController
     @pass_lefts_remain = @num_passes - @pass_lefts.count
     @pass_rights = @plays.pass_right_third_longs.limit(@num_passes)
     @pass_rights_remain = @num_passes - @pass_rights.count
+
+    @pass_lefts_overflow_num = @num_passes - @plays.pass_left_third_longs.count
+    @pass_lefts_overflow = if @pass_lefts_overflow_num < 0
+                            @plays.pass_left_third_longs.last(@pass_lefts_overflow_num.abs)
+                          else
+                            []
+                          end
+    @pass_rights_overflow_num = @num_passes - @plays.pass_right_third_longs.count
+    @pass_rights_overflow = if @pass_rights_overflow_num < 0
+                            @plays.pass_right_third_longs.last(@pass_rights_overflow_num.abs)
+                          else
+                            []
+                          end    
   end
 
   def summary_7
@@ -161,6 +320,20 @@ class EventsController < ApplicationController
     @run_lefts_remain = @num_runs - @run_lefts.count
     @run_rights = @plays.run_right_third_mediums.limit(@num_runs)
     @run_rights_remain = @num_runs - @run_rights.count
+
+    @run_lefts_overflow_num = @num_runs - @plays.run_left_third_mediums.count
+    @run_lefts_overflow = if @run_lefts_overflow_num < 0
+                            @plays.run_left_third_mediums.last(@run_lefts_overflow_num.abs)
+                          else
+                            []
+                          end
+    @run_rights_overflow_num = @num_runs - @plays.run_right_third_mediums.count
+    @run_rights_overflow = if @run_rights_overflow_num < 0
+                            @plays.run_right_third_mediums.last(@run_rights_overflow_num.abs)
+                          else
+                            []
+                          end
+
     @num_passes = if @num_runs == 11
                     0
                   elsif @num_runs == 0
@@ -172,6 +345,19 @@ class EventsController < ApplicationController
     @pass_lefts_remain = @num_passes - @pass_lefts.count
     @pass_rights = @plays.pass_right_third_mediums.limit(@num_passes)
     @pass_rights_remain = @num_passes - @pass_rights.count
+
+    @pass_lefts_overflow_num = @num_passes - @plays.pass_left_third_mediums.count
+    @pass_lefts_overflow = if @pass_lefts_overflow_num < 0
+                            @plays.pass_left_third_mediums.last(@pass_lefts_overflow_num.abs)
+                          else
+                            []
+                          end
+    @pass_rights_overflow_num = @num_passes - @plays.pass_right_third_mediums.count
+    @pass_rights_overflow = if @pass_rights_overflow_num < 0
+                            @plays.pass_right_third_mediums.last(@pass_rights_overflow_num.abs)
+                          else
+                            []
+                          end      
   end
 
   def summary_8
@@ -186,6 +372,20 @@ class EventsController < ApplicationController
     @run_lefts_remain = @num_runs - @run_lefts.count
     @run_rights = @plays.run_right_third_shorts.limit(@num_runs)
     @run_rights_remain = @num_runs - @run_rights.count
+
+    @run_lefts_overflow_num = @num_runs - @plays.run_left_third_shorts.count
+    @run_lefts_overflow = if @run_lefts_overflow_num < 0
+                            @plays.run_left_third_shorts.last(@run_lefts_overflow_num.abs)
+                          else
+                            []
+                          end
+    @run_rights_overflow_num = @num_runs - @plays.run_right_third_shorts.count
+    @run_rights_overflow = if @run_rights_overflow_num < 0
+                            @plays.run_right_third_shorts.last(@run_rights_overflow_num.abs)
+                          else
+                            []
+                          end
+
     @num_passes = if @num_runs == 11
                     0
                   elsif @num_runs == 0
@@ -197,6 +397,19 @@ class EventsController < ApplicationController
     @pass_lefts_remain = @num_passes - @pass_lefts.count
     @pass_rights = @plays.pass_right_third_shorts.limit(@num_passes)
     @pass_rights_remain = @num_passes - @pass_rights.count
+
+    @pass_lefts_overflow_num = @num_passes - @plays.pass_left_third_shorts.count
+    @pass_lefts_overflow = if @pass_lefts_overflow_num < 0
+                            @plays.pass_left_third_shorts.last(@pass_lefts_overflow_num.abs)
+                          else
+                            []
+                          end
+    @pass_rights_overflow_num = @num_passes - @plays.pass_right_third_shorts.count
+    @pass_rights_overflow = if @pass_rights_overflow_num < 0
+                            @plays.pass_right_third_shorts.last(@pass_rights_overflow_num.abs)
+                          else
+                            []
+                          end 
   end
 
   def summary_9
@@ -211,6 +424,20 @@ class EventsController < ApplicationController
     @run_lefts_remain = @num_runs - @run_lefts.count
     @run_rights = @plays.run_right_redzones.limit(@num_runs)
     @run_rights_remain = @num_runs - @run_rights.count
+
+    @run_lefts_overflow_num = @num_runs - @plays.run_left_redzones.count
+    @run_lefts_overflow = if @run_lefts_overflow_num < 0
+                            @plays.run_left_redzones.last(@run_lefts_overflow_num.abs)
+                          else
+                            []
+                          end
+    @run_rights_overflow_num = @num_runs - @plays.run_right_redzones.count
+    @run_rights_overflow = if @run_rights_overflow_num < 0
+                            @plays.run_right_redzones.last(@run_rights_overflow_num.abs)
+                          else
+                            []
+                          end
+
     @num_passes = if @num_runs == 15
                     0
                   elsif @num_runs == 0
@@ -222,6 +449,19 @@ class EventsController < ApplicationController
     @pass_lefts_remain = @num_passes - @pass_lefts.count
     @pass_rights = @plays.pass_right_redzones.limit(@num_passes)
     @pass_rights_remain = @num_passes - @pass_rights.count
+
+    @pass_lefts_overflow_num = @num_passes - @plays.pass_left_redzones.count
+    @pass_lefts_overflow = if @pass_lefts_overflow_num < 0
+                            @plays.pass_left_redzones.last(@pass_lefts_overflow_num.abs)
+                          else
+                            []
+                          end
+    @pass_rights_overflow_num = @num_passes - @plays.pass_right_redzones.count
+    @pass_rights_overflow = if @pass_rights_overflow_num < 0
+                            @plays.pass_right_redzones.last(@pass_rights_overflow_num.abs)
+                          else
+                            []
+                          end 
   end
 
   def summary_10
@@ -236,6 +476,20 @@ class EventsController < ApplicationController
     @run_lefts_remain = @num_runs - @run_lefts.count
     @run_rights = @plays.run_right_goalines.limit(@num_runs)
     @run_rights_remain = @num_runs - @run_rights.count
+
+    @run_lefts_overflow_num = @num_runs - @plays.run_left_goalines.count
+    @run_lefts_overflow = if @run_lefts_overflow_num < 0
+                            @plays.run_left_goalines.last(@run_lefts_overflow_num.abs)
+                          else
+                            []
+                          end
+    @run_rights_overflow_num = @num_runs - @plays.run_right_goalines.count
+    @run_rights_overflow = if @run_rights_overflow_num < 0
+                            @plays.run_right_goalines.last(@run_rights_overflow_num.abs)
+                          else
+                            []
+                          end
+
     @num_passes = if @num_runs == 15
                     0
                   elsif @num_runs == 0
@@ -247,6 +501,19 @@ class EventsController < ApplicationController
     @pass_lefts_remain = @num_passes - @pass_lefts.count
     @pass_rights = @plays.pass_right_goalines.limit(@num_passes)
     @pass_rights_remain = @num_passes - @pass_rights.count
+
+    @pass_lefts_overflow_num = @num_passes - @plays.pass_left_goalines.count
+    @pass_lefts_overflow = if @pass_lefts_overflow_num < 0
+                            @plays.pass_left_goalines.last(@pass_lefts_overflow_num.abs)
+                          else
+                            []
+                          end
+    @pass_rights_overflow_num = @num_passes - @plays.pass_right_goalines.count
+    @pass_rights_overflow = if @pass_rights_overflow_num < 0
+                            @plays.pass_right_goalines.last(@pass_rights_overflow_num.abs)
+                          else
+                            []
+                          end 
   end
 
   def summary_11
@@ -261,6 +528,20 @@ class EventsController < ApplicationController
     @run_lefts_remain = @num_runs - @run_lefts.count
     @run_rights = @plays.run_right_coming_outs.limit(@num_runs)
     @run_rights_remain = @num_runs - @run_rights.count
+
+    @run_lefts_overflow_num = @num_runs - @plays.run_left_coming_outs.count
+    @run_lefts_overflow = if @run_lefts_overflow_num < 0
+                            @plays.run_left_coming_outs.last(@run_lefts_overflow_num.abs)
+                          else
+                            []
+                          end
+    @run_rights_overflow_num = @num_runs - @plays.run_right_coming_outs.count
+    @run_rights_overflow = if @run_rights_overflow_num < 0
+                            @plays.run_right_coming_outs.last(@run_rights_overflow_num.abs)
+                          else
+                            []
+                          end
+
     @num_passes = if @num_runs == 15
                     0
                   elsif @num_runs == 0
@@ -272,6 +553,19 @@ class EventsController < ApplicationController
     @pass_lefts_remain = @num_passes - @pass_lefts.count
     @pass_rights = @plays.pass_right_coming_outs.limit(@num_passes)
     @pass_rights_remain = @num_passes - @pass_rights.count
+
+    @pass_lefts_overflow_num = @num_passes - @plays.pass_left_coming_outs.count
+    @pass_lefts_overflow = if @pass_lefts_overflow_num < 0
+                            @plays.pass_left_coming_outs.last(@pass_lefts_overflow_num.abs)
+                          else
+                            []
+                          end
+    @pass_rights_overflow_num = @num_passes - @plays.pass_right_coming_outs.count
+    @pass_rights_overflow = if @pass_rights_overflow_num < 0
+                            @plays.pass_right_coming_outs.last(@pass_rights_overflow_num.abs)
+                          else
+                            []
+                          end 
   end
 
   def summary_12
@@ -286,6 +580,20 @@ class EventsController < ApplicationController
     @run_lefts_remain = @num_runs - @run_lefts.count
     @run_rights = @plays.run_right_custom_ones.limit(@num_runs)
     @run_rights_remain = @num_runs - @run_rights.count
+
+    @run_lefts_overflow_num = @num_runs - @plays.run_left_custom_ones.count
+    @run_lefts_overflow = if @run_lefts_overflow_num < 0
+                            @plays.run_left_custom_ones.last(@run_lefts_overflow_num.abs)
+                          else
+                            []
+                          end
+    @run_rights_overflow_num = @num_runs - @plays.run_right_custom_ones.count
+    @run_rights_overflow = if @run_rights_overflow_num < 0
+                            @plays.run_right_custom_ones.last(@run_rights_overflow_num.abs)
+                          else
+                            []
+                          end
+
     @num_passes = if @num_runs == 15
                     0
                   elsif @num_runs == 0
@@ -297,6 +605,19 @@ class EventsController < ApplicationController
     @pass_lefts_remain = @num_passes - @pass_lefts.count
     @pass_rights = @plays.pass_right_custom_ones.limit(@num_passes)
     @pass_rights_remain = @num_passes - @pass_rights.count
+
+    @pass_lefts_overflow_num = @num_passes - @plays.pass_left_custom_ones.count
+    @pass_lefts_overflow = if @pass_lefts_overflow_num < 0
+                            @plays.pass_left_custom_ones.last(@pass_lefts_overflow_num.abs)
+                          else
+                            []
+                          end
+    @pass_rights_overflow_num = @num_passes - @plays.pass_right_custom_ones.count
+    @pass_rights_overflow = if @pass_rights_overflow_num < 0
+                            @plays.pass_right_custom_ones.last(@pass_rights_overflow_num.abs)
+                          else
+                            []
+                          end 
   end
 
   def summary_13
@@ -311,6 +632,20 @@ class EventsController < ApplicationController
     @run_lefts_remain = @num_runs - @run_lefts.count
     @run_rights = @plays.run_right_custom_twos.limit(@num_runs)
     @run_rights_remain = @num_runs - @run_rights.count
+
+    @run_lefts_overflow_num = @num_runs - @plays.run_left_custom_twos.count
+    @run_lefts_overflow = if @run_lefts_overflow_num < 0
+                            @plays.run_left_custom_twos.last(@run_lefts_overflow_num.abs)
+                          else
+                            []
+                          end
+    @run_rights_overflow_num = @num_runs - @plays.run_right_custom_twos.count
+    @run_rights_overflow = if @run_rights_overflow_num < 0
+                            @plays.run_right_custom_twos.last(@run_rights_overflow_num.abs)
+                          else
+                            []
+                          end
+
     @num_passes = if @num_runs == 15
                     0
                   elsif @num_runs == 0
@@ -322,13 +657,50 @@ class EventsController < ApplicationController
     @pass_lefts_remain = @num_passes - @pass_lefts.count
     @pass_rights = @plays.pass_right_custom_twos.limit(@num_passes)
     @pass_rights_remain = @num_passes - @pass_rights.count
+
+    @pass_lefts_overflow_num = @num_passes - @plays.pass_left_custom_twos.count
+    @pass_lefts_overflow = if @pass_lefts_overflow_num < 0
+                            @plays.pass_left_custom_twos.last(@pass_lefts_overflow_num.abs)
+                          else
+                            []
+                          end
+    @pass_rights_overflow_num = @num_passes - @plays.pass_right_custom_twos.count
+    @pass_rights_overflow = if @pass_rights_overflow_num < 0
+                            @plays.pass_right_custom_twos.last(@pass_rights_overflow_num.abs)
+                          else
+                            []
+                          end 
   end
 
   def summary_14
     @event = Event.find(params[:event_id])
     @plays = @event.plays.custom_threes 
-    @custom_three_lefts_remain = 15 - @plays.custom_three_lefts.count
-    @custom_three_rights_remain = 15 - @plays.custom_three_rights.count
+    @lefts = @plays.custom_three_lefts
+    @lefts_limit = @plays.custom_three_lefts.limit(15)
+    @custom_three_lefts_remain = if 15 - @lefts_limit.count < 1
+                            0
+                           else
+                            15 - @lefts_limit.count
+                           end
+    @lefts_overflow_num = 15 - @lefts.count 
+    @lefts_overflow = if @lefts_overflow_num < 0
+                        @lefts.last(@lefts_overflow_num.abs)
+                      else
+                        []
+                      end
+    @rights = @plays.custom_three_rights                  
+    @rights_limit = @plays.custom_three_rights.limit(15)
+    @custom_three_rights_remain = if 15 - @rights_limit.count < 1
+                              0
+                            else
+                              15 - @rights_limit.count
+                            end
+    @rights_overflow_num = 15 - @plays.custom_three_rights.count 
+    @rights_overflow = if @rights_overflow_num < 0
+                        @rights.last(@rights_overflow_num.abs)
+                      else
+                        []
+                      end
   end
 
   def index

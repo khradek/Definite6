@@ -11,35 +11,64 @@
 
   <div class="row row-no-gutter"> 
     <div class="col-xs-2"></div> 
-    <div class="col-xs-8"><div class="center summary-border <%= current_user.sit14_color %>"><strong><%= current_user.s_name14 %></strong></div></div>
+    <div class="col-xs-8"><div class="center summary-border header-bg"><strong><%= current_user.s_name14 %></strong></div></div>
     <div class="col-xs-2"></div>
   </div>
   <div class="row row-no-gutter"> 
     <div class="col-xs-2"></div> 
     <div class="col-xs-4">        
-      <% @plays.custom_three_lefts.each do |play| %>
+      <% @lefts_limit.each do |play| %>
         <div class="center summary-border white-bg" ><%= play.fullname %></div>
       <% end %> 
       <% (1..@custom_three_lefts_remain).each do |div| %>
         <div class="center summary-border white-bg trans">#</div>
       <% end %>
+      <% @lefts_overflow.each do |play| %>
+        <div class="center summary-border red-text white-bg"><%= play.fullname %></div>
+      <% end %>
+      <div class="center summary-border white-bg bold-font header-bg"># of Plays Selected: <%= @lefts.count %></div>    
     </div>  
     <div class="col-xs-4">        
-      <% @plays.custom_three_rights.each do |play| %>
+      <% @rights_limit.each do |play| %>
         <div class="center summary-border white-bg" ><%= play.fullname %></div>
       <% end %>
       <% (1..@custom_three_rights_remain).each do |div| %>
         <div class="center summary-border white-bg trans">#</div>
       <% end %>
-    <div class="col-xs-2"></div>
-    </div>  
+      <% @rights_overflow.each do |play| %>
+        <div class="center summary-border red-text white-bg"><%= play.fullname %></div>
+      <% end %>
+      <div class="center summary-border white-bg bold-font header-bg"># of Plays Selected: <%= @rights.count %></div>
+    </div>
+    <div class="col-xs-2"></div>  
   </div>
-  <div class="row">
+
+  <div class="row row-no-gutter">
     <div class="col-xs-2"></div>
-    <div class="col-xs-4 center"><strong>Spaces Remaining: <%= @custom_three_lefts_remain %></strong></div>
-    <div class="col-xs-4 center"><strong>Spaces Remaining: <%= @custom_three_rights_remain %></strong></div>
+      <div class="col-xs-8">
+        <div class="center underline bold-font">For use with the standard call sheet template</div>
+      </div>
     <div class="col-xs-2"></div>
   </div>
+
+  <div class="row row-no-gutter">
+    <div class="col-xs-2"></div>
+    <div class="col-xs-4">
+      <div class="center summary-border white-bg bold-font">Spaces Remaining: <%= @custom_three_lefts_remain %></div>
+    </div>
+    <div class="col-xs-4">
+      <div class="center summary-border white-bg bold-font">Spaces Remaining: <%= @custom_three_rights_remain %></div>
+    </div>
+    <div class="col-xs-2"></div>
+  </div>
+
+  <% if @lefts_overflow_num < 0 || @rights_overflow_num < 0 %>
+    <div class="row row-no-gutter">
+      <div class="col-xs-2"></div>
+        <div class="col-xs-8 center summary-border white-bg red-text">The plays in red text were selected, but there is not enough space</div>
+      <div class="col-xs-2"></div>
+    </div>    
+  <% end %>
 
   <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i> Return to Install'.html_safe, 'javascript:history.go(-1);', class: "btn btn-custom3 btn-sm small-block" %>
 
