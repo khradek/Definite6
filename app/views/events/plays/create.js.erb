@@ -6,24 +6,7 @@ $("#mynewplay .form-control").val('');
 $(".saved-formations-and-plays").hide();
 $(".segment-check").prop('checked', true);
 $("#situations").hide()
-$("#situation2").hide()
-$("#situation3").hide()
-$("#situation4").hide()
-$("#situation5").hide()
-$("#situation6").hide()
-$("#situation7").hide()
-$("#situation8").hide()
-$("#situation9").hide()
-$("#situation10").hide()
-$('#situation-button1').show()
-$('#situation-button2').show()
-$('#situation-button3').show()
-$('#situation-button4').show()
-$('#situation-button5').show()
-$('#situation-button6').show()
-$('#situation-button7').show()
-$('#situation-button8').show()
-$('#situation-button9').show()
+$(".new-play-checkbox").prop( "checked", false );
 
 //Adds new play to the install table
 $("#plays-body").append('<%= j render @play %>');
