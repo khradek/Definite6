@@ -1,25 +1,51 @@
-<h2>Change your password</h2>
+<% @title= "Change Password - Definite6.com" %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
+<div class="sign-in-container">
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
-  </div>
+  <h2 class="text-center">Change your password</h2>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+  <hr class="light-blue">
 
-  <div class="actions">
-    <%= f.submit "Change my password", class: "btn btn-custom3"%>
-  </div>
-<% end %>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+    <%= devise_error_messages! %>
+    <%= f.hidden_field :reset_password_token %>
 
-<%= render "devise/shared/links" %>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="field">
+          <%= f.label :password, "New password" %><br />
+          <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum - must contain at least one lowercase letter, one uppercase letter, and one number)</em><br />
+          <% end %>
+          <%= f.password_field :password, autofocus: true, autocomplete: "off", class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="field">
+          <%= f.label :password_confirmation, "Confirm new password" %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="actions">
+          <%= f.button "Change my password", class: "btn btn-custom3 btn-block", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Changing password..."} %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <br>
+
+  <p>or</p>
+
+  <%= render "devise/shared/links" %>
+
+  <hr class="light-blue">
+
+</div>
