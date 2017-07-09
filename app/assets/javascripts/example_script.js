@@ -76,7 +76,19 @@ $(".pages.example_script").ready(function() {
     renderAllRows: true,
     rowHeaders: false,
     colHeaders: false,
-    contextMenu: ["undo"],
+    contextMenu: {
+      callback: function (key, options) {
+        if (key === 'Sign up & see full menu') {
+          setTimeout(function () {
+            // timeout is used to make sure the menu collapsed before alert is shown
+            window.location = '/users/sign_up';;
+          }, 100);
+        }
+      },
+      items: {
+        "Sign up & see full menu": {name: 'Sign up & see full menu'},
+      }
+    }, 
     colWidths: [30, 40, 40, 170, 160, 90, 30, 40, 40, 170, 160, 90],
     manualColumnResize: false,
     manualRowResize: false,

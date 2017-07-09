@@ -43,8 +43,17 @@ $(".default_practices.show").ready(function() {
     className: "myTable",
     mergeCells: formatData,
     cell: formatClass,
+    contextMenuCopyPaste: true,     
     contextMenu: {
       items: {
+        "copy": {name: "Copy"},
+        "paste": {
+          name: 'Paste',
+          callback: function () {
+              this.copyPaste.triggerPaste();
+          }
+        },
+        "hsep2": "---------",                
         "row_above" : {},
         "row_below" : {},
         "remove_row" : {},

@@ -61,16 +61,24 @@ $(".scripts.show").ready(function() {
     allowEmpty: true,
     className: "myTable",
     mergeCells: formatData, 
-    cell: formatClass, 
+    cell: formatClass,
+    contextMenuCopyPaste: true, 
     contextMenu: {
       items: {
+        "copy": {name: "Copy"},
+        "paste": {
+          name: 'Paste',
+          callback: function () {
+              this.copyPaste.triggerPaste();
+          }
+        },
+        "hsep2": "---------",
         "row_above" : {},
         "row_below" : {},
         "remove_row" : {},
         "col_left" : {},
         "col_right" : {},
         "remove_col" : {},        
-        
         "hsep3": "---------",        
         "mergeCells" : {},
         "hsep4": "---------",
@@ -688,7 +696,7 @@ $(".scripts.show").ready(function() {
             }   
             this.render();
           }
-        },        
+        },
       }
     },
     //Ensures there is a space between class names
@@ -716,7 +724,7 @@ $(".scripts.show").ready(function() {
       var fFormat = JSON.stringify(this.mergeCells.mergedCellInfoCollection);
       $("#cell-format2").text(fFormat);
       $("#cell-class2").trigger("click")
-    }   
+    }
   });
 
   //Re-renders table after context menu changes have been made

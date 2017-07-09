@@ -19,4 +19,5 @@
 //= require bootstrap-datetimepicker
 //= require jquery-readyselector
 //= require turbolinks
+//= require zeroclipboard
 //= require_tree .

@@ -119,8 +119,17 @@ $(".gamecalls.custom").ready(function() {
     mergeCells: formatData1,
     cell: formatClass1,
     className: "myTable",
+    contextMenuCopyPaste: true,     
     contextMenu: {
       items: {
+        "copy": {name: "Copy"},
+        "paste": {
+          name: 'Paste',
+          callback: function () {
+              this.copyPaste.triggerPaste();
+          }
+        },
+        "hsep2": "---------",
         "row_above" : {},
         "row_below" : {},
         "remove_row" : {},
@@ -1058,8 +1067,17 @@ $(".gamecalls.custom").ready(function() {
     mergeCells: formatData2,
     cell: formatClass2,
     className: "myTable",
+    contextMenuCopyPaste: true,     
     contextMenu: {
       items: {
+        "copy": {name: "Copy"},
+        "paste": {
+          name: 'Paste',
+          callback: function () {
+              this.copyPaste.triggerPaste();
+          }
+        },
+        "hsep2": "---------",
         "row_above" : {},
         "row_below" : {},
         "remove_row" : {},

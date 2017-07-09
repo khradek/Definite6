@@ -121,7 +121,19 @@ $(".pages.example_gamecall").ready(function() {
     renderAllRows: true,
     rowHeaders: false,
     colHeaders: false,
-    contextMenu: ['undo', 'alignment'],
+    contextMenu: {
+      callback: function (key, options) {
+        if (key === 'Sign up & see full menu') {
+          setTimeout(function () {
+            // timeout is used to make sure the menu collapsed before alert is shown
+            window.location = '/users/sign_up';;
+          }, 100);
+        }
+      },
+      items: {
+        "Sign up & see full menu": {name: 'Sign up & see full menu'}
+      }
+    },
     colWidths: [274, 274, 274, 274],   
     manualColumnResize: false,
     manualRowResize: false,
@@ -386,7 +398,19 @@ $(".pages.example_gamecall").ready(function() {
     renderAllRows: true,
     rowHeaders: false,
     colHeaders: false,
-    contextMenu: ['undo', 'redo'],
+    contextMenu: {
+      callback: function (key, options) {
+        if (key === 'Sign up & see full menu') {
+          setTimeout(function () {
+            // timeout is used to make sure the menu collapsed before alert is shown
+            window.location = '/users/sign_up';;
+          }, 100);
+        }
+      },
+      items: {
+        "Sign up & see full menu": {name: 'Sign up & see full menu'}
+      }
+    },
     colWidths: [274, 274, 274, 274],
     manualColumnResize: false,
     manualRowResize: false,

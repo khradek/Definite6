@@ -14,4 +14,4 @@
 
 # You can override concurrency based on environment.
 production:
-  :concurrency: 15
+  :concurrency: 10  #was 15
