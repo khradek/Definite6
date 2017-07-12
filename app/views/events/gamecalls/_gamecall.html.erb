@@ -2,7 +2,7 @@
   <span class="script-col1 td"><%= gamecall.title %></span>
   <span class="script-col2 td table-center"><%= gamecall.start_time.strftime("%m-%d-%Y") if gamecall.start_time? %></span>
   <% if gamecall.gamecall_template == "Custom" %>
-    <span class="script-col3 td"><%= link_to 'Open Sheet', event_gamecall_custom_path(@event, gamecall), class: "btn btn-custom3 btn-sm pull-right" %></span>
+    <span class="script-col3 td"><%= link_to 'Open Sheet', event_gamecall_custom_path(@event, gamecall), 'data-no-turbolink' => true, class: "btn btn-custom3 btn-sm pull-right" %></span>
   <% else %>
     <span class="script-col3 td"><%= link_to 'Open Sheet', [@event, gamecall], class: "btn btn-custom3 btn-sm pull-right" %></span>
   <% end %>

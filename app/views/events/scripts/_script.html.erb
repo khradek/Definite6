@@ -1,7 +1,7 @@
 <div class="tr" id="script_<%= script.id %>">
   <span class="script-col1 td"><%= script.title %></span>
   <span class="script-col2 table-center td"><%= script.start_time.strftime("%m-%d-%Y") if script.start_time? %></span>
-  <span class="script-col3 td"><%= link_to 'Open Script', [@event, script], class: "btn btn-custom3 btn-sm pull-right" %></span>
+  <span class="script-col3 td"><%= link_to 'Open Script', [@event, script], 'data-no-turbolink' => true, class: "btn btn-custom3 btn-sm pull-right" %></span>
   <span class="script-col3 td"><button type="button" id="update-script_<%= script.id %>" class="btn btn-custom4 btn-sm pull-right small-screen-hide" data-toggle="modal" data-target="#myupdatescript_<%= script.id %>">
   	Update or Delete Script
   </button></span>

@@ -1,7 +1,7 @@
 <div class="tr" id="practice_schedule_<%= practice_schedule.id %>">
   <span class="script-col1 td"><%= practice_schedule.title %></span>
   <span class="script-col2 table-center td"><%= practice_schedule.start_time.strftime("%m-%d-%Y") if practice_schedule.start_time? %></span>
-  <span class="script-col3 td"><%= link_to 'Open Schedule', [@event, practice_schedule], class: "btn btn-custom3 btn-sm pull-right" %></span>
+  <span class="script-col3 td"><%= link_to 'Open Schedule', [@event, practice_schedule], 'data-no-turbolink' => true, class: "btn btn-custom3 btn-sm pull-right" %></span>
   <span class="script-col3 td"><button type="button" id="update-practice_schedule_<%= practice_schedule.id %>" class="btn btn-custom4 btn-sm pull-right small-screen-hide" data-toggle="modal" data-target="#myupdatepractice_schedule_<%= practice_schedule.id %>">
     Update or Delete Schedule
   </button></span>
