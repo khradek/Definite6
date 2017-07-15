@@ -20,7 +20,17 @@ class RecordCharges
   end
 end
 
+class SendTrialEndEmail
+  def call(event)
+    # Look up the user in our database
+    user = User.find_by(stripe_id: charge.customer)
+
+    # Send the email
+    TrialEndMailer.trial_end(user).deliver_later
+  end 
+end
+
 StripeEvent.configure do |events|
   events.subscribe 'charge.succeeded', RecordCharges.new
-  customer.subscriptions.trial_will_end, TrialEndMailer.trial_end(@user).deliver_later
+  events.subscribe 'trial_will_end', SendTrialEndEmail.new
 end
