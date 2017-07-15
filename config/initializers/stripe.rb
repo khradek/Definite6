@@ -22,4 +22,5 @@ end
 
 StripeEvent.configure do |events|
   events.subscribe 'charge.succeeded', RecordCharges.new
+  customer.subscriptions.trial_will_end, TrialEndMailer.trial_end(@user).deliver_later
 end

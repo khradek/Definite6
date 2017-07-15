@@ -236,11 +236,11 @@
 
     <hr class="light-blue">
 
-    <h3 id="deactivate-account-link">Deactivate my Account <i class="fa fa-arrow-circle-right right-arrow ht blue" aria-hidden="true"></i><i class="fa fa-arrow-circle-down down-arrow blue" aria-hidden="true"></i></h3>  
+    <h3 id="deactivate-account-link">Deactivate My Account <i class="fa fa-arrow-circle-right right-arrow ht blue" aria-hidden="true"></i><i class="fa fa-arrow-circle-down down-arrow blue" aria-hidden="true"></i></h3>  
 
     <div id="deactivate-account-section">
       <p>Click below to deactivate your account - this will stop any future charges, but you will no longer have access to Definite6 after <%= current_user.subscription_end.strftime("%m/%d/%Y") %>. All saved data may be deleted after this date.</p> 
-      <%= button_to "Deactivate my Account", subscription_path, data: { confirm: "Are you sure? After #{current_user.subscription_end.strftime('%m/%d/%Y')} you will no longer have access." }, method: :delete, class: "btn btn-custom2 btn-block" %>
+      <%= button_to "Deactivate My Account", subscription_path, data: { confirm: "Are you sure? After #{current_user.subscription_end.strftime('%m/%d/%Y')} you will no longer have access." }, method: :delete, class: "btn btn-custom2 btn-block" %>
       <br>
     </div>
 
