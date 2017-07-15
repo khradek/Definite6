@@ -22,6 +22,8 @@ end
 
 class SendTrialEndEmail
   def call(event)
+    charge = event.data.object
+    
     # Look up the user in our database
     user = User.find_by(stripe_id: charge.customer)
 
