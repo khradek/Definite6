@@ -34,5 +34,5 @@ end
 
 StripeEvent.configure do |events|
   events.subscribe 'charge.succeeded', RecordCharges.new
-  events.subscribe 'trial_will_end', SendTrialEndEmail.new
+  events.subscribe 'customer.subscription.trial_will_end', SendTrialEndEmail.new
 end
