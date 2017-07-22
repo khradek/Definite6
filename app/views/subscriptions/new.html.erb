@@ -17,7 +17,7 @@
           <label>
             <span>Card Number</span>
           </label>
-          <input class="form-control" placeholder="1234 5678 9012 3456" type="text" size="20" data-stripe="number">
+          <input class="form-control" placeholder="1234 5678 9012 3456" type="text" size="20" data-stripe="number" autocomplete="cc-number">
         </div>
       </div>  
     </div>
@@ -28,14 +28,14 @@
           <label>
             <span>Expiration</span>
           </label>
-          <input class="form-control" placeholder="MM" type="text" size="10" data-stripe="exp_month">        
+          <input class="form-control" placeholder="MM" type="text" size="10" data-stripe="exp_month" autocomplete="cc-exp-month">        
         </div>
       </div>
 
       <div class="col-lg-3">
         <div class="field">
           <label>&nbsp</label>
-          <input class="form-control" placeholder="YYYY" type="text" size="10" data-stripe="exp_year">
+          <input class="form-control" placeholder="YYYY" type="text" size="10" data-stripe="exp_year" autocomplete="cc-exp-year">
         </div>  
       </div>
 
@@ -46,7 +46,7 @@
           <label>
             <span>CVC</span>
           </label>  
-          <input class="form-control" placeholder="123" type="text" size="4" data-stripe="cvc">
+          <input class="form-control" placeholder="123" type="text" size="4" data-stripe="cvc" autocomplete="cc-csc">
         </div>
       </div>
     </div>  
