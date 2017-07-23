@@ -27,4 +27,14 @@ class ApplicationController < ActionController::Base
 
   #Bootstrap flash messages
   add_flash_types :success, :warning, :danger, :info
+
+  def authorize_admin
+    if current_user.nil?
+      redirect_to root_path
+    else
+      redirect_to root_path unless current_user.admin
+      #redirects to previous page
+    end
+  end
+
 end

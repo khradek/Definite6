@@ -27,6 +27,7 @@ gem 'sidekiq'
 gem 'newrelic_rpm'
 gem 'devise_masquerade', '~> 0.1.7'
 gem 'zeroclipboard-rails', '~> 0.1.2'
+gem "recaptcha", require: "recaptcha/rails"
 
 group :production do
 	gem 'pg'

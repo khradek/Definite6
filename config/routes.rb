@@ -89,6 +89,8 @@ Rails.application.routes.draw do
   resource :subscription
 
   resource :card
+
+  resources :unsubscribes
   
   root 'creatives#index'
 

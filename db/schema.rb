@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170525223718) do
+ActiveRecord::Schema.define(version: 20170723133324) do
 
   create_table "charges", force: true do |t|
     t.integer  "user_id"
@@ -238,6 +238,12 @@ ActiveRecord::Schema.define(version: 20170525223718) do
 
   add_index "scripts", ["event_id"], name: "index_scripts_on_event_id"
   add_index "scripts", ["user_id"], name: "index_scripts_on_user_id"
+
+  create_table "unsubscribes", force: true do |t|
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
