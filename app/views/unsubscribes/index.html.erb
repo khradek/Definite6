@@ -8,7 +8,8 @@
       <thead>
         <tr>
           <th>Email</th>
-          <th colspan="3"></th>
+          <th>Added Date & Time</th>
+          <th colspan="2"></th>
         </tr>
       </thead>
 
@@ -16,6 +17,7 @@
         <% @unsubscribes.each do |unsubscribe| %>
           <tr>
             <td><%= unsubscribe.email %></td>
+            <td><%= unsubscribe.created_at.strftime("%B %d, %Y %I:%M %P ") %></td>
             <td><%= link_to 'Show', unsubscribe %></td>
             <td><%= link_to 'Edit', edit_unsubscribe_path(unsubscribe) %></td>
             <td><%= link_to 'Destroy', unsubscribe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
