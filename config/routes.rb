@@ -106,6 +106,7 @@ Rails.application.routes.draw do
   get 'articles/the_quick_game_slant'
   get 'articles/the_quick_game_stick'
   get 'articles/goal_line_part_one'
+  get 'articles/goal_line_part_two'
   get 'articles/coach_hrazor'
 
   get '/user_guide' => "pages#user_guide"
