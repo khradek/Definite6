@@ -8,12 +8,12 @@
 
   <br>
 
-  <p class="large-text center"><%= @event.title %></p>
+  <p class="vw-large-text center"><%= @event.title %></p>
 
   <p class="event-id hidden"><%= @event.id%></p>
 
   <p>
-  <div class="fake-h4 inline">Dates:&nbsp </div><div class="inline"><%= @event.start_time.strftime("%m-%d-%Y") %> - <%= @event.end_time.strftime("%m-%d-%Y") %></div>
+  <div class="inline"><strong>Dates:&nbsp </strong></div><div class="inline"><%= @event.start_time.strftime("%m-%d-%Y") %> - <%= @event.end_time.strftime("%m-%d-%Y") %></div>
   </p>
 
   <% unless browser.chrome? || browser.safari?%>
