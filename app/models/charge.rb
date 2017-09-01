@@ -8,7 +8,7 @@ class Charge < ActiveRecord::Base
       product: "Definite6",
       company: {
         name: "Definite6.com",
-        address: "PO Box 58002\nWaxhaw, NC 28173",
+        address: "PO Box 961\nWaxhaw, NC 28173",
         email: "admin@definite6.com",
         logo: Rails.root.join("app/assets/images/creative/portfolio/Logo.png")
       },
