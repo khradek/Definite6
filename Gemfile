@@ -30,7 +30,7 @@ gem 'zeroclipboard-rails', '~> 0.1.2'
 gem "recaptcha", require: "recaptcha/rails"
 
 group :production do
-	gem 'pg'
+	gem 'pg', '~> 0.21.0'
 	gem 'rails_12factor'
 end
 
